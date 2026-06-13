@@ -1,0 +1,32 @@
+{
+  "example": "Schedule an email campaign",
+  "description": "POST /Emails/{ID}/Schedule - Schedules an email campaign for delivery",
+  "request": {
+    "method": "POST",
+    "url": "https://clientapi.benchmarkemail.com/Emails/456789/Schedule",
+    "headers": {
+      "AuthToken": "YOUR_API_TOKEN",
+      "Content-Type": "application/json"
+    },
+    "body": {
+      "Data": {
+        "ScheduleDate": "2026-06-14T09:00:00Z",
+        "ListIDs": [123456],
+        "SegmentIDs": []
+      }
+    }
+  },
+  "response": {
+    "status": 200,
+    "body": {
+      "Response": {
+        "Status": "Success",
+        "Data": {
+          "EmailID": 456789,
+          "Status": "Scheduled",
+          "ScheduleDate": "2026-06-14T09:00:00Z"
+        }
+      }
+    }
+  }
+}

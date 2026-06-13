@@ -1,0 +1,66 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/benchmark-email/main/json-schema/email-campaign.json",
+  "title": "EmailCampaign",
+  "description": "An email campaign in Benchmark Email.",
+  "type": "object",
+  "properties": {
+    "ID": {
+      "type": "integer",
+      "description": "Unique identifier for the email campaign."
+    },
+    "Name": {
+      "type": "string",
+      "description": "Internal name of the campaign."
+    },
+    "Subject": {
+      "type": "string",
+      "description": "Email subject line."
+    },
+    "FromName": {
+      "type": "string",
+      "description": "Sender display name."
+    },
+    "FromEmail": {
+      "type": "string",
+      "format": "email",
+      "description": "Sender email address."
+    },
+    "ReplyTo": {
+      "type": "string",
+      "format": "email",
+      "description": "Reply-to email address."
+    },
+    "Status": {
+      "type": "string",
+      "enum": ["Draft", "Scheduled", "Sent", "Sending", "Cancelled"],
+      "description": "Current status of the campaign."
+    },
+    "ScheduledDate": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Date and time the campaign is scheduled to send."
+    },
+    "SentDate": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Date and time the campaign was sent."
+    },
+    "HTMLContent": {
+      "type": "string",
+      "description": "HTML body of the email."
+    },
+    "TextContent": {
+      "type": "string",
+      "description": "Plain-text body of the email."
+    },
+    "ListIDs": {
+      "type": "array",
+      "items": {
+        "type": "integer"
+      },
+      "description": "IDs of the contact lists this campaign is sent to."
+    }
+  },
+  "required": ["Name", "Subject", "FromName", "FromEmail"]
+}

@@ -1,0 +1,122 @@
+vocabulary:
+  - term: Contact
+    definition: An email subscriber record stored within a contact list, identified by email address and optionally enriched with custom fields.
+    relatedTerms:
+      - ContactList
+      - ContactDetails
+      - Segment
+
+  - term: ContactList
+    definition: A named group of email contacts (subscribers) used as the target audience for email campaigns and automations.
+    relatedTerms:
+      - Contact
+      - Segment
+      - Webhook
+
+  - term: EmailCampaign
+    definition: A bulk email message created in the Benchmark Email platform and sent to one or more contact lists or segments.
+    relatedTerms:
+      - Schedule
+      - CampaignReport
+      - ABSplit
+
+  - term: Automation
+    definition: A triggered series of emails sent automatically based on subscriber behavior or time-based rules.
+    relatedTerms:
+      - AutomationEmail
+      - AutomationReport
+
+  - term: ABSplit
+    definition: An A/B split test that sends two or more email variants to portions of a list to determine which performs better.
+    relatedTerms:
+      - EmailCampaign
+      - ABSplitResults
+
+  - term: Segment
+    definition: A dynamic subset of contacts within a list filtered by criteria such as custom field values or engagement behavior.
+    relatedTerms:
+      - ContactList
+      - Contact
+
+  - term: Webhook
+    definition: An HTTP callback subscription that delivers real-time notifications to an external URL when contact events occur (subscribe, unsubscribe, bounce, click, open, DNC).
+    relatedTerms:
+      - ContactList
+
+  - term: SignupForm
+    definition: An embeddable web form that collects new subscriber information and adds them to a contact list.
+    relatedTerms:
+      - ContactList
+
+  - term: CampaignReport
+    definition: Analytics data for a sent email campaign, including open rates, click rates, bounces, and unsubscribes.
+    relatedTerms:
+      - EmailCampaign
+      - Engagement
+
+  - term: AuthToken
+    definition: A unique API key used to authenticate all API requests, obtained from the Benchmark Email integration settings at https://ui.benchmarkemail.com/Integrate#API.
+
+  - term: Schedule
+    definition: The action of designating a specific date and time for an email campaign to be sent automatically.
+    relatedTerms:
+      - EmailCampaign
+
+  - term: RSSSchedule
+    definition: A recurring email schedule that automatically sends new content fetched from an RSS feed to subscribers.
+    relatedTerms:
+      - EmailCampaign
+
+  - term: Archive
+    definition: A public-facing web page hosting past email campaigns for browsing by non-subscribers.
+    relatedTerms:
+      - EmailCampaign
+
+  - term: Engagement
+    definition: Metrics and segment-building tools that group contacts by their interaction history with campaigns (opens, clicks).
+    relatedTerms:
+      - CampaignReport
+      - Segment
+
+  - term: InboxChecker
+    definition: A tool that previews how an email renders across different email clients and spam filters before sending.
+    relatedTerms:
+      - EmailCampaign
+
+  - term: Survey
+    definition: A multi-question form embedded in emails or shared via link to collect structured feedback from subscribers.
+    relatedTerms:
+      - SurveyReport
+
+  - term: Poll
+    definition: A single-question interactive element embedded in emails to capture quick subscriber responses.
+    relatedTerms:
+      - PollResponse
+
+  - term: ImageGallery
+    definition: A hosted library of images within Benchmark Email used in email campaign design.
+
+  - term: DNC
+    definition: Do Not Contact — a status applied to contacts who must not receive further marketing emails.
+    relatedTerms:
+      - Contact
+
+  - term: PageNumber
+    definition: A pagination parameter used in list endpoints to request a specific page of results.
+    relatedTerms:
+      - PageSize
+
+  - term: PageSize
+    definition: A pagination parameter specifying the number of records to return per page.
+    relatedTerms:
+      - PageNumber
+
+  - term: SubAccount
+    definition: A child account managed under a parent Benchmark Email account, used in agency and white-label scenarios.
+    relatedTerms:
+      - AgencyAccount
+
+  - term: AgencyAccount
+    definition: A linked client account associated with an agency's parent Benchmark Email account.
+    relatedTerms:
+      - SubAccount

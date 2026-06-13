@@ -35,6 +35,8 @@ apis:
         url: https://github.com/BenchmarkEmail/RESTful-API-v3
       - type: PostmanCollection
         url: https://github.com/BenchmarkEmail/RESTful-API-v3/tree/master/Postman%20Collections
+      - type: OpenAPI
+        url: openapi/benchmark-email-benchmark-email-api-openapi.yml
 common:
   - type: Website
     url: https://www.benchmarkemail.com/

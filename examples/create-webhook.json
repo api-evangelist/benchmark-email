@@ -1,0 +1,32 @@
+{
+  "example": "Create a webhook",
+  "description": "POST /Contact/{ListID}/Webhooks - Creates a webhook to receive real-time event notifications for a contact list",
+  "request": {
+    "method": "POST",
+    "url": "https://clientapi.benchmarkemail.com/Contact/123456/Webhooks",
+    "headers": {
+      "AuthToken": "YOUR_API_TOKEN",
+      "Content-Type": "application/json"
+    },
+    "body": {
+      "Data": {
+        "URL": "https://yourapp.example.com/webhooks/benchmark-email",
+        "Events": ["Subscribe", "Unsubscribe", "Bounce"]
+      }
+    }
+  },
+  "response": {
+    "status": 200,
+    "body": {
+      "Response": {
+        "Status": "Success",
+        "Data": {
+          "ID": 999,
+          "URL": "https://yourapp.example.com/webhooks/benchmark-email",
+          "Events": ["Subscribe", "Unsubscribe", "Bounce"],
+          "Status": "Active"
+        }
+      }
+    }
+  }
+}

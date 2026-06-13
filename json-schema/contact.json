@@ -1,0 +1,49 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/benchmark-email/main/json-schema/contact.json",
+  "title": "Contact",
+  "description": "An email contact (subscriber) in Benchmark Email.",
+  "type": "object",
+  "properties": {
+    "ContactID": {
+      "type": "integer",
+      "description": "Unique identifier for the contact."
+    },
+    "Email": {
+      "type": "string",
+      "format": "email",
+      "description": "Email address of the contact."
+    },
+    "FirstName": {
+      "type": "string",
+      "description": "First name of the contact."
+    },
+    "LastName": {
+      "type": "string",
+      "description": "Last name of the contact."
+    },
+    "Status": {
+      "type": "string",
+      "enum": ["Active", "Unsubscribed", "Bounced", "DNC"],
+      "description": "Subscription status of the contact."
+    },
+    "SubscribeDate": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Date and time when the contact subscribed."
+    },
+    "UnsubscribeDate": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Date and time when the contact unsubscribed, if applicable."
+    },
+    "CustomFields": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string"
+      },
+      "description": "Custom field values for the contact."
+    }
+  },
+  "required": ["Email"]
+}

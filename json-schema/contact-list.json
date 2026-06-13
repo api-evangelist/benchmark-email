@@ -1,0 +1,45 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/benchmark-email/main/json-schema/contact-list.json",
+  "title": "ContactList",
+  "description": "A contact list in Benchmark Email used for grouping email subscribers.",
+  "type": "object",
+  "properties": {
+    "ID": {
+      "type": "integer",
+      "description": "Unique identifier for the contact list."
+    },
+    "Name": {
+      "type": "string",
+      "description": "Name of the contact list."
+    },
+    "Description": {
+      "type": "string",
+      "description": "Description of the contact list."
+    },
+    "TotalContacts": {
+      "type": "integer",
+      "description": "Total number of contacts in the list."
+    },
+    "ActiveContacts": {
+      "type": "integer",
+      "description": "Number of active contacts in the list."
+    },
+    "CreatedDate": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Date and time when the list was created."
+    },
+    "ModifiedDate": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Date and time when the list was last modified."
+    },
+    "Status": {
+      "type": "string",
+      "enum": ["Active", "Inactive", "Deleted"],
+      "description": "Status of the contact list."
+    }
+  },
+  "required": ["Name"]
+}

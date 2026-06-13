@@ -1,0 +1,41 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/benchmark-email/main/json-schema/webhook.json",
+  "title": "Webhook",
+  "description": "A webhook subscription for receiving real-time event notifications from Benchmark Email.",
+  "type": "object",
+  "properties": {
+    "ID": {
+      "type": "integer",
+      "description": "Unique identifier for the webhook."
+    },
+    "URL": {
+      "type": "string",
+      "format": "uri",
+      "description": "The endpoint URL to receive webhook notifications."
+    },
+    "Events": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": ["Subscribe", "Unsubscribe", "Bounce", "Click", "Open", "DNC"]
+      },
+      "description": "List of events that trigger this webhook."
+    },
+    "Status": {
+      "type": "string",
+      "enum": ["Active", "Inactive"],
+      "description": "Status of the webhook subscription."
+    },
+    "ListID": {
+      "type": "integer",
+      "description": "The contact list ID this webhook is associated with."
+    },
+    "CreatedDate": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Date and time the webhook was created."
+    }
+  },
+  "required": ["URL", "Events"]
+}

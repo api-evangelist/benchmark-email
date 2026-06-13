@@ -1,0 +1,40 @@
+{
+  "example": "Add a contact to a list",
+  "description": "POST /Contact/{ListID}/ContactDetails - Adds a new contact to an existing contact list",
+  "request": {
+    "method": "POST",
+    "url": "https://clientapi.benchmarkemail.com/Contact/123456/ContactDetails",
+    "headers": {
+      "AuthToken": "YOUR_API_TOKEN",
+      "Content-Type": "application/json"
+    },
+    "body": {
+      "Data": {
+        "EmailAddress": "subscriber@example.com",
+        "Fields": [
+          {
+            "FieldID": 1,
+            "Value": "Jane"
+          },
+          {
+            "FieldID": 2,
+            "Value": "Doe"
+          }
+        ]
+      }
+    }
+  },
+  "response": {
+    "status": 200,
+    "body": {
+      "Response": {
+        "Status": "Success",
+        "Data": {
+          "ID": 789012,
+          "EmailAddress": "subscriber@example.com",
+          "Status": "Active"
+        }
+      }
+    }
+  }
+}

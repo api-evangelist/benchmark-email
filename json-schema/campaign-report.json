@@ -1,0 +1,59 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/benchmark-email/main/json-schema/campaign-report.json",
+  "title": "CampaignReport",
+  "description": "Analytics and performance report for an email campaign in Benchmark Email.",
+  "type": "object",
+  "properties": {
+    "EmailID": {
+      "type": "integer",
+      "description": "Unique identifier of the email campaign."
+    },
+    "Name": {
+      "type": "string",
+      "description": "Name of the email campaign."
+    },
+    "TotalSent": {
+      "type": "integer",
+      "description": "Total number of emails sent."
+    },
+    "TotalOpens": {
+      "type": "integer",
+      "description": "Total number of email opens."
+    },
+    "UniqueOpens": {
+      "type": "integer",
+      "description": "Number of unique email opens."
+    },
+    "TotalClicks": {
+      "type": "integer",
+      "description": "Total number of link clicks."
+    },
+    "UniqueClicks": {
+      "type": "integer",
+      "description": "Number of unique link clicks."
+    },
+    "Bounces": {
+      "type": "integer",
+      "description": "Number of bounced emails."
+    },
+    "Unsubscribes": {
+      "type": "integer",
+      "description": "Number of unsubscribes from this campaign."
+    },
+    "Forwards": {
+      "type": "integer",
+      "description": "Number of times the email was forwarded."
+    },
+    "OpenRate": {
+      "type": "number",
+      "format": "float",
+      "description": "Open rate as a percentage."
+    },
+    "ClickRate": {
+      "type": "number",
+      "format": "float",
+      "description": "Click rate as a percentage."
+    }
+  }
+}

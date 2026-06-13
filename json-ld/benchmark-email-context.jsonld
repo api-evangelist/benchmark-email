@@ -1,0 +1,167 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "schema": "https://schema.org/",
+    "bme": "https://www.benchmarkemail.com/vocabulary/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+
+    "Contact": "bme:Contact",
+    "ContactList": "bme:ContactList",
+    "EmailCampaign": "bme:EmailCampaign",
+    "Automation": "bme:Automation",
+    "ABSplit": "bme:ABSplit",
+    "Segment": "bme:Segment",
+    "Webhook": "bme:Webhook",
+    "SignupForm": "bme:SignupForm",
+    "CampaignReport": "bme:CampaignReport",
+    "Survey": "bme:Survey",
+    "Poll": "bme:Poll",
+    "Archive": "bme:Archive",
+    "ImageGallery": "bme:ImageGallery",
+    "SubAccount": "bme:SubAccount",
+    "InboxChecker": "bme:InboxChecker",
+
+    "id": "@id",
+    "type": "@type",
+
+    "ID": {
+      "@id": "bme:id",
+      "@type": "xsd:integer"
+    },
+    "Name": {
+      "@id": "schema:name",
+      "@type": "xsd:string"
+    },
+    "Description": {
+      "@id": "schema:description",
+      "@type": "xsd:string"
+    },
+    "Email": {
+      "@id": "schema:email",
+      "@type": "xsd:string"
+    },
+    "EmailAddress": {
+      "@id": "schema:email",
+      "@type": "xsd:string"
+    },
+    "FirstName": {
+      "@id": "schema:givenName",
+      "@type": "xsd:string"
+    },
+    "LastName": {
+      "@id": "schema:familyName",
+      "@type": "xsd:string"
+    },
+    "Status": {
+      "@id": "bme:status",
+      "@type": "xsd:string"
+    },
+    "Subject": {
+      "@id": "bme:subject",
+      "@type": "xsd:string"
+    },
+    "FromName": {
+      "@id": "bme:fromName",
+      "@type": "xsd:string"
+    },
+    "FromEmail": {
+      "@id": "bme:fromEmail",
+      "@type": "xsd:string"
+    },
+    "ReplyTo": {
+      "@id": "bme:replyTo",
+      "@type": "xsd:string"
+    },
+    "URL": {
+      "@id": "schema:url",
+      "@type": "xsd:anyURI"
+    },
+    "Events": {
+      "@id": "bme:events",
+      "@container": "@list"
+    },
+    "CreatedDate": {
+      "@id": "schema:dateCreated",
+      "@type": "xsd:dateTime"
+    },
+    "ModifiedDate": {
+      "@id": "schema:dateModified",
+      "@type": "xsd:dateTime"
+    },
+    "ScheduledDate": {
+      "@id": "bme:scheduledDate",
+      "@type": "xsd:dateTime"
+    },
+    "SentDate": {
+      "@id": "bme:sentDate",
+      "@type": "xsd:dateTime"
+    },
+    "TotalSent": {
+      "@id": "bme:totalSent",
+      "@type": "xsd:integer"
+    },
+    "TotalOpens": {
+      "@id": "bme:totalOpens",
+      "@type": "xsd:integer"
+    },
+    "UniqueOpens": {
+      "@id": "bme:uniqueOpens",
+      "@type": "xsd:integer"
+    },
+    "TotalClicks": {
+      "@id": "bme:totalClicks",
+      "@type": "xsd:integer"
+    },
+    "UniqueClicks": {
+      "@id": "bme:uniqueClicks",
+      "@type": "xsd:integer"
+    },
+    "Bounces": {
+      "@id": "bme:bounces",
+      "@type": "xsd:integer"
+    },
+    "Unsubscribes": {
+      "@id": "bme:unsubscribes",
+      "@type": "xsd:integer"
+    },
+    "OpenRate": {
+      "@id": "bme:openRate",
+      "@type": "xsd:float"
+    },
+    "ClickRate": {
+      "@id": "bme:clickRate",
+      "@type": "xsd:float"
+    },
+    "TotalContacts": {
+      "@id": "bme:totalContacts",
+      "@type": "xsd:integer"
+    },
+    "ActiveContacts": {
+      "@id": "bme:activeContacts",
+      "@type": "xsd:integer"
+    },
+    "ListID": {
+      "@id": "bme:listId",
+      "@type": "xsd:integer"
+    },
+    "ListIDs": {
+      "@id": "bme:listIds",
+      "@container": "@list"
+    },
+    "AuthToken": {
+      "@id": "bme:authToken",
+      "@type": "xsd:string"
+    },
+    "PageNumber": {
+      "@id": "bme:pageNumber",
+      "@type": "xsd:integer"
+    },
+    "PageSize": {
+      "@id": "bme:pageSize",
+      "@type": "xsd:integer"
+    },
+    "CustomFields": {
+      "@id": "bme:customFields"
+    }
+  }
+}

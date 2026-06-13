@@ -1,0 +1,33 @@
+{
+  "example": "Get campaign report",
+  "description": "GET /Emails/{ID}/Report - Retrieves performance analytics for a sent email campaign",
+  "request": {
+    "method": "GET",
+    "url": "https://clientapi.benchmarkemail.com/Emails/456789/Report",
+    "headers": {
+      "AuthToken": "YOUR_API_TOKEN"
+    }
+  },
+  "response": {
+    "status": 200,
+    "body": {
+      "Response": {
+        "Status": "Success",
+        "Data": {
+          "EmailID": 456789,
+          "Name": "June Newsletter",
+          "TotalSent": 5000,
+          "TotalOpens": 1250,
+          "UniqueOpens": 1100,
+          "TotalClicks": 320,
+          "UniqueClicks": 290,
+          "Bounces": 45,
+          "Unsubscribes": 12,
+          "Forwards": 8,
+          "OpenRate": 22.0,
+          "ClickRate": 6.4
+        }
+      }
+    }
+  }
+}
