@@ -1,0 +1,95 @@
+name: Benchmark Email Plans and Pricing
+description: Benchmark Email offers three pricing tiers based on contact count. All plans include API access at no extra cost. The API is available with up to 2 active keys on Free and up to 10 keys on Pro. Enterprise plans offer custom key limits.
+url: https://www.benchmarkemail.com/pricing/
+created: '2026-06-13'
+modified: '2026-06-13'
+plans:
+  - name: Free
+    description: Entry-level plan for small senders with core email marketing features. Includes 2 active API keys.
+    url: https://www.benchmarkemail.com/pricing/
+    price: 0
+    currency: USD
+    billingCycle: monthly
+    limits:
+      contacts: 500
+      emailSendsPerMonth: 2500
+      users: 1
+      sendingDomains: 1
+      apiKeys: 2
+    features:
+      - Drag-and-drop email builder
+      - Ready-made email templates
+      - AI-generated images
+      - Stock image library
+      - Personalization with merge fields
+      - Email preview and test sends
+      - Contact management with custom fields
+      - Lists and tags
+      - CSV import/export
+      - Sign-up forms with reCAPTCHA
+      - Performance reporting
+      - Contact activity feed
+      - Link activity tracking
+      - REST API access (2 keys)
+  - name: Pro
+    description: Full-featured plan for growing businesses. Scales from 1,000 to 100,000 contacts. Includes up to 10 active API keys.
+    url: https://www.benchmarkemail.com/pricing/
+    price: 19
+    currency: USD
+    billingCycle: monthly
+    annualPrice: 16
+    limits:
+      contacts: 1000
+      emailSendsPerMonth: 10000
+      users: 1
+      additionalUsersPerMonth: 15
+      maxAdditionalUsers: 9
+      sendingDomains: 10
+      apiKeys: 10
+    features:
+      - Everything in Free
+      - Scaled contact tiers up to 100,000 contacts
+      - 10x monthly send volume relative to contact count
+      - Up to 10 sending domains
+      - Up to 10 total users
+      - REST API access (10 keys)
+      - Scoped API key permissions (No Access / Read / Read & Write)
+      - Optional key expiration dates
+    tiers:
+      - contacts: 1000
+        monthlyPrice: 19
+        annualMonthlyPrice: 16
+        emailSendsPerMonth: 10000
+      - contacts: 2500
+        monthlyPrice: 37
+        annualMonthlyPrice: 31
+        emailSendsPerMonth: 25000
+      - contacts: 10000
+        monthlyPrice: 93
+        emailSendsPerMonth: 100000
+      - contacts: 50000
+        monthlyPrice: 299
+        emailSendsPerMonth: 500000
+      - contacts: 100000
+        monthlyPrice: 499
+        emailSendsPerMonth: 1000000
+  - name: Enterprise
+    description: Custom plan for large organizations with more than 100,000 contacts. Custom pricing, contact limits, send volumes, and API key quotas via sales.
+    url: https://www.benchmarkemail.com/pricing/
+    price: custom
+    currency: USD
+    billingCycle: custom
+    limits:
+      contacts: custom
+      emailSendsPerMonth: custom
+      users: custom
+      sendingDomains: custom
+      apiKeys: custom
+    features:
+      - Everything in Pro
+      - Custom contact limits exceeding 100,000
+      - Custom email send volumes
+      - Custom user seats
+      - Custom sending domains
+      - Dedicated account support
+      - Custom API key quotas

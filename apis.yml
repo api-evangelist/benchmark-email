@@ -1,0 +1,63 @@
+aid: benchmark-email
+name: Benchmark Email
+description: Benchmark Email is an email marketing platform with a REST API for managing contacts, lists, email campaigns, automations, reports, and transactional email delivery. The API supports contact synchronization, campaign management, reporting analytics, domain verification, and webhook notifications for real-time event handling.
+image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+url: https://raw.githubusercontent.com/api-evangelist/benchmark-email/refs/heads/main/apis.yml
+created: '2026-06-13'
+modified: '2026-06-13'
+specificationVersion: '0.19'
+tags:
+  - Email Marketing
+  - Campaigns
+  - Contacts
+  - Automation
+  - Transactional Email
+  - Marketing
+apis:
+  - aid: benchmark-email:benchmark-email-api
+    name: Benchmark Email RESTful API v3.0
+    description: RESTful API for managing email marketing contacts, lists, campaigns, automations, reports, images, and webhooks within the Benchmark Email platform.
+    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    humanURL: https://developer.benchmarkemail.com/
+    baseURL: https://clientapi.benchmarkemail.com
+    tags:
+      - Email Marketing
+      - Campaigns
+      - Contacts
+      - Lists
+      - Automation
+      - Webhooks
+      - Reports
+    properties:
+      - type: Documentation
+        url: https://developer.benchmarkemail.com/
+      - type: GitHubRepository
+        url: https://github.com/BenchmarkEmail/RESTful-API-v3
+      - type: PostmanCollection
+        url: https://github.com/BenchmarkEmail/RESTful-API-v3/tree/master/Postman%20Collections
+common:
+  - type: Website
+    url: https://www.benchmarkemail.com/
+  - type: Documentation
+    url: https://developer.benchmarkemail.com/
+  - type: GitHubOrg
+    url: https://github.com/BenchmarkEmail
+  - type: LinkedIn
+    url: https://www.linkedin.com/company/benchmark-email/
+  - type: Blog
+    url: https://www.benchmarkemail.com/blog/
+  - type: Pricing
+    url: https://www.benchmarkemail.com/pricing/
+  - type: StatusPage
+    url: https://www.benchmarkemail.com/status/
+  - type: X
+    url: https://twitter.com/benchmarkemail
+  - type: Plans
+    url: plans/benchmark-email-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/benchmark-email-rate-limits.yml
+  - type: FinOps
+    url: finops/benchmark-email-finops.yml
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com

@@ -1,0 +1,71 @@
+name: Benchmark Email FinOps
+description: Financial operations guidance for managing Benchmark Email API costs. The API itself is included at no extra cost on all plans, but plan selection and contact tier management drive the primary cost structure. Cost optimization focuses on contact list hygiene, tier selection, and efficient API key utilization.
+url: https://www.benchmarkemail.com/pricing/
+created: '2026-06-13'
+modified: '2026-06-13'
+costDrivers:
+  - name: Contact Count
+    description: The primary billing driver. Plans are priced by the number of stored contacts, not by emails sent. Keeping contact lists clean and removing unengaged subscribers reduces plan tier requirements.
+    impact: high
+    optimization: Regularly prune inactive contacts, remove hard bounces and unsubscribes, and use list hygiene tools to stay in a lower contact tier.
+  - name: Monthly Email Sends
+    description: Each plan tier allows up to 10x the contact count in monthly sends. Exceeding the send limit requires upgrading to the next contact tier.
+    impact: medium
+    optimization: Segment campaigns to engaged subscribers only, reducing send volume and keeping cost in lower tiers.
+  - name: Additional Users
+    description: Each additional user seat beyond the included one costs $15/month on Pro plans. Enterprise negotiates user seats custom.
+    impact: low-medium
+    optimization: Limit user seats to active contributors; deactivate unused seats promptly.
+  - name: Plan Tier
+    description: Moving from Free ($0) to Pro ($19+/month) is the first major cost step. Pro scales from $19 to $499/month depending on contact count.
+    impact: high
+    optimization: Use the Free plan (500 contacts, 2,500 sends/month) as long as possible before upgrading. Evaluate annual billing (roughly 10-15% savings) once on Pro.
+billingModel:
+  type: contact-based subscription
+  cycle: monthly or annual
+  currency: USD
+  annualDiscount: approximately 10-15% off monthly rate
+  paymentMethods:
+    - Credit card (Visa, Mastercard, Amex)
+    - Apple Pay
+    - Google Pay
+    - Amazon Pay
+    - Stripe Link
+costOptimization:
+  - strategy: Annual Billing
+    description: Switch to annual billing to save approximately one month's cost per year (10-15% discount vs monthly). Saves $36/year at 1,000 contacts to $888/year at 100,000 contacts.
+    estimatedSavings: 10-15%
+  - strategy: Contact List Hygiene
+    description: Remove hard bounces, unsubscribes, and long-inactive contacts monthly. Staying under a tier threshold (e.g., under 2,500 contacts instead of 2,501+) can prevent an automatic step-up in plan cost.
+    estimatedSavings: variable; potentially one full pricing tier
+  - strategy: Suppress Non-Openers
+    description: Use engagement segmentation to suppress contacts who haven't opened in 6+ months. This reduces effective contact count for billing purposes and improves deliverability metrics.
+    estimatedSavings: medium
+  - strategy: Free Plan for Development and Testing
+    description: Use the Free plan (2 API keys included) for all development, testing, and integration work. Reserve Pro plan budget for production workloads only.
+    estimatedSavings: $19+/month during development
+  - strategy: API Key Scoping
+    description: Use narrowly scoped API keys (Read-only where possible) to minimize risk. Key scoping does not affect cost but prevents accidental writes that could corrupt contact data and trigger list-hygiene remediation work.
+    estimatedSavings: operational risk reduction
+pricingTierBreakpoints:
+  - contacts: 500
+    monthlyPrice: 0
+    tier: Free
+  - contacts: 1000
+    monthlyPrice: 19
+    tier: Pro
+  - contacts: 2500
+    monthlyPrice: 37
+    tier: Pro
+  - contacts: 10000
+    monthlyPrice: 93
+    tier: Pro
+  - contacts: 50000
+    monthlyPrice: 299
+    tier: Pro
+  - contacts: 100000
+    monthlyPrice: 499
+    tier: Pro
+  - contacts: 100001
+    monthlyPrice: custom
+    tier: Enterprise

@@ -1,0 +1,49 @@
+name: Benchmark Email API Rate Limits
+description: Benchmark Email enforces both short-term and long-term rate limits on its REST API v3.0. Rate limit status is communicated through response headers on every API call. All plan tiers share the same published rate limits.
+url: https://developer.benchmarkemail.com/
+created: '2026-06-13'
+modified: '2026-06-13'
+rateLimits:
+  - name: Per-Minute Rate Limit
+    description: Maximum number of API calls allowed within a 2-minute rolling window.
+    limit: 500
+    window: 2 minutes
+    scope: account
+    headers:
+      - X-RateLimit-Limit
+      - X-RateLimit-Remaining
+      - X-RateLimit-Reset
+  - name: Daily Rate Limit
+    description: Maximum total API calls allowed per calendar day across all endpoints.
+    limit: 60000
+    window: 1 day
+    scope: account
+    headers:
+      - X-RateLimit-Daily-Limit
+      - X-RateLimit-Daily-Remaining
+      - X-RateLimit-Daily-Reset
+  - name: Hourly Rate Limit
+    description: Intermediate hourly quota that applies in addition to per-minute and daily limits.
+    limit: variable
+    window: 1 hour
+    scope: account
+    notes: Exact hourly limit varies; monitor response headers for current values.
+  - name: Monthly Rate Limit
+    description: Long-term monthly quota that caps overall API usage per billing cycle.
+    limit: variable
+    window: 1 month
+    scope: account
+    notes: Exact monthly limit varies by plan tier and usage patterns; monitor response headers for current values.
+authentication:
+  - type: API Key
+    header: AuthToken
+    description: Pass the Benchmark Email Admin API Token in the AuthToken request header. API keys are scoped per resource (contacts, campaigns, reports, domains) with No Access, Read, or Read & Write permission levels. Keys can have optional expiration dates and can be deactivated or reactivated without rotation.
+    keyManagement:
+      freeKeys: 2
+      proKeys: 10
+      enterpriseKeys: custom
+enforcement:
+  - When the rate limit is exceeded, the API returns HTTP 429 Too Many Requests.
+  - All responses include rate-limit headers indicating remaining quota and reset time.
+  - Both hourly and monthly quotas apply concurrently with per-minute limits.
+  - Exceeding limits may incur additional costs on paid tiers; verify current policy in the live docs.
