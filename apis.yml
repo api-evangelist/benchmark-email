@@ -1,7 +1,7 @@
 aid: benchmark-email
 name: Benchmark Email
 description: Benchmark Email is an email marketing platform with a REST API for managing contacts, lists, email campaigns, automations, reports, and transactional email delivery. The API supports contact synchronization, campaign management, reporting analytics, domain verification, and webhook notifications for real-time event handling.
-image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
 url: https://raw.githubusercontent.com/api-evangelist/benchmark-email/refs/heads/main/apis.yml
 created: '2026-06-13'
 modified: '2026-06-13'
@@ -17,7 +17,7 @@ apis:
   - aid: benchmark-email:benchmark-email-api
     name: Benchmark Email RESTful API v3.0
     description: RESTful API for managing email marketing contacts, lists, campaigns, automations, reports, images, and webhooks within the Benchmark Email platform.
-    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
     humanURL: https://developer.benchmarkemail.com/
     baseURL: https://clientapi.benchmarkemail.com
     tags:
