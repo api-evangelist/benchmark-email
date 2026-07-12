@@ -1,0 +1,16 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/benchmark-email-benchmark-email-api-openapi.yml
+summary:
+  types:
+  - apiKey
+  api_key_in:
+  - header
+schemes:
+- name: apiKeyAuth
+  type: apiKey
+  in: header
+  parameter: AuthToken
+  description: API token obtained from https://ui.benchmarkemail.com/Integrate#API
+  sources:
+  - openapi/benchmark-email-benchmark-email-api-openapi.yml
