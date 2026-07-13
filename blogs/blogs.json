@@ -2,13 +2,11 @@
   "repo": "benchmark-email",
   "feeds": [
     {
-      "source": "https://www.benchmarkemail.com/blog/",
-      "feed_url": "",
-      "saved": 3,
-      "method": "agent-scrape"
+      "source": "https://www.linkedin.com/company/benchmark-email/",
+      "error": "HTTPError"
     }
   ],
-  "post_count": 6,
-  "fetched": "2026-06-27T12:27:51Z",
-  "agent_pulled": "2026-06-27"
+  "post_count": 8,
+  "fetched": "2026-07-11T11:50:51Z",
+  "agent_pulled": "2026-07-04"
 }
