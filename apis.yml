@@ -38,6 +38,8 @@ apis:
       - type: OpenAPI
         url: openapi/benchmark-email-benchmark-email-api-openapi.yml
 common:
+  - type: AgenticAccess
+    url: agentic-access/benchmark-email-agentic-access.yml
   - type: DomainSecurity
     url: security/benchmark-email-domain-security.yml
   - type: Authentication
