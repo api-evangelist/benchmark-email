@@ -1,0 +1,349 @@
+openapi: 3.0.3
+info:
+  title: Benchmark Email RESTful API v3.0 ABTest Creation Segments API
+  description: 'RESTful API for managing email marketing contacts, lists, campaigns, automations, reports, images, and webhooks within the Benchmark Email platform. To use the API, you need a Benchmark Email API token available at https://ui.benchmarkemail.com/Integrate#API. Rate limit: 500 calls per 2 minutes and 60,000 calls per day.'
+  version: 3.0.0
+  contact:
+    name: Benchmark Email Developer Support
+    url: https://developer.benchmarkemail.com/
+  license:
+    name: Proprietary
+servers:
+- url: https://clientapi.benchmarkemail.com
+  description: Benchmark Email Client API
+security:
+- apiKeyAuth: []
+tags:
+- name: Segments
+  description: Manage contact segments
+paths:
+  /Contact/{ListID}/Segments:
+    post:
+      tags:
+      - Segments
+      summary: Creating segment from contact IDs
+      operationId: post__contact__listid__segments
+      parameters:
+      - name: ListID
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      description: "<h4>Creates segment from contact IDs</h4>\r\n<h4>URL Parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Required</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>{{ListID}}</td><td>required</td><td>ID of the list</td></tr>\r\n</tbody>\r\n</table>\r\n\r\n<h4>Body Parameters (to be encoded as a JSON string)</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Required</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>ContactIDs</td><td>required</td><td>IDs of the contacts to be inserted</td>"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+  /Contact/Segments:
+    get:
+      tags:
+      - Segments
+      summary: Getting a list of segments
+      operationId: get__contact_segments
+      parameters: []
+      responses:
+        '200':
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      description: "<h4>Get Segments</h4>\r\n\r\n\r\n<h4>Query String parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Required</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>PageNumber</td><td>optional</td><td>int </td><td>Page Number</td></tr>\r\n<tr><td>PageSize</td><td>required</td><td>int </td><td>Number of rows on the page</td></tr>\r\n<tr><td>Filter</td><td>required</td><td>string </td><td>Filter value</td></tr>\r\n<tr><td>OrderBy</td><td>required</td><td>string </td><td>Order By Column ("
+  /Contact/Segments/{SegmentID}:
+    delete:
+      tags:
+      - Segments
+      summary: Delete Segment
+      operationId: delete__contact_segments__segmentid
+      parameters:
+      - name: SegmentID
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      description: "<h4>Deletes an existing segment</h4>\r\n<h4>URL Parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Required</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>required</td><td>{{SegmentID}}</td><td>string</td><td>ID of the segment</td></tr>\r\n</tbody>\r\n</table>\r\n\r\n<h4>Response body parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>status</td><td>string</td><td>1 if successful, -1 if error</td></tr>\r\n<tr>"
+    get:
+      tags:
+      - Segments
+      summary: Get segment by ID
+      operationId: get__contact_segments__segmentid
+      parameters:
+      - name: SegmentID
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      description: "<h4>Get an existing segment by ID</h4>\r\n<h4>URL Parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Required</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>{{SegmentID}}</td><td>required</td><td>string</td><td>ID of the segment</td></tr>\r\n</tbody>\r\n</table>\r\n\r\n<h4>Response body parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>Status</td><td>string</td><td>1 if successful, -1 if error</td></tr>\r\n<t"
+    patch:
+      tags:
+      - Segments
+      summary: Update Segment
+      operationId: patch__contact_segments__segmentid
+      parameters:
+      - name: SegmentID
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      description: "<h4>Update Segment</h4>\r\n<h4>URL Parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Required</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>{{SegmentID}}</td><td>required</td><td>string</td><td>ID of the segment</td></tr>\r\n</tbody>\r\n</table>\r\n\r\n<h4>Body Parameters (To be passed as a JSON string)</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Required</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>Data</td><td>optional</td><td><a href=\"http://w"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+  /Contact/Segments/{SegmentID}/SegmentDetails:
+    get:
+      tags:
+      - Segments
+      summary: Get Segment Details
+      operationId: get__contact_segments__segmentid__segmentdetails
+      parameters:
+      - name: SegmentID
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: PageNumber
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: PageSize
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: OrderBy
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: SortOrder
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: SearchFilter
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: SearchType
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: SearchField
+        in: query
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      description: '<h4>Get Segment Details</h4>
+
+        <h4>URL Parameters</h4>
+
+        <table>
+
+        <thead>
+
+        <tr>
+
+        <th>Key</th><th>Required</th><th>Type</th><th>Description</th></tr>
+
+        </thead>
+
+        <tbody>
+
+        <tr><td>{{SegmentID}}</td><td>required</td><td>string</td><td>ID of the segment</td></tr>
+
+        </tbody>
+
+        </table>
+
+
+        <h4>Query String Parameters</h4>
+
+        <table>
+
+        <thead>
+
+        <tr>
+
+        <th>Key</th><th>Required</th><th>Type</th><th>Description</th></tr>
+
+        </thead>
+
+        <tbody>
+
+        <tr><td>PageNumber</td><td>optional</td><td>int</td><td>Page Number</td></tr>
+
+        <tr><td>PageSiz'
+  /Contact/Segments/Name/{ListID}:
+    get:
+      tags:
+      - Segments
+      summary: Get Segment Auto Generate Name
+      operationId: get__contact_segments_name__listid
+      parameters:
+      - name: ListID
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      description: "<h4>Get Segment Auto Generate Name</h4>\r\n<h4>URL Parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Required</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>{{ListID}}</td><td>required</td><td>string</td><td>ID of the list</td></tr>\r\n</tbody>\r\n</table>\r\n\r\n<h4>Response body parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>Status</td><td>string</td><td>1 if successful, -1 if error</td></tr>\r\n<tr><td"
+  /Contact/Segments/{SegmentID}/Criteria:
+    delete:
+      tags:
+      - Segments
+      summary: Delete the Segment Criteria
+      operationId: delete__contact_segments__segmentid__criteria
+      parameters:
+      - name: SegmentID
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      description: "<h4>Delete Segment</h4>\r\n<h4>URL Parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Required</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>{{SegmentID}}</td><td>required</td><td>string</td><td>ID of the segment</td></tr>\r\n</tbody>\r\n</table>\r\n\r\n<h4>Response body parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>Status</td><td>string</td><td>1 if successful, -1 if error</td></tr>\r\n<tr><td>ErrorData"
+    post:
+      tags:
+      - Segments
+      summary: Create Criteria
+      operationId: post__contact_segments__segmentid__criteria
+      parameters:
+      - name: SegmentID
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      description: "<h4>Create a new Segments Criteria</h4>\r\n<h4>URL Parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Required</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>{{SegmentID}}</td><td>required</td><td>string</td><td>ID of the segment</td></tr>\r\n</tbody>\r\n</table>\r\n\r\n<h4>Body Parameters (To be passed as a JSON string)</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Required</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>Criteria</td><td>required</td><"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+  /Contact/{ListID}/SegmentLists:
+    get:
+      tags:
+      - Segments
+      summary: Get Segment List
+      operationId: get__contact__listid__segmentlists
+      parameters:
+      - name: ListID
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      description: "<h4>Get Segment List</h4>\r\n<h4>URL Parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Required</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>{{ListID}}</td><td>required</td><td>string</td><td>ID of the list</td></tr>\r\n</tbody>\r\n</table>\r\n\r\n<h4>Response body parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>Status</td><td>string</td><td>1 if successful, -1 if error</td></tr>\r\n<tr><td>Count</td><td"
+  /Contact/{ID}/Segment/Download:
+    get:
+      tags:
+      - Segments
+      summary: Get download segment data
+      operationId: get__contact__id__segment_download
+      parameters:
+      - name: ID
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      description: "<h4>Get download segment data</h4>\r\n<h4>URL Parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Required</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>{{ID}}</td><td>required</td><td>string</td><td>IDs of the segment</td></tr>\r\n</tbody>\r\n</table>\r\n\r\n<h4>Response body parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>Status</td><td>string</td><td>1 if successful, -1 error</td></tr>\r\n<tr><td>Segment"
+components:
+  securitySchemes:
+    apiKeyAuth:
+      type: apiKey
+      in: header
+      name: AuthToken
+      description: API token obtained from https://ui.benchmarkemail.com/Integrate#API

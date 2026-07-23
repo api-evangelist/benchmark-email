@@ -1,0 +1,737 @@
+openapi: 3.0.3
+info:
+  title: Benchmark Email RESTful API v3.0 ABTest Creation Archive API
+  description: 'RESTful API for managing email marketing contacts, lists, campaigns, automations, reports, images, and webhooks within the Benchmark Email platform. To use the API, you need a Benchmark Email API token available at https://ui.benchmarkemail.com/Integrate#API. Rate limit: 500 calls per 2 minutes and 60,000 calls per day.'
+  version: 3.0.0
+  contact:
+    name: Benchmark Email Developer Support
+    url: https://developer.benchmarkemail.com/
+  license:
+    name: Proprietary
+servers:
+- url: https://clientapi.benchmarkemail.com
+  description: Benchmark Email Client API
+security:
+- apiKeyAuth: []
+tags:
+- name: Archive
+  description: Manage email archive and archive pages
+paths:
+  /Archive:
+    get:
+      tags:
+      - Archive
+      summary: Get a list of emails for archive
+      operationId: get__archive
+      parameters:
+      - name: PageNumber
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: PageSize
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: Filter
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: OrderBy
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: SortOrder
+        in: query
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      description: 'Get a list of emails for archive
+
+        <h4>Query String Parameter : </h4>
+
+        <table>
+
+        <thead>
+
+        <tr>
+
+        <th>Key</th>
+
+        <th>Required</th>
+
+        <th>Description</th>
+
+        </tr>
+
+        </thead>
+
+        <tbody>
+
+        <tr>
+
+        <td>PageNumber</td>
+
+        <td>optional</td>
+
+        <td>Page Number</td>
+
+        </tr>
+
+        <tr>
+
+        <td>PageSize</td>
+
+        <td>optional</td>
+
+        <td>Number of records to show per page</td>
+
+        </tr>
+
+        <tr>
+
+        <td>Filter</td>
+
+        <td>optional</td>
+
+        <td>Filter for archive name</td>
+
+        </tr>
+
+        <tr>
+
+        <td>OrderBy</td>
+
+        <td>optional</td>
+
+        <td>The column to sort on</td>
+
+        </tr>
+
+        <tr>
+
+        <td>SortOrder</'
+  /Archive/:
+    post:
+      tags:
+      - Archive
+      summary: Adding an email to archive
+      operationId: post__archive
+      parameters: []
+      responses:
+        '200':
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      description: "Add an email to archive page\r\n<h4>Body Parameters (to be encoded as a JSON string)</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th>\r\n<th>Required</th>\r\n<th>Description</th>\r\n</tr>\r\n</thead>\r\n<tbody>\r\n<tr>\r\n<td>EmailID</td>\r\n<td>Required</td>\r\n<td>ID of the Email which want to add as archive</td>\r\n</tr>\r\n</tbody>\r\n</table>\r\n<h4>Response body parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>Return value</td><td>String</td><td>1 if su"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+    patch:
+      tags:
+      - Archive
+      summary: Update archive home page data
+      operationId: patch__archive
+      parameters: []
+      responses:
+        '200':
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      description: "Update archieve home page data like Page Title ,logo,header,footer etc\r\n<h4>Body Parameters (to be encoded as a JSON string)</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th>\r\n<th>Required</th>\r\n<th>Type</th>\r\n</tr>\r\n</thead>\r\n<tbody>\r\n<tr>\r\n<td>data</td>\r\n<td>Required</td>\r\n<td><a href=http://www.benchmarkemail.com/models.htm#ArchiveHomePageData>ArchiveHomePageData</a></td>\r\n</tr>\r\n</tbody>\r\n</table>\r\n<h4>Response body parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Type</th><th>Description</"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+  /Archive/{ID}:
+    delete:
+      tags:
+      - Archive
+      summary: Delete email from archive
+      operationId: delete__archive__id
+      parameters:
+      - name: ID
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      description: "Delete an email from archive\r\n<h4>URL Parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th>\r\n<th>Required</th>\r\n<th>Description</th>\r\n</tr>\r\n</thead>\r\n<tbody>\r\n<tr>\r\n<td>{{ID}}</td>\r\n<td>Required</td>\r\n<td>Archive ID</td>\r\n</tr>\r\n</tbody>\r\n</table>\r\n<h4>Response body parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>Return value</td><td>String</td><td>1 if success, -1 if error</td></tr>\r\n</tbody>\r\n</table>"
+  /Archive/Domain:
+    get:
+      tags:
+      - Archive
+      summary: Get details about Archive Page
+      operationId: get__archive_domain
+      parameters: []
+      responses:
+        '200':
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      description: 'Getting details about Archive Page
+
+        <h4>Response body parameters</h4>
+
+        <table>
+
+        <thead>
+
+        <tr>
+
+        <th>Key</th><th>Type</th><th>Description</th></tr>
+
+        </thead>
+
+        <tbody>
+
+        <tr><td>ArchiveURL</td><td>String</td><td>Archive URL</td></tr>
+
+        <tr><td>Share</td><td>String</td><td>Share</td></tr>
+
+        <tr><td>SharePanel</td><td>String</td><td>Share Panel</td></tr>
+
+        <tr><td>Domain</td><td>String</td><td>Domain</td></tr>
+
+        <tr><td>ArchiveRootURL</td><td>String</td><td>Archive Root URL</td></tr>
+
+        <tr><td>Image</td><td>String</td>'
+  /Archive/AddDomain:
+    post:
+      tags:
+      - Archive
+      summary: Adding or Updating  archive domain
+      operationId: post__archive_adddomain
+      parameters: []
+      responses:
+        '200':
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      description: "Add / Update archive domain\r\n<h4>Body Parameters (to be encoded as a JSON string)</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th>\r\n<th>Required</th>\r\n<th>Description</th>\r\n</tr>\r\n</thead>\r\n<tbody>\r\n<tr>\r\n<td>Domain</td>\r\n<td>Required</td>\r\n<td>Name of the Archive Domain</td>\r\n</tr>\r\n</tbody>\r\n</table>"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+  /Archive/{mode}:
+    get:
+      tags:
+      - Archive
+      summary: Get HTML for button
+      operationId: get__archive__mode
+      parameters:
+      - name: mode
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      description: 'Get HTML for button
+
+        <h4>URL Parameters</h4>
+
+        <table>
+
+        <thead>
+
+        <tr>
+
+        <th>Key</th>
+
+        <th>Required</th>
+
+        <th>Description</th>
+
+        </tr>
+
+        </thead>
+
+        <tbody>
+
+        <tr>
+
+        <td>{{Mode}}</td>
+
+        <td>Required</td>
+
+        <td>ID of the button selected for archive(eg. 1,2,3,4,5,6,1000 etc)</td>
+
+        </tr>
+
+        </tbody>
+
+        </table>
+
+
+        <h4>Response body parameters</h4>
+
+        <table>
+
+        <thead>
+
+        <tr>
+
+        <th>Key</th>
+
+        <th>Type</th>
+
+        <th>Description</th>
+
+        </tr>
+
+        </thead>
+
+        <tbody>
+
+        <tr>
+
+        <td>Code</td>
+
+        <td>String</td>
+
+        <td>HTML of button</td>
+
+        </tr>
+
+        <tr>
+
+        <td>ArchiveURL</td>
+
+        <td>S'
+  /Archive/Image/{mode}:
+    get:
+      tags:
+      - Archive
+      summary: Get image for button
+      operationId: get__archive_image__mode
+      parameters:
+      - name: mode
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      description: 'Get HTML for button
+
+        <h4>URL Parameters</h4>
+
+        <table>
+
+        <thead>
+
+        <tr>
+
+        <th>Key</th>
+
+        <th>Required</th>
+
+        <th>Description</th>
+
+        </tr>
+
+        </thead>
+
+        <tbody>
+
+        <tr>
+
+        <td>{{Mode}}</td>
+
+        <td>Required</td>
+
+        <td>ID of the button selected for archive(eg. 1,2,3,4,5,6,1000 etc)</td>
+
+        </tr>
+
+        </tbody>
+
+        </table>
+
+
+        <h4>Response body parameters</h4>
+
+        <table>
+
+        <thead>
+
+        <tr>
+
+        <th>Key</th>
+
+        <th>Type</th>
+
+        <th>Description</th>
+
+        </tr>
+
+        </thead>
+
+        <tbody>
+
+        <tr>
+
+        <td>Image</td>
+
+        <td>String</td>
+
+        <td>URL of the image</td>
+
+        </tr>
+
+        <tr>
+
+        <td>Status</td>
+
+        <td>In'
+  /Archive/ArchivePages:
+    get:
+      tags:
+      - Archive
+      summary: Getting list of archive pages
+      operationId: get__archive_archivepages
+      parameters: []
+      responses:
+        '200':
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      description: '<h4>Response body parameters</h4>
+
+        <table>
+
+        <thead>
+
+        <tr>
+
+        <th>Key</th>
+
+        <th>Type</th>
+
+        <th>Description</th>
+
+        </tr>
+
+        </thead>
+
+        <tbody>
+
+        <tr>
+
+        <td>Count</td>
+
+        <td>Int</td>
+
+        <td>Count of the archive pages</td>
+
+        </tr>
+
+        <tr>
+
+        <td>Status</td>
+
+        <td>String</td>
+
+        <td>1 if success, -1 if error</td>
+
+        </tr>
+
+        <tr>
+
+        <td>HideThumbnail</td>
+
+        <td>String</td>
+
+        <td>Whether the thumbnail should be hidden or not</td>
+
+        </tr>
+
+        <tr>
+
+        <td>ArchiveIDs</td>
+
+        <td>String</td>
+
+        <td>Comma separated list of archive IDs</td>
+
+        </tr>
+
+        <tr>
+
+        <td>Data</td>
+
+        <td><'
+  /Archive/AddArchiveHome:
+    post:
+      tags:
+      - Archive
+      summary: Update the Archive Home Page
+      operationId: post__archive_addarchivehome
+      parameters: []
+      responses:
+        '200':
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      description: "Update the Archive Home Page\r\n<h4>Body Parameters (to be encoded as a JSON string)</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th>\r\n<th>Required</th>\r\n<th>Description</th>\r\n</tr>\r\n</thead>\r\n<tbody>\r\n<tr>\r\n<td>SelArchiveIDs</td>\r\n<td>Required</td>\r\n<td>ID of the Email which want to add as archive</td>\r\n</tr>\r\n<tr>\r\n<td>Vieworders</td>\r\n<td>Required</td>\r\n<td>view order for email</td>\r\n</tr>\r\n<tr>\r\n<td>chkHide</td>\r\n<td>Required</td>\r\n<td>include thumbnail or not either true or false</td>\r\n</tr>\r\n</tbo"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+  /Archive/ArchiveHomePage:
+    get:
+      tags:
+      - Archive
+      summary: Getting the archive home page
+      operationId: get__archive_archivehomepage
+      parameters: []
+      responses:
+        '200':
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      description: "Get the archive home page\r\n<h4>Response body parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>Status</td><td>String</td><td>1 if success, -1 if error</td></tr>\r\n<tr><td>Data</td><td><a href=\"http://www.benchmarkemail.com/models.htm#ArchiveHomePageData\">ArchiveHomePageData</a></td><td>Array</td></tr>\r\n</tbody>\r\n</table>"
+  /Archive/{ArchiveID}/Detail:
+    get:
+      tags:
+      - Archive
+      summary: Get the details of archive email
+      operationId: get__archive__archiveid__detail
+      parameters:
+      - name: ArchiveID
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      description: 'Get the details of archive email which id is pass
+
+        <h4>URL Parameters</h4>
+
+        <table>
+
+        <thead>
+
+        <tr>
+
+        <th>Key</th>
+
+        <th>Required</th>
+
+        <th>Description</th>
+
+        </tr>
+
+        </thead>
+
+        <tbody>
+
+        <tr>
+
+        <td>{{ArchiveID}}</td>
+
+        <td>Required</td>
+
+        <td>Archive ID</td>
+
+        </tr>
+
+        </tbody>
+
+        </table>
+
+
+        <h4>Response body parameters</h4>
+
+        <table>
+
+        <thead>
+
+        <tr>
+
+        <th>Key</th>
+
+        <th>Type</th>
+
+        <th>Description</th>
+
+        </tr>
+
+        </thead>
+
+        <tbody>
+
+        <tr>
+
+        <td>ArchiveRootURL</td>
+
+        <td>String</td>
+
+        <td>Archive main URL</td>
+
+        </tr>
+
+        <tr>
+
+        <td>EmailID</td>
+
+        <td>String</td'
+  /Archive/{ArchiveID}/Update:
+    patch:
+      tags:
+      - Archive
+      summary: Update the archive email details
+      operationId: patch__archive__archiveid__update
+      parameters:
+      - name: ArchiveID
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      description: "Update the archive email details like description,URL etc\r\n<h4>Body Parameters (to be encoded as a JSON string)</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th>\r\n<th>Required</th>\r\n<th>Type</th>\r\n</tr>\r\n</thead>\r\n<tbody>\r\n<tr>\r\n<td>ArchiveID</td>\r\n<td>Required</td>\r\n<td>Archive ID</td>\r\n</tr>\r\n<tr>\r\n<td>data</td>\r\n<td>Required</td>\r\n<td><a href=http://www.benchmarkemail.com/models.htm#ArchiveData>ArchiveData</a></td>\r\n</tr>\r\n</tbody>\r\n</table>\r\n<h4>Response body parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+  /Archive/ArchiveHome/{Domain}/{Type}:
+    get:
+      tags:
+      - Archive
+      summary: Get Archive Home Data
+      operationId: get__archive_archivehome__domain___type
+      parameters:
+      - name: Domain
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: Type
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      description: "<h4>Get the details of archive email which id is pass</h4>\r\n\r\n<h4>URL Parameters</h4>\r\n<table>\r\n<thead>\r\n<tr><th>Key</th><th>Required</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>Domain</td><td>Required</td><td>Archive Domain</td></tr>\r\n<tr><td>Type</td><td>Required</td><td>Type\r\n<code>Home</code> - Home\r\n<code>Image</code> - Image</td></tr>\r\n</tbody>\r\n</table>\r\n\r\n<h4>Response body parameters</h4>\r\n<table>\r\n<thead>\r\n<tr><th>Key</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<"
+  /Archive/ArchiveEmail/{Domain}:
+    post:
+      tags:
+      - Archive
+      summary: Get HTML for Archive Newsletter
+      operationId: post__archive_archiveemail__domain
+      parameters:
+      - name: Domain
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      description: "<h4>Get HTML for Archive Newsletter</h4>\r\n\r\n<h4>URL Parameters</h4>\r\n<table>\r\n<thead>\r\n<tr><th>Key</th><th>Required</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>Domain</td><td>Required</td><td>Archive Domain</td></tr>\r\n</tbody>\r\n</table>\r\n\r\n<h4>Body Parameters (to be encoded as a JSON string)</h4>\r\n<table>\r\n<thead>\r\n<tr><th>Key</th><th>Required</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>ArchiveURL</td><td>Required</td><td>Archive URL</td></tr>\r\n<tr><td>Archive ID</td>"
+components:
+  securitySchemes:
+    apiKeyAuth:
+      type: apiKey
+      in: header
+      name: AuthToken
+      description: API token obtained from https://ui.benchmarkemail.com/Integrate#API

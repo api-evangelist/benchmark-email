@@ -1,0 +1,1050 @@
+openapi: 3.0.3
+info:
+  title: Benchmark Email RESTful API v3.0 ABTest Creation Reports API
+  description: 'RESTful API for managing email marketing contacts, lists, campaigns, automations, reports, images, and webhooks within the Benchmark Email platform. To use the API, you need a Benchmark Email API token available at https://ui.benchmarkemail.com/Integrate#API. Rate limit: 500 calls per 2 minutes and 60,000 calls per day.'
+  version: 3.0.0
+  contact:
+    name: Benchmark Email Developer Support
+    url: https://developer.benchmarkemail.com/
+  license:
+    name: Proprietary
+servers:
+- url: https://clientapi.benchmarkemail.com
+  description: Benchmark Email Client API
+security:
+- apiKeyAuth: []
+tags:
+- name: Reports
+  description: Campaign reporting and analytics
+paths:
+  /Emails/{ID}/{RType}/Report/Download:
+    post:
+      tags:
+      - Reports
+      summary: Report Download
+      operationId: post__emails__id___rtype__report_download
+      parameters:
+      - name: ID
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: RType
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      description: "<h4>Report Download</h4>\r\n<h4>URL Parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Required</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>{{ID}}</td><td>required</td><td>string</td><td>ID of the Email</td></tr>\r\n<tr><td>{{RType}}</td><td>required</td><td>string</td><td>Report Type</td></tr>\r\n</tbody>\r\n</table>\r\n\r\n<h4>Body Parameters (To be passed as a JSON string)</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Required</th><th>Type</th><th>Description</th></tr>\r\n<"
+    get:
+      tags:
+      - Reports
+      summary: Get Report Download
+      operationId: get__emails__id___rtype__report_download
+      parameters:
+      - name: ID
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: RType
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      description: "<h4>Get a list of contacts</h4>\r\n<h4>URL Parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Required</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>{{ID}}</td><td>required</td><td>string</td><td>ID of the Email</td></tr>\r\n<tr><td>{{RType}}</td><td>required</td><td>string</td><td>Type of report:\r\n<code>1</code> or <code>8</code> Clicks\r\n<code>2</code> Forwards\r\n<code>3</code> Bounces\r\n<code>4</code> Complaints\r\n<code>5</code> Unsubscribes\r\n<code>6</code> Opens\r\n<code"
+  /Emails/{ID}/Report/Unsubscribes:
+    get:
+      tags:
+      - Reports
+      summary: GET Unsubscribe report By Email ID
+      operationId: get__emails__id__report_unsubscribes
+      parameters:
+      - name: ID
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      description: "<h4>GET Unsubscribe report By Email ID</h4>\r\n<h4>URL Parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Required</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>{{ID}}</td><td>required</td><td>string</td><td>ID of the Email</td></tr>\r\n</tbody>\r\n</table>\r\n\r\n<h4>Response body parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>Status</td><td>string</td><td>1 if successful, -1 if error</td></tr>\r\n<tr><t"
+  /Emails/SaveAsList:
+    patch:
+      tags:
+      - Reports
+      summary: Save as List
+      operationId: patch__emails_saveaslist
+      parameters: []
+      responses:
+        '200':
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      description: "<h4>Save as List</h4>\r\n\r\n<h4>Body Parameters (To be passed as a JSON string)</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Required</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>EmailID</td><td>optional</td><td>string</td><td>Email ID</td></tr>\r\n<tr><td>EventID</td><td>optional</td><td>string</td><td>Event ID</td></tr>\r\n<tr><td>ABID</td><td>optional</td><td>string</td><td>AB ID</td></tr>\r\n<tr><td>RType</td><td>optional</td><td>string</td><td>Report Type</td></tr>\r\n<tr><t"
+  /Emails/GetSaveAsList:
+    get:
+      tags:
+      - Reports
+      summary: 'GET Save as List '
+      operationId: get__emails_getsaveaslist
+      parameters: []
+      responses:
+        '200':
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      description: "<h4>GET Save as List</h4>\r\n\r\n<h4>Query String parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Required</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>EmailID</td><td>optional</td><td>string</td><td>ID of the EMail</td></tr>\r\n<tr><td>EventID</td><td>optional</td><td>string</td><td>ID of the Event</td></tr>\r\n<tr><td>ABID</td><td>optional</td><td>string</td><td>ID of the AB Test</td></tr>\r\n<tr><td>RType</td><td>optional</td><td>string</td><td>Report Type</td></tr>\r\n"
+  /Emails/{ID}/Report:
+    get:
+      tags:
+      - Reports
+      summary: GET Report Details By Email ID
+      operationId: get__emails__id__report
+      parameters:
+      - name: ID
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      description: "<h4>Get a list of contacts</h4>\r\n<h4>URL Parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Required</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>{{ID}}</td><td>required</td><td>string</td><td>ID of the email</td></tr>\r\n</tbody>\r\n</table>\r\n\r\n<h4>Response body parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>Data</td><td><a href=\"http://www.benchmarkemail.com/models.htm#EmailReportSummaryData\">R"
+  /Emails/{ID}/Report/Forwards:
+    get:
+      tags:
+      - Reports
+      summary: GET Forwards report By Email ID
+      operationId: get__emails__id__report_forwards
+      parameters:
+      - name: ID
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      description: "<h4>Get a list of contacts</h4>\r\n<h4>URL Parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Required</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>{{ID}}</td><td>required</td><td>string</td><td>ID of the Email</td></tr>\r\n</tbody>\r\n</table>\r\n\r\n<h4>Response body parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>Status</td><td>string</td><td>1 if successful, -1 if error</td></tr>\r\n<tr><td>Count</td>"
+  /Emails/{ID}/Report/Unopens:
+    get:
+      tags:
+      - Reports
+      summary: GET Unopens report By Email ID
+      operationId: get__emails__id__report_unopens
+      parameters:
+      - name: ID
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      description: "<h4>Get a list of contacts</h4>\r\n<h4>URL Parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Required</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>{{ID}}</td><td>required</td><td>string</td><td>ID of the email</td></tr>\r\n</tbody>\r\n</table>\r\n\r\n<h4>Response body parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>Status</td><td>string</td><td>1 if successful, -1 if error</td></tr>\r\n<tr><td>Count</td>"
+  /Emails/{ID}/Report/Clicks:
+    get:
+      tags:
+      - Reports
+      summary: GET Clicks report By Email ID
+      operationId: get__emails__id__report_clicks
+      parameters:
+      - name: ID
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      description: "<h4>Get a list of contacts</h4>\r\n<h4>URL Parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Required</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>{{ID}}</td><td>required</td><td>string</td><td>ID of the email</td></tr>\r\n</tbody>\r\n</table>\r\n\r\n<h4>Response body parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>Status</td><td>string</td><td>1 if successful, -1 if error</td></tr>\r\n<tr><td>Count</td>"
+  /Emails/{ID}/Report/Bounces:
+    get:
+      tags:
+      - Reports
+      summary: GET Bounces report By Email ID
+      operationId: get__emails__id__report_bounces
+      parameters:
+      - name: ID
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      description: "<h4>GET Bounces report By Email ID</h4>\r\n<h4>URL Parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Required</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>{{ID}}</td><td>required</td><td>string</td><td>ID of the email</td></tr>\r\n</tbody>\r\n</table>\r\n\r\n<h4>Response body parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>Status</td><td>string</td><td>1 if successful, -1 if error</td></tr>\r\n<tr><td>Co"
+  /Emails/{ID}/Report/AbuseCampaign:
+    get:
+      tags:
+      - Reports
+      summary: GET AbuseCampaign report By Email ID
+      operationId: get__emails__id__report_abusecampaign
+      parameters:
+      - name: ID
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      description: "<h4>Get a list of contacts</h4>\r\n<h4>URL Parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Required</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>{{ID}}</td><td>required</td><td>string</td><td>ID of the email</td></tr>\r\n</tbody>\r\n</table>\r\n\r\n<h4>Response body parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>Status</td><td>string</td><td>1 if successful, -1 error</td></tr>\r\n<tr><td>Count</td><td"
+  /Emails/Report/Abuse:
+    get:
+      tags:
+      - Reports
+      summary: GET Abuse report
+      operationId: get__emails_report_abuse
+      parameters: []
+      responses:
+        '200':
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      description: "<h4>GET Abuse report</h4>\r\n\r\n<h4>Response body parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>Status</td><td>string</td><td>1 if successful, -1 error</td></tr>\r\n<tr><td>Count</td><td>int</td><td>Total number</td></tr>\r\n<tr><td>TotalCount</td><td>string</td><td>Abuse Total</td></tr>\r\n<tr><td>Total</td><td>string</td><td>Abuse total</td></tr>\r\n<tr><td>YourComplaintRate</td><td>string</td><td>Abuse Percentage</td></tr>\r\n<tr><t"
+  /Emails/{ID}/Report/SocialPerformance:
+    get:
+      tags:
+      - Reports
+      summary: GET Social Performance
+      operationId: get__emails__id__report_socialperformance
+      parameters:
+      - name: ID
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      description: "<h4>Get a list of contacts</h4>\r\n<h4>URL Parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Required</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>{{ID}}</td><td>required</td><td>string</td><td>ID of the EMail</td></tr>\r\n</tbody>\r\n</table>\r\n\r\n<h4>Response body parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>Status</td><td>string</td><td>1 if successful, -1 if error</td></tr>\r\n<tr><td>FacebookSh"
+  /Emails/{ID}/Report/Opens:
+    get:
+      tags:
+      - Reports
+      summary: GET Opens Report
+      operationId: get__emails__id__report_opens
+      parameters:
+      - name: ID
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      description: "<h4>Get a list of contacts</h4>\r\n<h4>URL Parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Required</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>{{ID}}</td><td>required</td><td>string</td><td>ID of the email</td></tr>\r\n</tbody>\r\n</table>\r\n\r\n<h4>Query String parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Required</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>Language</td><td>optional</td><td>string</td><td>Language</td></tr>\r\n<tr"
+  /Emails/{ID}/Report/Opens/Location:
+    get:
+      tags:
+      - Reports
+      summary: GET Opens Location Report
+      operationId: get__emails__id__report_opens_location
+      parameters:
+      - name: ID
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      description: "<h4>Get a list of contacts</h4>\r\n<h4>URL Parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Required</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>{{ID}}</td><td>required</td><td>string</td><td>ID of the email</td></tr>\r\n</tbody>\r\n</table>\r\n\r\n<h4>Response body parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>Status</td><td>string</td><td>1 if successful, -1 if error</td></tr>\r\n<tr><td>Count</td>"
+  /Emails/{ID}/Report/Opens/Location/{CountryCode}:
+    get:
+      tags:
+      - Reports
+      summary: GET Opens Location Report By Email ID and CountryCode
+      operationId: get__emails__id__report_opens_location__countrycode
+      parameters:
+      - name: ID
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: CountryCode
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      description: "<h4>Get a list of contacts</h4>\r\n<h4>URL Parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Required</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>{{ID}}</td><td>required</td><td>string</td><td>ID of the Email</td></tr>\r\n<tr><td>{{CountryCode}}</td><td>required</td><td>string</td><td>Country Code</td></tr>\r\n</tbody>\r\n</table>\r\n\r\n<h4>Response body parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>"
+  /Emails/{ID}/Report/Opens/Hourly:
+    get:
+      tags:
+      - Reports
+      summary: GET Opens Hourly Report By Email ID
+      operationId: get__emails__id__report_opens_hourly
+      parameters:
+      - name: ID
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      description: "<h4>GET Opens Hourly Report By Email ID</h4>\r\n<h4>URL Parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Required</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>{{ID}}</td><td>required</td><td>string</td><td>ID of the Email</td></tr>\r\n</tbody>\r\n</table>\r\n\r\n<h4>Response body parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>Status</td><td>string</td><td>1 if successful, -1 if error</td></tr>\r\n<tr><"
+  /Emails/{ID}/Report/ClickPerformance:
+    get:
+      tags:
+      - Reports
+      summary: GET Click Performance By Email ID
+      operationId: get__emails__id__report_clickperformance
+      parameters:
+      - name: ID
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      description: "<h4>Get a list of contacts</h4>\r\n<h4>URL Parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Required</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>{{ID}}</td><td>required</td><td>string</td><td>ID of the Email</td></tr>\r\n</tbody>\r\n</table>\r\n\r\n<h4>Response body parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>Status</td><td>string</td><td>1 if successful, -1 if error</td></tr>\r\n<tr><td>Count</td>"
+  /Emails/{ID}/Report/Click/HeatMap:
+    get:
+      tags:
+      - Reports
+      summary: GET Click HeatMap By Email ID
+      operationId: get__emails__id__report_click_heatmap
+      parameters:
+      - name: ID
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      description: "<h4>Get a list of contacts</h4>\r\n<h4>URL Parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Required</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>{{ID}}</td><td>required</td><td>string</td><td>ID of the Email</td></tr>\r\n</tbody>\r\n</table>\r\n\r\n<h4>Response body parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>Status</td><td>string</td><td>1 if successful, -1 if error</td></tr>\r\n<tr><td>Count</td>"
+  /Emails/{ID}/Report/ClickPerformance/Details:
+    get:
+      tags:
+      - Reports
+      summary: GET Click Performance Details By Email ID
+      operationId: get__emails__id__report_clickperformance_details
+      parameters:
+      - name: ID
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      description: "<h4>GET Click Performance Details By Email ID</h4>\r\n<h4>URL Parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Required</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>{{ID}}</td><td>required</td><td>string</td><td>ID of the Email</td></tr>\r\n</tbody>\r\n</table>\r\n\r\n<h4>Query String parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Required</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>PageNumber</td><td>optional</td><td>int</td><td>Page "
+  /Emails/{ID}/CampaignHistory:
+    get:
+      tags:
+      - Reports
+      summary: GET Campaign History By Email ID
+      operationId: get__emails__id__campaignhistory
+      parameters:
+      - name: ID
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      description: "<h4>GET Campaign History By Email ID</h4>\r\n<h4>URL Parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Required</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>{{ID}}</td><td>required</td><td>string</td><td>ID of the Email</td></tr>\r\n</tbody>\r\n</table>\r\n\r\n<h4>Response body parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>Status</td><td>string</td><td>1 if successful, -1 if error</td></tr>\r\n<tr><td>"
+  /Emails/{ID}/LinkDetail:
+    get:
+      tags:
+      - Reports
+      summary: GET Link Detail By Email ID
+      operationId: get__emails__id__linkdetail
+      parameters:
+      - name: ID
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      description: "<h4>Get a list of contacts</h4>\r\n<h4>URL Parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Required</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>{{ID}}</td><td>required</td><td>string</td><td>ID of the Email</td></tr>\r\n</tbody>\r\n</table>\r\n\r\n<h4>Query String parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Required</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>filter</td><td>optional</td><td>int</td><td>ID of the link</td></tr>\r\n</"
+  /Emails/{ID}/RSSHistory:
+    get:
+      tags:
+      - Reports
+      summary: GET RSS History By Email ID
+      operationId: get__emails__id__rsshistory
+      parameters:
+      - name: ID
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      description: "<h4>GET RSS History By Email ID</h4>\r\n<h4>URL Parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Required</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>{{ID}}</td><td>required</td><td>string</td><td>ID of the Email</td></tr>\r\n</tbody>\r\n</table>\r\n\r\n<h4>Response body parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>Status</td><td>string</td><td>1 if successful, -1 if error</td></tr>\r\n<tr><td>Count"
+  /Emails/{ID}/URLList:
+    get:
+      tags:
+      - Reports
+      summary: GET URL List By Email ID
+      operationId: get__emails__id__urllist
+      parameters:
+      - name: ID
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      description: "<h4>GET URL List By Email ID</h4>\r\n<h4>URL Parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Required</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>{{ID}}</td><td>required</td><td>string</td><td>ID of the Email</td></tr>\r\n</tbody>\r\n</table>\r\n\r\n<h4>Response body parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>Data</td><td>required</td><td><a href=\"http://www.benchmarkemail.com/models.htm#Client"
+  /Emails/{ID}/Report/Opens/{Country}/{Region}:
+    get:
+      tags:
+      - Reports
+      summary: Getting opens by country and region
+      operationId: get__emails__id__report_opens__country___region
+      parameters:
+      - name: ID
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: Country
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: Region
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      description: "<h4>Get a list of contacts</h4>\r\n<h4>URL Parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Required</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>{{ID}}</td><td>required</td><td>string</td><td>ID of the Email</td></tr>\r\n<tr><td>{{Country}}</td><td>required</td><td>string</td><td>Country</td></tr>\r\n<tr><td>{{Region}}</td><td>required</td><td>string</td><td>Region</td></tr>\r\n</tbody>\r\n</table>\r\n\r\n<h4>Query String parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th>"
+  /Emails/Report:
+    get:
+      tags:
+      - Reports
+      summary: Get Report
+      operationId: get__emails_report
+      parameters: []
+      responses:
+        '200':
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      description: "<h4>Get Report</h4>\r\n\r\n<h4>Query String parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Required</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>PageNumber</td><td>optional</td><td>int</td><td>Page number</td></tr>\r\n<tr><td>PageSize</td><td>optional</td><td>int</td><td>Number of records to show per page</td></tr>\r\n<tr><td>ABFilter</td><td>optional</td><td>string</td><td>AB Filter</td></tr>\r\n<tr><td>FilterType</td><td>optional</td><td>string</td><td>Filter Type</td"
+  /Automation/Report:
+    get:
+      tags:
+      - Reports
+      summary: Get Reports for Autoresponders
+      operationId: get__automation_report
+      parameters: []
+      responses:
+        '200':
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      description: 'Get Reports for Autoresponders
+
+        <h4>Query String Parameter : </h4>
+
+        <table>
+
+        <thead>
+
+        <tr>
+
+        <th>Key</th>
+
+        <th>Required</th>
+
+        <th>Description</th>
+
+        </tr>
+
+        </thead>
+
+        <tbody>
+
+        <tr>
+
+        <td>PageNumber</td>
+
+        <td>optional</td>
+
+        <td>Page Number</td>
+
+        </tr>
+
+        <tr>
+
+        <td>PageSize</td>
+
+        <td>optional</td>
+
+        <td>Number of records to show per page</td>
+
+        </tr>
+
+        <tr>
+
+        <td>Filter</td>
+
+        <td>optional</td>
+
+        <td>Filter for automation name</td>
+
+        </tr>
+
+        <tr>
+
+        <td>OrderBy</td>
+
+        <td>optional</td>
+
+        <td>Column by which to sort like name,schedule,email,sta'
+  /Automation/{AutomationID}/Report:
+    get:
+      tags:
+      - Reports
+      summary: Get Summary Report of an Automation
+      operationId: get__automation__automationid__report
+      parameters:
+      - name: AutomationID
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      description: "Get summary report of an Automation\r\n<h4>URL Parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th>\r\n<th>Required</th>\r\n<th>Description</th>\r\n</tr>\r\n</thead>\r\n<tbody>\r\n<tr>\r\n<td>{{AutomationID}}</td>\r\n<td>Required</td>\r\n<td>Automation ID</a>\r\n</tr>\r\n</tbody>\r\n</table>\r\n<h4>Response body parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>Count</td><td>Int</td><td>Total count of emails for archive</td></tr>\r\n<tr><td>Status</td><td"
+  /ABSplit/{ID}/Results:
+    get:
+      tags:
+      - Reports
+      summary: Get the Results for the  AB Test
+      operationId: get__absplit__id__results
+      parameters:
+      - name: ID
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      description: "Update AB split\r\n<h4>URL parameters:</h4>\r\n<table>\r\n<tr>\r\n  <th>Parameter</th>\r\n  <th>Type</th>\r\n  <th>Description</th>\r\n</tr>\r\n<tr>\r\n  <td>ID</td>\r\n  <td>string</td>\r\n  <td>ABSplit ID</td>\r\n</tr>\r\n</table>\r\n<h4>Response body parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>Status</td><td>String</td><td>1 if success, -1 if error</td></tr>\r\n<tr><td>Results</td><td><a href=\"http://www.benchmarkemail.com/models.htm#ABResult\">ABR"
+  /ABSplit/Report:
+    get:
+      tags:
+      - Reports
+      summary: GET  AB Test Report
+      operationId: get__absplit_report
+      parameters: []
+      responses:
+        '200':
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      description: "GET ABSplit Report\r\n<h4>URL body parameter (optional)</h4>\r\n  <table>\r\n    <tr>\r\n      <th>Parameter</th>\r\n      <th>Type</th>\r\n      <th>Description</th>\r\n    </tr>\r\n    <tr>\r\n      <td>PageNumber</td>\r\n      <td>string</td>\r\n      <td>Page Number</td>\r\n    </tr>\r\n    <tr>\r\n      <td>PageSize</td>\r\n      <td>string</td>\r\n      <td>Number of rows on the page</td>\r\n    </tr>\r\n    <tr>\r\n      <td>OrderBy</td>\r\n      <td>string</td>\r\n      <td>Order By Column Email,count,date</td>\r\n    </tr>\r\n    <"
+  /ABSplit/{ID}/{ABID}/Report:
+    get:
+      tags:
+      - Reports
+      summary: GET Report Details By  AB Test ID
+      operationId: get__absplit__id___abid__report
+      parameters:
+      - name: ID
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: ABID
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      description: "GET Report Details By ABSplit ID\r\n<h4>URL parameters:</h4>\r\n<table>\r\n<tr>\r\n  <th>Parameter</th>\r\n  <th>Type</th>\r\n  <th>Description</th>\r\n</tr>\r\n<tr>\r\n  <td>ID</td>\r\n  <td>string</td>\r\n  <td>Final Unique ID</td>\r\n</tr>\r\n<tr>\r\n  <td>ABID</td>\r\n  <td>string</td>\r\n  <td>ABSplit ID</td>\r\n</tr>\r\n</table>\r\n<h4>Response body parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>Status</td><td>String</td><td>1 if success, -1 if error</td>"
+  /ABSplit/{ID}/Compare:
+    get:
+      tags:
+      - Reports
+      summary: GET Compare report By  AB Test ID
+      operationId: get__absplit__id__compare
+      parameters:
+      - name: ID
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      description: "GET Report Details By ABSplit ID\r\n<h4>URL parameters:</h4>\r\n<table>\r\n<tr>\r\n  <th>Parameter</th>\r\n  <th>Type</th>\r\n  <th>Description</th>\r\n</tr>\r\n<tr>\r\n  <td>ID</td>\r\n  <td>string</td>\r\n  <td>ABSplit ID</td>\r\n</tr>\r\n</table>\r\n<h4>Response body parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>Status</td><td>String</td><td>1 if success, -1 if error</td></tr>\r\n<tr><td>Data</td><td><a href=\"http://www.benchmarkemail.com/models.htm"
+  /Survey/ReportList:
+    get:
+      tags:
+      - Reports
+      summary: Get Report List of Survey
+      operationId: get__survey_reportlist
+      parameters:
+      - name: PageNumber
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: PageSize
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: OrderBy
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: Filter
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: SortOrder
+        in: query
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      description: "<h4>Get Report List of Survey</h4>\n<b>Query string parameters : </b>\n<table>\n  <thead>\n    <tr>\n      <th>Parameter</th>\n      <th>Required</th>\n      <th>Type</th>\n      <th>Description</th>\n    </tr>\n    </thead>\n    <tbody>\n    <tr>\n      <td>PageNumber</td>\n      <td>Optional</td>\n      <td>int</td>\n      <td>Page Number</td>\n    </tr>\n    <tr>\n      <td>PageSize</td>\n      <td>Optional</td>\n      <td>int</td>\n      <td>Number of rows on the page</td>\n    </tr>\n    <tr>\n      <td>OrderBy</td"
+  /Survey/{SurveyID}/ReportDetail:
+    get:
+      tags:
+      - Reports
+      summary: Get Report detail of Survey
+      operationId: get__survey__surveyid__reportdetail
+      parameters:
+      - name: SurveyID
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      description: "<h4>Get Report detail of Survey</h4>\n<b>Query string parameters : </b> None <br>\n<b>Request Body Parameters : </b>\n<table >\n  <thead>\n    <tr>\n      <th>Parameter</th>\n      <th>Required</th>\n      <th>Type</th>\n      <th>Description</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td>SurveyID</td>\n      <td>Required</td>\n      <td>string</td>\n      <td>Survey ID</td>\n    </tr>\n  </tbody>\n</table>\n\n<b>Response Body Parameters : </b>\n<table >\n  <thead>\n    <tr>\n      <th>Parameter</th>\n      <"
+  /Survey/{SurveyID}/ReportAnswer/Text:
+    get:
+      tags:
+      - Reports
+      summary: Get Report Answer Text in Survey
+      operationId: get__survey__surveyid__reportanswer_text
+      parameters:
+      - name: SurveyID
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: QuestionID
+        in: query
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      description: "<h4>Get Report Answer Text in Survey</h4>\n<b>Query string parameters : </b>\n<table>\n  <thead>\n    <tr>\n      <th>Key</th><th>Required</th><th>Type</th><th>Description</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr><td>QuestionID</td><td>required</td><td>int</td><td>ID of the question</td></tr>\n  </tbody>\n</table>\n<b>Request Body Parameters : </b>\n<table >\n  <thead>\n    <tr>\n      <th>Parameter</th>\n      <th>Required</th>\n      <th>Type</th>\n      <th>Description</th>\n    </tr>\n  </thead>\n  <tbody>"
+  /Survey/{SurveyID}/ReportAnswer/Comment:
+    get:
+      tags:
+      - Reports
+      summary: Get Report Answer Comment in Survey
+      operationId: get__survey__surveyid__reportanswer_comment
+      parameters:
+      - name: SurveyID
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: QuestionID
+        in: query
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      description: "<h4>Get Report Answer Comment in Survey</h4>\n<b>Query string parameters : </b>\n<table>\n<thead>\n<tr>\n<th>Key</th><th>Required</th><th>Type</th><th>Description</th></tr>\n</thead>\n<tbody>\n<tr><td>QuestionID</td><td>required</td><td>int</td><td>ID of the question</td></tr>\n</tbody>\n</table>\n<b>Request Body parameters : </b>\n<table>\n  <thead>\n    <tr>\n      <th>Parameter</th>\n      <th>Required</th>\n      <th>Type</th>\n      <th>Description</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td>Surve"
+  /Survey/{SurveyID}/ReportAnswer/Other:
+    get:
+      tags:
+      - Reports
+      summary: Get ReportAnswerOther in Survey
+      operationId: get__survey__surveyid__reportanswer_other
+      parameters:
+      - name: SurveyID
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: QuestionID
+        in: query
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      description: "<h4>Get ReportAnswerOther in Survey</h4>\n<b>Query string parameters : </b>\n<table>\n  <thead>\n    <tr>\n      <th>Key</th><th>Required</th><th>Type</th><th>Description</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr><td>QuestionID</td><td>required</td><td>int</td><td>ID of the question</td></tr>\n  </tbody>\n</table>\n<b>Request Body parameters : </b>\n<table>\n  <thead>\n    <tr>\n      <th>Parameter</th>\n      <th>Required</th>\n      <th>Type</th>\n      <th>Description</th>\n    </tr>\n  </thead>\n  <tbody>\n "
+  /Survey/{SurveyID}/ReportIndividual:
+    get:
+      tags:
+      - Reports
+      summary: Get Report of Survey Individual Result
+      operationId: get__survey__surveyid__reportindividual
+      parameters:
+      - name: SurveyID
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: PageNumber
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: PageSize
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: Filter
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: OrderBy
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: SortOrder
+        in: query
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      description: "<h4>Get Report of Survey Individual Result</h4>\n<b>Query string parameters : </b>\n<table>\n  <thead>\n    <tr>\n      <th>Key</th><th>Required</th><th>Type</th><th>Description</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr><td>PageNumber</td><td>optional</td><td>int</td><td>Page number</td></tr>\n    <tr><td>PageSize</td><td>optional</td><td>int</td><td>Number of records to show per page</td></tr>\n    <tr><td>Filter</td><td>optional</td><td>string</td><td>Filter</td></tr>\n    <tr><td>OrderBy</td><td>op"
+  /Survey/{SurveyID}/ReportIndividual/{EmailID}:
+    get:
+      tags:
+      - Reports
+      summary: Get Individual Question Result Detail in Survey
+      operationId: get__survey__surveyid__reportindividual__emailid
+      parameters:
+      - name: SurveyID
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: EmailID
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      description: "<h4>Get Individual Question Result Detail in Survey</h4>\n<b>Query string parameters : </b> None <br>\n<b>Request Body Parameters:</b>\n<table>\n  <thead>\n    <tr>\n      <th>Parameter</th>\n      <th>Required</th>\n      <th>Type</th>\n      <th>Description</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td>SurveyID</td>\n      <td>Required</td>\n      <td>string</td>\n      <td>Survey ID</td>\n    </tr>\n    <tr>\n      <td>EmailID</td>\n      <td>Required</td>\n      <td>string</td>\n      <td>Email Addre"
+  /Survey/{SurveyID}/ReportFull:
+    get:
+      tags:
+      - Reports
+      summary: Get full report of Survey
+      operationId: get__survey__surveyid__reportfull
+      parameters:
+      - name: SurveyID
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      description: "<h4>Get a Full report Of Survey</h4>\n<b>Query String Parameters:</b> None <br>\n<b>Request Body Parameters : </b>\n<table>\n  <thead>\n    <tr>\n      <th>Parameter</th>\n      <th>Required</th>\n      <th>Type</th>\n      <th>Description</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td>SurveyID</td>\n      <td>Required</td>\n      <td>string</td>\n      <td>Survey ID</td>\n    </tr>\n  </tbody>\n</table>\n<b>Response Body Parameters : </b>\n<table>\n  <thead>\n    <tr>\n      <th>Parameter</th>\n      <th>Ty"
+  /Poll/{PollID}/Response:
+    get:
+      tags:
+      - Reports
+      summary: Get Poll response report
+      operationId: get__poll__pollid__response
+      parameters:
+      - name: PollID
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      description: "<h4>Get Poll response report</h4>\n<b>Query string parameters :</b> None <br>\n<b>Request Body parameters:</b>\n<table>\n  <thead>\n    <tr>\n      <th>Parameter</th>\n      <th>Required</th>\n      <th>Type</th>\n      <th>Description</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td>PollID</td>\n      <td>Required</td>\n      <td>String</td>\n      <td>Poll ID</td>\n    </tr>\n  </tbody>\n</table>\n\n<b>Response body parameters :</b>\n<table>\n  <thead>\n    <tr>\n      <th>Parameter</th>\n      <th>Type</th>\n"
+components:
+  securitySchemes:
+    apiKeyAuth:
+      type: apiKey
+      in: header
+      name: AuthToken
+      description: API token obtained from https://ui.benchmarkemail.com/Integrate#API

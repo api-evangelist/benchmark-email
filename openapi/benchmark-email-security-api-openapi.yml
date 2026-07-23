@@ -1,0 +1,125 @@
+openapi: 3.0.3
+info:
+  title: Benchmark Email RESTful API v3.0 ABTest Creation Security API
+  description: 'RESTful API for managing email marketing contacts, lists, campaigns, automations, reports, images, and webhooks within the Benchmark Email platform. To use the API, you need a Benchmark Email API token available at https://ui.benchmarkemail.com/Integrate#API. Rate limit: 500 calls per 2 minutes and 60,000 calls per day.'
+  version: 3.0.0
+  contact:
+    name: Benchmark Email Developer Support
+    url: https://developer.benchmarkemail.com/
+  license:
+    name: Proprietary
+servers:
+- url: https://clientapi.benchmarkemail.com
+  description: Benchmark Email Client API
+security:
+- apiKeyAuth: []
+tags:
+- name: Security
+  description: Authentication and security operations
+paths:
+  /Client/Setting:
+    get:
+      tags:
+      - Security
+      summary: /Client/Setting | Get Client Account Settings
+      operationId: get__client_setting
+      parameters: []
+      responses:
+        '200':
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      description: "<h4>Get Client Account Settings</h4>\n<b>Query String Parameters :</b> None <br>\n\n<b>Request Body Parameters:</b> None <br>\n\n<b>Response Body Parameters :</b>\n<table>\n  <thead>\n    <tr>\n      <th>Parameter</th>\n      <th>Type</th>\n      <th>Description</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td>Company</td>\n      <td><a href=\"http://www.benchmarkemail.com/models.htm#ClientSettingCompanyData\" >SettingCompanyData</a></td>\n      <td>Array of error</td>\n    </tr>\n    <tr>\n      <td>Footer"
+  /Client/PIN:
+    post:
+      tags:
+      - Security
+      summary: 'Change Security PIN '
+      operationId: post__client_pin
+      parameters: []
+      responses:
+        '200':
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      description: "<h4>Change Security PIN</h4>\n<b>Body Parameters (to be encoded as a JSON string)</b>\n<table>\n<thead>\n<tr>\n<th>Key</th>\n<th>Required</th>\n<th>Description</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td>ResetPIN</td>\n<td>Required</td>\n<td>New PIN</td>\n</tr>\n<tr>\n<td>ResetConfirmPIN</td>\n<td>Required</td>\n<td>Confirm New PIN</td>\n</tr>\n<tr>\n<td>ResetOldPIN</td>\n<td>Required</td>\n<td>Current PIN</td>\n</tr>\n</tbody>\n</table>\n<b>Response Body Parameters :</b>\n<table>\n  <thead>\n    <tr>\n      <th>Parameter</th>\n "
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+    patch:
+      tags:
+      - Security
+      summary: Save Security PIN
+      operationId: patch__client_pin
+      parameters: []
+      responses:
+        '200':
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      description: "<h4>Save Security PIN</h4>\n<b>Body Parameters (to be encoded as a JSON string)</b>\n<table>\n<thead>\n<tr>\n<th>Key</th>\n<th>Required</th>\n<th>Description</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td>NewPIN</td>\n<td>Required</td>\n<td>New PIN</td>\n</tr>\n<tr>\n<td>ConfirmNewPIN</td>\n<td>Required</td>\n<td>Confirm New PIN</td>\n</tr>\n</tbody>\n</table>\n<b>Response Body Parameters :</b>\n<table>\n  <thead>\n    <tr>\n      <th>Parameter</th>\n      <th>Type</th>\n      <th>Description</th>\n    </tr>\n  </thead>\n  <tbody>\n"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+  /Client/PIN/Disable:
+    post:
+      tags:
+      - Security
+      summary: Disable Security PIN
+      operationId: post__client_pin_disable
+      parameters: []
+      responses:
+        '200':
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      description: "<h4>Disable Security PIN</h4>\n<b>Body Parameters (to be encoded as a JSON string)</b>\n<table>\n<thead>\n<tr>\n<th>Key</th>\n<th>Required</th>\n<th>Description</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td>DisableOldPIN</td>\n<td>Required</td>\n<td>Old PIN</td>\n</tr>\n</tbody>\n</table>\n<b>Response Body Parameters :</b>\n<table>\n  <thead>\n    <tr>\n      <th>Parameter</th>\n      <th>Type</th>\n      <th>Description</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td>retVal</td>\n      <td>string</td>\n      <td>retu"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+  /Client/PIN/Email:
+    post:
+      tags:
+      - Security
+      summary: Send PIN via email incase you forgot
+      operationId: post__client_pin_email
+      parameters: []
+      responses:
+        '200':
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      description: "<h4>Send PIN via email incase you forgot</h4>\n<b>Response Body Parameters :</b>\n<table>\n  <thead>\n    <tr>\n      <th>Parameter</th>\n      <th>Type</th>\n      <th>Description</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td>retVal</td>\n      <td>string</td>\n      <td>return Value</td>\n    </tr>\n    <tr>\n      <td>Error</td>\n      <td><a href=\"http://www.benchmarkemail.com/models.htm#ErrorData\" >ErrorData</a></td>\n      <td>Array of error</td>\n    </tr>\n    <tr>\n      <td>Status</td>\n      <"
+components:
+  securitySchemes:
+    apiKeyAuth:
+      type: apiKey
+      in: header
+      name: AuthToken
+      description: API token obtained from https://ui.benchmarkemail.com/Integrate#API

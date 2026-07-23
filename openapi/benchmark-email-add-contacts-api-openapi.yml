@@ -1,0 +1,269 @@
+openapi: 3.0.3
+info:
+  title: Benchmark Email RESTful API v3.0 ABTest Creation Add Contacts API
+  description: 'RESTful API for managing email marketing contacts, lists, campaigns, automations, reports, images, and webhooks within the Benchmark Email platform. To use the API, you need a Benchmark Email API token available at https://ui.benchmarkemail.com/Integrate#API. Rate limit: 500 calls per 2 minutes and 60,000 calls per day.'
+  version: 3.0.0
+  contact:
+    name: Benchmark Email Developer Support
+    url: https://developer.benchmarkemail.com/
+  license:
+    name: Proprietary
+servers:
+- url: https://clientapi.benchmarkemail.com
+  description: Benchmark Email Client API
+security:
+- apiKeyAuth: []
+tags:
+- name: Add Contacts
+  description: Add and import contacts to lists
+paths:
+  /Contact/{ListID}/ContactDetails:
+    post:
+      tags:
+      - Add Contacts
+      summary: /Contact/{{ListID}}/ContactDetails  || Add Contact
+      operationId: post__contact__listid__contactdetails
+      parameters:
+      - name: ListID
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      description: "<h4>Add Contact</h4>\r\n<h4>URL Parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Required</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>{{ListID}}</td><td>required</td><td>string</td><td>ID of the list</td></tr>\r\n</tbody>\r\n</table>\r\n\r\n<h4>Body Parameters (To be passed as a JSON string)</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Required</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>Data</td><td>required</td><td><a href=\"http://www.benchm"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+  /Contact/{ListID}/ContactDetails/{ContactID}:
+    patch:
+      tags:
+      - Add Contacts
+      summary: Update Contact
+      operationId: patch__contact__listid__contactdetails__contactid
+      parameters:
+      - name: ListID
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: ContactID
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      description: "<h4>Update Contact</h4>\r\n<h4>URL Parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Required</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody\r\n<tr><td>{{ListID}}</td><td>required</td><td>string</td><td>ID of the list</td></tr>\r\n<tr><td>{{ContactID}}</td><td>required</td><td>string</td><td>ID of the contact</td></tr>\r\n</tbody>\r\n</table>\r\n\r\n<h4>Body Parameters (To be passed as a JSON string)</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Required</th><th>Type</th><th>Description</"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+  /Contact/{ListID}/ContactDetails/CSV/Upload:
+    post:
+      tags:
+      - Add Contacts
+      summary: '{{ListID}}/ContactDetails/CSV/Upload |Save email address which are not verified and uploaded'
+      operationId: post__contact__listid__contactdetails_csv_upload
+      parameters:
+      - name: ListID
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      description: "<h4>Save email address which are not verified and uploaded</h4>\r\n\r\n<h4>URL parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Required</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>ListID</td><td>required</td><td>string</td><td>ID of the list</td></tr>\r\n</tbody>\r\n</table>\r\n\r\n<h4>Body Parameters (To be passed as a JSON string)</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Required</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>Data</td><td>re"
+  /Contact/{ListID}/Mapping:
+    patch:
+      tags:
+      - Add Contacts
+      summary: /{{ListID}}/Mapping | Change mapping
+      operationId: patch__contact__listid__mapping
+      parameters:
+      - name: ListID
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      description: "<h4>Changes file mapping</h4>\r\n<h4>URL Parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Required</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>{{ListID}}</td><td>required</td><td>string</td><td>ID of the list</td></tr>\r\n</tbody>\r\n</table>\r\n\r\n<h4>Body Parameters (to be encoded as a JSON string)</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Required</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>FileName</td><td>required</td><td>string</td><"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+  /Contact/{ListID}/Compilation:
+    patch:
+      tags:
+      - Add Contacts
+      summary: /{{ListID}}/Compilation | Changing list compilation details
+      operationId: patch__contact__listid__compilation
+      parameters:
+      - name: ListID
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      description: "<h4>Changes file upload compilation</h4>\r\n<h4>URL Parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Required</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>{{ListID}}</td><td>required</td><td>string</td><td>ID of the list</td></tr>\r\n</tbody>\r\n</table>\r\n\r\n<h4>Body Parameters (to be encoded as a JSON string)</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Required</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>Description</td><td>required</td><t"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+  /Contact/{ListID}/Mapping/{FileName}:
+    get:
+      tags:
+      - Add Contacts
+      summary: Get list mapping
+      operationId: get__contact__listid__mapping__filename
+      parameters:
+      - name: ListID
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: FileName
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      description: "Gets the mapping of the uploaded list against its fields\r\n\r\n<h4>URL Parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th>\r\n<th>Required</th>\r\n<th>Description</th>\r\n</tr>\r\n</thead>\r\n<tbody>\r\n<tr>\r\n<td>{{ListID}}</td>\r\n<td>required</td>\r\n<td>ID of the list</td>\r\n</tr>\r\n<tr>\r\n<td>{{FileName}}</td>\r\n<td>required</td>\r\n<td>Name of the file</td>\r\n</tr>\r\n</tbody>\r\n</table>\r\n\r\n<h4>Response body parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th>\r\n<th>Type</th>\r\n<th>Description</th>\r\n</tr>\r\n</thead>\r\n<"
+  /Contact/{ListID}/ContactDetails/CSV:
+    post:
+      tags:
+      - Add Contacts
+      summary: Save email address
+      operationId: post__contact__listid__contactdetails_csv
+      parameters:
+      - name: ListID
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      description: "<h4>Save email address </h4>\r\n<h4>URL Parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Required</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>{{ListID}}</td><td>required</td><td>string</td><td>ID of the list</td></tr>\r\n</tbody>\r\n</table>\r\n\r\n<h4>Body Parameters (To be passed as a JSON string)</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Required</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>EmailIDs</td><td>required</td><td>string</td><td"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+  /Contact/{ListID}/ContactDetails/CSV/Verified:
+    post:
+      tags:
+      - Add Contacts
+      summary: Save email address which verified
+      operationId: post__contact__listid__contactdetails_csv_verified
+      parameters:
+      - name: ListID
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      description: "<h4>Save email address which verified</h4>\r\n<h4>URL Parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Required</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>{{ListID}}</td><td>required</td><td>string</td><td>ID of the list</td></tr>\r\n</tbody>\r\n</table>\r\n\r\n<h4>Body Parameters (To be passed as a JSON string)</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Required</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>EmailIDs</td><td>required</td><td>"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+  /Contact/{ID}/ContactDetails/CSV/Upload/Verified:
+    post:
+      tags:
+      - Add Contacts
+      summary: Save email address which is verified and uploaded
+      operationId: post__contact__id__contactdetails_csv_upload_verified
+      parameters:
+      - name: ID
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      description: "<h4>Save email address which is verified and uploaded</h4>\r\n\r\n<h4>URL parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Required</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>ListID</td><td>required</td><td>string</td><td>ID of the list</td></tr>\r\n</tbody>\r\n</table>\r\n\r\n<h4>Body Parameters (To be passed as a JSON string)</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Required</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>Data</td><td>require"
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+components:
+  securitySchemes:
+    apiKeyAuth:
+      type: apiKey
+      in: header
+      name: AuthToken
+      description: API token obtained from https://ui.benchmarkemail.com/Integrate#API

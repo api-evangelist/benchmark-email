@@ -1,0 +1,436 @@
+openapi: 3.0.3
+info:
+  title: Benchmark Email RESTful API v3.0 ABTest Creation Account Settings API
+  description: 'RESTful API for managing email marketing contacts, lists, campaigns, automations, reports, images, and webhooks within the Benchmark Email platform. To use the API, you need a Benchmark Email API token available at https://ui.benchmarkemail.com/Integrate#API. Rate limit: 500 calls per 2 minutes and 60,000 calls per day.'
+  version: 3.0.0
+  contact:
+    name: Benchmark Email Developer Support
+    url: https://developer.benchmarkemail.com/
+  license:
+    name: Proprietary
+servers:
+- url: https://clientapi.benchmarkemail.com
+  description: Benchmark Email Client API
+security:
+- apiKeyAuth: []
+tags:
+- name: Account Settings
+  description: Manage account settings and configurations
+paths:
+  /Client/Setting:
+    patch:
+      tags:
+      - Account Settings
+      summary: Update Client Accounts Setting
+      operationId: patch__client_setting
+      parameters: []
+      responses:
+        '200':
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      description: "<h4>Update Client Accounts Setting</h4>\n<b>Query String Parameters :</b> None <br>\n\n<b>Request Body Parameters:</b> \n<table>\n  <thead>\n    <tr>\n      <th>Parameter</th>\n      <th>Type</th>\n      <th>Description</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td>Company</td>\n      <td><a href=\"http://www.benchmarkemail.com/models.htm#ClientSettingCompanyData\" >SettingCompanyData</a></td>\n      <td>Setting Company Data</td>\n    </tr>\n    <tr>\n      <td>Language</td>\n      <td>string</td>\n     "
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+  /Client/Password:
+    patch:
+      tags:
+      - Account Settings
+      summary: Change Password
+      operationId: patch__client_password
+      parameters: []
+      responses:
+        '200':
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      description: "<h4>Change Password</h4>\n<b>Body Parameters (to be encoded as a JSON string)</b>\n<table>\n<thead>\n<tr>\n<th>Key</th>\n<th>Required</th>\n<th>Description</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td>NewPassword</td>\n<td>Required</td>\n<td>New Password</td>\n</tr>\n<tr>\n<td>ConfirmPassword</td>\n<td>Required</td>\n<td>Confirm Password</td>\n</tr>\n</tbody>\n</table>\n<b>Response Body Parameters :</b>\n<table>\n  <thead>\n    <tr>\n      <th>Parameter</th>\n      <th>Type</th>\n      <th>Description</th>\n    </tr>\n  </thead>"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+  /Client/Email/ResetLink:
+    patch:
+      tags:
+      - Account Settings
+      summary: Send Reset Email
+      operationId: patch__client_email_resetlink
+      parameters: []
+      responses:
+        '200':
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      description: "<h4>Send Reset Email to change primary email</h4>\n<b>Response Body Parameters :</b>\n<table>\n  <thead>\n    <tr>\n      <th>Parameter</th>\n      <th>Type</th>\n      <th>Description</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td>retVal</td>\n      <td>string</td>\n      <td>return Value</td>\n    </tr>\n    <tr>\n      <td>Error</td>\n      <td><a href=\"http://www.benchmarkemail.com/models.htm#ErrorData\" >ErrorData</a></td>\n      <td>Array of error</td>\n    </tr>\n    <tr>\n      <td>Status</td>\n   "
+  /Client/ConfirmedEmail/All:
+    get:
+      tags:
+      - Account Settings
+      summary: Get All Confirmed Email
+      operationId: get__client_confirmedemail_all
+      parameters: []
+      responses:
+        '200':
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      description: "<h4>Get All Confirmed Email</h4>\n<b>Query string parameters :</b> None <br>\n\n<b>Request Body parameters:</b> None <br>\n\n<b>Response body parameters :</b>\n<table>\n  <thead>\n    <tr>\n      <th>Parameter</th>\n      <th>Type</th>\n      <th>Description</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td>Count</td>\n      <td>string</td>\n      <td>Total Confirmed Emails</td>\n    </tr>\n    <tr>\n      <td>Data</td>\n      <td><a href=\"http://www.benchmarkemail.com/models.htm#ClientConfirmEmailAllData\" "
+  /Client/ConfirmedEmail/Email:
+    post:
+      tags:
+      - Account Settings
+      summary: Send Confirm Email Verification Email
+      operationId: post__client_confirmedemail_email
+      parameters: []
+      responses:
+        '200':
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      description: "<h4>Send Confirm Email Verification Email</h4>\n<b>Query string parameters :</b> None <br>\n\n<b>Request Body parameters:</b> \n<table>\n  <thead>\n    <tr>\n      <th>Parameter</th>\n      <th>Required</th>\n      <th>Type</th>\n      <th>Description</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td>EmailIDs</td>\n      <td>Required</td>\n      <td>string</td>\n      <td>Email Address</td>\n    </tr>\n  </tbody>\n</table>\n<b>Response body parameters :</b>\n<table>\n  <thead>\n    <tr>\n      <th>Parameter</th"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+  /Client/ConfirmedEmail:
+    get:
+      tags:
+      - Account Settings
+      summary: Get List of Confirmed Emails
+      operationId: get__client_confirmedemail
+      parameters: []
+      responses:
+        '200':
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      description: "<h4>Get List of Confirmed Emails</h4>\n<b>Query String Parameters :</b> None <br>\n\n<b>Request Body Parameters:</b> None <br>\n\n<b>Response Body Parameters :</b>\n<table>\n  <thead>\n    <tr>\n      <th>Parameter</th>\n      <th>Type</th>\n      <th>Description</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td>Emails</td>\n      <td>string</td>\n      <td>List of Emails</td>\n    </tr>\n    <tr>\n      <td>Error</td>\n      <td><a href=\"http://www.benchmarkemail.com/models.htm#ErrorData\" >ErrorData</a></t"
+  /Client/Email/Reset:
+    get:
+      tags:
+      - Account Settings
+      summary: Get Current email at the time of Reset Email
+      operationId: get__client_email_reset
+      parameters:
+      - name: GUID
+        in: query
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      description: '<h4>Get Current email at the time of Reset Email </h4>
+
+        <b>Query String Parameter : </b>
+
+        <table>
+
+        <thead>
+
+        <tr>
+
+        <th>Key</th>
+
+        <th>Required</th>
+
+        <th>Description</th>
+
+        </tr>
+
+        </thead>
+
+        <tbody>
+
+        <tr>
+
+        <td>GUID</td>
+
+        <td>optional</td>
+
+        <td>Unique ID</td>
+
+        </tr>
+
+        </tbody>
+
+        </table>
+
+        <b>Response body parameters</b>
+
+        <table>
+
+        <thead>
+
+        <tr>
+
+        <th>Key</th><th>Type</th><th>Description</th></tr>
+
+        </thead>
+
+        <tbody>
+
+        <tr><td>Email</td><td>String</td><td>Email Address</td></tr>
+
+        <tr><td>Status</td><td>String</td><td>1 if success, -1'
+    patch:
+      tags:
+      - Account Settings
+      summary: 'Update/Reset Email '
+      operationId: patch__client_email_reset
+      parameters: []
+      responses:
+        '200':
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      description: "<h4>Reset primary email </h4>\r\n<b>URL Parameters (To be encoded as JSON parameter)</b>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th>\r\n<th>Required</th>\r\n<th>Description</th>\r\n</tr>\r\n</thead>\r\n<tbody>\r\n<tr>\r\n<td>GUID</td>\r\n<td>Required</td>\r\n<td>The ID which is available on the email link send for reset the email</a>\r\n</tr>\r\n<tr>\r\n<td>NewEmail</td>\r\n<td>Required</td>\r\n<td>New Email</a>\r\n</tr>\r\n<tr>\r\n<td>ConfirmEmail</td>\r\n<td>Required</td>\r\n<td>Confirm Email</a>\r\n</tr>\r\n</tbody>\r\n</table>\r\n<b>Response bo"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+  /Client/:
+    patch:
+      tags:
+      - Account Settings
+      summary: Update/Edit Profile
+      operationId: patch__client
+      parameters: []
+      responses:
+        '200':
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      description: "<h4>Update/Edit Profile like first name,phone no etc </h4>\r\n<b>URL Parameters (To be encoded as JSON parameter)</b>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th>\r\n<th>Required</th>\r\n<th>Description</th>\r\n</tr>\r\n</thead>\r\n<tbody>\r\n<tr>\r\n<td>FirstName</td>\r\n<td>Required</td>\r\n<td>First Name</a>\r\n</tr>\r\n<tr>\r\n<td>LastName</td>\r\n<td>Required</td>\r\n<td>Last Name</a>\r\n</tr>\r\n<tr>\r\n<td>PhoneNo</td>\r\n<td>Required</td>\r\n<td>Phone Number</a>\r\n</tr>\r\n</tbody>\r\n</table>\r\n<b>Response body parameters</b>\r\n<table>\r\n<t"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+    get:
+      tags:
+      - Account Settings
+      summary: Get Client Details
+      operationId: get__client
+      parameters: []
+      responses:
+        '200':
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      description: "<h4>Get Client Details</h4>\n<b>Query String Parameters :</b> None <br>\n\n<b>Request Body Parameters:</b> None <br>\n\n<b>Response Body Parameters :</b>\n<table>\n  <thead>\n    <tr>\n      <th>Parameter</th>\n      <th>Type</th>\n      <th>Description</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td>Response</td>\n      <td><a href=\"http://www.benchmarkemail.com/models.htm#ClientProfileData\" >ProfileData</a></td>\n      <td>Client Profile data</td>\n    </tr>\n  </tbody>\n</table>"
+  /Client/Token/{Type}:
+    get:
+      tags:
+      - Account Settings
+      summary: Get Token
+      operationId: get__client_token__type
+      parameters:
+      - name: Type
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      description: "<h4>Get Token</h4>\n<b>Query String Parameters :</b> None <br>\n\n<b>Request Body Parameters:</b> None <br>\n\n<b>Response Body Parameters :</b>\n<table>\n  <thead>\n    <tr>\n      <th>Parameter</th>\n      <th>Type</th>\n      <th>Description</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td>AuthURL</td>\n      <td>string</td>\n      <td>Auth URL</td>\n    </tr>\n    <tr>\n      <td>Name</td>\n      <td>string</td>\n      <td>Client Name</td>\n    </tr>\n    <tr>\n      <td>Secret</td>\n      <td>string</td>\n "
+  /Client/Token:
+    post:
+      tags:
+      - Account Settings
+      summary: Generate Token
+      operationId: post__client_token
+      parameters: []
+      responses:
+        '200':
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      description: "<h4>Generate Token</h4>\n<b>Query String Parameters :</b> None <br>\n\n<b>Request Body Parameters:</b> None <br>\n\n<b>Response Body Parameters :</b>\n<table>\n  <thead>\n    <tr>\n      <th>Parameter</th>\n      <th>Type</th>\n      <th>Description</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td>retVal</td>\n      <td>string</td>\n      <td>Token</td>\n    </tr>\n  </tbody>\n</table>"
+  /Client/Token/{Type}/Detail:
+    get:
+      tags:
+      - Account Settings
+      summary: Get Token Details
+      operationId: get__client_token__type__detail
+      parameters:
+      - name: Type
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      description: <h4>Get Token Details</h4>
+  /Client/FilterDomain:
+    get:
+      tags:
+      - Account Settings
+      summary: Get Client Filter Domain
+      operationId: get__client_filterdomain
+      parameters: []
+      responses:
+        '200':
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      description: "<h4>Get Client Filter Domain</h4>\n<b>Query String Parameters :</b> None <br>\n\n<b>Request Body Parameters:</b> None <br>\n\n<b>Response Body Parameters :</b>\n<table>\n  <thead>\n    <tr>\n      <th>Parameter</th>\n      <th>Type</th>\n      <th>Description</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td>Count</td>\n      <td>string</td>\n      <td>Number of Domains</td>\n    </tr>\n    <tr>\n      <td>Data</td>\n      <td><a href=\"http://www.benchmarkemail.com/models.htm#ClientFilterDomain\" >ClientFilt"
+  /Client/InitSurvey:
+    post:
+      tags:
+      - Account Settings
+      summary: Save Website Domain
+      operationId: post__client_initsurvey
+      parameters: []
+      responses:
+        '200':
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      description: '<h4>Provide your domain name to link it to your account</h4>
+
+        <b>Response Body Parameters : </b>
+
+        <table>
+
+        <thead>
+
+        <tr>
+
+        <th>Parameter</th>
+
+        <th>Required</th>
+
+        <th>Type</th>
+
+        <th>Description</th>
+
+        </tr>
+
+        </thead>
+
+        <tbody>
+
+        <tr>
+
+        <td>CompanyWebsite</td>
+
+        <td>Required</td>
+
+        <td>String</td>
+
+        <td>Company Website like BobsVacations.com</td>
+
+        </tr>
+
+        </tbody>
+
+        </table>'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+  /Client/ConfirmedEmail/{Email}:
+    get:
+      tags:
+      - Account Settings
+      summary: Resend Confirm Email
+      operationId: get__client_confirmedemail__email
+      parameters:
+      - name: Email
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      description: "<h4>Resend Confirm Email</h4>\n<b>Query string parameters :</b> None <br>\n\n<b>Request Body parameters:</b> \n<table>\n  <thead>\n    <tr>\n      <th>Parameter</th>\n      <th>Required</th>\n      <th>Type</th>\n      <th>Description</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td>Email</td>\n      <td>Required</td>\n      <td>string</td>\n      <td>Email ID</td>\n    </tr>\n  </tbody>\n</table>\n<b>Response body parameters :</b>\n<table>\n  <thead>\n    <tr>\n      <th>Parameter</th>\n      <th>Type</th>\n   "
+components:
+  securitySchemes:
+    apiKeyAuth:
+      type: apiKey
+      in: header
+      name: AuthToken
+      description: API token obtained from https://ui.benchmarkemail.com/Integrate#API

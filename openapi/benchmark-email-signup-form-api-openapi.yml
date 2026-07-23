@@ -1,0 +1,449 @@
+openapi: 3.0.3
+info:
+  title: Benchmark Email RESTful API v3.0 ABTest Creation Signup Form API
+  description: 'RESTful API for managing email marketing contacts, lists, campaigns, automations, reports, images, and webhooks within the Benchmark Email platform. To use the API, you need a Benchmark Email API token available at https://ui.benchmarkemail.com/Integrate#API. Rate limit: 500 calls per 2 minutes and 60,000 calls per day.'
+  version: 3.0.0
+  contact:
+    name: Benchmark Email Developer Support
+    url: https://developer.benchmarkemail.com/
+  license:
+    name: Proprietary
+servers:
+- url: https://clientapi.benchmarkemail.com
+  description: Benchmark Email Client API
+security:
+- apiKeyAuth: []
+tags:
+- name: Signup Form
+  description: Manage signup forms
+paths:
+  /SignupForm:
+    get:
+      tags:
+      - Signup Form
+      summary: Gets a list of Signup Forms
+      operationId: get__signupform
+      parameters:
+      - name: PageNumber
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: PageSize
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: Filter
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: FilterField
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: OrderBy
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: SortOrder
+        in: query
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      description: '<h4>Gets a list of signup forms in the user''s account</h4>
+
+        <b>Query string parameters : </b>
+
+        <table>
+
+        <thead>
+
+        <tr>
+
+        <th>Parameter</th>
+
+        <th>Required</th>
+
+        <th>Type</th>
+
+        <th>Description</th>
+
+        </tr>
+
+        </thead>
+
+        <tbody>
+
+        <tr>
+
+        <td>PageNumber</td>
+
+        <td>optional</td>
+
+        <td>int</td>
+
+        <td>Page Number</td>
+
+        </tr>
+
+        <tr>
+
+        <td>PageSize</td>
+
+        <td>optional</td>
+
+        <td>int</td>
+
+        <td>Number of records to show per page</td>
+
+        </tr>
+
+        <tr>
+
+        <td>Filter</td>
+
+        <td>optional</td>
+
+        <td>string</td>
+
+        <td>Filter text</td>
+
+        </tr>
+
+        <tr>
+
+        <td>FilterField</'
+  /SignupForm/:
+    post:
+      tags:
+      - Signup Form
+      summary: Creating a Signup Form
+      operationId: post__signupform
+      parameters: []
+      responses:
+        '200':
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      description: "<h4>Creates a new signup form </h4>\r\n\r\n<h4>Body Parameters (to be encoded as a JSON string)</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th>\r\n<th>Required</th>\r\n<th>Description</th>\r\n</tr>\r\n</thead>\r\n<tbody>\r\n<tr>\r\n<td>Name</td>\r\n<td>optional</td>\r\n<td>Name of the signup form</td>\r\n</tr>\r\n<tr>\r\n<td>Lists</td>\r\n<td>optional</td>\r\n<td>List details as ID and Name\r\n[{\"ID\":\"<code>IDOfTheList</code>\", \"Name\":\"<code>NameOfTheList</code>\"},{\"ID\":\"<code>IDOfTheList</code>\", \"Name\":\"<code>NameOfTheList</code>\"}"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+  /SignupForm/Template:
+    get:
+      tags:
+      - Signup Form
+      summary: Get templates for Signup Form (Classic Only)
+      operationId: get__signupform_template
+      parameters:
+      - name: Language
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: Filter
+        in: query
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      description: "<h4>Gets templates for signup form</h4>\r\n<b>Query string parameters : </b>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Parameter</th>\r\n<th>Required</th>\r\n<th>Type</th>\r\n<th>Description</th>\r\n</tr>\r\n</thead>\r\n<tbody>\r\n<tr>\r\n<td>Language</td>\r\n<td>optional</td>\r\n<td>string</td>\r\n<td>Language</td>\r\n</tr>\r\n<tr>\r\n<td>Filter</td>\r\n<td>optional</td>\r\n<td>int</td>\r\n<td>Template Category ID</td>\r\n</tr>\r\n</tbody>\r\n</table>\r\n<b>Response Body parameters : </b>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Parameter</th>\r\n<th>Type</th>\r\n<t"
+  /SignupForm/{ID}/Copy:
+    post:
+      tags:
+      - Signup Form
+      summary: Copy an existing Signup Form
+      operationId: post__signupform__id__copy
+      parameters:
+      - name: ID
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      description: "<h4>Copies an existing signup form</h4>\r\n<b>Query String Parameters : </b> None <br>\r\n<b>Request Body Parameters:</b>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Parameter</th>\r\n<th>Required</th>\r\n<th>Type</th>\r\n<th>Description</th>\r\n</tr>\r\n</thead>\r\n<tbody>\r\n<tr>\r\n<td>ID</td>\r\n<td>required</td>\r\n<td>string</td>\r\n<td>ID of the signup Form</td>\r\n</tr>\r\n<tr>\r\n<td>Name</td>\r\n<td>required</td>\r\n<td>string</td>\r\n<td>Name of the new signup form</td>\r\n</tr>\r\n</tbody>\r\n</table>\r\n<b>Response Body Parameters:</b>\r\n<tabl"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+  /SignupForm/{ID}:
+    get:
+      tags:
+      - Signup Form
+      summary: Get a details of Signup Form
+      operationId: get__signupform__id
+      parameters:
+      - name: ID
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      description: "<h4>Get a details of Signup Form</h4>\n<b>Query string parameters:</b>None<br>\n<b>Request Body parameters:</b>\n<table>\n  <thead>\n    <tr>\n      <th>Parameter</th>\n      <th>Required</th>\n      <th>Type</th>\n      <th>Description</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td>ID</td>\n      <td>Required</td>\n      <td>string</td>\n      <td>Signup Form ID</td>\n    </tr>\n  </tbody>\n</table>\n\n<b>Response Body parameters:</b>\n<table>\n  <thead>\n    <tr>\n      <th>Parameter</th>\n      <th>Type</t"
+    patch:
+      tags:
+      - Signup Form
+      summary: Update the Signup Form
+      operationId: patch__signupform__id
+      parameters:
+      - name: ID
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      description: "<h4>Update the signup Form </h4>\n\n<b>Query String Parameters:</b> None\n\n<b>Request Body Parameters:</b>\n<table>\n  <thead>\n    <tr>\n      <th>Key</th>\n      <th>Required</th>\n      <th>Type</th>\n      <th>Description</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td>ID</td>\n      <td>Required</td>\n      <td>string</td>\n      <td>Signup Form ID</td>\n    </tr>\n    <tr>\n      <td>Detail</td>\n      <td>Required</td>\n      <td><a href=\"http://www.benchmarkemail.com/models.htm#SignupFormSignupForm"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+    delete:
+      tags:
+      - Signup Form
+      summary: Delete an existing Signup Form
+      operationId: delete__signupform__id
+      parameters:
+      - name: ID
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      description: "<h4>Deletes an existing signup form</h4>\r\n<b>Query string Parameters : </b> None <br>\r\n<b>Request Body Parameters : </b>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Parameter</th>\r\n<th>Required</th>\r\n<th>type</th>\r\n<th>Description</th>\r\n</tr>\r\n</thead>\r\n<tbody>\r\n<tr>\r\n<td>{ID}</td>\r\n<td>required</td>\r\n<td>string</td>\r\n<td>ID of the signup Form</td>\r\n</tr>\r\n</tbody>\r\n</table>\r\n<b>Response Body Parameters : </b>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Parameter</th>\r\n<th>type</th>\r\n<th>Description</th>\r\n</tr>\r\n</thead>\r\n<t"
+  /SignupForm/{ID}/Link:
+    get:
+      tags:
+      - Signup Form
+      summary: Get the link of the Signup form
+      operationId: get__signupform__id__link
+      parameters:
+      - name: ID
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      description: "<h4>Get the link of the Signup form</h4>\n<b>Query String Parameters:</b>None<br>\n<b>Request Body parameters:</b>\n<table>\n  <thead>\n    <tr>\n      <th>Parameter</th>\n      <th>Required</th>\n      <th>Type</th>\n      <th>Description</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td>ID</td>\n      <td>Required</td>\n      <td>string</td>\n      <td>Signup Form ID</td>\n    </tr>\n  </tbody>\n</table>\n<b>Response Body parameters:</b>\n<table>\n  <thead>\n    <tr>\n      <th>Parameter</th>\n      <th>Type<"
+  /SignupForm/{ID}/Code/Preview:
+    get:
+      tags:
+      - Signup Form
+      summary: Get the code for Preview for the Signup Form
+      operationId: get__signupform__id__code_preview
+      parameters:
+      - name: ID
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: Language
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: Style
+        in: query
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      description: "<h4>Get the code for Preview for the Signup Form</h4>\n<b>Query string parameters:</b>\n<table>\n  <thead>\n    <tr>\n      <th>Key</th>\n      <th>Required</th>\n      <th>Description</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td>ID</td>\n      <td>Required</td>\n      <td>Signup Form ID</td>\n    </tr>\n  </tbody>\n</table>\n\n<b>Request Body Parameters :</b>\n<table>\n  <thead>\n    <tr>\n      <th>Parameter</th>\n      <th>Required</th>\n      <th>Type</th>\n      <th>Description</th>\n    </tr>\n  </thea"
+  /SignupForm/{ID}/Code/Button:
+    get:
+      tags:
+      - Signup Form
+      summary: Get the code for the Signup Form button
+      operationId: get__signupform__id__code_button
+      parameters:
+      - name: ID
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: Language
+        in: query
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      description: "<h4>Get the code for the signup form button</h4>\n<b>Query string parameters:</b>\n<table>\n  <thead>\n    <tr>\n      <th>Parameter</th>\n      <th>Required</th>\n      <th>Type</th>\n      <th>Description</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td>ID</td>\n      <td>Required</td>\n      <td>string</td>\n      <td>Signup Form ID</td>\n    </tr>\n  </tbody>\n</table>\n\n<b>Request Body Parameters :</b>\n<table>\n  <thead>\n    <tr>\n      <th>Parameter</th>\n      <th>Required</th>\n      <th>Type</th>\n  "
+  /SignupForm/{ID}/ContactFields:
+    get:
+      tags:
+      - Signup Form
+      summary: Get the contact fields of the Signup Form
+      operationId: get__signupform__id__contactfields
+      parameters:
+      - name: ID
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      description: "<h4>Get the contact fields of the signup Form</h4>\n<b>Query string parameters :</b>\n<table>\n  <thead>\n    <tr>\n      <th>Parameter</th>\n      <th>Required</th>\n      <th>Type</th>\n      <th>Description</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td>ID</td>\n      <td>Required</td>\n      <td>string</td>\n      <td>Signup Form ID</td>\n    </tr>\n  </tbody>\n</table>\n\n<b>Request Body parameters:</b>\nNone\n\n<b>Response body parameters :</b>\n<table>\n  <thead>\n    <tr>\n      <th>Parameter</th>\n    "
+  /SignupForm/{ID}/Test:
+    post:
+      tags:
+      - Signup Form
+      summary: Sending a test email for signup
+      operationId: post__signupform__id__test
+      parameters:
+      - name: ID
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      description: "<h4>Sending a test email for signup</h4>\n<b>Query string parameters :</b> None <br>\n\n<b>Request Body parameters:</b>\n<table>\n  <thead>\n    <tr>\n      <th>Key</th>\n      <th>Required</th>\n      <th>Description</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td>ID</td>\n      <td>Required</td>\n      <td>Signup Form ID</td>\n    </tr>\n    <tr>\n      <td>FromEmail</td>\n      <td>Required</td>\n      <td>From Email  Address</td>\n    </tr>\n    <tr>\n      <td>FromName</td>\n      <td>Required</td>\n    "
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+  /Contact/{ListID}/ListbuilderLists:
+    get:
+      tags:
+      - Signup Form
+      summary: Get signup form list
+      operationId: get__contact__listid__listbuilderlists
+      parameters:
+      - name: ListID
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      description: "<h4>Get a list of contacts</h4>\r\n<h4>URL Parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Required</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>{{ListIDs}}</td><td>required</td><td>string</td><td>IDs of the lists</td></tr>\r\n</tbody>\r\n</table>\r\n\r\n<h4>Response body parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>Status</td><td>string</td><td>1 if successful, -1 if error</td></tr>\r\n<tr><td>Coun"
+  /Contact/ListbuilderList:
+    get:
+      tags:
+      - Signup Form
+      summary: Get signup form list
+      operationId: get__contact_listbuilderlist
+      parameters: []
+      responses:
+        '200':
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      description: "<h4>Get signup form list</h4>\r\n\r\n<h4>Response body parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>Status</td><td>string</td><td>1 if successful, -1 if error</td></tr>\r\n<tr><td>Count</td><td>int</td><td>Total number</td></tr>\r\n<tr><td>Data</td><td><a href=\"http://www.benchmarkemail.com/models.htm#ContactSignupFormRecord\">SignupFormRecord</a></td><td>Signup Form Data</td></tr>\r\n</tbody>\r\n</table>"
+components:
+  securitySchemes:
+    apiKeyAuth:
+      type: apiKey
+      in: header
+      name: AuthToken
+      description: API token obtained from https://ui.benchmarkemail.com/Integrate#API

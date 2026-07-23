@@ -1,0 +1,203 @@
+openapi: 3.0.3
+info:
+  title: Benchmark Email RESTful API v3.0 ABTest Creation Survey Creation API
+  description: 'RESTful API for managing email marketing contacts, lists, campaigns, automations, reports, images, and webhooks within the Benchmark Email platform. To use the API, you need a Benchmark Email API token available at https://ui.benchmarkemail.com/Integrate#API. Rate limit: 500 calls per 2 minutes and 60,000 calls per day.'
+  version: 3.0.0
+  contact:
+    name: Benchmark Email Developer Support
+    url: https://developer.benchmarkemail.com/
+  license:
+    name: Proprietary
+servers:
+- url: https://clientapi.benchmarkemail.com
+  description: Benchmark Email Client API
+security:
+- apiKeyAuth: []
+tags:
+- name: Survey Creation
+  description: Create and manage surveys
+paths:
+  /Survey/{ID}:
+    get:
+      tags:
+      - Survey Creation
+      summary: 'Get a Details of survey '
+      operationId: get__survey__id
+      parameters:
+      - name: ID
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      description: "<h4>Get a Details of survey</h4>\n<b>Query string parameters : </b> None <br>\n<b>Request Body parameters :</b>\n<table>\n  <thead>\n    <th>Parameter</th>\n    <th>Required</th>\n    <th>Type</th>\n    <th>Description</th>\n  </thead>\n  <tbody>\n    <tr>\n      <td>ID</td>\n      <td>Required</td>\n      <td>string</td>\n      <td>Survey ID</td>\n    </tr>\n  </tbody>\n</table>\n\n<b>Response Body Parameters :</b>\n<table>\n  <thead>\n    <th>Parameter</th>\n    <th>Type</th>\n    <th>Description</th>\n  </thead>\n  <tb"
+    patch:
+      tags:
+      - Survey Creation
+      summary: Update Details of Survey
+      operationId: patch__survey__id
+      parameters:
+      - name: ID
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      description: "<h4>Update Details of Survey</h4>\n<b>Query string Parameters : </b> None <br>\n<b>Request Body Parameters : </b>\n<table>\n  <thead>\n    <tr>\n      <th>Parameter</th>\n      <th>Required</th>\n      <th>Type</th>\n      <th>Description</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td>ID</td>\n      <td>Required</td>\n      <td>string</td>\n      <td>Survey ID</td>\n    </tr>\n    <tr>\n      <td>Data</td>\n      <td>Required</td>\n      <td><a href=\"http://www.benchmarkemail.com/models.htm#SurveyData\" >"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+  /Survey/TemplateList:
+    get:
+      tags:
+      - Survey Creation
+      summary: Get template list of survey
+      operationId: get__survey_templatelist
+      parameters: []
+      responses:
+        '200':
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      description: "<h4>Get template list of survey</h4>\n<b>Query string Parameters : </b> None <br>\n<b>Request Body Parameters : </b> None <br>\n<b>Response Body Parameters : </b>\n<table>\n  <thead>\n    <th>Parameter</th>\n    <th>Type</th>\n    <th>Description</th>\n  </thead>\n  <tbody>\n    <tr>\n      <td>Count</td>\n      <td>int</td>\n      <td>Total number</td>\n    </tr>\n    <tr>\n      <td>Status</td>\n      <td>string</td>\n      <td>1 if successful, -1 if error</td>\n    </tr>\n    <tr>\n      <td>Data</td>\n      <td><a"
+  /Survey/{ID}/Question/{QuestionID}:
+    delete:
+      tags:
+      - Survey Creation
+      summary: Delete question of a survey
+      operationId: delete__survey__id__question__questionid
+      parameters:
+      - name: ID
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: QuestionID
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      description: "<h4>Delete question of a Survey</h4>\n<b>Query string parameters : </b> None <br>\n<b>Request Body Parameters : </b>\n<table>\n  <thead>\n    <tr>\n      <th>Parameter</th>\n      <th>Required</th>\n      <th>Type</th>\n      <th>Description</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td>ID</td>\n      <td>Required</td>\n      <td>string</td>\n      <td>Survey ID</td>\n    </tr>\n    <tr>\n      <td>QuestionID</td>\n      <td>Required</td>\n      <td>string</td>\n      <td>Question ID</td>\n    </tr>\n  </t"
+    patch:
+      tags:
+      - Survey Creation
+      summary: Update Question of a Survey
+      operationId: patch__survey__id__question__questionid
+      parameters:
+      - name: ID
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: QuestionID
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      description: "<h4>Update Question of a Survey</h4>\n<b>Query string parameters : </b> None <br>\n<b>Request Body Parameters : </b>\n<table>\n  <thead>\n    <tr>\n      <th>Parameter</th>\n      <th>Required</th>\n      <th>Type</th>\n      <th>Description</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td>ID</td>\n      <td>Required</td>\n      <td>string</td>\n      <td>Survey ID</td>\n    </tr>\n    <tr>\n      <td>QuestionID</td>\n      <td>Required</td>\n      <td>string</td>\n      <td>Question ID</td>\n    </tr>\n    <"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+  /Survey/{ID}/QuestionSort:
+    patch:
+      tags:
+      - Survey Creation
+      summary: Sort Question of a survey
+      operationId: patch__survey__id__questionsort
+      parameters:
+      - name: ID
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      description: "<h4>Sort Question of a survey</h4>\n<b>Query string parameters : </b> None <br>\n<b>Request Body Parameters : </b>\n<table>\n  <thead>\n    <tr>\n      <th>Parameter</th>\n      <th>Required</th>\n      <th>Type</th>\n      <th>Description</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td>ID</td>\n      <td>Required</td>\n      <td>string</td>\n      <td>Survey ID</td>\n    </tr>\n    <tr>\n      <td>SortOrder</td>\n      <td>Required</td>\n      <td>string</td>\n      <td>Comma seperated question ids</td>\n "
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+  /Survey/{ID}/Question:
+    post:
+      tags:
+      - Survey Creation
+      summary: Add Question to Survey
+      operationId: post__survey__id__question
+      parameters:
+      - name: ID
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      description: "<h4>Add Question to Survey</h4>\n<b>Query string Parameters : </b> None <br>\n<b>Request Body Parameters : </b>\n<table>\n  <thead>\n    <tr>\n      <th>Parameter</th>\n      <th>Required</th>\n      <th>Type</th>\n      <th>Description</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td>ID</td>\n      <td>Required</td>\n      <td>string</td>\n      <td>Survey ID</td>\n    </tr>\n    <tr>\n      <td>QuestionData</td>\n      <td>Required</td>\n      <td><a href=\"http://www.benchmarkemail.com/models.htm#SurveyQ"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+components:
+  securitySchemes:
+    apiKeyAuth:
+      type: apiKey
+      in: header
+      name: AuthToken
+      description: API token obtained from https://ui.benchmarkemail.com/Integrate#API

@@ -1,0 +1,159 @@
+openapi: 3.0.3
+info:
+  title: Benchmark Email RESTful API v3.0 ABTest Creation Video Gallery API
+  description: 'RESTful API for managing email marketing contacts, lists, campaigns, automations, reports, images, and webhooks within the Benchmark Email platform. To use the API, you need a Benchmark Email API token available at https://ui.benchmarkemail.com/Integrate#API. Rate limit: 500 calls per 2 minutes and 60,000 calls per day.'
+  version: 3.0.0
+  contact:
+    name: Benchmark Email Developer Support
+    url: https://developer.benchmarkemail.com/
+  license:
+    name: Proprietary
+servers:
+- url: https://clientapi.benchmarkemail.com
+  description: Benchmark Email Client API
+security:
+- apiKeyAuth: []
+tags:
+- name: Video Gallery
+  description: Manage video gallery
+paths:
+  /Video:
+    get:
+      tags:
+      - Video Gallery
+      summary: Get a list of videos
+      operationId: get__video
+      parameters:
+      - name: Filter
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: PageNumber
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: PageSize
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: OrderBy
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: SortOrder
+        in: query
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      description: "<h4>Get a list of videos</h4>\n<b>Query string parameters : </b>\n  <table border=\"0\" cellspacing=\"0\" cellpadding=\"0\">\n    <tr>\n      <th class=\"w_para\">Parameter</th>\n      <th class=\"w_required\">Required</th>\n      <th class=\"w_type\">Type</th>\n      <th class=\"w_desc\">Description</th>\n    </tr>\n    <tr>\n      <td>Filter</td>\n      <td>Optional</td>\n      <td>int</td>\n      <td>Filter</td>\n    </tr>\n    <tr>\n      <td>PageNumber</td>\n      <td>Required</td>\n      <td>int</td>\n      <td>Page Numbe"
+    post:
+      tags:
+      - Video Gallery
+      summary: Uploading videos
+      operationId: post__video
+      parameters: []
+      responses:
+        '200':
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      description: "<h4>Uploading videos</h4>\n<b>Query string parameters : </b> None <br />\n<b>Request Body parameters : </b>\n  <table border=\"0\" cellspacing=\"0\" cellpadding=\"0\">\n    <tr>\n      <th class=\"w_para\">Parameter</th>\n      <th class=\"w_required\">Required</th>\n      <th class=\"w_type\">Type</th>\n      <th class=\"w_desc\">Description</th>\n    </tr>\n    <tr>\n      <td>VideoUrl</td>\n      <td>Required</td>\n      <td>string</td>\n      <td>URL of a video</td>\n    </tr>\n  </table>\n  <b>Response body parameters : "
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+  /Video/{VideoID}:
+    delete:
+      tags:
+      - Video Gallery
+      summary: Deleting videos
+      operationId: delete__video__videoid
+      parameters:
+      - name: VideoID
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      description: "<h4>Deleting videos</h4>\n<b>Query string parameters : </b> None <br />\n<b>Request Body parameters : </b>\n<table border=\"0\" cellspacing=\"0\" cellpadding=\"0\">\n<tr>\n  <th class=\"w_para\">Parameter</th>\n  <th class=\"w_required\">Required</th>\n  <th class=\"w_type\">Type</th>\n  <th class=\"w_desc\">Description</th>\n</tr>\n<tr>\n  <td>VideoID</td>\n  <td>Required</td>\n  <td>string</td>\n  <td>ID of the video (can be comma seperated multiple too)</td>\n</tr>\n</table>\n<b>Response Body parameters : </b>\n<table borde"
+    get:
+      tags:
+      - Video Gallery
+      summary: Getting video details
+      operationId: get__video__videoid
+      parameters:
+      - name: VideoID
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      description: "<h4>Getting video details</h4>\n<b>Query string parameters : </b> None <br />\n<b>Request Body parameters : </b>\n<table border=\"0\" cellspacing=\"0\" cellpadding=\"0\">\n<tr>\n  <th class=\"w_para\">Parameter</th>\n  <th class=\"w_required\">Required</th>\n  <th class=\"w_type\">Type</th>\n  <th class=\"w_desc\">Description</th>\n</tr>\n<tr>\n  <td>VideoID</td>\n  <td>Required</td>\n  <td>string</td>\n  <td>ID of the video</td>\n</tr>\n</table>\n<b>Response Body parameters : </b>\n<table border=\"0\" cellspacing=\"0\" cellpaddin"
+  /Video/{VideoID}/Copy:
+    post:
+      tags:
+      - Video Gallery
+      summary: Sharing video
+      operationId: post__video__videoid__copy
+      parameters:
+      - name: VideoID
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      description: "<h4>Sharing video</h4>\n<b>Query string parameters : </b> \n<table border=\"0\" cellspacing=\"0\" cellpadding=\"0\">\n<tr>\n  <th class=\"w_para\">Parameter</th>\n  <th class=\"w_required\">Required</th>\n  <th class=\"w_type\">Type</th>\n  <th class=\"w_desc\">Description</th>\n</tr>\n<tr>\n  <td>VideoID</td>\n  <td>Required</td>\n  <td>string</td>\n  <td>ID of the video</td>\n</tr>\n</table>\n<b>Request Body parameters : </b>\n<table border=\"0\" cellspacing=\"0\" cellpadding=\"0\">\n<tr>\n  <th class=\"w_para\">Parameter</th>\n  <th "
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+components:
+  securitySchemes:
+    apiKeyAuth:
+      type: apiKey
+      in: header
+      name: AuthToken
+      description: API token obtained from https://ui.benchmarkemail.com/Integrate#API

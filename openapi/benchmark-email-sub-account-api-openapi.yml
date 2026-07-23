@@ -1,0 +1,293 @@
+openapi: 3.0.3
+info:
+  title: Benchmark Email RESTful API v3.0 ABTest Creation Sub-Account API
+  description: 'RESTful API for managing email marketing contacts, lists, campaigns, automations, reports, images, and webhooks within the Benchmark Email platform. To use the API, you need a Benchmark Email API token available at https://ui.benchmarkemail.com/Integrate#API. Rate limit: 500 calls per 2 minutes and 60,000 calls per day.'
+  version: 3.0.0
+  contact:
+    name: Benchmark Email Developer Support
+    url: https://developer.benchmarkemail.com/
+  license:
+    name: Proprietary
+servers:
+- url: https://clientapi.benchmarkemail.com
+  description: Benchmark Email Client API
+security:
+- apiKeyAuth: []
+tags:
+- name: Sub-Account
+  description: Manage sub-accounts and their settings
+paths:
+  /Client/SubAccount:
+    get:
+      tags:
+      - Sub-Account
+      summary: Get Sub-Accounts
+      operationId: get__client_subaccount
+      parameters: []
+      responses:
+        '200':
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      description: "<h4>Get Sub-Accounts</h4>\n<b>Query string parameters :</b> None <br>\n\n<b>Response Body Parameters :</b>\n<table>\n  <thead>\n    <tr>\n      <th>Parameter</th>\n      <th>Type</th>\n      <th>Description</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td>Count</td>\n      <td>String</td>\n      <td>Number of Sub-Accounts</td>\n    </tr>\n    <tr>\n      <td>Data</td>\n      <td><a href=\"http://www.benchmarkemail.com/models.htm#ClientDetail\" >ClientDetail</a></td>\n      <td>&nbsp;</td>\n    </tr>\n    <tr>"
+    post:
+      tags:
+      - Sub-Account
+      summary: Create Sub-Account
+      operationId: post__client_subaccount
+      parameters: []
+      responses:
+        '200':
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      description: "<h4>Create Sub-Account</h4>\n<b>URL parameters (to be encoded as JSON in body) :</b>\n<table>\n  <thead>\n    <tr>\n      <th>Parameter</th>\n      <th>Required</th>\n      <th>Type</th>\n      <th>Description</th>\n    </tr>\n  </thead>\n  <tbody>\n     <tr>\n      <td>Detail</td>\n      <td>Required</td>\n      <td>SubAccountDetail</td>\n      <td>Sub Account Detail Array</td>\n    </tr>\n  </tbody>\n</table>\n<b>Response Body Parameters :</b>\n<table>\n  <thead>\n    <tr>\n      <th>Parameter</th>\n      <th>Type</th"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+  /Client/SubAccount/History:
+    get:
+      tags:
+      - Sub-Account
+      summary: Get Sub-Account History
+      operationId: get__client_subaccount_history
+      parameters: []
+      responses:
+        '200':
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      description: "<h4>Get Sub-Account History</h4>\n<b>Query string parameters :</b> None <br>\n\n<b>Response Body Parameters :</b>\n<table>\n  <thead>\n    <tr>\n      <th>Parameter</th>\n      <th>Type</th>\n      <th>Description</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td>Data</td>\n      <td><a href=\"http://www.benchmarkemail.com/models.htm#ClientDate\" >ClientDate</a></td>\n      <td>&nbsp;</td>\n    </tr>\n    <tr>\n      <td>Status</td>\n      <td>string</td>\n      <td>1 = Successful, -1 Error</td>\n    </tr>\n  "
+  /Client/SubAccount/{ID}:
+    get:
+      tags:
+      - Sub-Account
+      summary: Get Sub-Account Details
+      operationId: get__client_subaccount__id
+      parameters:
+      - name: ID
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      description: "<h4>Get Sub-Account Details</h4>\n<b>Query string parameters :</b>\n<table>\n  <thead>\n    <tr>\n      <th>Parameter</th>\n      <th>Required</th>\n      <th>Type</th>\n      <th>Description</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td>ID</td>\n      <td>Required</td>\n      <td>string</td>\n      <td>Client ID</td>\n    </tr>\n  </tbody>\n</table>\n<b>Response Body Parameters :</b>\n<table>\n  <thead>\n    <tr>\n      <th>Parameter</th>\n      <th>Type</th>\n      <th>Description</th>\n    </tr>\n  </thead"
+    patch:
+      tags:
+      - Sub-Account
+      summary: Update Sub Account
+      operationId: patch__client_subaccount__id
+      parameters:
+      - name: ID
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      description: "<h4>Update Sub Account</h4>\n<b>Query String Parameter:</b>\n<table>\n  <thead>\n    <tr>\n      <th>Parameter</th>\n      <th>Required</th>\n      <th>Type</th>\n      <th>Description</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td>ID</td>\n      <td>Required</td>\n      <td>string</td>\n      <td>Sub Account ID</td>\n    </tr>\n  </tbody>\n</table>\n<b>URL parameters (to be encoded as JSON in body) :</b>\n<table>\n  <thead>\n    <tr>\n      <th>Parameter</th>\n      <th>Required</th>\n      <th>Type</th>\n  "
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+  /Client/Plan:
+    get:
+      tags:
+      - Sub-Account
+      summary: /Plan | Plan Details & Limits, Get Plan Information
+      operationId: get__client_plan
+      parameters: []
+      responses:
+        '200':
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      description: "<h4>Get Client's Plan Information</h4>\n<b>Response Body Parameters :</b>\n<table>\n  <thead>\n    <tr>\n      <th>Parameter</th>\n      <th>Type</th>\n      <th>Description</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td>Addon</td>\n      <td><a href=\"http://www.benchmarkemail.com/models.htm#ClientAddonResult\" >AddonResult</a></td>\n      <td>&nbsp;</td>\n    </tr>\n    <tr>\n      <td>EmailPlan</td>\n      <td><a href=\"http://www.benchmarkemail.com/models.htm#ClientEmailPlanResult\" >EmailPlanResult<"
+  /Client/ProfileDetails:
+    get:
+      tags:
+      - Sub-Account
+      summary: Get Profile Details
+      operationId: get__client_profiledetails
+      parameters: []
+      responses:
+        '200':
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      description: "<h4>Get Client's Profile Details</h4>\n<b>Response Body Parameters :</b>\n<table>\n  <thead>\n    <tr>\n      <th>Parameter</th>\n      <th>Type</th>\n      <th>Description</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td>Responce</td>\n      <td><a href=\"http://www.benchmarkemail.com/models.htm#ClientProfileDetails\" >ClientProfileDetails</a></td>\n      <td>Array</td>\n    </tr>\n  </tbody>\n</table>"
+  /Client/SubAccount/{ID}/Status:
+    patch:
+      tags:
+      - Sub-Account
+      summary: Change Sub-Account status
+      operationId: patch__client_subaccount__id__status
+      parameters:
+      - name: ID
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      description: "<h4>Change Sub-Account status</h4>\n<b>Query string parameters :</b> None <br>\n\n<b>Request Body parameters:</b>\n<table>\n  <thead>\n    <tr>\n      <th>Parameter</th>\n      <th>Required</th>\n      <th>Type</th>\n      <th>Description</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td>Status</td>\n      <td>Required</td>\n      <td>string</td>\n      <td>1 to activate, 0 to deactivate</td>\n    </tr>\n  </tbody>\n</table>\n\n<b>Response body parameters :</b>\n<table>\n  <thead>\n    <tr>\n      <th>Parameter<"
+  /Client/SubAccount/History/{HistoryID}:
+    get:
+      tags:
+      - Sub-Account
+      summary: Get Sub-Account history details
+      operationId: get__client_subaccount_history__historyid
+      parameters:
+      - name: HistoryID
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: ID
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: StartDate
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: EndDate
+        in: query
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      description: "<h4>Get Sub-Account history details</h4>\n<b>Query string parameters :</b>\n<table>\n  <thead>\n    <tr>\n      <th>Parameter</th>\n      <th>Required</th>\n      <th>Type</th>\n      <th>Description</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td>ID</td>\n      <td>Required</td>\n      <td>string</td>\n      <td>History ID</td>\n    </tr>\n    <tr>\n      <td>StartDate</td>\n      <td>Required</td>\n      <td>string</td>\n      <td>Billing cycle start date</td>\n    </tr>\n    <tr>\n      <td>EndDate</td>\n "
+  /Client/SubAccount/{ID}/Balance:
+    get:
+      tags:
+      - Sub-Account
+      summary: Get Sub-Account balance
+      operationId: get__client_subaccount__id__balance
+      parameters:
+      - name: ID
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      description: "<h4>Get Sub-Account balance</h4>\n<b>Query string parameters :</b>\n<table>\n  <thead>\n    <tr>\n      <th>Parameter</th>\n      <th>Required</th>\n      <th>Type</th>\n      <th>Description</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td>ID</td>\n      <td>Required</td>\n      <td>string</td>\n      <td>Sub-Account holder client ID</td>\n    </tr>\n  </tbody>\n</table>\n\n<b>Response body parameters :</b>\n<table>\n  <thead>\n    <tr>\n      <th>Parameter</th>\n      <th>Type</th>\n      <th>Description</th>"
+  /Client/SubAccount/{ID}/Inbox:
+    post:
+      tags:
+      - Sub-Account
+      summary: Add/Remove inbox tests from Sub-Account
+      operationId: post__client_subaccount__id__inbox
+      parameters:
+      - name: ID
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      description: "<h4>Add/Remove inbox tests from Sub-Account</h4>\n<b>Request Body parameters:</b>\n<table>\n  <thead>\n    <tr>\n      <th>Parameter</th>\n      <th>Required</th>\n      <th>Type</th>\n      <th>Description</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td>ID</td>\n      <td>Required</td>\n      <td>string</td>\n      <td>Sub-Account holder Client ID</td>\n    </tr>\n    <tr>\n      <td>Tests</td>\n      <td>Required</td>\n      <td>int</td>\n      <td>&nbsp;</td>\n    </tr>\n  </tbody>\n</table>\n\n<b>Response "
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+  /Client/SubAccount/{ID}/PlanList:
+    get:
+      tags:
+      - Sub-Account
+      summary: Get Sub-Accounts plan list
+      operationId: get__client_subaccount__id__planlist
+      parameters:
+      - name: ID
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      description: "<h4>Get Sub-Accounts plan list</h4>\n<b>Request Body parameters:</b>\n<table>\n  <thead>\n    <tr>\n      <th>Parameter</th>\n      <th>Required</th>\n      <th>Type</th>\n      <th>Description</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td>ID</td>\n      <td>Required</td>\n      <td>string</td>\n      <td>Sub-Account holder client ID</td>\n    </tr>\n  </tbody>\n</table>\n\n<b>Response body parameters :</b>\n<table>\n  <thead>\n    <tr>\n      <th>Parameter</th>\n      <th>Type</th>\n      <th>Description</t"
+components:
+  securitySchemes:
+    apiKeyAuth:
+      type: apiKey
+      in: header
+      name: AuthToken
+      description: API token obtained from https://ui.benchmarkemail.com/Integrate#API

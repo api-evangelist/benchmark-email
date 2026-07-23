@@ -1,0 +1,227 @@
+openapi: 3.0.3
+info:
+  title: Benchmark Email RESTful API v3.0 ABTest Creation Email Editor API
+  description: 'RESTful API for managing email marketing contacts, lists, campaigns, automations, reports, images, and webhooks within the Benchmark Email platform. To use the API, you need a Benchmark Email API token available at https://ui.benchmarkemail.com/Integrate#API. Rate limit: 500 calls per 2 minutes and 60,000 calls per day.'
+  version: 3.0.0
+  contact:
+    name: Benchmark Email Developer Support
+    url: https://developer.benchmarkemail.com/
+  license:
+    name: Proprietary
+servers:
+- url: https://clientapi.benchmarkemail.com
+  description: Benchmark Email Client API
+security:
+- apiKeyAuth: []
+tags:
+- name: Email Editor
+  description: Email template and layout management
+paths:
+  /Emails/Layout:
+    get:
+      tags:
+      - Email Editor
+      summary: GET Layout list
+      operationId: get__emails_layout
+      parameters: []
+      responses:
+        '200':
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      description: "<h4>GET Layout list</h4>\r\n\r\n<h4>Response body parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>Status</td><td>string</td><td>1 if successful, -1 if error</td></tr>\r\n<tr><td>Count</td><td>int</td><td>Total number</td></tr>\r\n<tr><td>Data</td><td><a href=\"http://www.benchmarkemail.com/models.htm#EmailLayoutListData\">LayoutListData</a></td><td>Layout Data</td></tr>\r\n</tbody>\r\n</table>"
+  /Emails/TemplateCategory:
+    get:
+      tags:
+      - Email Editor
+      summary: GET Template Category list
+      operationId: get__emails_templatecategory
+      parameters: []
+      responses:
+        '200':
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      description: "<h4>Get a list of contacts</h4>\r\n\r\n<h4>Query String parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Required</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>Language</td><td>optional</td><td>int</td><td>Language</td></tr>\r\n<tr><td>Filter[Version]</td><td>optional</td><td>int</td><td>Version</td></tr>\r\n<tr><td>IsRSS</td><td>optional</td><td>int</td><td>1 if RSS, 0 otherwise</td></tr>\r\n</tbody>\r\n</table>\r\n\r\n<h4>Response body parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n"
+  /Emails/TemplateCategory/{CategoryID}:
+    get:
+      tags:
+      - Email Editor
+      summary: GET Template Category By Category ID
+      operationId: get__emails_templatecategory__categoryid
+      parameters:
+      - name: CategoryID
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      description: "<h4>GET Template Category By Category ID</h4>\r\n<h4>URL Parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Required</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>{{CategoryID}}</td><td>required</td><td>string</td><td>ID of the template category</td></tr>\r\n</tbody>\r\n</table>\r\n\r\n<h4>Query String parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Required</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>Language</td><td>optional</td><td>stri"
+  /Emails/Template/{TemplateID}:
+    get:
+      tags:
+      - Email Editor
+      summary: 'GET Template By  Template ID '
+      operationId: get__emails_template__templateid
+      parameters:
+      - name: TemplateID
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      description: "<h4>Get a list of contacts</h4>\r\n<h4>URL Parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Required</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>{{TemplateID}}</td><td>required</td><td>string</td><td>IDs of the template</td></tr>\r\n</tbody>\r\n</table>\r\n\r\n<h4>Response body parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>Status</td><td>string</td><td>1 if successful, -1 if error</td></tr>\r\n<tr><t"
+  /Emails/Badges:
+    get:
+      tags:
+      - Email Editor
+      summary: GET Badges List
+      operationId: get__emails_badges
+      parameters: []
+      responses:
+        '200':
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      description: "<h4>GET Badges List</h4>\r\n\r\n<h4>Response body parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>Badge</td><td><a href=\"http://www.benchmarkemail.com/models.htm#EmailBadge\">Badge</a></td><td>Badge Data</td></tr>\r\n</tbody>\r\n</table>"
+  /Emails/Scheme:
+    get:
+      tags:
+      - Email Editor
+      summary: Get Scheme
+      operationId: get__emails_scheme
+      parameters: []
+      responses:
+        '200':
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      description: "<h4>Get Scheme</h4>\r\n\r\n<h4>Query String parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Required</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>Filter</td><td>optional</td><td>string</td><td>Filter, <code>default</code> or <code>saved</code></td></tr>\r\n<tr><td>Language</td><td>optional</td><td>string</td><td>Language</td></tr>\r\n<tr><td>FilterType</td><td>optional</td><td>string</td><td>Filter Type, <code>type</code></td></tr>\r\n</tbody>\r\n</table>\r\n\r\n<h4>Response b"
+    patch:
+      tags:
+      - Email Editor
+      summary: Add / Update Scheme
+      operationId: patch__emails_scheme
+      parameters: []
+      responses:
+        '200':
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      description: "<h4>Add / Update Scheme</h4>\r\n\r\n<h4>Query String parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Required</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>Overwrite</td><td>optional</td><td>int</td><td><code>1</code> Overwrite existing scheme\r\n<code>0</code> Don't overwrite existing scheme</td></tr>\r\n<tr><td>Language</td><td>optional</td><td>string</td><td>Language</td></tr>\r\n</tbody>\r\n</table>\r\n\r\n<h4>Body Parameters (To be passed as a JSON string)</h4>\r\n<table>\r\n<"
+  /Emails/Scheme/{ID}:
+    delete:
+      tags:
+      - Email Editor
+      summary: Delete Scheme
+      operationId: delete__emails_scheme__id
+      parameters:
+      - name: ID
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      description: "<h4>Get a list of contacts</h4>\r\n<h4>URL Parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Required</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>{{ID}}</td><td>required</td><td>string</td><td>ID of the Scheme</td></tr>\r\n</tbody>\r\n</table>\r\n\r\n<h4>Response body parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>Status</td><td>string</td><td>1 if successful, -1 if error</td></tr>\r\n<tr><td>Error</td"
+  /Emails/Template:
+    get:
+      tags:
+      - Email Editor
+      summary: Get Templates
+      operationId: get__emails_template
+      parameters: []
+      responses:
+        '200':
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      description: "<h4>Get Templates</h4>\r\n<h4>URL Parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Required</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>{{ID}}</td><td>required</td><td>string</td><td>ID of the Email</td></tr>\r\n</tbody>\r\n</table>\r\n\r\n<h4>Query String parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Required</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>PageNumber</td><td>optional</td><td>int</td><td>Page number</td></tr>\r\n<tr><td>Pa"
+  /Client/Integrations:
+    get:
+      tags:
+      - Email Editor
+      summary: Get Editor Integration Connection List
+      operationId: get__client_integrations
+      parameters: []
+      responses:
+        '200':
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      description: "<h4>Get Integration List</h4>\n<b>Response Body Parameters :</b>\n<table>\n  <thead>\n    <tr>\n      <th>Parameter</th>\n      <th>Type</th>\n      <th>Description</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td>Data</td>\n      <td><a href=\"http://www.benchmarkemail.com/models.htm#ClientGenericList\">GenericList</a></td>\n      <td>Generic List</td>\n    </tr>\n  </tbody>\n</table>"
+  /Client/Integrations/EbaySite:
+    get:
+      tags:
+      - Email Editor
+      summary: 'Get Ebay Site List '
+      operationId: get__client_integrations_ebaysite
+      parameters: []
+      responses:
+        '200':
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      description: "<h4>Get Ebay Site List</h4>\n<b>Response Body Parameters :</b>\n<table>\n  <thead>\n    <tr>\n      <th>Parameter</th>\n      <th>Type</th>\n      <th>Description</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td>Data</td>\n      <td><a href=\"http://www.benchmarkemail.com/models.htm#ClientGenericList\">GenericList</a></td>\n      <td>Generic List</td>\n    </tr>\n  </tbody>\n</table>"
+components:
+  securitySchemes:
+    apiKeyAuth:
+      type: apiKey
+      in: header
+      name: AuthToken
+      description: API token obtained from https://ui.benchmarkemail.com/Integrate#API

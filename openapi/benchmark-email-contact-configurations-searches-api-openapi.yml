@@ -1,0 +1,159 @@
+openapi: 3.0.3
+info:
+  title: Benchmark Email RESTful API v3.0 ABTest Creation Contact Configurations & Searches API
+  description: 'RESTful API for managing email marketing contacts, lists, campaigns, automations, reports, images, and webhooks within the Benchmark Email platform. To use the API, you need a Benchmark Email API token available at https://ui.benchmarkemail.com/Integrate#API. Rate limit: 500 calls per 2 minutes and 60,000 calls per day.'
+  version: 3.0.0
+  contact:
+    name: Benchmark Email Developer Support
+    url: https://developer.benchmarkemail.com/
+  license:
+    name: Proprietary
+servers:
+- url: https://clientapi.benchmarkemail.com
+  description: Benchmark Email Client API
+security:
+- apiKeyAuth: []
+tags:
+- name: Contact Configurations & Searches
+  description: Configure and search contacts
+paths:
+  /Contact/{ListID}/ContactDetails:
+    get:
+      tags:
+      - Contact Configurations & Searches
+      summary: /{{ListID}}/ContactDetails? | Search a List, Get Filtered Contacts
+      operationId: get__contact__listid__contactdetails
+      parameters:
+      - name: ListID
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: SearchType
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: SearchField
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: SearchFilter
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: PageNumber
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: PageSize
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: OrderBy
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: SortOrder
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: Filter
+        in: query
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      description: "<h4>Get Filtered Contacts</h4>\r\n<h4>URL Parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Required</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>{{ListID}}</td><td>required</td><td>string</td><td>ID of the list</td></tr>\r\n</tbody>\r\n</table>\r\n\r\n<h4>Query String parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Required</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>SearchFilter</td><td>optional</td><td>string </td><td>Search value</td"
+  /Contact/ContactDetails:
+    get:
+      tags:
+      - Contact Configurations & Searches
+      summary: /ContactDetails | Search by email and show lists it belongs to and status, Search Contacts
+      operationId: get__contact_contactdetails
+      parameters:
+      - name: Search
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: SearchFilter
+        in: query
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      description: "<h4>Search Contacts</h4>\r\n<h4>Query String parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Required</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>SearchFilter</td><td>optional</td><td>string </td><td>Search Filter</td></tr>\r\n<tr><td>Search</td><td>required</td><td>string </td><td>Email Address you want to search</td></tr>\r\n</tbody>\r\n</table>\r\n\r\n<h4>Response body parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Type</th><th>Description</th></tr>\r\n</thead>"
+  /Contact/{ListID}/ContactDetails/{ContactID}:
+    get:
+      tags:
+      - Contact Configurations & Searches
+      summary: /{{ListID}}/ContactDetails/{{ContactID}} | Show a contact field names valuesand rating , Contact Details
+      operationId: get__contact__listid__contactdetails__contactid
+      parameters:
+      - name: ListID
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: ContactID
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      description: "<h4>Get Contact Details</h4>\r\n<h4>URL Parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Required</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody\r\n<tr><td>{{ListID}}</td><td>required</td><td>string</td><td>ID of the list</td></tr>\r\n<tr><td>{{ContactID}}</td><td>required</td><td>string</td><td>ID of the contact</td></tr>\r\n</tbody>\r\n</table>\r\n\r\n<h4>Response body parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><t"
+  /Contact/ContactDetails/All:
+    delete:
+      tags:
+      - Contact Configurations & Searches
+      summary: /ContactDetails/All | Delete the selected contacts from ALL lists
+      operationId: delete__contact_contactdetails_all
+      parameters: []
+      responses:
+        '200':
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      description: "<h4>Delete the selected contacts from ALL lists</h4>\r\n\r\n<h4>Request body  parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Required</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>Search</td><td>optional</td><td>string</td><td>Search value like email address</td></tr>\r\n<tr><td>Filter</td><td>optional</td><td>string</td><td>Filter value</td></tr>\r\n</tbody>\r\n</table>\r\n\r\n<h4>Body Parameters (To be passed as a JSON string)</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>"
+components:
+  securitySchemes:
+    apiKeyAuth:
+      type: apiKey
+      in: header
+      name: AuthToken
+      description: API token obtained from https://ui.benchmarkemail.com/Integrate#API

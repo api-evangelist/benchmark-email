@@ -1,0 +1,245 @@
+openapi: 3.0.3
+info:
+  title: Benchmark Email RESTful API v3.0 ABTest Creation Engagement API
+  description: 'RESTful API for managing email marketing contacts, lists, campaigns, automations, reports, images, and webhooks within the Benchmark Email platform. To use the API, you need a Benchmark Email API token available at https://ui.benchmarkemail.com/Integrate#API. Rate limit: 500 calls per 2 minutes and 60,000 calls per day.'
+  version: 3.0.0
+  contact:
+    name: Benchmark Email Developer Support
+    url: https://developer.benchmarkemail.com/
+  license:
+    name: Proprietary
+servers:
+- url: https://clientapi.benchmarkemail.com
+  description: Benchmark Email Client API
+security:
+- apiKeyAuth: []
+tags:
+- name: Engagement
+  description: Engagement analytics and list building
+paths:
+  /Engagement/CampaignList:
+    get:
+      tags:
+      - Engagement
+      summary: Get a Campaign List of Engagement
+      operationId: get__engagement_campaignlist
+      parameters:
+      - name: PageNumber
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: PageSize
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: OrderBy
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: Filter
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: SortOrder
+        in: query
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      description: "<h4>Get a Campaign List of Engagement</h4>\n<b>Query string parameters :</b>\n<table>\n  <thead>\n    <tr>\n      <th>Parameter</th>\n      <th>Required</th>\n      <th>Type</th>\n      <th>Description</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td>PageNumber</td>\n      <td>Optional</td>\n      <td>string</td>\n      <td>Page Number</td>\n    </tr>\n    <tr>\n      <td>PageSize</td>\n      <td>Optional</td>\n      <td>string</td>\n      <td>Number of rows on the page</td>\n    </tr>\n    <tr>\n      <td>Or"
+  /Engagement/URLList:
+    get:
+      tags:
+      - Engagement
+      summary: Get a URLList of Engagement
+      operationId: get__engagement_urllist
+      parameters:
+      - name: Filter
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: EmailIDs
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: PageNumber
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: PageSize
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: OrderBy
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: SortOrder
+        in: query
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      description: "<h4>Get a URLList of Engagement</h4>\n<b>Query string parameters :</b>\n<table>\n  <thead>\n    <tr>\n      <th>Parameter</th>\n      <th>Required</th>\n      <th>Type</th>\n      <th>Description</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td>EmailIDs</td>\n      <td>Required</td>\n      <td>string</td>\n      <td>List of Email Ids</td>\n    </tr>\n    <tr>\n      <td>PageNumber</td>\n      <td>Optional</td>\n      <td>string</td>\n      <td>Page Number</td>\n    </tr>\n    <tr>\n      <td>PageSize</td>\n   "
+  /Engagement/ClickURLContactCount:
+    get:
+      tags:
+      - Engagement
+      summary: Get a ClickURLContactCount of Engagement
+      operationId: get__engagement_clickurlcontactcount
+      parameters:
+      - name: CampaignURLList
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: ClickAll
+        in: query
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      description: "<h4>Get a ClickURLContactCount of Engagement</h4>\n<b>Query string parameters :</b>\n<table>\n  <thead>\n    <tr>\n      <th>Parameter</th>\n      <th>Required</th>\n      <th>Type</th>\n      <th>Description</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td>CampaignURLList</td>\n      <td>Required</td>\n      <td>string</td>\n      <td>Campaign URL List</td>\n    </tr>\n    <tr>\n      <td>ClickAll</td>\n      <td>Optional</td>\n      <td>string</td>\n      <td>&nbsp;</td>\n    </tr>\n  </tbody>\n</table>\n\n<b"
+  /Engagement/ClickContactCount:
+    get:
+      tags:
+      - Engagement
+      summary: Get Click Contact Count
+      operationId: get__engagement_clickcontactcount
+      parameters:
+      - name: EmailIDList
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: FilterType
+        in: query
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      description: "<h4>Get Click Contact Count</h4>\n<b>Query string parameters :</b>\n<table>\n  <thead>\n    <tr>\n      <th>Parameter</th>\n      <th>Required</th>\n      <th>Type</th>\n      <th>Description</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td>EmailIDList</td>\n      <td>Required</td>\n      <td>string</td>\n      <td>List of Email ID</td>\n    </tr>\n    <tr>\n      <td>FilterType</td>\n      <td>Required</td>\n      <td>string</td>\n      <td>1 (for Any)</td>\n    </tr>\n  </tbody>\n</table>\n\n<b>Response body "
+  /Engagement/CreateList:
+    post:
+      tags:
+      - Engagement
+      summary: Create List of Engagement
+      operationId: post__engagement_createlist
+      parameters: []
+      responses:
+        '200':
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      description: "<h4>Create List of Engagement</h4>\n<b>Query string parameters :</b> None <br>\n<b>Request Body Parameters</b>\n<table>\n  <thead>\n    <tr>\n      <th>Parameter</th>\n      <th>Required</th>\n      <th>Type</th>\n      <th>New List Name</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td>ListName</td>\n      <td>Required</td>\n      <td>string</td>\n      <td>New List Name</td>\n    </tr>\n    <tr>\n      <td>Type</td>\n      <td>Required</td>\n      <td>string</td>\n      <td>Type of list</td>\n    </tr>\n    "
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+  /Engagement/NonContactCount:
+    get:
+      tags:
+      - Engagement
+      summary: Get Non Contact Count
+      operationId: get__engagement_noncontactcount
+      parameters:
+      - name: EmailIDList
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: FilterType
+        in: query
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      description: "<h4>Get Non Contact Count</h4>\n<b>Query string parameters :</b>\n<table>\n  <thead>\n    <tr>\n      <th>Parameter</th>\n      <th>Required</th>\n      <th>Type</th>\n      <th>Description</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td>EmailIDList</td>\n      <td>Required</td>\n      <td>string</td>\n      <td>List of Email ID</td>\n    </tr>\n    <tr>\n      <td>FilterType</td>\n      <td>Required</td>\n      <td>string</td>\n      <td>1 (for Any)</td>\n    </tr>\n  </tbody>\n</table>\n\n<b>Response body pa"
+  /Engagement/OpenContactCount:
+    get:
+      tags:
+      - Engagement
+      summary: Get Open Contact Count
+      operationId: get__engagement_opencontactcount
+      parameters:
+      - name: EmailIDList
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: FilterType
+        in: query
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      description: "<h4>Get Open Contact Count</h4>\n<b>Query string parameters :</b>\n<table>\n  <thead>\n    <tr>\n      <th>Parameter</th>\n      <th>Required</th>\n      <th>Type</th>\n      <th>Description</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td>EmailIDList</td>\n      <td>Required</td>\n      <td>string</td>\n      <td>List of Email ID</td>\n    </tr>\n    <tr>\n      <td>FilterType</td>\n      <td>Required</td>\n      <td>string</td>\n      <td>1 (for Any)</td>\n    </tr>\n  </tbody>\n</table>\n\n<b>Response body p"
+components:
+  securitySchemes:
+    apiKeyAuth:
+      type: apiKey
+      in: header
+      name: AuthToken
+      description: API token obtained from https://ui.benchmarkemail.com/Integrate#API

@@ -1,0 +1,129 @@
+openapi: 3.0.3
+info:
+  title: Benchmark Email RESTful API v3.0 ABTest Creation Agency Account API
+  description: 'RESTful API for managing email marketing contacts, lists, campaigns, automations, reports, images, and webhooks within the Benchmark Email platform. To use the API, you need a Benchmark Email API token available at https://ui.benchmarkemail.com/Integrate#API. Rate limit: 500 calls per 2 minutes and 60,000 calls per day.'
+  version: 3.0.0
+  contact:
+    name: Benchmark Email Developer Support
+    url: https://developer.benchmarkemail.com/
+  license:
+    name: Proprietary
+servers:
+- url: https://clientapi.benchmarkemail.com
+  description: Benchmark Email Client API
+security:
+- apiKeyAuth: []
+tags:
+- name: Agency Account
+  description: Manage linked agency accounts
+paths:
+  /Client/LinkAccount/:
+    post:
+      tags:
+      - Agency Account
+      summary: Link Account
+      operationId: post__client_linkaccount
+      parameters: []
+      responses:
+        '200':
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      description: "<h4>Link Account</h4>\n<b>Query string parameters :</b> None <br>\n\n<b>Request Body parameters:</b>\n<table>\n  <thead>\n    <tr>\n      <th>Parameter</th>\n      <th>Required</th>\n      <th>Type</th>\n      <th>Description</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td>Login</td>\n      <td>Required</td>\n      <td>string</td>\n      <td>Login ID</td>\n    </tr>\n    <tr>\n      <td>Password</td>\n      <td>Required</td>\n      <td>string</td>\n      <td>From Email  Address</td>\n    </tr>\n    <tr>\n     "
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+  /Client/LinkAccount:
+    get:
+      tags:
+      - Agency Account
+      summary: Get list of link accounts
+      operationId: get__client_linkaccount
+      parameters: []
+      responses:
+        '200':
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      description: "<h4>Get list of link accounts</h4>\n<b>Query string parameters :</b> None <br>\n\n<b>Request Body parameters:</b> None <br>\n\n<b>Response body parameters :</b>\n<table>\n  <thead>\n    <tr>\n      <th>Parameter</th>\n      <th>Type</th>\n      <th>Description</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td>Count</td>\n      <td>string</td>\n      <td>Number of link accounts </td>\n    </tr>\n    <tr>\n      <td>Data</td>\n      <td><a href=\"http://www.benchmarkemail.com/models.htm#ClientLinkAccountDetail"
+  /Client/LinkAccount/{ID}:
+    delete:
+      tags:
+      - Agency Account
+      summary: Delete Link Account
+      operationId: delete__client_linkaccount__id
+      parameters:
+      - name: ID
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      description: "<h4>Delete Link Account</h4>\n<b>Query string parameters :</b> None\n\n<b>Request Body parameters:</b>\n<table>\n  <thead>\n    <tr>\n      <th>Parameter</th>\n      <th>Required</th>\n      <th>Type</th>\n      <th>Description</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td>ID</td>\n      <td>Required</td>\n      <td>string</td>\n      <td>Link Account ID</td>\n    </tr>\n  </tbody>\n</table>\n\n<b>Response body parameters :</b>\n<table>\n  <thead>\n    <tr>\n      <th>Parameter</th>\n      <th>Type</th>\n     "
+    patch:
+      tags:
+      - Agency Account
+      summary: Update Link Account
+      operationId: patch__client_linkaccount__id
+      parameters:
+      - name: ID
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      description: "<h4>Update Link Account</h4>\n<b>Query string parameters :</b> None <br>\n\n<b>Request Body parameters:</b>\n<table>\n  <thead>\n    <tr>\n      <th>Parameter</th>\n      <th>Required</th>\n      <th>Type</th>\n      <th>Description</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td>ID</td>\n      <td>Required</td>\n      <td>string</td>\n      <td>Link Account ID</td>\n    </tr>\n    <tr>\n      <td>Login</td>\n      <td>Required</td>\n      <td>string</td>\n      <td>Login ID</td>\n    </tr>\n    <tr>\n      <t"
+    get:
+      tags:
+      - Agency Account
+      summary: Get Link Account Details
+      operationId: get__client_linkaccount__id
+      parameters:
+      - name: ID
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      description: "<h4>Get Link Account Details</h4>\n<b>Query string parameters :</b> None\n\n<b>Request Body parameters:</b>\n<table>\n  <thead>\n    <tr>\n      <th>Parameter</th>\n      <th>Required</th>\n      <th>Type</th>\n      <th>Description</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td>ID</td>\n      <td>Required</td>\n      <td>string</td>\n      <td>Link Account ID</td>\n    </tr>\n  </tbody>\n</table>\n\n<b>Response body parameters :</b>\n<table>\n  <thead>\n    <tr>\n      <th>Parameter</th>\n      <th>Type</th>\n"
+components:
+  securitySchemes:
+    apiKeyAuth:
+      type: apiKey
+      in: header
+      name: AuthToken
+      description: API token obtained from https://ui.benchmarkemail.com/Integrate#API

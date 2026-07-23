@@ -1,0 +1,154 @@
+openapi: 3.0.3
+info:
+  title: Benchmark Email RESTful API v3.0 ABTest Creation Inbox Checker API
+  description: 'RESTful API for managing email marketing contacts, lists, campaigns, automations, reports, images, and webhooks within the Benchmark Email platform. To use the API, you need a Benchmark Email API token available at https://ui.benchmarkemail.com/Integrate#API. Rate limit: 500 calls per 2 minutes and 60,000 calls per day.'
+  version: 3.0.0
+  contact:
+    name: Benchmark Email Developer Support
+    url: https://developer.benchmarkemail.com/
+  license:
+    name: Proprietary
+servers:
+- url: https://clientapi.benchmarkemail.com
+  description: Benchmark Email Client API
+security:
+- apiKeyAuth: []
+tags:
+- name: Inbox Checker
+  description: Test emails in inbox preview
+paths:
+  /Inbox/:
+    get:
+      tags:
+      - Inbox Checker
+      summary: Get a Inbox List
+      operationId: get__inbox
+      parameters:
+      - name: Filter
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: PageNumber
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: PageSize
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: Status
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: OrderBy
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: SortOrder
+        in: query
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      description: "<h4>Get a Inbox List</h4>\r\n<b>Query String Parameters : </b>\r\n  <table>\r\n    <tr>\r\n      <th>Parameter</th>\r\n      <th>Required</th>\r\n      <th>Type</th>\r\n      <th>Description</th>\r\n    </tr>\r\n    <tr>\r\n      <td>Status</td>\r\n      <td>Optional</td>\r\n      <td>string</td>\r\n      <td>Completed (1) Or Not (0)</td>\r\n    </tr>\r\n    <tr>\r\n      <td>PageNumber</td>\r\n      <td>Required</td>\r\n      <td>string</td>\r\n      <td>Page Number</td>\r\n    </tr>\r\n    <tr>\r\n      <td>PageSize</td>\r\n      <td>Requ"
+    post:
+      tags:
+      - Inbox Checker
+      summary: Create a Inbox
+      operationId: post__inbox
+      parameters: []
+      responses:
+        '200':
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      description: "<h4>Create a Inbox</h4>\n<b> Request Body Parameters : </b>\n <table>\n    <tr>\n      <th>Parameter</th>\n      <th>Required</th>\n      <th>Type</th>\n      <th>Description</th>\n    </tr>\n    <tr>\n      <td>EmailID</td>\n      <td>Required</td>\n      <td>string</td>\n      <td>Email ID</td>\n    </tr>\n    <tr>\n      <td>TestID</td>\n      <td>Required</td>\n      <td>string</td>\n      <td>Test ID (ID of the Applications in which the test is required like 0,22)</td>\n    </tr>\n  </table>\n  <h4>Response Body"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+  /Inbox/{ID}:
+    delete:
+      tags:
+      - Inbox Checker
+      summary: ' Delete a Inbox'
+      operationId: delete__inbox__id
+      parameters:
+      - name: ID
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      description: "<h4>Delete a Inbox</h4>\r\n <b>Request Body Parameters: </b>\r\n  <table>\r\n    <tr>\r\n      <th>Parameter</th>\r\n      <th>Required</th>\r\n      <th>Type</th>\r\n      <th>Description</th>\r\n    </tr>\r\n    <tr>\r\n      <td>ID</td>\r\n      <td>Required</td>\r\n      <td>string</td>\r\n      <td>Inbox ID</td>\r\n    </tr>\r\n  </table>\r\n  <h4>Response Body Parameters:</h4>\r\n  <table>\r\n    <tr>\r\n      <th>Parameter</th>\r\n      <th>Type</th>\r\n      <th>Description</th>\r\n    </tr>\r\n    <tr>\r\n      <td>Status</td>\r\n     "
+    get:
+      tags:
+      - Inbox Checker
+      summary: Get a Inbox Master Result
+      operationId: get__inbox__id
+      parameters:
+      - name: ID
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      description: "<h4>Get a Inbox Master Result</h4>\r\n<b>Request Body Parameters : </b>\r\n<table>\r\n    <tr>\r\n      <th>Parameter</th>\r\n      <th>Required</th>\r\n      <th>Type</th>\r\n      <th>Description</th>\r\n    </tr>\r\n    <tr>\r\n      <td>ID</td>\r\n      <td>Required</td>\r\n      <td>string</td>\r\n      <td>Inbox ID</td>\r\n    </tr>\r\n  </table>\r\n  <h4>Response Body Parameters:</h4>\r\n  <table>\r\n    <tr>\r\n      <th>Parameter</th>\r\n      <th>Type</th>\r\n      <th>Description</th>\r\n    </tr>\r\n    <tr>\r\n      <td>Status</t"
+  /Inbox/Tests:
+    get:
+      tags:
+      - Inbox Checker
+      summary: Get a Inbox Detail Result
+      operationId: get__inbox_tests
+      parameters: []
+      responses:
+        '200':
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      description: "<h4>Get a Inbox Detail Tests</h4>\r\n\r\n<b> Request Body Parameters : </b> None <br>\r\n\r\n<b> Response body parameters : </b>\r\n <table>\r\n    <tr>\r\n      <th>Parameter</th>\r\n      <th>Type</th>\r\n      <th >Description</th>\r\n    </tr>\r\n    <tr>\r\n      <td>TotalPurchase</td>\r\n      <td>int</td>\r\n      <td>Total Purchase test</td>\r\n    </tr>\r\n    <tr>\r\n      <td>TotalTest</td>\r\n      <td>int</td>\r\n      <td>Total tests used</td>\r\n    </tr>\r\n    <tr>\r\n      <td>TotalBalance</td>\r\n      <td>int</td>\r\n     "
+components:
+  securitySchemes:
+    apiKeyAuth:
+      type: apiKey
+      in: header
+      name: AuthToken
+      description: API token obtained from https://ui.benchmarkemail.com/Integrate#API

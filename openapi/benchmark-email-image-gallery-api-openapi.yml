@@ -1,0 +1,256 @@
+openapi: 3.0.3
+info:
+  title: Benchmark Email RESTful API v3.0 ABTest Creation Image Gallery API
+  description: 'RESTful API for managing email marketing contacts, lists, campaigns, automations, reports, images, and webhooks within the Benchmark Email platform. To use the API, you need a Benchmark Email API token available at https://ui.benchmarkemail.com/Integrate#API. Rate limit: 500 calls per 2 minutes and 60,000 calls per day.'
+  version: 3.0.0
+  contact:
+    name: Benchmark Email Developer Support
+    url: https://developer.benchmarkemail.com/
+  license:
+    name: Proprietary
+servers:
+- url: https://clientapi.benchmarkemail.com
+  description: Benchmark Email Client API
+security:
+- apiKeyAuth: []
+tags:
+- name: Image Gallery
+  description: Manage image gallery
+paths:
+  /Images/Summary:
+    get:
+      tags:
+      - Image Gallery
+      summary: Get account summary
+      operationId: get__images_summary
+      parameters: []
+      responses:
+        '200':
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      description: "<h4>Get account summary</h4>\n<b>Query string parameters : </b> None <br>\n<b>Request body parameters : </b> None <br>\n<b>Response body parameters : </b>\n<table>\n  <thead>\n    <tr>\n      <th>Parameter</th>\n      <th>Type</th>\n      <th>Description</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td>FreePlan</td>\n      <td>int</td>\n      <td>1 = FreePlan, 0 = PaidPlan</td>\n    </tr>\n    <tr>\n      <td>Limit</td>\n      <td>int</td>\n      <td>Total Space</td>\n    </tr>\n    <tr>\n      <td>PremiumCl"
+  /Images/:
+    get:
+      tags:
+      - Image Gallery
+      summary: Get a list of images
+      operationId: get__images
+      parameters:
+      - name: Filter
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: PageNumber
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: PageSize
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: OrderBy
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: SortOrder
+        in: query
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      description: "<h4>Get a list of images</h4>\n<b>Query string parameters : </b>\n  <table>\n    <tr>\n      <th>Parameter</th>\n      <th>Required</th>\n      <th>Type</th>\n      <th>Description</th>\n    </tr>\n    <tr>\n      <td>Filter</td>\n      <td>Optional</td>\n      <td>int</td>\n      <td>Filterr</td>\n    </tr>\n    <tr>\n      <td>PageNumber</td>\n      <td>Required</td>\n      <td>int</td>\n      <td>Page Number</td>\n    </tr>\n    <tr>\n      <td>PageSize</td>\n      <td>Required</td>\n      <td>int</td>\n      <td>Num"
+    post:
+      tags:
+      - Image Gallery
+      summary: Upload an Image
+      operationId: post__images
+      parameters: []
+      responses:
+        '200':
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      description: "<h4>Upload an Image</h4>\n<b>Query string parameters : </b> None <br>\n\n<b>Response Body Parameters : </b>\n  <table>\n    <tr>\n      <th>Parameter</th>\n      <th>Required</th>\n      <th>Type</th>\n      <th>Description</th>\n    </tr>\n    <tr>\n      <td>Data</td>\n      <td>Required</td>\n      <td>File</td>\n      <td>Image file to be uploaded</td>\n    </tr>\n  </table>\n  <b>Response body parameters : </b>\n  <table border=\"0\" cellspacing=\"0\" cellpadding=\"0\">\n    <tr>\n      <th class=\"w_para\">Parameter</"
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+  /Images/{ImageID}:
+    get:
+      tags:
+      - Image Gallery
+      summary: Get image details
+      operationId: get__images__imageid
+      parameters:
+      - name: ImageID
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      description: "<h4>Get image details</h4>\n<b>Query string parameters : </b> None <br>\n<b>Request Body Parameter</b>\n  <table border=\"0\" cellspacing=\"0\" cellpadding=\"0\">\n    <tr>\n      <th>Parameter</th>\n      <th>Required</th>\n      <th>Type</th>\n      <th>Description</th>\n    </tr>\n    <tr>\n      <td>ImageID</td>\n      <td>Required</td>\n      <td>string</td>\n      <td>Image ID</td>\n    </tr>\n  </table>\n<b>Response body parameters : </b>\n<table>\n  <tr>\n    <th>Parameter</th>\n    <th>Type</th>\n    <th>Descripti"
+    delete:
+      tags:
+      - Image Gallery
+      summary: Delete an image
+      operationId: delete__images__imageid
+      parameters:
+      - name: ImageID
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      description: "<h4>Delete an image</h4>\n<b>Query string parameters : </b> None <br>\n<b>Request Body Parameters : </b>\n<table>\n  <tr>\n    <th>Parameter</th>\n    <th>Required</th>\n    <th>Type</th>\n    <th>Description</th>\n  </tr>\n  <tr>\n    <td>ImageID</td>\n    <td>Required</td>\n    <td>string</td>\n    <td>Image ID</td>\n  </tr>\n</table>\n<b>Response Body Parameters : </b>\n<table>\n  <tr>\n    <th>Parameter</th>\n    <th>Type</th>\n    <th>Description</th>\n  </tr>\n  <tr>\n    <td>Response</td>\n    <td>int</td>\n    <td"
+    patch:
+      tags:
+      - Image Gallery
+      summary: Update an image
+      operationId: patch__images__imageid
+      parameters:
+      - name: ImageID
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      description: "<h4>Update an image</h4>\n<b>Query string parameters : </b>\n<table>\n  <tr>\n    <th>Parameter</th>\n    <th>Required</th>\n    <th>Type</th>\n    <th>Description</th>\n  </tr>\n  <tr>\n    <td>ImageID</td>\n    <td>Required</td>\n    <td>string</td>\n    <td>Image ID</td>\n  </tr>\n</table>\n<b>Request Body Parameters : </b>\n<table>\n  <tr>\n    <th>Parameter</th>\n    <th>Required</th>\n    <th>Type</th>\n    <th>Description</th>\n  </tr>\n  <tr>\n    <td>ImageURL</td>\n    <td>Required if ImageName is not passed</td"
+  /Images/{ImageID}/Copy:
+    post:
+      tags:
+      - Image Gallery
+      summary: Copy image to sub-account
+      operationId: post__images__imageid__copy
+      parameters:
+      - name: ImageID
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      description: "<h4>Copy image to sub-account</h4>\n<b>Query string parameters : </b>\n<table>\n  <tr>\n    <th>Parameter</th>\n    <th>Required</th>\n    <th>Type</th>\n    <th>Description</th>\n  </tr>\n  <tr>\n    <td>ImageID</td>\n    <td>Required</td>\n    <td>string</td>\n    <td>Image ID</td>\n  </tr>\n</table>\n<b>Request Body Parameters : </b>\n<table>\n  <tr>\n    <th>Parameter</th>\n    <th>Required</th>\n    <th>Type</th>\n    <th>Description</th>\n  </tr>\n  <tr>\n    <td>Clients</td>\n    <td>Required</td>\n    <td>string</"
+  /Images/Giphy/Images/List:
+    get:
+      tags:
+      - Image Gallery
+      summary: Get list of Giphy images
+      operationId: get__images_giphy_images_list
+      parameters:
+      - name: PageNumber
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: PageSize
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: Filter
+        in: query
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      description: "<h4>Get list of Giphy images</h4>\n<b>Query string parameters : </b> \n<table>\n  <thead>\n    <tr>\n      <th>Parameter</th>\n      <th>Required</th>\n      <th>Type</th>\n      <th>Description</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td>PageNumber</td>\n      <td>Optional</td>\n      <td>string</td>\n      <td>Page Number</td>\n    </tr>\n    <tr>\n      <td>PageSize</td>\n      <td>Optional</td>\n      <td>string</td>\n      <td>Number of records per page</td>\n    </tr>\n    <tr>\n      <td>Filter</t"
+  /Images/{ImageType}/{Extra}:
+    post:
+      tags:
+      - Image Gallery
+      summary: Upload Logo Image
+      operationId: post__images__imagetype___extra
+      parameters:
+      - name: ImageType
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: Extra
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      description: "<h4>Upload Logo Image</h4>\n<b>Query string parameters : </b> None <br>\n\n<b>Response Body Parameters : </b>\n  <table>\n    <tr>\n      <th>Parameter</th>\n      <th>Required</th>\n      <th>Type</th>\n      <th>Description</th>\n    </tr>\n    <tr>\n      <td>Data</td>\n      <td>Required</td>\n      <td>File</td>\n      <td>Image file to be uploaded</td>\n    </tr>\n    <tr>\n      <td>ImageType</td>\n      <td>Required</td>\n      <td>string</td>\n      <td>Type of a image</td>\n    </tr>\n    <tr>\n      <td>Extr"
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+components:
+  securitySchemes:
+    apiKeyAuth:
+      type: apiKey
+      in: header
+      name: AuthToken
+      description: API token obtained from https://ui.benchmarkemail.com/Integrate#API

@@ -1,0 +1,181 @@
+openapi: 3.0.3
+info:
+  title: Benchmark Email RESTful API v3.0 ABTest Creation Third Party Signup Forms API
+  description: 'RESTful API for managing email marketing contacts, lists, campaigns, automations, reports, images, and webhooks within the Benchmark Email platform. To use the API, you need a Benchmark Email API token available at https://ui.benchmarkemail.com/Integrate#API. Rate limit: 500 calls per 2 minutes and 60,000 calls per day.'
+  version: 3.0.0
+  contact:
+    name: Benchmark Email Developer Support
+    url: https://developer.benchmarkemail.com/
+  license:
+    name: Proprietary
+servers:
+- url: https://clientapi.benchmarkemail.com
+  description: Benchmark Email Client API
+security:
+- apiKeyAuth: []
+tags:
+- name: Third Party Signup Forms
+  description: Third-party signup form integrations
+paths:
+  /Client/Integrations/SignupForm/Magento:
+    get:
+      tags:
+      - Third Party Signup Forms
+      summary: Get SignupForm  for Magento
+      operationId: get__client_integrations_signupform_magento
+      parameters:
+      - name: ID
+        in: query
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      description: "<h4>Get SignupForm  for Magento</h4>\n<b>Query String Parameters : </b>\n<table>\n<thead>\n<tr>\n<th>Parameter</th>\n<th>Required</th>\n<th>Type</th>\n<th>Description</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td>ID</td>\n<td>Required</td>\n<td>int</td>\n<td>Listbuilder ID</td>\n</tr>\n</tbody>\n</table>\n<b>Response Body Parameters :</b>\n<table>\n  <thead>\n    <tr>\n      <th>Parameter</th>\n      <th>Type</th>\n      <th>Description</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td>Data</td>\n      <td>string</td>\n  "
+  /Client/Integrations/SignupForm/Tumbler:
+    get:
+      tags:
+      - Third Party Signup Forms
+      summary: Get SignupForm Tumbler
+      operationId: get__client_integrations_signupform_tumbler
+      parameters:
+      - name: ID
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: Title
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: Subscribe
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: Email
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: Language
+        in: query
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      description: '<h4>Get Third Party SignupForm Tumbler</h4>
+
+
+        <b>Query String Parameters :  </b>
+
+        <table>
+
+        <thead>
+
+        <tr>
+
+        <th>Parameter</th>
+
+        <th>Required</th>
+
+        <th>Type</th>
+
+        <th>Description</th>
+
+        </tr>
+
+        </thead>
+
+        <tbody>
+
+        <tr>
+
+        <td>ID</td>
+
+        <td>Required</td>
+
+        <td>int</td>
+
+        <td>Listbuilder ID</td>
+
+        </tr>
+
+        <tr>
+
+        <td>Title</td>
+
+        <td>optional</td>
+
+        <td>String</td>
+
+        <td>Title Text</td>
+
+        </tr>
+
+        <tr>
+
+        <td>Language</td>
+
+        <td>optional</td>
+
+        <td>string</td>
+
+        <td>Language</td>
+
+        </tr>
+
+        <tr>
+
+        <td>Subscribe</td>
+
+        <td>optional</td>
+
+        <td>string</td>
+
+        <td>Sub'
+  /Client/Integrations/SignupForm/Unbounce:
+    get:
+      tags:
+      - Third Party Signup Forms
+      summary: Get SignupForm For Unbounce
+      operationId: get__client_integrations_signupform_unbounce
+      parameters:
+      - name: ID
+        in: query
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      description: "<h4>Get SignupForm For Unbounce</h4>\n<b>Query String Parameters : </b>\n<table>\n<thead>\n<tr>\n<th>Parameter</th>\n<th>Required</th>\n<th>Type</th>\n<th>Description</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td>ID</td>\n<td>Required</td>\n<td>int</td>\n<td>ContactMaster ID</td>\n</tr>\n</tbody>\n</table>\n<b>Response Body Parameters :</b>\n<table>\n  <thead>\n    <tr>\n      <th>Parameter</th>\n      <th>Type</th>\n      <th>Description</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td>Data</td>\n      <td>string</td>\n"
+components:
+  securitySchemes:
+    apiKeyAuth:
+      type: apiKey
+      in: header
+      name: AuthToken
+      description: API token obtained from https://ui.benchmarkemail.com/Integrate#API

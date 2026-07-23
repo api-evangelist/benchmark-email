@@ -1,0 +1,96 @@
+openapi: 3.0.3
+info:
+  title: Benchmark Email RESTful API v3.0 ABTest Creation API
+  description: 'RESTful API for managing email marketing contacts, lists, campaigns, automations, reports, images, and webhooks within the Benchmark Email platform. To use the API, you need a Benchmark Email API token available at https://ui.benchmarkemail.com/Integrate#API. Rate limit: 500 calls per 2 minutes and 60,000 calls per day.'
+  version: 3.0.0
+  contact:
+    name: Benchmark Email Developer Support
+    url: https://developer.benchmarkemail.com/
+  license:
+    name: Proprietary
+servers:
+- url: https://clientapi.benchmarkemail.com
+  description: Benchmark Email Client API
+security:
+- apiKeyAuth: []
+tags:
+- name: ABTest Creation
+  description: Create and manage A/B split tests
+paths:
+  /ABSplit/:
+    post:
+      tags:
+      - ABTest Creation
+      summary: Create AB Test
+      operationId: post__absplit
+      parameters: []
+      responses:
+        '200':
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      description: "Create AB split\r\n<h4>Body Parameters (to be encoded as a JSON string)</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th>\r\n<th>Required</th>\r\n<th>Description</th>\r\n</tr>\r\n</thead>\r\n<tbody>\r\n<tr>\r\n<td>Name</td>\r\n<td>Required</td>\r\n<td>Name of AB test</td>\r\n</tr>\r\n<tr>\r\n<td>Type</td>\r\n<td>Required</td>\r\n<td>Test type (like 1,2,3,4) <code>1.From Name / Subject Line Test</code> <code>2.Campaign vs. Campaign Test</code> <code>3.Multiple Variable Test</code> <code>4.Delivery Time Test</code></td>\r\n</tr>\r\n<tr>\r"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+  /ABSplit/{ID}:
+    get:
+      tags:
+      - ABTest Creation
+      summary: Get Details for the AB Test
+      operationId: get__absplit__id
+      parameters:
+      - name: ID
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      description: "Get Details for the AB Split\r\n<h4>URL parameter :</h4>\r\n<table>\r\n    <tr>\r\n      <th>Parameter</th>\r\n      <th>Type</th>\r\n      <th>Description</th>\r\n    </tr>\r\n    <tr>\r\n      <td>ID</td>\r\n      <td>string</td>\r\n      <td>ABSplit ID</td>\r\n    </tr>\r\n  </table>\r\n  <h4>Response body parameters:</h4>\r\n  <table>\r\n    <tr>\r\n      <th>Parameter</th>\r\n      <th>Type</th>\r\n      <th>Description</th>\r\n    </tr>\r\n    <tr>\r\n      <td>Status</td>\r\n      <td>string</td>\r\n      <td>1 if successful, -1 if err"
+    patch:
+      tags:
+      - ABTest Creation
+      summary: Update the AB Test
+      operationId: patch__absplit__id
+      parameters:
+      - name: ID
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      description: "Update AB split\r\n<h4>URL parameters:</h4>\r\n<table>\r\n<tr>\r\n  <th>Parameter</th>\r\n  <th>Type</th>\r\n  <th>Description</th>\r\n</tr>\r\n<tr>\r\n  <td>ID</td>\r\n  <td>string</td>\r\n  <td>ABSplit ID</td>\r\n</tr>\r\n</table>\r\n<h4>Body Parameters (to be encoded as a JSON string)</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th>\r\n<th>Required</th>\r\n<th>Description</th>\r\n</tr>\r\n</thead>\r\n<tbody>\r\n<tr>\r\n<td>Name</td>\r\n<td>Required</td>\r\n<td>Name of AB test</td>\r\n</tr>\r\n<tr>\r\n<td>Type</td>\r\n<td>Required</td>\r\n<td>Test type ("
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+components:
+  securitySchemes:
+    apiKeyAuth:
+      type: apiKey
+      in: header
+      name: AuthToken
+      description: API token obtained from https://ui.benchmarkemail.com/Integrate#API

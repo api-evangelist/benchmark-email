@@ -1,0 +1,201 @@
+openapi: 3.0.3
+info:
+  title: Benchmark Email RESTful API v3.0 ABTest Creation Partner API
+  description: 'RESTful API for managing email marketing contacts, lists, campaigns, automations, reports, images, and webhooks within the Benchmark Email platform. To use the API, you need a Benchmark Email API token available at https://ui.benchmarkemail.com/Integrate#API. Rate limit: 500 calls per 2 minutes and 60,000 calls per day.'
+  version: 3.0.0
+  contact:
+    name: Benchmark Email Developer Support
+    url: https://developer.benchmarkemail.com/
+  license:
+    name: Proprietary
+servers:
+- url: https://clientapi.benchmarkemail.com
+  description: Benchmark Email Client API
+security:
+- apiKeyAuth: []
+tags:
+- name: Partner
+  description: Partner commission and referral management
+paths:
+  /Partner/CommissionList:
+    get:
+      tags:
+      - Partner
+      summary: Get Commission List
+      operationId: get__partner_commissionlist
+      parameters: []
+      responses:
+        '200':
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      description: "<h4>Get Commission List</h4>\n<b>Query string parameters :</b> None <br>\n\n<b>Request Body parameters:</b> None <br>\n\n<b>Response Body Parameters :</b>\n<table>\n  <thead>\n    <tr>\n      <th>Parameter</th>\n      <th>Type</th>\n      <th>Description</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td>Count</td>\n      <td>String</td>\n      <td>Number of Commission List</td>\n    </tr>\n    <tr>\n      <td>Data</td>\n      <td><a href=\"http://www.benchmarkemail.com/models.htm#PartnerCommissionsListData\" "
+  /Partner/ReferralsList:
+    get:
+      tags:
+      - Partner
+      summary: Get Referrals List
+      operationId: get__partner_referralslist
+      parameters: []
+      responses:
+        '200':
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      description: "<h4>Get referrals list</h4>\n<b>Query string parameters :</b> None <br>\n\n<b>Request Body parameters:</b> None <br>\n\n<b>Response Body Parameters :</b>\n<table>\n  <thead>\n    <tr>\n      <th>Parameter</th>\n      <th>Type</th>\n      <th>Description</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td>Count</td>\n      <td>String</td>\n      <td>Number of Commission List</td>\n    </tr>\n    <tr>\n      <td>Data</td>\n      <td><a href=\"http://www.benchmarkemail.com/models.htm#PartnerReferralsListData\" >Pa"
+  /Partner/ReferralsLevel1List:
+    get:
+      tags:
+      - Partner
+      summary: Get Referrals Level 1 List
+      operationId: get__partner_referralslevel1list
+      parameters:
+      - name: imonth
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: iyear
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: sort
+        in: query
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      description: "<h4>Get Referrals Level 1 List</h4>\n<b>Query string parameters :</b> \n<table>\n  <thead>\n    <tr>\n      <th>Parameter</th>\n      <th>Required</th>\n      <th>Type</th>\n      <th>Description</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td>imonth</td>\n      <td>Required</td>\n      <td>String</td>\n      <td>Month</td>\n    </tr>\n    <tr>\n      <td>iyear</td>\n      <td>Required</td>\n      <td>String</td>\n      <td>Year</td>\n    </tr>\n    <tr>\n      <td>Sort</td>\n      <td>Required</td>\n      <td"
+  /Partner/WebPageAdsDetail:
+    get:
+      tags:
+      - Partner
+      summary: Get Web Page Ads Detail
+      operationId: get__partner_webpageadsdetail
+      parameters: []
+      responses:
+        '200':
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      description: "<h4>Get Web Page Ads Detail</h4>\n<b>Query string parameters :</b> None <br>\n\n<b>Request Body parameters:</b> None <br>\n\n<b>Response Body Parameters :</b>\n<table>\n  <thead>\n    <tr>\n      <th>Parameter</th>\n      <th>Type</th>\n      <th>Description</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td>ID</td>\n      <td>String</td>\n      <td>&nbsp;</td>\n    </tr>\n    <tr>\n      <td>ClientID</td>\n      <td>string</td>\n      <td>Client ID</td>\n    </tr>\n    <tr>\n      <td>HtmlResponse</td>\n      <t"
+  /Partner/CommissionLevel1List:
+    get:
+      tags:
+      - Partner
+      summary: Get Partner Commission Level 1 List
+      operationId: get__partner_commissionlevel1list
+      parameters:
+      - name: imonth
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: iyear
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: sort
+        in: query
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      description: "<h4>Get Partner Commission Level 1 List</h4>\n<b>Query string parameters :</b> \n<table>\n  <thead>\n    <tr>\n      <th>Parameter</th>\n      <th>Required</th>\n      <th>Type</th>\n      <th>Description</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td>imonth</td>\n      <td>Required</td>\n      <td>String</td>\n      <td>Month</td>\n    </tr>\n    <tr>\n      <td>iyear</td>\n      <td>Required</td>\n      <td>String</td>\n      <td>Year</td>\n    </tr>\n    <tr>\n      <td>Sort</td>\n      <td>Required</td>\n"
+  /Partner/CommissionLevel2List:
+    get:
+      tags:
+      - Partner
+      summary: Get Partner Commission Level 2 List
+      operationId: get__partner_commissionlevel2list
+      parameters:
+      - name: client_id
+        in: query
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      description: "<h4>Get Partner Commission Level 2 List</h4>\n<b>Query string parameters :</b> \n<table>\n  <thead>\n    <tr>\n      <th>Parameter</th>\n      <th>Required</th>\n      <th>Type</th>\n      <th>Description</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td>Client ID</td>\n      <td>Required</td>\n      <td>String</td>\n      <td>Client ID</td>\n    </tr>\n  </tbody>\n</table>\n\n<b>Response Body Parameters :</b>\n<table>\n  <thead>\n    <tr>\n      <th>Parameter</th>\n      <th>Type</th>\n      <th>Description</th"
+  /Partner/Profile:
+    get:
+      tags:
+      - Partner
+      summary: Get Profile Details
+      operationId: get__partner_profile
+      parameters: []
+      responses:
+        '200':
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      description: "<h4>Get Profile Details</h4>\n<b>Query String Parameters : </b> None <br>\n\n<b>Request Body Parameters : </b> None <br>\n\n<b>Response Body Parameter : </b>\n<table>\n  <thead>\n    <tr>\n      <th>Parameter</th>\n      <th>Type</th>\n      <th>Description</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td>Response</td>\n      <td><a href=\"http://www.benchmarkemail.com/models.htm#PartnerProfileData\" > ProfileData </a></td>\n      <td>Partner Profile Details</td>\n    </tr>\n  </tbody>\n</table>"
+    patch:
+      tags:
+      - Partner
+      summary: Update Profile Details
+      operationId: patch__partner_profile
+      parameters: []
+      responses:
+        '200':
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      description: "<h4>Update Profile Details</h4>\n<b>Query String Parameters : </b> None <br>\n\n<b>Request Body Parameters : </b>\n<table>\n  <thead>\n    <tr>\n      <th>Parameter</th>\n      <th>Type</th>\n      <th>Description</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td>Detail</td>\n      <td><a href=\"http://www.benchmarkemail.com/models.htm#PartnerProfileUpdate\" > ProfileUpdate </a></td>\n      <td>Partner Profile Details</td>\n    </tr>\n  </tbody>\n</table>\n\n<b>Response Body Parameter : </b>\n<table>\n  <thead"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+components:
+  securitySchemes:
+    apiKeyAuth:
+      type: apiKey
+      in: header
+      name: AuthToken
+      description: API token obtained from https://ui.benchmarkemail.com/Integrate#API
