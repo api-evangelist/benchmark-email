@@ -1,7 +1,20 @@
 aid: benchmark-email
 name: Benchmark Email
 description: Benchmark Email is an email marketing platform with a REST API for managing contacts, lists, email campaigns, automations, reports, and transactional email delivery. The API supports contact synchronization, campaign management, reporting analytics, domain verification, and webhook notifications for real-time event handling.
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: freemium
+  onboarding: self-serve
+  trial: false
+  try_now: true
+  public: false
+  label: Freemium · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/benchmark-email.png
 url: https://raw.githubusercontent.com/api-evangelist/benchmark-email/refs/heads/main/apis.yml
 created: '2026-06-13'
 modified: '2026-06-13'
@@ -14,29 +27,470 @@ tags:
   - Transactional Email
   - Marketing
 apis:
-  - aid: benchmark-email:benchmark-email-api
-    name: Benchmark Email RESTful API v3.0
-    description: RESTful API for managing email marketing contacts, lists, campaigns, automations, reports, images, and webhooks within the Benchmark Email platform.
-    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-    humanURL: https://developer.benchmarkemail.com/
-    baseURL: https://clientapi.benchmarkemail.com
-    tags:
-      - Email Marketing
-      - Campaigns
-      - Contacts
-      - Lists
-      - Automation
-      - Webhooks
-      - Reports
-    properties:
-      - type: Documentation
-        url: https://developer.benchmarkemail.com/
-      - type: GitHubRepository
-        url: https://github.com/BenchmarkEmail/RESTful-API-v3
-      - type: PostmanCollection
-        url: https://github.com/BenchmarkEmail/RESTful-API-v3/tree/master/Postman%20Collections
-      - type: OpenAPI
-        url: openapi/benchmark-email-benchmark-email-api-openapi.yml
+- aid: benchmark-email:benchmark-email-abtest-creation-api
+  name: Benchmark Email ABTest Creation API
+  description: Create and manage A/B split tests
+  humanURL: https://developer.benchmarkemail.com/
+  baseURL: https://clientapi.benchmarkemail.com
+  tags:
+  - ABTest Creation
+  properties:
+  - type: OpenAPI
+    url: openapi/benchmark-email-abtest-creation-api-openapi.yml
+  - type: Documentation
+    url: https://developer.benchmarkemail.com/
+  - type: GitHubRepository
+    url: https://github.com/BenchmarkEmail/RESTful-API-v3
+  - type: PostmanCollection
+    url: https://github.com/BenchmarkEmail/RESTful-API-v3/tree/master/Postman%20Collections
+- aid: benchmark-email:benchmark-email-account-settings-api
+  name: Benchmark Email Account Settings API
+  description: Manage account settings and configurations
+  humanURL: https://developer.benchmarkemail.com/
+  baseURL: https://clientapi.benchmarkemail.com
+  tags:
+  - Account Settings
+  properties:
+  - type: OpenAPI
+    url: openapi/benchmark-email-account-settings-api-openapi.yml
+  - type: Documentation
+    url: https://developer.benchmarkemail.com/
+  - type: GitHubRepository
+    url: https://github.com/BenchmarkEmail/RESTful-API-v3
+  - type: PostmanCollection
+    url: https://github.com/BenchmarkEmail/RESTful-API-v3/tree/master/Postman%20Collections
+- aid: benchmark-email:benchmark-email-add-contacts-api
+  name: Benchmark Email Add Contacts API
+  description: Add and import contacts to lists
+  humanURL: https://developer.benchmarkemail.com/
+  baseURL: https://clientapi.benchmarkemail.com
+  tags:
+  - Add Contacts
+  properties:
+  - type: OpenAPI
+    url: openapi/benchmark-email-add-contacts-api-openapi.yml
+  - type: Documentation
+    url: https://developer.benchmarkemail.com/
+  - type: GitHubRepository
+    url: https://github.com/BenchmarkEmail/RESTful-API-v3
+  - type: PostmanCollection
+    url: https://github.com/BenchmarkEmail/RESTful-API-v3/tree/master/Postman%20Collections
+- aid: benchmark-email:benchmark-email-agency-account-api
+  name: Benchmark Email Agency Account API
+  description: Manage linked agency accounts
+  humanURL: https://developer.benchmarkemail.com/
+  baseURL: https://clientapi.benchmarkemail.com
+  tags:
+  - Agency Account
+  properties:
+  - type: OpenAPI
+    url: openapi/benchmark-email-agency-account-api-openapi.yml
+  - type: Documentation
+    url: https://developer.benchmarkemail.com/
+  - type: GitHubRepository
+    url: https://github.com/BenchmarkEmail/RESTful-API-v3
+  - type: PostmanCollection
+    url: https://github.com/BenchmarkEmail/RESTful-API-v3/tree/master/Postman%20Collections
+- aid: benchmark-email:benchmark-email-archive-api
+  name: Benchmark Email Archive API
+  description: Manage email archive and archive pages
+  humanURL: https://developer.benchmarkemail.com/
+  baseURL: https://clientapi.benchmarkemail.com
+  tags:
+  - Archive
+  properties:
+  - type: OpenAPI
+    url: openapi/benchmark-email-archive-api-openapi.yml
+  - type: Documentation
+    url: https://developer.benchmarkemail.com/
+  - type: GitHubRepository
+    url: https://github.com/BenchmarkEmail/RESTful-API-v3
+  - type: PostmanCollection
+    url: https://github.com/BenchmarkEmail/RESTful-API-v3/tree/master/Postman%20Collections
+- aid: benchmark-email:benchmark-email-automation-creation-api
+  name: Benchmark Email Automation Creation API
+  description: Create and manage automation workflows
+  humanURL: https://developer.benchmarkemail.com/
+  baseURL: https://clientapi.benchmarkemail.com
+  tags:
+  - Automation Creation
+  properties:
+  - type: OpenAPI
+    url: openapi/benchmark-email-automation-creation-api-openapi.yml
+  - type: Documentation
+    url: https://developer.benchmarkemail.com/
+  - type: GitHubRepository
+    url: https://github.com/BenchmarkEmail/RESTful-API-v3
+  - type: PostmanCollection
+    url: https://github.com/BenchmarkEmail/RESTful-API-v3/tree/master/Postman%20Collections
+- aid: benchmark-email:benchmark-email-contact-configurations-searches-api
+  name: Benchmark Email Contact Configurations & Searches API
+  description: Configure and search contacts
+  humanURL: https://developer.benchmarkemail.com/
+  baseURL: https://clientapi.benchmarkemail.com
+  tags:
+  - Contact Configurations & Searches
+  properties:
+  - type: OpenAPI
+    url: openapi/benchmark-email-contact-configurations-searches-api-openapi.yml
+  - type: Documentation
+    url: https://developer.benchmarkemail.com/
+  - type: GitHubRepository
+    url: https://github.com/BenchmarkEmail/RESTful-API-v3
+  - type: PostmanCollection
+    url: https://github.com/BenchmarkEmail/RESTful-API-v3/tree/master/Postman%20Collections
+- aid: benchmark-email:benchmark-email-contact-reports-metrics-api
+  name: Benchmark Email Contact Reports & Metrics API
+  description: Contact reporting and metrics
+  humanURL: https://developer.benchmarkemail.com/
+  baseURL: https://clientapi.benchmarkemail.com
+  tags:
+  - Contact Reports & Metrics
+  properties:
+  - type: OpenAPI
+    url: openapi/benchmark-email-contact-reports-metrics-api-openapi.yml
+  - type: Documentation
+    url: https://developer.benchmarkemail.com/
+  - type: GitHubRepository
+    url: https://github.com/BenchmarkEmail/RESTful-API-v3
+  - type: PostmanCollection
+    url: https://github.com/BenchmarkEmail/RESTful-API-v3/tree/master/Postman%20Collections
+- aid: benchmark-email:benchmark-email-email-editor-api
+  name: Benchmark Email Email Editor API
+  description: Email template and layout management
+  humanURL: https://developer.benchmarkemail.com/
+  baseURL: https://clientapi.benchmarkemail.com
+  tags:
+  - Email Editor
+  properties:
+  - type: OpenAPI
+    url: openapi/benchmark-email-email-editor-api-openapi.yml
+  - type: Documentation
+    url: https://developer.benchmarkemail.com/
+  - type: GitHubRepository
+    url: https://github.com/BenchmarkEmail/RESTful-API-v3
+  - type: PostmanCollection
+    url: https://github.com/BenchmarkEmail/RESTful-API-v3/tree/master/Postman%20Collections
+- aid: benchmark-email:benchmark-email-email-email-rss-creation-api
+  name: Benchmark Email Email  Email Rss Creation API
+  description: Email  Email Rss Creation
+  humanURL: https://developer.benchmarkemail.com/
+  baseURL: https://clientapi.benchmarkemail.com
+  tags:
+  - Email  Email Rss Creation
+  properties:
+  - type: OpenAPI
+    url: openapi/benchmark-email-email-email-rss-creation-api-openapi.yml
+  - type: Documentation
+    url: https://developer.benchmarkemail.com/
+  - type: GitHubRepository
+    url: https://github.com/BenchmarkEmail/RESTful-API-v3
+  - type: PostmanCollection
+    url: https://github.com/BenchmarkEmail/RESTful-API-v3/tree/master/Postman%20Collections
+- aid: benchmark-email:benchmark-email-engagement-api
+  name: Benchmark Email Engagement API
+  description: Engagement analytics and list building
+  humanURL: https://developer.benchmarkemail.com/
+  baseURL: https://clientapi.benchmarkemail.com
+  tags:
+  - Engagement
+  properties:
+  - type: OpenAPI
+    url: openapi/benchmark-email-engagement-api-openapi.yml
+  - type: Documentation
+    url: https://developer.benchmarkemail.com/
+  - type: GitHubRepository
+    url: https://github.com/BenchmarkEmail/RESTful-API-v3
+  - type: PostmanCollection
+    url: https://github.com/BenchmarkEmail/RESTful-API-v3/tree/master/Postman%20Collections
+- aid: benchmark-email:benchmark-email-general-api
+  name: Benchmark Email General API
+  description: General operations
+  humanURL: https://developer.benchmarkemail.com/
+  baseURL: https://clientapi.benchmarkemail.com
+  tags:
+  - General
+  properties:
+  - type: OpenAPI
+    url: openapi/benchmark-email-general-api-openapi.yml
+  - type: Documentation
+    url: https://developer.benchmarkemail.com/
+  - type: GitHubRepository
+    url: https://github.com/BenchmarkEmail/RESTful-API-v3
+  - type: PostmanCollection
+    url: https://github.com/BenchmarkEmail/RESTful-API-v3/tree/master/Postman%20Collections
+- aid: benchmark-email:benchmark-email-help-api
+  name: Benchmark Email Help API
+  description: Help desk and support tickets
+  humanURL: https://developer.benchmarkemail.com/
+  baseURL: https://clientapi.benchmarkemail.com
+  tags:
+  - Help
+  properties:
+  - type: OpenAPI
+    url: openapi/benchmark-email-help-api-openapi.yml
+  - type: Documentation
+    url: https://developer.benchmarkemail.com/
+  - type: GitHubRepository
+    url: https://github.com/BenchmarkEmail/RESTful-API-v3
+  - type: PostmanCollection
+    url: https://github.com/BenchmarkEmail/RESTful-API-v3/tree/master/Postman%20Collections
+- aid: benchmark-email:benchmark-email-image-gallery-api
+  name: Benchmark Email Image Gallery API
+  description: Manage image gallery
+  humanURL: https://developer.benchmarkemail.com/
+  baseURL: https://clientapi.benchmarkemail.com
+  tags:
+  - Image Gallery
+  properties:
+  - type: OpenAPI
+    url: openapi/benchmark-email-image-gallery-api-openapi.yml
+  - type: Documentation
+    url: https://developer.benchmarkemail.com/
+  - type: GitHubRepository
+    url: https://github.com/BenchmarkEmail/RESTful-API-v3
+  - type: PostmanCollection
+    url: https://github.com/BenchmarkEmail/RESTful-API-v3/tree/master/Postman%20Collections
+- aid: benchmark-email:benchmark-email-inbox-checker-api
+  name: Benchmark Email Inbox Checker API
+  description: Test emails in inbox preview
+  humanURL: https://developer.benchmarkemail.com/
+  baseURL: https://clientapi.benchmarkemail.com
+  tags:
+  - Inbox Checker
+  properties:
+  - type: OpenAPI
+    url: openapi/benchmark-email-inbox-checker-api-openapi.yml
+  - type: Documentation
+    url: https://developer.benchmarkemail.com/
+  - type: GitHubRepository
+    url: https://github.com/BenchmarkEmail/RESTful-API-v3
+  - type: PostmanCollection
+    url: https://github.com/BenchmarkEmail/RESTful-API-v3/tree/master/Postman%20Collections
+- aid: benchmark-email:benchmark-email-list-configurations-searches-api
+  name: Benchmark Email List Configurations & Searches API
+  description: Configure and search contact lists
+  humanURL: https://developer.benchmarkemail.com/
+  baseURL: https://clientapi.benchmarkemail.com
+  tags:
+  - List Configurations & Searches
+  properties:
+  - type: OpenAPI
+    url: openapi/benchmark-email-list-configurations-searches-api-openapi.yml
+  - type: Documentation
+    url: https://developer.benchmarkemail.com/
+  - type: GitHubRepository
+    url: https://github.com/BenchmarkEmail/RESTful-API-v3
+  - type: PostmanCollection
+    url: https://github.com/BenchmarkEmail/RESTful-API-v3/tree/master/Postman%20Collections
+- aid: benchmark-email:benchmark-email-list-reporting-or-metrics-api
+  name: Benchmark Email List Reporting or  Metrics API
+  description: List reporting and metrics
+  humanURL: https://developer.benchmarkemail.com/
+  baseURL: https://clientapi.benchmarkemail.com
+  tags:
+  - List Reporting or  Metrics
+  properties:
+  - type: OpenAPI
+    url: openapi/benchmark-email-list-reporting-or-metrics-api-openapi.yml
+  - type: Documentation
+    url: https://developer.benchmarkemail.com/
+  - type: GitHubRepository
+    url: https://github.com/BenchmarkEmail/RESTful-API-v3
+  - type: PostmanCollection
+    url: https://github.com/BenchmarkEmail/RESTful-API-v3/tree/master/Postman%20Collections
+- aid: benchmark-email:benchmark-email-partner-api
+  name: Benchmark Email Partner API
+  description: Partner commission and referral management
+  humanURL: https://developer.benchmarkemail.com/
+  baseURL: https://clientapi.benchmarkemail.com
+  tags:
+  - Partner
+  properties:
+  - type: OpenAPI
+    url: openapi/benchmark-email-partner-api-openapi.yml
+  - type: Documentation
+    url: https://developer.benchmarkemail.com/
+  - type: GitHubRepository
+    url: https://github.com/BenchmarkEmail/RESTful-API-v3
+  - type: PostmanCollection
+    url: https://github.com/BenchmarkEmail/RESTful-API-v3/tree/master/Postman%20Collections
+- aid: benchmark-email:benchmark-email-poll-creation-api
+  name: Benchmark Email Poll Creation API
+  description: Create and manage polls
+  humanURL: https://developer.benchmarkemail.com/
+  baseURL: https://clientapi.benchmarkemail.com
+  tags:
+  - Poll Creation
+  properties:
+  - type: OpenAPI
+    url: openapi/benchmark-email-poll-creation-api-openapi.yml
+  - type: Documentation
+    url: https://developer.benchmarkemail.com/
+  - type: GitHubRepository
+    url: https://github.com/BenchmarkEmail/RESTful-API-v3
+  - type: PostmanCollection
+    url: https://github.com/BenchmarkEmail/RESTful-API-v3/tree/master/Postman%20Collections
+- aid: benchmark-email:benchmark-email-reports-api
+  name: Benchmark Email Reports API
+  description: Campaign reporting and analytics
+  humanURL: https://developer.benchmarkemail.com/
+  baseURL: https://clientapi.benchmarkemail.com
+  tags:
+  - Reports
+  properties:
+  - type: OpenAPI
+    url: openapi/benchmark-email-reports-api-openapi.yml
+  - type: Documentation
+    url: https://developer.benchmarkemail.com/
+  - type: GitHubRepository
+    url: https://github.com/BenchmarkEmail/RESTful-API-v3
+  - type: PostmanCollection
+    url: https://github.com/BenchmarkEmail/RESTful-API-v3/tree/master/Postman%20Collections
+- aid: benchmark-email:benchmark-email-security-api
+  name: Benchmark Email Security API
+  description: Authentication and security operations
+  humanURL: https://developer.benchmarkemail.com/
+  baseURL: https://clientapi.benchmarkemail.com
+  tags:
+  - Security
+  properties:
+  - type: OpenAPI
+    url: openapi/benchmark-email-security-api-openapi.yml
+  - type: Documentation
+    url: https://developer.benchmarkemail.com/
+  - type: GitHubRepository
+    url: https://github.com/BenchmarkEmail/RESTful-API-v3
+  - type: PostmanCollection
+    url: https://github.com/BenchmarkEmail/RESTful-API-v3/tree/master/Postman%20Collections
+- aid: benchmark-email:benchmark-email-segments-api
+  name: Benchmark Email Segments API
+  description: Manage contact segments
+  humanURL: https://developer.benchmarkemail.com/
+  baseURL: https://clientapi.benchmarkemail.com
+  tags:
+  - Segments
+  properties:
+  - type: OpenAPI
+    url: openapi/benchmark-email-segments-api-openapi.yml
+  - type: Documentation
+    url: https://developer.benchmarkemail.com/
+  - type: GitHubRepository
+    url: https://github.com/BenchmarkEmail/RESTful-API-v3
+  - type: PostmanCollection
+    url: https://github.com/BenchmarkEmail/RESTful-API-v3/tree/master/Postman%20Collections
+- aid: benchmark-email:benchmark-email-signup-form-api
+  name: Benchmark Email Signup Form API
+  description: Manage signup forms
+  humanURL: https://developer.benchmarkemail.com/
+  baseURL: https://clientapi.benchmarkemail.com
+  tags:
+  - Signup Form
+  properties:
+  - type: OpenAPI
+    url: openapi/benchmark-email-signup-form-api-openapi.yml
+  - type: Documentation
+    url: https://developer.benchmarkemail.com/
+  - type: GitHubRepository
+    url: https://github.com/BenchmarkEmail/RESTful-API-v3
+  - type: PostmanCollection
+    url: https://github.com/BenchmarkEmail/RESTful-API-v3/tree/master/Postman%20Collections
+- aid: benchmark-email:benchmark-email-sub-account-api
+  name: Benchmark Email Sub-Account API
+  description: Manage sub-accounts and their settings
+  humanURL: https://developer.benchmarkemail.com/
+  baseURL: https://clientapi.benchmarkemail.com
+  tags:
+  - Sub-Account
+  properties:
+  - type: OpenAPI
+    url: openapi/benchmark-email-sub-account-api-openapi.yml
+  - type: Documentation
+    url: https://developer.benchmarkemail.com/
+  - type: GitHubRepository
+    url: https://github.com/BenchmarkEmail/RESTful-API-v3
+  - type: PostmanCollection
+    url: https://github.com/BenchmarkEmail/RESTful-API-v3/tree/master/Postman%20Collections
+- aid: benchmark-email:benchmark-email-survey-api
+  name: Benchmark Email Survey API
+  description: Survey
+  humanURL: https://developer.benchmarkemail.com/
+  baseURL: https://clientapi.benchmarkemail.com
+  tags:
+  - Survey
+  properties:
+  - type: OpenAPI
+    url: openapi/benchmark-email-survey-api-openapi.yml
+  - type: Documentation
+    url: https://developer.benchmarkemail.com/
+  - type: GitHubRepository
+    url: https://github.com/BenchmarkEmail/RESTful-API-v3
+  - type: PostmanCollection
+    url: https://github.com/BenchmarkEmail/RESTful-API-v3/tree/master/Postman%20Collections
+- aid: benchmark-email:benchmark-email-survey-creation-api
+  name: Benchmark Email Survey Creation API
+  description: Create and manage surveys
+  humanURL: https://developer.benchmarkemail.com/
+  baseURL: https://clientapi.benchmarkemail.com
+  tags:
+  - Survey Creation
+  properties:
+  - type: OpenAPI
+    url: openapi/benchmark-email-survey-creation-api-openapi.yml
+  - type: Documentation
+    url: https://developer.benchmarkemail.com/
+  - type: GitHubRepository
+    url: https://github.com/BenchmarkEmail/RESTful-API-v3
+  - type: PostmanCollection
+    url: https://github.com/BenchmarkEmail/RESTful-API-v3/tree/master/Postman%20Collections
+- aid: benchmark-email:benchmark-email-third-party-signup-forms-api
+  name: Benchmark Email Third Party Signup Forms API
+  description: Third-party signup form integrations
+  humanURL: https://developer.benchmarkemail.com/
+  baseURL: https://clientapi.benchmarkemail.com
+  tags:
+  - Third Party Signup Forms
+  properties:
+  - type: OpenAPI
+    url: openapi/benchmark-email-third-party-signup-forms-api-openapi.yml
+  - type: Documentation
+    url: https://developer.benchmarkemail.com/
+  - type: GitHubRepository
+    url: https://github.com/BenchmarkEmail/RESTful-API-v3
+  - type: PostmanCollection
+    url: https://github.com/BenchmarkEmail/RESTful-API-v3/tree/master/Postman%20Collections
+- aid: benchmark-email:benchmark-email-video-gallery-api
+  name: Benchmark Email Video Gallery API
+  description: Manage video gallery
+  humanURL: https://developer.benchmarkemail.com/
+  baseURL: https://clientapi.benchmarkemail.com
+  tags:
+  - Video Gallery
+  properties:
+  - type: OpenAPI
+    url: openapi/benchmark-email-video-gallery-api-openapi.yml
+  - type: Documentation
+    url: https://developer.benchmarkemail.com/
+  - type: GitHubRepository
+    url: https://github.com/BenchmarkEmail/RESTful-API-v3
+  - type: PostmanCollection
+    url: https://github.com/BenchmarkEmail/RESTful-API-v3/tree/master/Postman%20Collections
+- aid: benchmark-email:benchmark-email-webhooks-api
+  name: Benchmark Email Webhooks API
+  description: Manage webhooks for event notifications
+  humanURL: https://developer.benchmarkemail.com/
+  baseURL: https://clientapi.benchmarkemail.com
+  tags:
+  - Webhooks
+  properties:
+  - type: OpenAPI
+    url: openapi/benchmark-email-webhooks-api-openapi.yml
+  - type: Documentation
+    url: https://developer.benchmarkemail.com/
+  - type: GitHubRepository
+    url: https://github.com/BenchmarkEmail/RESTful-API-v3
+  - type: PostmanCollection
+    url: https://github.com/BenchmarkEmail/RESTful-API-v3/tree/master/Postman%20Collections
 common:
   - type: AgenticAccess
     url: agentic-access/benchmark-email-agentic-access.yml
