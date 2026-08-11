@@ -492,6 +492,8 @@ apis:
   - type: PostmanCollection
     url: https://github.com/BenchmarkEmail/RESTful-API-v3/tree/master/Postman%20Collections
 common:
+  - type: IssueTracker
+    url: https://github.com/BenchmarkEmail/RESTful-API-v3/issues
   - type: AgenticAccess
     url: agentic-access/benchmark-email-agentic-access.yml
   - type: DomainSecurity
