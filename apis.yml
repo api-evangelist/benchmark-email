@@ -1,6 +1,15 @@
 aid: benchmark-email
 name: Benchmark Email
-description: Benchmark Email is an email marketing platform with a REST API for managing contacts, lists, email campaigns, automations, reports, and transactional email delivery. The API supports contact synchronization, campaign management, reporting analytics, domain verification, and webhook notifications for real-time event handling.
+description: Benchmark Email is an email marketing platform for small businesses, run by
+  Benchmark Internet Group, with two live REST API generations. The current Benchmark Email
+  API on the benchmarkemail.io platform covers contacts, contact structures and custom fields,
+  lists, campaigns, templates, sending domains and reports across 40 operations, authenticated
+  with a scoped X-API-Key against a per-account regional base URL. The classic RESTful API
+  v3.0 on clientapi.benchmarkemail.com remains live and documented with 296 operations
+  covering automations, surveys, polls, sub-accounts, galleries and push webhooks. Benchmark
+  publishes an OpenAPI, two llms.txt files, an A2A Agent Card, an Agent Skill and a live
+  documentation MCP endpoint, but ships no maintained SDK, no sandbox, no changelog and no
+  deprecation policy.
 accessModel:
   pricing: freemium
   onboarding: self-serve
@@ -17,7 +26,7 @@ accessModel:
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/benchmark-email.png
 url: https://raw.githubusercontent.com/api-evangelist/benchmark-email/refs/heads/main/apis.yml
 created: '2026-06-13'
-modified: '2026-06-13'
+modified: '2026-08-13'
 specificationVersion: '0.19'
 tags:
   - Email Marketing
@@ -26,6 +35,14 @@ tags:
   - Automation
   - Transactional Email
   - Marketing
+  - Lists
+  - Segmentation
+  - Reporting
+  - Deliverability
+  - Sending Domains
+  - Email Templates
+  - Webhooks
+  - Agent Ready
 apis:
 - aid: benchmark-email:benchmark-email-abtest-creation-api
   name: Benchmark Email ABTest Creation API
@@ -491,6 +508,55 @@ apis:
     url: https://github.com/BenchmarkEmail/RESTful-API-v3
   - type: PostmanCollection
     url: https://github.com/BenchmarkEmail/RESTful-API-v3/tree/master/Postman%20Collections
+- aid: benchmark-email:benchmark-email-api
+  name: Benchmark Email API
+  description: The current Benchmark Email REST API on the benchmarkemail.io platform. Manages
+    contacts, contact structures and custom fields, lists, email campaigns, email templates,
+    sending domains and performance reports. Authenticated with a scoped X-API-Key and served
+    from a per-account regional base URL. Campaign scheduling and sending, and sending-domain
+    verification, are deliberately web-only.
+  humanURL: https://developers.benchmarkemail.io/
+  baseURL: https://api-{region}-{cluster}.benchmarkemail.io
+  tags:
+  - Contacts
+  - Lists
+  - Email Campaigns
+  - Email Templates
+  - Sending Domains
+  - Reports
+  properties:
+  - type: OpenAPI
+    url: openapi/benchmark-email-api-openapi.json
+  - type: Overlay
+    url: overlays/benchmark-email-api-overlay.yaml
+  - type: Documentation
+    url: https://developers.benchmarkemail.io/
+  - type: APIReference
+    url: https://developers.benchmarkemail.io/api-reference
+  - type: GettingStarted
+    url: https://developers.benchmarkemail.io/introduction
+  - type: Authentication
+    url: authentication/benchmark-email-authentication.yml
+  - type: OAuthScopes
+    url: scopes/benchmark-email-scopes.yml
+  - type: ErrorCatalog
+    url: errors/benchmark-email-problem-types.yml
+  - type: RateLimits
+    url: rate-limits/benchmark-email-rate-limits.yml
+  - type: Conventions
+    url: conventions/benchmark-email-conventions.yml
+  - type: DataModel
+    url: data-model/benchmark-email-data-model.yml
+  - type: MCPServer
+    url: mcp/benchmark-email-mcp.yml
+  - type: ToolCrosswalk
+    url: mcp/benchmark-email-tool-crosswalk.yml
+  - type: AgentCard
+    url: a2a/benchmark-email-a2a.yml
+  - type: LLMsTxt
+    url: llms/benchmark-email-llms.txt
+  - type: AgentSkill
+    url: skills/_index.yml
 common:
   - type: IssueTracker
     url: https://github.com/BenchmarkEmail/RESTful-API-v3/issues
@@ -522,6 +588,43 @@ common:
     url: rate-limits/benchmark-email-rate-limits.yml
   - type: FinOps
     url: finops/benchmark-email-finops.yml
+  - type: Packages
+    url: packages/benchmark-email-packages.yml
+  - type: SDKs
+    url: packages/benchmark-email-packages.yml
+  - type: WellKnown
+    url: well-known/benchmark-email-well-known.yml
+  - type: Lifecycle
+    url: lifecycle/benchmark-email-lifecycle.yml
+  - type: Conformance
+    url: conformance/benchmark-email-conformance.yml
+  - type: Compliance
+    url: conformance/benchmark-email-conformance.yml
+  - type: Webhooks
+    url: asyncapi/benchmark-email-events.yml
+  - type: DeveloperPortal
+    url: https://developers.benchmarkemail.io/
+  - type: APIReference
+    url: https://developers.benchmarkemail.io/api-reference
+  - type: GettingStarted
+    url: https://developers.benchmarkemail.io/introduction
+  - type: HelpCenter
+    url: https://benchmarkemail.helpscoutdocs.com/
+  - type: SignUp
+    url: https://app.benchmarkemail.io/register
+  - type: Login
+    url: https://ui.benchmarkemail.com/Integrate
+  - type: TermsOfService
+    url: https://www.benchmarkemail.com/terms-of-use/
+  - type: PrivacyPolicy
+    url: https://www.benchmarkemail.com/privacy-policy/
+  - type: Postman
+    url: https://developer.benchmarkemail.com/
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
+x-enrichment:
+  date: '2026-08-13'
+  status: enriched
+  artifacts_added: 26
+  pass: local-v1
