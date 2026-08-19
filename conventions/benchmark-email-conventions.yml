@@ -1,0 +1,213 @@
+generated: '2026-08-13'
+method: searched
+source: >-
+  https://developers.benchmarkemail.io/authentication.md,
+  https://developers.benchmarkemail.io/rate-limits.md,
+  https://developers.benchmarkemail.io/errors.md,
+  https://developers.benchmarkemail.io/introduction.md,
+  https://developers.benchmarkemail.io/.well-known/agent-skills/benchmarkinternetgroup/skill.md
+  and openapi/benchmark-email-api-openapi.json, read 2026-08-13
+name: Benchmark Email API Conventions
+description: >-
+  Cross-cutting runtime semantics for the Benchmark Email v1 REST API, read from the
+  provider's own reference pages and confirmed against the published OpenAPI. Where the
+  classic v3.0 API differs materially it is called out, because the two APIs disagree on
+  almost every convention including the auth header itself.
+applies_to:
+  primary: benchmark-email:benchmark-email-api
+  legacy: Benchmark Classic RESTful API v3.0 (clientapi.benchmarkemail.com)
+base_url:
+  style: per-account regional template
+  template: https://api-{region}-{cluster}.benchmarkemail.io
+  example: https://api-us-west-2-a.benchmarkemail.io
+  discovery: Settings > API Keys inside the Benchmark Email account
+  note: >-
+    There is no single public base URL. The OpenAPI's servers[] is the variable
+    {apiBaseUrl} with an EMPTY default, so a generated client will not compile without the
+    account owner pasting their base in first. The marketing page at
+    benchmarkemail.com/features/api/ shows a curl example against
+    https://api.benchmarkemail.io/v1 — that host does not resolve (NXDOMAIN as of
+    2026-08-13) and the path prefix is /api, not /v1. Trust the docs, not the marketing
+    example.
+authentication:
+  style: api-key
+  header: X-API-Key
+  key_format: 'bme_{region}_{43 chars}, 50 characters total'
+  regions_seen:
+  - us
+  - jp
+  - eu
+  scoped: true
+  expiry: optional per key, set at creation
+  rotation: regenerate from the API Keys page; invalidates the previous key
+  shown_once: true
+  creator_role_required: Owner
+  account_standing_required:
+  - open
+  - pending_cancel
+  legacy_difference: >-
+    The classic v3.0 API authenticates with an AuthToken header carrying an Admin API
+    Token, not X-API-Key, and has no scopes.
+  detail: authentication/benchmark-email-authentication.yml
+authorization:
+  model: scoped API key
+  scope_format: '{resource}:{access}'
+  write_implies_read: true
+  detail: scopes/benchmark-email-scopes.yml
+idempotency:
+  supported: false
+  header: null
+  note: >-
+    No idempotency key of any kind is published on either API. A retried POST
+    /api/contact will create a second contact. The documented dedup pattern is a
+    read-before-write — POST /api/contact/search filtered by KEY before creating — which
+    is racy under concurrency and is not the same guarantee.
+concurrency_control:
+  supported: true
+  style: optimistic locking via a document version field
+  field: __v
+  applies_to:
+  - PUT /api/contact/{contactId}
+  - PATCH /api/email/campaign/{campaignId}
+  workflow: >-
+    GET the resource to read its current __v, send it back on the write, and increment on
+    every successful update.
+  failure: 400 with errorType ConcurrencyError when __v is stale
+  note: >-
+    This is version-based conflict detection, NOT idempotency. It prevents a lost update;
+    it does not make a retry safe.
+pagination:
+  style: page-and-size query parameters
+  parameters:
+  - name: page
+    in: query
+    default: 1
+  - name: size
+    in: query
+    example: 25
+  applies_to:
+  - GET /api/email/campaign
+  - GET /api/contact-structure/{contactStructureId}/lists
+  - POST /api/contact/search
+  unpaginated_escape_hatches:
+  - GET /api/contact
+  - GET /api/contact-structure/{contactStructureId}/lists/all
+  note: >-
+    GET /api/contact returns every contact with no pagination and the provider's own Agent
+    Skill flags it as safe only for small databases; large accounts are told to use POST
+    /api/contact/search with pagination instead.
+sparse_fieldsets:
+  supported: true
+  style: required source array on search
+  parameter: source
+  applies_to:
+  - POST /api/contact/search
+  note: >-
+    Unusually, this is mandatory rather than optional — POST /api/contact/search fails if
+    the request omits a non-empty source array naming the fields to return.
+field_expansion:
+  supported: false
+metadata:
+  custom_fields: true
+  model: >-
+    Custom fields are not free-form key/value metadata. They are declared once on a
+    contact structure (GET /api/contact-structure) and then referenced BY FIELD ID on every
+    contact write, so a client must fetch the structure before it can create or update a
+    contact.
+request_tracing:
+  request_id_header: none published
+  note: >-
+    No X-Request-Id, correlation id or trace header is documented on either API. Error
+    bodies carry errorType and message only, so a support conversation about a failed call
+    has no server-side handle to reference.
+versioning:
+  scheme: >-
+    Product-generation versioning rather than URL or header versioning. The current API is
+    "v1" in name only — its paths are unversioned (/api/contact, not /v1/contact) and the
+    OpenAPI declares info.version 1.0.0. The prior generation is a separate product with
+    its own host, its own auth header and its own docs.
+  in_url: false
+  in_header: false
+  negotiation: none
+  detail: lifecycle/benchmark-email-lifecycle.yml
+error_envelope:
+  format: proprietary
+  rfc9457: false
+  content_type: application/json
+  shape: '{"errors": [{"errorType": "...", "message": "...", "field": "..."}]}'
+  array: true
+  typical_length: 1
+  fields:
+  - name: errorType
+    type: string
+    description: Error class name, e.g. ValidationError, ForbiddenError, ConcurrencyError.
+  - name: message
+    type: string
+    description: Human-readable description.
+  - name: field
+    type: string
+    required: false
+    description: Present on validation errors to identify the offending input.
+  detail: errors/benchmark-email-problem-types.yml
+rate_limit_signaling:
+  headers_on_success:
+  - X-RateLimit-Limit
+  - X-RateLimit-Remaining
+  - X-RateLimit-Reset
+  - X-Monthly-Limit
+  - X-Monthly-Remaining
+  headers_on_exhaustion:
+  - Retry-After
+  status_on_exhaustion: 429
+  draft_ietf_ratelimit_headers: false
+  note: >-
+    Uses the X- prefixed convention, not the IETF RateLimit-Limit/Remaining/Reset draft.
+    The reset value is an absolute Unix timestamp in seconds.
+  detail: rate-limits/benchmark-email-rate-limits.yml
+content_negotiation:
+  request: application/json
+  response: application/json
+  formats:
+  - json
+  note: The classic v3.0 API also accepts and returns JSON, over the AuthToken header.
+casing:
+  path_segments: kebab-case (contact-structure, grey-label)
+  json_fields: mixed — camelCase (contactStructureId, createdAt) alongside MongoDB-style _id and __v
+  enum_values: kebab-case for events (contact-created, email-opened)
+  gotcha: >-
+    Contact status values are Capitalized and case-sensitive — "Active" and "Inactive",
+    not "active". Setting Inactive requires both primary and secondary keys.
+identifiers:
+  style: 24-character hexadecimal MongoDB ObjectIds
+  example: 64a1b2c3d4e5f6a7b8c9d0e1
+  prefixed: false
+  note: >-
+    Ids are not type-prefixed, so a contact id and a list id are indistinguishable by
+    inspection. Only the API key itself is prefixed (bme_).
+capability_boundaries:
+  api_cannot:
+  - Schedule a campaign
+  - Send a campaign
+  - Cancel a sending campaign
+  - Test-send a campaign
+  - Verify a new sending domain
+  - Reactivate a contact that is Inactive
+  - Access billing, user management or admin endpoints via an API key
+  note: >-
+    These are deliberate product limits, published by the provider, not gaps in the spec.
+    Attempting an endpoint outside the API-key surface returns 403 with "This endpoint is
+    not accessible via API key". Reactivating an unsubscribed contact is blocked for
+    compliance reasons.
+cross_links:
+- type: Authentication
+  url: authentication/benchmark-email-authentication.yml
+- type: OAuthScopes
+  url: scopes/benchmark-email-scopes.yml
+- type: ErrorCatalog
+  url: errors/benchmark-email-problem-types.yml
+- type: RateLimits
+  url: rate-limits/benchmark-email-rate-limits.yml
+- type: Lifecycle
+  url: lifecycle/benchmark-email-lifecycle.yml
+- type: DataModel
+  url: data-model/benchmark-email-data-model.yml

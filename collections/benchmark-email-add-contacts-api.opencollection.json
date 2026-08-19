@@ -1,0 +1,226 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Benchmark Email RESTful API v3.0 ABTest Creation Add Contacts API",
+    "version": "3.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "AuthToken",
+      "value": "{{AuthToken}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Add Contacts",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "/Contact/{{ListID}}/ContactDetails  || Add Contact",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://clientapi.benchmarkemail.com/Contact/:ListID/ContactDetails",
+            "params": [
+              {
+                "name": "ListID",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "<h4>Add Contact</h4>\r\n<h4>URL Parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Required</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>{{ListID}}</td><td>required</td><td>string</td><td>ID of the list</td></tr>\r\n</tbody>\r\n</table>\r\n\r\n<h4>Body Parameters (To be passed as a JSON string)</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Required</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>Data</td><td>required</td><td><a href=\"http://www.benchm"
+        },
+        {
+          "info": {
+            "name": "Update Contact",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://clientapi.benchmarkemail.com/Contact/:ListID/ContactDetails/:ContactID",
+            "params": [
+              {
+                "name": "ListID",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "ContactID",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "<h4>Update Contact</h4>\r\n<h4>URL Parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Required</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody\r\n<tr><td>{{ListID}}</td><td>required</td><td>string</td><td>ID of the list</td></tr>\r\n<tr><td>{{ContactID}}</td><td>required</td><td>string</td><td>ID of the contact</td></tr>\r\n</tbody>\r\n</table>\r\n\r\n<h4>Body Parameters (To be passed as a JSON string)</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Required</th><th>Type</th><th>Description</"
+        },
+        {
+          "info": {
+            "name": "{{ListID}}/ContactDetails/CSV/Upload |Save email address which are not verified and uploaded",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://clientapi.benchmarkemail.com/Contact/:ListID/ContactDetails/CSV/Upload",
+            "params": [
+              {
+                "name": "ListID",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "<h4>Save email address which are not verified and uploaded</h4>\r\n\r\n<h4>URL parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Required</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>ListID</td><td>required</td><td>string</td><td>ID of the list</td></tr>\r\n</tbody>\r\n</table>\r\n\r\n<h4>Body Parameters (To be passed as a JSON string)</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Required</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>Data</td><td>re"
+        },
+        {
+          "info": {
+            "name": "/{{ListID}}/Mapping | Change mapping",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://clientapi.benchmarkemail.com/Contact/:ListID/Mapping",
+            "params": [
+              {
+                "name": "ListID",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "<h4>Changes file mapping</h4>\r\n<h4>URL Parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Required</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>{{ListID}}</td><td>required</td><td>string</td><td>ID of the list</td></tr>\r\n</tbody>\r\n</table>\r\n\r\n<h4>Body Parameters (to be encoded as a JSON string)</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Required</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>FileName</td><td>required</td><td>string</td><"
+        },
+        {
+          "info": {
+            "name": "/{{ListID}}/Compilation | Changing list compilation details",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://clientapi.benchmarkemail.com/Contact/:ListID/Compilation",
+            "params": [
+              {
+                "name": "ListID",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "<h4>Changes file upload compilation</h4>\r\n<h4>URL Parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Required</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>{{ListID}}</td><td>required</td><td>string</td><td>ID of the list</td></tr>\r\n</tbody>\r\n</table>\r\n\r\n<h4>Body Parameters (to be encoded as a JSON string)</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Required</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>Description</td><td>required</td><t"
+        },
+        {
+          "info": {
+            "name": "Get list mapping",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://clientapi.benchmarkemail.com/Contact/:ListID/Mapping/:FileName",
+            "params": [
+              {
+                "name": "ListID",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "FileName",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Gets the mapping of the uploaded list against its fields\r\n\r\n<h4>URL Parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th>\r\n<th>Required</th>\r\n<th>Description</th>\r\n</tr>\r\n</thead>\r\n<tbody>\r\n<tr>\r\n<td>{{ListID}}</td>\r\n<td>required</td>\r\n<td>ID of the list</td>\r\n</tr>\r\n<tr>\r\n<td>{{FileName}}</td>\r\n<td>required</td>\r\n<td>Name of the file</td>\r\n</tr>\r\n</tbody>\r\n</table>\r\n\r\n<h4>Response body parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th>\r\n<th>Type</th>\r\n<th>Description</th>\r\n</tr>\r\n</thead>\r\n<"
+        },
+        {
+          "info": {
+            "name": "Save email address",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://clientapi.benchmarkemail.com/Contact/:ListID/ContactDetails/CSV",
+            "params": [
+              {
+                "name": "ListID",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "<h4>Save email address </h4>\r\n<h4>URL Parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Required</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>{{ListID}}</td><td>required</td><td>string</td><td>ID of the list</td></tr>\r\n</tbody>\r\n</table>\r\n\r\n<h4>Body Parameters (To be passed as a JSON string)</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Required</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>EmailIDs</td><td>required</td><td>string</td><td"
+        },
+        {
+          "info": {
+            "name": "Save email address which verified",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://clientapi.benchmarkemail.com/Contact/:ListID/ContactDetails/CSV/Verified",
+            "params": [
+              {
+                "name": "ListID",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "<h4>Save email address which verified</h4>\r\n<h4>URL Parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Required</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>{{ListID}}</td><td>required</td><td>string</td><td>ID of the list</td></tr>\r\n</tbody>\r\n</table>\r\n\r\n<h4>Body Parameters (To be passed as a JSON string)</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Required</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>EmailIDs</td><td>required</td><td>"
+        },
+        {
+          "info": {
+            "name": "Save email address which is verified and uploaded",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://clientapi.benchmarkemail.com/Contact/:ID/ContactDetails/CSV/Upload/Verified",
+            "params": [
+              {
+                "name": "ID",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "multipart-form",
+              "data": []
+            }
+          },
+          "docs": "<h4>Save email address which is verified and uploaded</h4>\r\n\r\n<h4>URL parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Required</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>ListID</td><td>required</td><td>string</td><td>ID of the list</td></tr>\r\n</tbody>\r\n</table>\r\n\r\n<h4>Body Parameters (To be passed as a JSON string)</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Required</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>Data</td><td>require"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

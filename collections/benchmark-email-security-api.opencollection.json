@@ -1,0 +1,93 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Benchmark Email RESTful API v3.0 ABTest Creation Security API",
+    "version": "3.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "AuthToken",
+      "value": "{{AuthToken}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Security",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "/Client/Setting | Get Client Account Settings",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://clientapi.benchmarkemail.com/Client/Setting"
+          },
+          "docs": "<h4>Get Client Account Settings</h4>\n<b>Query String Parameters :</b> None <br>\n\n<b>Request Body Parameters:</b> None <br>\n\n<b>Response Body Parameters :</b>\n<table>\n  <thead>\n    <tr>\n      <th>Parameter</th>\n      <th>Type</th>\n      <th>Description</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td>Company</td>\n      <td><a href=\"http://www.benchmarkemail.com/models.htm#ClientSettingCompanyData\" >SettingCompanyData</a></td>\n      <td>Array of error</td>\n    </tr>\n    <tr>\n      <td>Footer"
+        },
+        {
+          "info": {
+            "name": "Change Security PIN ",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://clientapi.benchmarkemail.com/Client/PIN",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "<h4>Change Security PIN</h4>\n<b>Body Parameters (to be encoded as a JSON string)</b>\n<table>\n<thead>\n<tr>\n<th>Key</th>\n<th>Required</th>\n<th>Description</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td>ResetPIN</td>\n<td>Required</td>\n<td>New PIN</td>\n</tr>\n<tr>\n<td>ResetConfirmPIN</td>\n<td>Required</td>\n<td>Confirm New PIN</td>\n</tr>\n<tr>\n<td>ResetOldPIN</td>\n<td>Required</td>\n<td>Current PIN</td>\n</tr>\n</tbody>\n</table>\n<b>Response Body Parameters :</b>\n<table>\n  <thead>\n    <tr>\n      <th>Parameter</th>\n "
+        },
+        {
+          "info": {
+            "name": "Save Security PIN",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://clientapi.benchmarkemail.com/Client/PIN",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "<h4>Save Security PIN</h4>\n<b>Body Parameters (to be encoded as a JSON string)</b>\n<table>\n<thead>\n<tr>\n<th>Key</th>\n<th>Required</th>\n<th>Description</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td>NewPIN</td>\n<td>Required</td>\n<td>New PIN</td>\n</tr>\n<tr>\n<td>ConfirmNewPIN</td>\n<td>Required</td>\n<td>Confirm New PIN</td>\n</tr>\n</tbody>\n</table>\n<b>Response Body Parameters :</b>\n<table>\n  <thead>\n    <tr>\n      <th>Parameter</th>\n      <th>Type</th>\n      <th>Description</th>\n    </tr>\n  </thead>\n  <tbody>\n"
+        },
+        {
+          "info": {
+            "name": "Disable Security PIN",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://clientapi.benchmarkemail.com/Client/PIN/Disable",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "<h4>Disable Security PIN</h4>\n<b>Body Parameters (to be encoded as a JSON string)</b>\n<table>\n<thead>\n<tr>\n<th>Key</th>\n<th>Required</th>\n<th>Description</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td>DisableOldPIN</td>\n<td>Required</td>\n<td>Old PIN</td>\n</tr>\n</tbody>\n</table>\n<b>Response Body Parameters :</b>\n<table>\n  <thead>\n    <tr>\n      <th>Parameter</th>\n      <th>Type</th>\n      <th>Description</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td>retVal</td>\n      <td>string</td>\n      <td>retu"
+        },
+        {
+          "info": {
+            "name": "Send PIN via email incase you forgot",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://clientapi.benchmarkemail.com/Client/PIN/Email"
+          },
+          "docs": "<h4>Send PIN via email incase you forgot</h4>\n<b>Response Body Parameters :</b>\n<table>\n  <thead>\n    <tr>\n      <th>Parameter</th>\n      <th>Type</th>\n      <th>Description</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td>retVal</td>\n      <td>string</td>\n      <td>return Value</td>\n    </tr>\n    <tr>\n      <td>Error</td>\n      <td><a href=\"http://www.benchmarkemail.com/models.htm#ErrorData\" >ErrorData</a></td>\n      <td>Array of error</td>\n    </tr>\n    <tr>\n      <td>Status</td>\n      <"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

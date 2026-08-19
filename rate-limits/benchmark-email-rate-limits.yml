@@ -1,49 +1,163 @@
+generated: '2026-08-13'
+method: searched
+source: >-
+  https://developers.benchmarkemail.io/rate-limits (v1 API, read verbatim 2026-08-13) and
+  the Benchmark Classic RESTful API v3.0 collection description at
+  https://developer.benchmarkemail.com/ (collection 1505830/RVfsHZ2Y)
 name: Benchmark Email API Rate Limits
-description: Benchmark Email enforces both short-term and long-term rate limits on its REST API v3.0. Rate limit status is communicated through response headers on every API call. All plan tiers share the same published rate limits.
-url: https://developer.benchmarkemail.com/
+url: https://developers.benchmarkemail.io/rate-limits
+description: >-
+  Benchmark Email publishes exact rate limits for BOTH of its APIs, and they are completely
+  different numbers on completely different windows. The new v1 API runs an hourly limit
+  plus a plan-derived monthly quota, signalled with five response headers. The classic v3.0
+  API runs a 2-minute burst limit plus a daily cap. Neither uses the IETF RateLimit header
+  draft; both use X- prefixed headers, and both return 429 with Retry-After on exhaustion.
 created: '2026-06-13'
-modified: '2026-06-13'
-rateLimits:
-  - name: Per-Minute Rate Limit
-    description: Maximum number of API calls allowed within a 2-minute rolling window.
+modified: '2026-08-13'
+limit_count: 6
+apis:
+- api: benchmark-email:benchmark-email-api
+  name: Benchmark Email API v1
+  host: https://api-{region}-{cluster}.benchmarkemail.io
+  auth_header: X-API-Key
+  docs: https://developers.benchmarkemail.io/rate-limits
+  rateLimits:
+  - name: Hourly rate limit
+    description: >-
+      3,600 requests per hour, roughly one per second sustained. Shared across every API key
+      on the account, not per key.
+    limit: 3600
+    window: 1 hour
+    scope: account
+    burst: none published
+    headers:
+    - name: X-RateLimit-Limit
+      description: Maximum requests allowed per hour
+      example: '3600'
+    - name: X-RateLimit-Remaining
+      description: Requests remaining in the current hour
+      example: '3542'
+    - name: X-RateLimit-Reset
+      description: Unix timestamp in seconds when the hourly window resets
+      example: '1711828800'
+  - name: Monthly quota
+    description: >-
+      Plan-derived request quota that resets at the start of each billing period.
+    limit: contact limit x 10 (Free) / contact limit x 100 (paid)
+    limit_examples:
+    - plan: Free (500 contacts)
+      requests_per_month: 5000
+    - plan: Pro (1,000 contacts)
+      requests_per_month: 100000
+    - plan: Pro (100,000 contacts)
+      requests_per_month: 10000000
+    window: billing period
+    scope: account
+    headers:
+    - name: X-Monthly-Limit
+      description: Maximum requests allowed in the current billing period
+      example: '100000'
+    - name: X-Monthly-Remaining
+      description: Requests remaining in the current billing period
+      example: '98750'
+  - name: Failed-authentication IP block
+    description: >-
+      Anti-brute-force protection. An IP sending too many requests with invalid API keys is
+      temporarily blocked and receives 429 for all API-key requests during the block.
+    limit: not published
+    window: not published
+    scope: source IP address
+    headers:
+    - name: Retry-After
+      description: Seconds until the block expires
+  exhaustion:
+    status: 429
+    errorType: TooManyRequestsError
+    retry_after_header: true
+    messages:
+    - Rate limit exceeded. Retry after 45 seconds.
+    - Monthly API quota exceeded.
+    - Too many failed authentication attempts. Please try again later.
+    published_backoff: min(Retry-After * 2^attempt, 300)
+    backoff_cap_seconds: 300
+- api: Benchmark Classic RESTful API v3.0
+  name: Benchmark Classic RESTful API v3.0
+  host: https://clientapi.benchmarkemail.com
+  auth_header: AuthToken
+  docs: https://developer.benchmarkemail.com/
+  rateLimits:
+  - name: Short-window rate limit
+    description: >-
+      500 calls per 2 minutes, stated verbatim in the API's own collection description
+      ("Our APIs give you a limit of 500 calls per 2 minutes") and repeated in the OpenAPI
+      info.description.
     limit: 500
     window: 2 minutes
     scope: account
-    headers:
-      - X-RateLimit-Limit
-      - X-RateLimit-Remaining
-      - X-RateLimit-Reset
-  - name: Daily Rate Limit
-    description: Maximum total API calls allowed per calendar day across all endpoints.
+  - name: Daily rate limit
+    description: 60,000 calls total per day.
     limit: 60000
     window: 1 day
     scope: account
-    headers:
-      - X-RateLimit-Daily-Limit
-      - X-RateLimit-Daily-Remaining
-      - X-RateLimit-Daily-Reset
-  - name: Hourly Rate Limit
-    description: Intermediate hourly quota that applies in addition to per-minute and daily limits.
-    limit: variable
-    window: 1 hour
-    scope: account
-    notes: Exact hourly limit varies; monitor response headers for current values.
-  - name: Monthly Rate Limit
-    description: Long-term monthly quota that caps overall API usage per billing cycle.
-    limit: variable
-    window: 1 month
-    scope: account
-    notes: Exact monthly limit varies by plan tier and usage patterns; monitor response headers for current values.
+  exhaustion:
+    status: 429
+    note: >-
+      The classic documentation does not publish an error body, a header set or a
+      Retry-After contract for exhaustion. The OpenAPI declares only 200/400/401/404 on its
+      operations.
+  headers:
+    published: false
+    note: >-
+      No rate-limit response headers are documented for the classic API. A client has no
+      runtime signal and must count its own calls.
 authentication:
-  - type: API Key
-    header: AuthToken
-    description: Pass the Benchmark Email Admin API Token in the AuthToken request header. API keys are scoped per resource (contacts, campaigns, reports, domains) with No Access, Read, or Read & Write permission levels. Keys can have optional expiration dates and can be deactivated or reactivated without rotation.
-    keyManagement:
-      freeKeys: 2
-      proKeys: 10
-      enterpriseKeys: custom
+- api: Benchmark Email API v1
+  type: API Key
+  header: X-API-Key
+  key_format: bme_{region}_{43 chars}
+  scoped: true
+  scopes:
+  - contacts:read
+  - contacts:write
+  - campaigns:read
+  - campaigns:write
+  - reports:read
+  - domains:read
+  keyManagement:
+    freeKeys: 2
+    proKeys: 10
+    enterpriseKeys: custom
+    creator_role: Owner
+    expiry: optional per key
+    shown_once: true
+  detail: authentication/benchmark-email-authentication.yml
+- api: Benchmark Classic RESTful API v3.0
+  type: API Key
+  header: AuthToken
+  scoped: false
+  note: >-
+    An Admin API Token from https://ui.benchmarkemail.com/Integrate#API, all-or-nothing over
+    the account. The per-resource permission model (No Access / Read / Read & Write) belongs
+    to the v1 API key system, not to this token.
 enforcement:
-  - When the rate limit is exceeded, the API returns HTTP 429 Too Many Requests.
-  - All responses include rate-limit headers indicating remaining quota and reset time.
-  - Both hourly and monthly quotas apply concurrently with per-minute limits.
-  - Exceeding limits may incur additional costs on paid tiers; verify current policy in the live docs.
+- Both APIs return HTTP 429 on exhaustion.
+- >-
+  The v1 API returns five rate-limit headers on every successful key request; the classic
+  API returns none.
+- >-
+  On v1, the hourly and monthly limits apply concurrently and the hourly budget is shared
+  across every key on the account, so adding integrations does not add capacity.
+- >-
+  Exceeding limits does not incur overage charges. Raising the monthly quota means moving
+  to a plan with a higher contact limit, since the quota is a multiple of it.
+gaps:
+- >-
+  The two APIs publish incompatible limits (3,600/hour versus 500 per 2 minutes and
+  60,000/day) with no reconciliation, so a customer running both surfaces has two budgets to
+  reason about.
+- >-
+  X- prefixed headers rather than the IETF RateLimit-Limit/Remaining/Reset draft.
+- No published burst allowance or leaky-bucket behaviour on either API.
+- >-
+  The failed-authentication IP block has no published threshold or duration, so a client
+  cannot pre-empt it.

@@ -1,0 +1,131 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Benchmark Email RESTful API v3.0 ABTest Creation Inbox Checker API",
+    "version": "3.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "AuthToken",
+      "value": "{{AuthToken}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Inbox Checker",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get a Inbox List",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://clientapi.benchmarkemail.com/Inbox/",
+            "params": [
+              {
+                "name": "Filter",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "PageNumber",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "PageSize",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "Status",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "OrderBy",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "SortOrder",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "<h4>Get a Inbox List</h4>\r\n<b>Query String Parameters : </b>\r\n  <table>\r\n    <tr>\r\n      <th>Parameter</th>\r\n      <th>Required</th>\r\n      <th>Type</th>\r\n      <th>Description</th>\r\n    </tr>\r\n    <tr>\r\n      <td>Status</td>\r\n      <td>Optional</td>\r\n      <td>string</td>\r\n      <td>Completed (1) Or Not (0)</td>\r\n    </tr>\r\n    <tr>\r\n      <td>PageNumber</td>\r\n      <td>Required</td>\r\n      <td>string</td>\r\n      <td>Page Number</td>\r\n    </tr>\r\n    <tr>\r\n      <td>PageSize</td>\r\n      <td>Requ"
+        },
+        {
+          "info": {
+            "name": "Create a Inbox",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://clientapi.benchmarkemail.com/Inbox/",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "<h4>Create a Inbox</h4>\n<b> Request Body Parameters : </b>\n <table>\n    <tr>\n      <th>Parameter</th>\n      <th>Required</th>\n      <th>Type</th>\n      <th>Description</th>\n    </tr>\n    <tr>\n      <td>EmailID</td>\n      <td>Required</td>\n      <td>string</td>\n      <td>Email ID</td>\n    </tr>\n    <tr>\n      <td>TestID</td>\n      <td>Required</td>\n      <td>string</td>\n      <td>Test ID (ID of the Applications in which the test is required like 0,22)</td>\n    </tr>\n  </table>\n  <h4>Response Body"
+        },
+        {
+          "info": {
+            "name": "Get a Inbox Master Result",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://clientapi.benchmarkemail.com/Inbox/:ID",
+            "params": [
+              {
+                "name": "ID",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "<h4>Get a Inbox Master Result</h4>\r\n<b>Request Body Parameters : </b>\r\n<table>\r\n    <tr>\r\n      <th>Parameter</th>\r\n      <th>Required</th>\r\n      <th>Type</th>\r\n      <th>Description</th>\r\n    </tr>\r\n    <tr>\r\n      <td>ID</td>\r\n      <td>Required</td>\r\n      <td>string</td>\r\n      <td>Inbox ID</td>\r\n    </tr>\r\n  </table>\r\n  <h4>Response Body Parameters:</h4>\r\n  <table>\r\n    <tr>\r\n      <th>Parameter</th>\r\n      <th>Type</th>\r\n      <th>Description</th>\r\n    </tr>\r\n    <tr>\r\n      <td>Status</t"
+        },
+        {
+          "info": {
+            "name": " Delete a Inbox",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://clientapi.benchmarkemail.com/Inbox/:ID",
+            "params": [
+              {
+                "name": "ID",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "<h4>Delete a Inbox</h4>\r\n <b>Request Body Parameters: </b>\r\n  <table>\r\n    <tr>\r\n      <th>Parameter</th>\r\n      <th>Required</th>\r\n      <th>Type</th>\r\n      <th>Description</th>\r\n    </tr>\r\n    <tr>\r\n      <td>ID</td>\r\n      <td>Required</td>\r\n      <td>string</td>\r\n      <td>Inbox ID</td>\r\n    </tr>\r\n  </table>\r\n  <h4>Response Body Parameters:</h4>\r\n  <table>\r\n    <tr>\r\n      <th>Parameter</th>\r\n      <th>Type</th>\r\n      <th>Description</th>\r\n    </tr>\r\n    <tr>\r\n      <td>Status</td>\r\n     "
+        },
+        {
+          "info": {
+            "name": "Get a Inbox Detail Result",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://clientapi.benchmarkemail.com/Inbox/Tests"
+          },
+          "docs": "<h4>Get a Inbox Detail Tests</h4>\r\n\r\n<b> Request Body Parameters : </b> None <br>\r\n\r\n<b> Response body parameters : </b>\r\n <table>\r\n    <tr>\r\n      <th>Parameter</th>\r\n      <th>Type</th>\r\n      <th >Description</th>\r\n    </tr>\r\n    <tr>\r\n      <td>TotalPurchase</td>\r\n      <td>int</td>\r\n      <td>Total Purchase test</td>\r\n    </tr>\r\n    <tr>\r\n      <td>TotalTest</td>\r\n      <td>int</td>\r\n      <td>Total tests used</td>\r\n    </tr>\r\n    <tr>\r\n      <td>TotalBalance</td>\r\n      <td>int</td>\r\n     "
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

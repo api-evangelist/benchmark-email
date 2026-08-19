@@ -1,0 +1,171 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Benchmark Email RESTful API v3.0 ABTest Creation Survey Creation API",
+    "version": "3.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "AuthToken",
+      "value": "{{AuthToken}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Survey Creation",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get a Details of survey ",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://clientapi.benchmarkemail.com/Survey/:ID",
+            "params": [
+              {
+                "name": "ID",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "<h4>Get a Details of survey</h4>\n<b>Query string parameters : </b> None <br>\n<b>Request Body parameters :</b>\n<table>\n  <thead>\n    <th>Parameter</th>\n    <th>Required</th>\n    <th>Type</th>\n    <th>Description</th>\n  </thead>\n  <tbody>\n    <tr>\n      <td>ID</td>\n      <td>Required</td>\n      <td>string</td>\n      <td>Survey ID</td>\n    </tr>\n  </tbody>\n</table>\n\n<b>Response Body Parameters :</b>\n<table>\n  <thead>\n    <th>Parameter</th>\n    <th>Type</th>\n    <th>Description</th>\n  </thead>\n  <tb"
+        },
+        {
+          "info": {
+            "name": "Update Details of Survey",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://clientapi.benchmarkemail.com/Survey/:ID",
+            "params": [
+              {
+                "name": "ID",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "<h4>Update Details of Survey</h4>\n<b>Query string Parameters : </b> None <br>\n<b>Request Body Parameters : </b>\n<table>\n  <thead>\n    <tr>\n      <th>Parameter</th>\n      <th>Required</th>\n      <th>Type</th>\n      <th>Description</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td>ID</td>\n      <td>Required</td>\n      <td>string</td>\n      <td>Survey ID</td>\n    </tr>\n    <tr>\n      <td>Data</td>\n      <td>Required</td>\n      <td><a href=\"http://www.benchmarkemail.com/models.htm#SurveyData\" >"
+        },
+        {
+          "info": {
+            "name": "Get template list of survey",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://clientapi.benchmarkemail.com/Survey/TemplateList"
+          },
+          "docs": "<h4>Get template list of survey</h4>\n<b>Query string Parameters : </b> None <br>\n<b>Request Body Parameters : </b> None <br>\n<b>Response Body Parameters : </b>\n<table>\n  <thead>\n    <th>Parameter</th>\n    <th>Type</th>\n    <th>Description</th>\n  </thead>\n  <tbody>\n    <tr>\n      <td>Count</td>\n      <td>int</td>\n      <td>Total number</td>\n    </tr>\n    <tr>\n      <td>Status</td>\n      <td>string</td>\n      <td>1 if successful, -1 if error</td>\n    </tr>\n    <tr>\n      <td>Data</td>\n      <td><a"
+        },
+        {
+          "info": {
+            "name": "Update Question of a Survey",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://clientapi.benchmarkemail.com/Survey/:ID/Question/:QuestionID",
+            "params": [
+              {
+                "name": "ID",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "QuestionID",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "<h4>Update Question of a Survey</h4>\n<b>Query string parameters : </b> None <br>\n<b>Request Body Parameters : </b>\n<table>\n  <thead>\n    <tr>\n      <th>Parameter</th>\n      <th>Required</th>\n      <th>Type</th>\n      <th>Description</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td>ID</td>\n      <td>Required</td>\n      <td>string</td>\n      <td>Survey ID</td>\n    </tr>\n    <tr>\n      <td>QuestionID</td>\n      <td>Required</td>\n      <td>string</td>\n      <td>Question ID</td>\n    </tr>\n    <"
+        },
+        {
+          "info": {
+            "name": "Delete question of a survey",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://clientapi.benchmarkemail.com/Survey/:ID/Question/:QuestionID",
+            "params": [
+              {
+                "name": "ID",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "QuestionID",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "<h4>Delete question of a Survey</h4>\n<b>Query string parameters : </b> None <br>\n<b>Request Body Parameters : </b>\n<table>\n  <thead>\n    <tr>\n      <th>Parameter</th>\n      <th>Required</th>\n      <th>Type</th>\n      <th>Description</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td>ID</td>\n      <td>Required</td>\n      <td>string</td>\n      <td>Survey ID</td>\n    </tr>\n    <tr>\n      <td>QuestionID</td>\n      <td>Required</td>\n      <td>string</td>\n      <td>Question ID</td>\n    </tr>\n  </t"
+        },
+        {
+          "info": {
+            "name": "Sort Question of a survey",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://clientapi.benchmarkemail.com/Survey/:ID/QuestionSort",
+            "params": [
+              {
+                "name": "ID",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "<h4>Sort Question of a survey</h4>\n<b>Query string parameters : </b> None <br>\n<b>Request Body Parameters : </b>\n<table>\n  <thead>\n    <tr>\n      <th>Parameter</th>\n      <th>Required</th>\n      <th>Type</th>\n      <th>Description</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td>ID</td>\n      <td>Required</td>\n      <td>string</td>\n      <td>Survey ID</td>\n    </tr>\n    <tr>\n      <td>SortOrder</td>\n      <td>Required</td>\n      <td>string</td>\n      <td>Comma seperated question ids</td>\n "
+        },
+        {
+          "info": {
+            "name": "Add Question to Survey",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://clientapi.benchmarkemail.com/Survey/:ID/Question",
+            "params": [
+              {
+                "name": "ID",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "<h4>Add Question to Survey</h4>\n<b>Query string Parameters : </b> None <br>\n<b>Request Body Parameters : </b>\n<table>\n  <thead>\n    <tr>\n      <th>Parameter</th>\n      <th>Required</th>\n      <th>Type</th>\n      <th>Description</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td>ID</td>\n      <td>Required</td>\n      <td>string</td>\n      <td>Survey ID</td>\n    </tr>\n    <tr>\n      <td>QuestionData</td>\n      <td>Required</td>\n      <td><a href=\"http://www.benchmarkemail.com/models.htm#SurveyQ"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

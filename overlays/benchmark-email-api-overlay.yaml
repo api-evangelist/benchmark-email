@@ -1,0 +1,191 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for the Benchmark Email v1 API
+  version: 1.0.0
+x-provenance:
+  generated: '2026-08-13'
+  method: generated
+  source: >-
+    Enhancements derived from https://developers.benchmarkemail.io/introduction.md,
+    /authentication.md, /rate-limits.md, /errors.md and
+    /.well-known/agent-skills/benchmarkinternetgroup/skill.md, applied over the provider's
+    own openapi/benchmark-email-api-openapi.json without mutating it.
+  note: >-
+    Every value written by this overlay is published by Benchmark Email somewhere in its
+    documentation. The overlay's job is to move those facts INTO the contract, where a
+    generated client or an agent can actually read them. Nothing here is invented.
+extends: openapi/benchmark-email-api-openapi.json
+actions:
+- target: $.info
+  description: >-
+    Record contact, licence and terms, which the published spec omits entirely.
+  update:
+    contact:
+      name: Benchmark Email Developer Documentation
+      url: https://developers.benchmarkemail.io/
+    termsOfService: https://www.benchmarkemail.com/terms-of-use/
+- target: $.servers[0]
+  description: >-
+    The published server is the variable {apiBaseUrl} with an EMPTY default, so a generated
+    client will not compile until the account owner pastes their base URL in. The
+    documentation states the real shape — https://api-{region}-{cluster}.benchmarkemail.io,
+    for example https://api-us-west-2-a.benchmarkemail.io — so give the variable a usable
+    default and an enum-free description that names the pattern.
+  update:
+    variables:
+      apiBaseUrl:
+        default: https://api-us-west-2-a.benchmarkemail.io
+        description: >-
+          Your account's regional API base URL, of the form
+          https://api-{region}-{cluster}.benchmarkemail.io. Copy the exact value from
+          Settings > API Keys in your Benchmark Email account. The default shown is the
+          documentation's us-west-2-a example and will not work for accounts in another
+          region or cluster.
+- target: $
+  description: >-
+    Declare the account-wide rate limits and the response headers that signal them, so a
+    client can plan for them without reading the prose page.
+  update:
+    x-rate-limits:
+      hourly:
+        limit: 3600
+        window: 1 hour
+        scope: account (shared across all API keys)
+      monthly:
+        limit: contact limit x 10 (free plans) / x 100 (paid plans)
+        window: billing period
+        scope: account
+      response_headers:
+      - X-RateLimit-Limit
+      - X-RateLimit-Remaining
+      - X-RateLimit-Reset
+      - X-Monthly-Limit
+      - X-Monthly-Remaining
+      exhaustion:
+        status: 429
+        header: Retry-After
+        backoff: min(Retry-After * 2^attempt, 300)
+      source: https://developers.benchmarkemail.io/rate-limits
+- target: $
+  description: >-
+    Declare the error envelope. The spec declares 400/401/403/404/500 status codes with no
+    schema anywhere, so a client has no way to know errors arrive as an array.
+  update:
+    x-error-envelope:
+      format: proprietary
+      rfc9457: false
+      content_type: application/json
+      shape: '{"errors": [{"errorType": "...", "message": "...", "field": "..."}]}'
+      switch_on: errorType
+      known_types:
+      - ValidationError
+      - DuplicateFieldError
+      - ConcurrencyError
+      - UnauthorizedError
+      - ForbiddenError
+      - RecordNotFound
+      - TooManyRequestsError
+      catalog: errors/benchmark-email-problem-types.yml
+      source: https://developers.benchmarkemail.io/errors
+- target: $
+  description: >-
+    Declare the API-key scope model. The spec's single apiKeyAuth scheme carries no scopes
+    and no per-operation security, so the authorization model is invisible to any tool
+    reading the contract.
+  update:
+    x-api-key-scopes:
+      format: '{resource}:{access}'
+      header: X-API-Key
+      key_format: bme_{region}_{43 chars}
+      write_implies_read: true
+      scopes:
+        contacts:read: Read contacts, lists, structures, search and export
+        contacts:write: Create, update and delete contacts, lists and structures
+        campaigns:read: Read campaigns and browse templates
+        campaigns:write: Create, update, delete and duplicate campaigns
+        reports:read: Read dashboard and email performance reports
+        domains:read: Read sending domains
+      failure:
+        status: 403
+        errorType: ForbiddenError
+        message_names_required_scope: true
+      detail: scopes/benchmark-email-scopes.yml
+      source: https://developers.benchmarkemail.io/authentication
+- target: $
+  description: >-
+    Declare the concurrency model. __v is required on PUT and PATCH of versioned resources
+    and is nowhere in the contract, because no request body carries a schema.
+  update:
+    x-concurrency:
+      style: optimistic locking
+      field: __v
+      location: request body
+      applies_to:
+      - put_api_contact_by_contactId
+      - patch_api_email_campaign_by_campaignId
+      workflow: GET to read the current __v, send it back on the write, increment on success
+      failure:
+        status: 400
+        errorType: ConcurrencyError
+      idempotency: >-
+        This is conflict detection, NOT idempotency. Benchmark Email publishes no
+        Idempotency-Key header; a retried POST creates a duplicate.
+- target: $
+  description: >-
+    Record the capability boundary. Several obvious operations do not exist by design, and
+    an agent reading only the spec will keep looking for them.
+  update:
+    x-capability-boundaries:
+      not_available_via_api:
+      - Schedule a campaign
+      - Send a campaign
+      - Cancel a sending campaign
+      - Test-send a campaign
+      - Verify a new sending domain
+      - Reactivate an Inactive contact (compliance)
+      - Billing, user-management and admin endpoints
+      failure_mode:
+        status: 403
+        message: This endpoint is not accessible via API key
+      source: https://developers.benchmarkemail.io/introduction
+- target: $
+  description: Link the agent surfaces the provider actually serves.
+  update:
+    x-agent-surfaces:
+      llms_txt: https://developers.benchmarkemail.io/llms.txt
+      llms_full_txt: https://developers.benchmarkemail.io/llms-full.txt
+      agent_skill: https://developers.benchmarkemail.io/.well-known/agent-skills/benchmarkinternetgroup/skill.md
+      agent_card: https://developers.benchmarkemail.io/.well-known/agent-card.json
+      mcp_endpoint: https://developers.benchmarkemail.io/mcp
+      mcp_note: Documentation-search server; no tool calls this API.
+- target: $.paths['/api/contact-structure'].get
+  description: >-
+    Flag the required entry point. Field ids and the structure id are prerequisites for
+    every contact write, and nothing in the spec says so.
+  update:
+    x-entry-point: true
+    x-agent-note: >-
+      Call this FIRST. Contact creates and updates reference field definitions by _id from
+      this response, and lists are addressed beneath contactStructureId.
+- target: $.paths['/api/contact'].get
+  description: Warn that this operation is unpaginated.
+  update:
+    x-pagination: none
+    x-agent-note: >-
+      Returns every contact with no pagination. Benchmark Email's own Agent Skill limits
+      this to small databases; use POST /api/contact/search with page and size for large
+      accounts.
+- target: $.paths['/api/contact/search'].post
+  description: Record that the source array is mandatory, the API's most common 400.
+  update:
+    x-agent-note: >-
+      Requires a non-empty "source" array naming the fields to return, e.g.
+      ["_id","key","fields"]. Omitting it returns 400 ValidationError.
+- target: $.paths['/api/contact/{contactId}'].delete
+  description: Mark the destructive operation.
+  update:
+    x-destructive: true
+    x-reversible: false
+    x-agent-note: >-
+      Permanent and irreversible, and there is no sandbox to rehearse it in. Require human
+      confirmation before calling.

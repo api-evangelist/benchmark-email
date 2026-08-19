@@ -1,0 +1,100 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Benchmark Email RESTful API v3.0 ABTest Creation Third Party Signup Forms API",
+    "version": "3.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "AuthToken",
+      "value": "{{AuthToken}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Third Party Signup Forms",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get SignupForm  for Magento",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://clientapi.benchmarkemail.com/Client/Integrations/SignupForm/Magento",
+            "params": [
+              {
+                "name": "ID",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "<h4>Get SignupForm  for Magento</h4>\n<b>Query String Parameters : </b>\n<table>\n<thead>\n<tr>\n<th>Parameter</th>\n<th>Required</th>\n<th>Type</th>\n<th>Description</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td>ID</td>\n<td>Required</td>\n<td>int</td>\n<td>Listbuilder ID</td>\n</tr>\n</tbody>\n</table>\n<b>Response Body Parameters :</b>\n<table>\n  <thead>\n    <tr>\n      <th>Parameter</th>\n      <th>Type</th>\n      <th>Description</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td>Data</td>\n      <td>string</td>\n  "
+        },
+        {
+          "info": {
+            "name": "Get SignupForm Tumbler",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://clientapi.benchmarkemail.com/Client/Integrations/SignupForm/Tumbler",
+            "params": [
+              {
+                "name": "ID",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "Title",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "Subscribe",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "Email",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "Language",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "<h4>Get Third Party SignupForm Tumbler</h4>\n\n<b>Query String Parameters :  </b>\n<table>\n<thead>\n<tr>\n<th>Parameter</th>\n<th>Required</th>\n<th>Type</th>\n<th>Description</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td>ID</td>\n<td>Required</td>\n<td>int</td>\n<td>Listbuilder ID</td>\n</tr>\n<tr>\n<td>Title</td>\n<td>optional</td>\n<td>String</td>\n<td>Title Text</td>\n</tr>\n<tr>\n<td>Language</td>\n<td>optional</td>\n<td>string</td>\n<td>Language</td>\n</tr>\n<tr>\n<td>Subscribe</td>\n<td>optional</td>\n<td>string</td>\n<td>Sub"
+        },
+        {
+          "info": {
+            "name": "Get SignupForm For Unbounce",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://clientapi.benchmarkemail.com/Client/Integrations/SignupForm/Unbounce",
+            "params": [
+              {
+                "name": "ID",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "<h4>Get SignupForm For Unbounce</h4>\n<b>Query String Parameters : </b>\n<table>\n<thead>\n<tr>\n<th>Parameter</th>\n<th>Required</th>\n<th>Type</th>\n<th>Description</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td>ID</td>\n<td>Required</td>\n<td>int</td>\n<td>ContactMaster ID</td>\n</tr>\n</tbody>\n</table>\n<b>Response Body Parameters :</b>\n<table>\n  <thead>\n    <tr>\n      <th>Parameter</th>\n      <th>Type</th>\n      <th>Description</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td>Data</td>\n      <td>string</td>\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,1204 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Benchmark Email API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "X-API-Key",
+      "value": "{{X-API-Key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "contact",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get all contacts",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{apiBaseUrl}/api/contact",
+            "auth": {
+              "type": "apikey",
+              "key": "X-API-Key",
+              "value": "{{X-API-Key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get all contacts"
+        },
+        {
+          "info": {
+            "name": "Create a new contact",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{apiBaseUrl}/api/contact",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "X-API-Key",
+              "value": "{{X-API-Key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Create a new contact"
+        },
+        {
+          "info": {
+            "name": "Get account contact events",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{apiBaseUrl}/api/contact/events",
+            "params": [
+              {
+                "name": "types",
+                "value": "contact-created,contact-updated",
+                "type": "query",
+                "description": "Filter events by type"
+              },
+              {
+                "name": "pastDays",
+                "value": "30",
+                "type": "query",
+                "description": "Filter events from the last N days (1-90). Defaults to 30 when omitted"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "page number"
+              },
+              {
+                "name": "size",
+                "value": "",
+                "type": "query",
+                "description": "page size"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "X-API-Key",
+              "value": "{{X-API-Key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get all contact events for the account"
+        },
+        {
+          "info": {
+            "name": "Export contacts",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{apiBaseUrl}/api/contact/export",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "X-API-Key",
+              "value": "{{X-API-Key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Export contacts"
+        },
+        {
+          "info": {
+            "name": "Search for contacts",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{apiBaseUrl}/api/contact/search",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "X-API-Key",
+              "value": "{{X-API-Key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Search for contacts"
+        },
+        {
+          "info": {
+            "name": "Get a contact by id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{apiBaseUrl}/api/contact/:contactId",
+            "params": [
+              {
+                "name": "contactId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "X-API-Key",
+              "value": "{{X-API-Key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get a contact by id"
+        },
+        {
+          "info": {
+            "name": "Update a contact by id",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{apiBaseUrl}/api/contact/:contactId",
+            "params": [
+              {
+                "name": "contactId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "X-API-Key",
+              "value": "{{X-API-Key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Update a contact by id"
+        },
+        {
+          "info": {
+            "name": "Partial update a contact by id",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{apiBaseUrl}/api/contact/:contactId",
+            "params": [
+              {
+                "name": "contactId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "X-API-Key",
+              "value": "{{X-API-Key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Partial update a contact by id"
+        },
+        {
+          "info": {
+            "name": "Delete a contact by id",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{apiBaseUrl}/api/contact/:contactId",
+            "params": [
+              {
+                "name": "contactId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "X-API-Key",
+              "value": "{{X-API-Key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Delete a contact by id"
+        },
+        {
+          "info": {
+            "name": "Get contact events",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{apiBaseUrl}/api/contact/:contactId/events",
+            "params": [
+              {
+                "name": "contactId",
+                "value": "",
+                "type": "path",
+                "description": "The contact id"
+              },
+              {
+                "name": "types",
+                "value": "contact-created,contact-updated",
+                "type": "query",
+                "description": "Filter events by type"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "page number"
+              },
+              {
+                "name": "size",
+                "value": "",
+                "type": "query",
+                "description": "page size"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "X-API-Key",
+              "value": "{{X-API-Key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get events for a contact"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "contact-structure",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get all contact structures",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{apiBaseUrl}/api/contact-structure",
+            "auth": {
+              "type": "apikey",
+              "key": "X-API-Key",
+              "value": "{{X-API-Key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get all contact structures"
+        },
+        {
+          "info": {
+            "name": "Create a new contact structure",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{apiBaseUrl}/api/contact-structure",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "X-API-Key",
+              "value": "{{X-API-Key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Create a new contact structure"
+        },
+        {
+          "info": {
+            "name": "Get a contact structure by id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{apiBaseUrl}/api/contact-structure/:contactStructureId",
+            "params": [
+              {
+                "name": "contactStructureId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "X-API-Key",
+              "value": "{{X-API-Key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get a contact structure by id"
+        },
+        {
+          "info": {
+            "name": "Update a contact structure by id",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{apiBaseUrl}/api/contact-structure/:contactStructureId",
+            "params": [
+              {
+                "name": "contactStructureId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "X-API-Key",
+              "value": "{{X-API-Key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Update a contact structure by id"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "lists",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get paginated lists",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{apiBaseUrl}/api/contact-structure/:contactStructureId/lists",
+            "params": [
+              {
+                "name": "contactStructureId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "page number"
+              },
+              {
+                "name": "size",
+                "value": "",
+                "type": "query",
+                "description": "page size"
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "Sorting parameter with the format 'field:direction'. Supported fields: name, createdAt, updatedAt."
+              },
+              {
+                "name": "criteria",
+                "value": "",
+                "type": "query",
+                "description": "A string used to filter the search results. The maximum length is 50 characters."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "X-API-Key",
+              "value": "{{X-API-Key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get paginated lists"
+        },
+        {
+          "info": {
+            "name": "Create a new list",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{apiBaseUrl}/api/contact-structure/:contactStructureId/lists",
+            "params": [
+              {
+                "name": "contactStructureId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "X-API-Key",
+              "value": "{{X-API-Key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Create a new list"
+        },
+        {
+          "info": {
+            "name": "Delete multiple lists",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{apiBaseUrl}/api/contact-structure/:contactStructureId/lists",
+            "params": [
+              {
+                "name": "contactStructureId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "X-API-Key",
+              "value": "{{X-API-Key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Delete multiple lists"
+        },
+        {
+          "info": {
+            "name": "Get all lists",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{apiBaseUrl}/api/contact-structure/:contactStructureId/lists/all",
+            "params": [
+              {
+                "name": "contactStructureId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "X-API-Key",
+              "value": "{{X-API-Key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get all lists"
+        },
+        {
+          "info": {
+            "name": "Merge lists into a new list.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{apiBaseUrl}/api/contact-structure/:contactStructureId/lists/merge",
+            "params": [
+              {
+                "name": "contactStructureId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "X-API-Key",
+              "value": "{{X-API-Key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Merge lists into a new list."
+        },
+        {
+          "info": {
+            "name": "Get a list by id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{apiBaseUrl}/api/contact-structure/:contactStructureId/lists/:listId",
+            "params": [
+              {
+                "name": "contactStructureId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "listId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "X-API-Key",
+              "value": "{{X-API-Key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get a list by id"
+        },
+        {
+          "info": {
+            "name": "Update a list by id",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{apiBaseUrl}/api/contact-structure/:contactStructureId/lists/:listId",
+            "params": [
+              {
+                "name": "contactStructureId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "listId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "X-API-Key",
+              "value": "{{X-API-Key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Update a list by id"
+        },
+        {
+          "info": {
+            "name": "Delete a list by id",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{apiBaseUrl}/api/contact-structure/:contactStructureId/lists/:listId",
+            "params": [
+              {
+                "name": "contactStructureId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "listId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "X-API-Key",
+              "value": "{{X-API-Key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Delete a list by id"
+        },
+        {
+          "info": {
+            "name": "Duplicate a list",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{apiBaseUrl}/api/contact-structure/:contactStructureId/lists/:listId/duplicate",
+            "params": [
+              {
+                "name": "contactStructureId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "listId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "X-API-Key",
+              "value": "{{X-API-Key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Duplicate a list"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "email-campaign",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get all campaigns",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{apiBaseUrl}/api/email/campaign",
+            "params": [
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "page number"
+              },
+              {
+                "name": "size",
+                "value": "",
+                "type": "query",
+                "description": "page size"
+              },
+              {
+                "name": "statuses",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "Sorting parameter with the format 'field:direction'. Supported fields: name, createdAt, updatedAt, scheduledAt."
+              },
+              {
+                "name": "criteria",
+                "value": "",
+                "type": "query",
+                "description": "A string used to filter the search results. The maximum length is 50 characters."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "X-API-Key",
+              "value": "{{X-API-Key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get all campaigns"
+        },
+        {
+          "info": {
+            "name": "Add a campaign",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{apiBaseUrl}/api/email/campaign",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "X-API-Key",
+              "value": "{{X-API-Key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Add a campaign"
+        },
+        {
+          "info": {
+            "name": "Get campaign by id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{apiBaseUrl}/api/email/campaign/:campaignId",
+            "params": [
+              {
+                "name": "campaignId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "X-API-Key",
+              "value": "{{X-API-Key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get campaign by id"
+        },
+        {
+          "info": {
+            "name": "Update campaign by id",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{apiBaseUrl}/api/email/campaign/:campaignId",
+            "params": [
+              {
+                "name": "campaignId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "X-API-Key",
+              "value": "{{X-API-Key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Update campaign by id"
+        },
+        {
+          "info": {
+            "name": "Delete campaign by id",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{apiBaseUrl}/api/email/campaign/:campaignId",
+            "params": [
+              {
+                "name": "campaignId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "X-API-Key",
+              "value": "{{X-API-Key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Delete campaign by id"
+        },
+        {
+          "info": {
+            "name": "Duplicate an existing campaign",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{apiBaseUrl}/api/email/campaign/:campaignId/duplicate",
+            "params": [
+              {
+                "name": "campaignId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "X-API-Key",
+              "value": "{{X-API-Key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Duplicate an existing campaign"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "email-domain",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get all domains",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{apiBaseUrl}/api/email/domain",
+            "auth": {
+              "type": "apikey",
+              "key": "X-API-Key",
+              "value": "{{X-API-Key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get all domains"
+        },
+        {
+          "info": {
+            "name": "Get the grey label domain for the account",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{apiBaseUrl}/api/email/domain/grey-label",
+            "auth": {
+              "type": "apikey",
+              "key": "X-API-Key",
+              "value": "{{X-API-Key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get the grey label domain for the account"
+        },
+        {
+          "info": {
+            "name": "Get a domain by id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{apiBaseUrl}/api/email/domain/:domainId",
+            "params": [
+              {
+                "name": "domainId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "X-API-Key",
+              "value": "{{X-API-Key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get a domain by id"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "email-template",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get email templates",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{apiBaseUrl}/api/email/template",
+            "params": [
+              {
+                "name": "lang",
+                "value": "",
+                "type": "query",
+                "description": "Language code"
+              },
+              {
+                "name": "searchTerm",
+                "value": "",
+                "type": "query",
+                "description": "Search term to filter templates"
+              },
+              {
+                "name": "attributeIds",
+                "value": "6b1234567890123456789012",
+                "type": "query",
+                "description": "Template attribute IDs to filter by"
+              },
+              {
+                "name": "internal",
+                "value": "true",
+                "type": "query",
+                "description": "Flag to retrieve only internal templates (by default false)"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "X-API-Key",
+              "value": "{{X-API-Key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get email templates with optional filters"
+        },
+        {
+          "info": {
+            "name": "Get email template categories",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{apiBaseUrl}/api/email/template/categories",
+            "params": [
+              {
+                "name": "lang",
+                "value": "",
+                "type": "query",
+                "description": "Language code"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "X-API-Key",
+              "value": "{{X-API-Key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get all email template categories"
+        },
+        {
+          "info": {
+            "name": "Get email template by ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{apiBaseUrl}/api/email/template/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "lang",
+                "value": "",
+                "type": "query",
+                "description": "Language code"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "X-API-Key",
+              "value": "{{X-API-Key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get an email template by its ID"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "reports",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get dashboard snapshot reports",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{apiBaseUrl}/api/reports/dashboard",
+            "params": [
+              {
+                "name": "pastDays",
+                "value": "",
+                "type": "query",
+                "description": "The number of past days (between 1 and 90) to retrieve report stats and precedent stats."
+              },
+              {
+                "name": "timezone",
+                "value": "",
+                "type": "query",
+                "description": "The user timezone (IANA) code."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "X-API-Key",
+              "value": "{{X-API-Key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get dashboard snapshot reports"
+        },
+        {
+          "info": {
+            "name": "Get overall email reports",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{apiBaseUrl}/api/reports/email/overall",
+            "params": [
+              {
+                "name": "pastDays",
+                "value": "",
+                "type": "query",
+                "description": "The number of past days (between 1 and 90) to retrieve report stats and precedent stats."
+              },
+              {
+                "name": "timezone",
+                "value": "",
+                "type": "query",
+                "description": "The user timezone (IANA) code."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "X-API-Key",
+              "value": "{{X-API-Key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get overall email reports"
+        },
+        {
+          "info": {
+            "name": "Get overall email histogram by event type",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{apiBaseUrl}/api/reports/email/overall/histogram",
+            "params": [
+              {
+                "name": "pastDays",
+                "value": "",
+                "type": "query",
+                "description": "The number of past days (between 1 and 90) to retrieve the event type histogram."
+              },
+              {
+                "name": "eventType",
+                "value": "",
+                "type": "query",
+                "description": "The requested campaign event type to generate the histogram."
+              },
+              {
+                "name": "timezone",
+                "value": "",
+                "type": "query",
+                "description": "The user timezone (IANA) code."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "X-API-Key",
+              "value": "{{X-API-Key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get overall email histogram by event type"
+        },
+        {
+          "info": {
+            "name": "Get individual email campaign reports",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{apiBaseUrl}/api/reports/email/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "email campaign identifier"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "X-API-Key",
+              "value": "{{X-API-Key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get individual email campaign reports"
+        },
+        {
+          "info": {
+            "name": "Get individual email campaign engagement reports",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{apiBaseUrl}/api/reports/email/:id/engagement",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "email campaign identifier"
+              },
+              {
+                "name": "period",
+                "value": "",
+                "type": "query",
+                "description": "The engage period criteria to generate the histogram."
+              },
+              {
+                "name": "timezone",
+                "value": "",
+                "type": "query",
+                "description": "The user timezone (IANA) code."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "X-API-Key",
+              "value": "{{X-API-Key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get individual email campaign engagement reports"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,205 @@
+generated: '2026-08-13'
+method: searched
+source: >-
+  https://developers.benchmarkemail.io/errors.md and
+  https://developers.benchmarkemail.io/rate-limits.md (verbatim error bodies), enriched
+  from openapi/benchmark-email-api-openapi.json response codes and
+  https://developers.benchmarkemail.io/.well-known/agent-skills/benchmarkinternetgroup/skill.md,
+  read 2026-08-13
+name: Benchmark Email API Error Catalog
+description: >-
+  The Benchmark Email v1 API publishes a dedicated error reference with named error classes
+  and verbatim response bodies. The envelope is proprietary, not RFC 9457 — errors arrive
+  as a JSON array under an "errors" key with an errorType class name and a message. The
+  catalog below pairs every documented errorType with its status, the condition that
+  produces it, and whether a retry can help.
+format: proprietary
+rfc9457: false
+content_type: application/json
+envelope:
+  shape: '{"errors": [{"errorType": "...", "message": "...", "field": "..."}]}'
+  container: errors
+  container_type: array
+  typical_length: 1
+  fields:
+  - name: errorType
+    type: string
+    required: true
+    description: Error class name. This is the field to switch on, not the HTTP status alone.
+  - name: message
+    type: string
+    required: true
+    description: Human-readable description of what went wrong.
+  - name: field
+    type: string
+    required: false
+    description: Present on validation errors, naming the offending input field.
+  - name: fieldId
+    type: string
+    required: false
+    description: Present on some validation errors that reference a contact-structure field by id.
+status_codes:
+- status: 400
+  meaning: Bad Request
+  when: Invalid request body, missing required fields, validation failures, duplicate values.
+- status: 401
+  meaning: Unauthorized
+  when: Invalid, expired, inactive or deleted API key.
+- status: 403
+  meaning: Forbidden
+  when: Valid key missing a required scope, endpoint not exposed to API keys, or account not in good standing.
+- status: 404
+  meaning: Not Found
+  when: The requested resource does not exist.
+- status: 429
+  meaning: Too Many Requests
+  when: Hourly rate limit or monthly quota exceeded, or the caller IP is temporarily blocked.
+- status: 500
+  meaning: Internal Server Error
+  when: >-
+    Declared in the OpenAPI on the email-template operations (GET /api/email/template,
+    /categories, /{id}) but not described in the error reference.
+problem_types:
+- errorType: ValidationError
+  status: 400
+  title: Request body failed validation
+  example_message: contactStructureId is required
+  carries_field: true
+  retryable: false
+  remediation: >-
+    Fix the named field and resend. Contact writes require contactStructureId; POST
+    /api/contact/search requires a non-empty source array.
+  source: https://developers.benchmarkemail.io/errors.md
+- errorType: DuplicateFieldError
+  status: 400
+  title: Value conflicts with existing data
+  example_message: API key name is already in use
+  retryable: false
+  remediation: >-
+    Choose a different value. On campaign creation, set "allowDuplicates": true to permit a
+    duplicate campaign name.
+  source: https://developers.benchmarkemail.io/errors.md
+- errorType: ConcurrencyError
+  status: 400
+  title: Stale document version
+  example_message: Document version mismatch
+  retryable: true
+  retry_strategy: >-
+    Re-GET the resource to obtain the current __v, reapply the change, and resend. Do not
+    blind-retry the same body.
+  remediation: >-
+    PUT /api/contact/{contactId} and PATCH /api/email/campaign/{campaignId} require the
+    current __v value from a fresh read.
+  source: >-
+    https://developers.benchmarkemail.io/.well-known/agent-skills/benchmarkinternetgroup/skill.md
+- errorType: UnauthorizedError
+  status: 401
+  title: Invalid API key
+  example_message: Invalid API key
+  retryable: false
+  remediation: >-
+    Check the X-API-Key header. Deliberately generic — the same message is returned for a
+    malformed key, a nonexistent key, a deleted key and a deactivated key, so the caller
+    cannot enumerate which. Reactivate or regenerate from Settings > API Keys.
+  source: https://developers.benchmarkemail.io/errors.md
+- errorType: UnauthorizedError
+  status: 401
+  title: API key expired
+  example_message: API key expired
+  retryable: false
+  remediation: Create a new key or regenerate the expired one from the API Keys page.
+  source: https://developers.benchmarkemail.io/errors.md
+- errorType: ForbiddenError
+  status: 403
+  title: Missing required scope
+  example_message: 'API key missing required scope: contacts:write'
+  retryable: false
+  remediation: >-
+    The message names the scope needed. Edit the key's scopes or issue a new key. Never
+    retry — this will not resolve without a configuration change.
+  source: https://developers.benchmarkemail.io/errors.md
+- errorType: ForbiddenError
+  status: 403
+  title: Endpoint not accessible via API key
+  example_message: This endpoint is not accessible via API key
+  retryable: false
+  remediation: >-
+    Billing, user-management and admin endpoints are outside the API-key surface. Only
+    operations listed in the API reference are callable with a key.
+  source: https://developers.benchmarkemail.io/errors.md
+- errorType: ForbiddenError
+  status: 403
+  title: Account not in good standing
+  example_message: Account does not have API access
+  retryable: false
+  remediation: >-
+    Keys work only when account status is open or pending_cancel. Suspended, past-due and
+    terminated accounts lose API access until the account is restored.
+  source: https://developers.benchmarkemail.io/errors.md
+- errorType: RecordNotFound
+  status: 404
+  title: Resource not found
+  example_message: Contact not found
+  retryable: false
+  remediation: Verify the 24-character ObjectId; a deleted contact cannot be recovered.
+  source: https://developers.benchmarkemail.io/errors.md
+- errorType: TooManyRequestsError
+  status: 429
+  title: Hourly rate limit exceeded
+  example_message: Rate limit exceeded. Retry after 45 seconds.
+  retryable: true
+  retry_after_header: true
+  retry_strategy: >-
+    Honour Retry-After, then exponential backoff capped at 300 seconds:
+    min(Retry-After * 2^attempt, 300).
+  remediation: Spread requests to roughly one per second; 3,600/hour is shared across all keys on the account.
+  source: https://developers.benchmarkemail.io/rate-limits.md
+- errorType: TooManyRequestsError
+  status: 429
+  title: Monthly quota exceeded
+  example_message: Monthly API quota exceeded.
+  retryable: true
+  retry_after_header: true
+  retry_strategy: >-
+    Retry-After carries the seconds until the billing period resets — typically a day or
+    more. Do not hot-loop.
+  remediation: >-
+    Monitor X-Monthly-Remaining. Quota is contact limit x 10 on free plans and x 100 on
+    paid plans; raising it means changing plan.
+  source: https://developers.benchmarkemail.io/rate-limits.md
+- errorType: TooManyRequestsError
+  status: 429
+  title: IP temporarily blocked after failed authentication
+  example_message: Too many failed authentication attempts. Please try again later.
+  retryable: false
+  retry_after_header: true
+  remediation: >-
+    Anti-brute-force protection keyed on source IP. Stop and verify the key rather than
+    retrying — continued attempts extend the block. Applies to the IP, not the key.
+  source: https://developers.benchmarkemail.io/rate-limits.md
+legacy_api:
+  name: Benchmark Classic RESTful API v3.0
+  status_codes_declared:
+  - 200
+  - 400
+  - 401
+  - 404
+  envelope: not published
+  note: >-
+    The classic OpenAPI declares bare status codes with generic descriptions ("Bad
+    request", "Unauthorized") and no error schema, and the Postman documentation publishes
+    no error reference. Derived from openapi/_original — there is nothing richer to
+    enrich it with.
+gaps:
+- >-
+  Not RFC 9457. No application/problem+json, no type URI, no instance, so a generic
+  problem-details client will not parse these bodies.
+- >-
+  No documented error code registry beyond the class names — errorType strings are learned
+  from the reference page's examples, not from an enumerated list in the spec.
+- >-
+  No 500 handling guidance, even though the OpenAPI declares 500 on three email-template
+  operations.
+- >-
+  No request id in the envelope, so a failing call carries nothing a support engineer can
+  look up server-side.

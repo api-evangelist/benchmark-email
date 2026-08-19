@@ -1,0 +1,52 @@
+generated: '2026-08-13'
+method: probed
+source: >-
+  https://developers.benchmarkemail.io/ documentation set (llms.txt index, authentication,
+  rate-limits, errors, all seven scenario guides) and
+  https://www.benchmarkemail.com/features/api/, read 2026-08-13
+name: Benchmark Email Sandbox
+description: >-
+  Benchmark Email publishes NO sandbox, test mode or test-key environment for either API.
+  Recorded as an explicit absence with the evidence, rather than omitted.
+published: false
+test_mode: false
+test_key_prefix: null
+live_key_prefix: bme_
+key_note: >-
+  API keys carry a region code (bme_us_, bme_jp_, bme_eu_) but no environment segment.
+  There is no test-vs-live distinction encoded in the key, which is the usual tell that no
+  test mode exists.
+test_data: []
+test_clocks: false
+fixtures: false
+evidence:
+- url: https://developers.benchmarkemail.io/llms.txt
+  status: 200
+  finding: >-
+    The complete documentation index contains no sandbox, test-mode, staging or
+    test-environment page.
+- url: https://developers.benchmarkemail.io/authentication.md
+  status: 200
+  finding: >-
+    Documents one key format and one key lifecycle. Every documented key authenticates
+    against live account data.
+- url: https://www.benchmarkemail.com/features/api/
+  status: 200
+  finding: >-
+    The "Specs at a glance" list names JSON over HTTP, scoped API keys, rate limits and the
+    OpenAPI. No sandbox is offered.
+mitigations_available_to_developers:
+- >-
+  The Free plan (500 contacts, 2,500 sends/month, two API keys) is the de facto test
+  environment — a developer can open a second free account and point a test key at it.
+- >-
+  Campaign SENDING is UI-only, so a mistaken API call cannot email real recipients. Writes
+  are destructive to contact data but not to a customer's inbox, which materially lowers
+  the blast radius of testing against live.
+risks:
+- >-
+  DELETE /api/contact/{contactId} is documented as permanent and cannot be undone. With no
+  sandbox, that operation can only be exercised against real data.
+- >-
+  Rate-limit and quota behaviour (3,600/hour, monthly quota) can only be tested by
+  consuming the live account's real budget.

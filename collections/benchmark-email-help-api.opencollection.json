@@ -1,0 +1,80 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Benchmark Email RESTful API v3.0 ABTest Creation Help API",
+    "version": "3.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "AuthToken",
+      "value": "{{AuthToken}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Help",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get List of Help Topic",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://clientapi.benchmarkemail.com/Help/",
+            "params": [
+              {
+                "name": "Filter[URL]",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "PageNumber",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "PageSize",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "<h4>Get List of Help Topic</h4>\n<b>Query string parameters :</b> \n<table>\n  <thead>\n    <tr>\n      <th>Parameter</th>\n      <th>Required</th>\n      <th>Type</th>\n      <th>Description</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td>Filter[URL]</td>\n      <td>Required</td>\n      <td>String</td>\n      <td>URL</td>\n    </tr>\n    <tr>\n      <td>PageNumber</td>\n      <td>Required</td>\n      <td>String</td>\n      <td>Page Number</td>\n    </tr>\n    <tr>\n      <td>PageSize</td>\n      <td>Required"
+        },
+        {
+          "info": {
+            "name": " Email Support/feedback to support",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://clientapi.benchmarkemail.com/Help/",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "<h4> Email Support/feedback to support</h4>\n\n<h4>Body Parameters (to be encoded as a JSON string)</h4>\n<table>\n  <tr>\n    <th>Parameter</th>\n    <th>Required</th>\n    <th>Type</th>\n    <th>Description</th>\n  </tr>\n  <tr>\n    <td>Subject</td>\n    <td>Required</td>\n    <td>string</td>\n    <td>Subject</td>\n  </tr>\n  <tr>\n    <td>Message</td>\n    <td>Required</td>\n    <td>string</td>\n    <td>Your Message</td>\n  </tr>\n  <tr>\n    <td>Name</td>\n    <td>Required</td>\n    <td>string</td>\n    <td>Name of "
+        },
+        {
+          "info": {
+            "name": "Generate Ticket",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://clientapi.benchmarkemail.com/Help/Ticket"
+          },
+          "docs": "<h4>Generate Ticket</h4>\n\n<b>Body Parameters (to be encoded as a JSON string)</b>\n<table>\n  <tr>\n    <th>Parameter</th>\n    <th>Required</th>\n    <th>Type</th>\n    <th>Description</th>\n  </tr>\n  <tr>\n    <td>Name</td>\n    <td>Required</td>\n    <td>string</td>\n    <td>Name of a poll to be created</td>\n  </tr>\n</table>\n\n<h4>Response body parameters</h4>\n<table>\n<thead>\n<tr>\n<th>Key</th><th>Type</th><th>Description</th></tr>\n</thead>\n<tbody>\n<tr><td>Error</td><td><a href=\"http://www.benchmarkemail."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

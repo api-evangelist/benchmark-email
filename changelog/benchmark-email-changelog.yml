@@ -1,0 +1,51 @@
+generated: '2026-08-13'
+method: probed
+source: >-
+  https://developers.benchmarkemail.io/llms.txt (full documentation index) plus direct
+  probes of the conventional changelog paths on the developer docs host, 2026-08-13
+name: Benchmark Email API Changelog
+description: >-
+  Benchmark Email publishes NO API changelog. This file records the absence with the
+  probes that establish it, because the absence is the finding: a provider mid-way through
+  a generation change from a classic v3.0 API to a new v1 API gives integrators no dated
+  record of what changed or when.
+published: false
+scheme: null
+current_version: '1.0.0'
+current_version_source: openapi/benchmark-email-api-openapi.json info.version
+entries: []
+entry_count: 0
+probes:
+- url: https://developers.benchmarkemail.io/changelog
+  status: 404
+- url: https://developers.benchmarkemail.io/changelog.md
+  status: 404
+- url: https://developers.benchmarkemail.io/updates
+  status: 404
+- url: https://developers.benchmarkemail.io/llms.txt
+  status: 200
+  finding: >-
+    The provider's own machine-readable documentation index lists eleven guides, forty
+    api-reference pages and the OpenAPI. There is no changelog, release-notes or
+    what's-new entry in it.
+adjacent_dated_surfaces:
+- name: Status page
+  url: https://www.benchmarkemail.com/status/
+  status: 200
+  note: >-
+    Dated operational notes for Benchmark and Benchmark Classic. Incident-shaped, not
+    change-shaped — it records outages, not API changes.
+- name: Marketing blog
+  url: https://www.benchmarkemail.com/blog/
+  status: 200
+  note: Email-marketing content for practitioners. No API release notes.
+- name: RESTful-API-v3 repository
+  url: https://github.com/BenchmarkEmail/RESTful-API-v3
+  note: >-
+    Carries use-case guides for the classic API. Last push 2019-07-29 and no release tags,
+    so its commit history is not usable as a changelog either.
+gap: >-
+  With no changelog and no versioning policy, the only way to detect a change in the v1 API
+  is to diff https://developers.benchmarkemail.io/openapi.json yourself. Publishing dated
+  release notes alongside the spec would cost little and is the standard practice for a
+  docs platform that already renders one.

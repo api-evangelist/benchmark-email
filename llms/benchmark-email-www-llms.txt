@@ -1,0 +1,93 @@
+# Benchmark Email
+
+&gt; Powerfully simple email marketing software for small businesses. Build, send, and track email campaigns — send your first campaign free in under 15 minutes.
+
+Benchmark Email helps small businesses and marketers grow with easy drag-and-drop email design, list building and segmentation, automation, and reporting. This file points AI agents to our most important pages first, followed by supporting resources.
+
+## Core Product
+
+- [Homepage](https://www.benchmarkemail.com/): Overview of Benchmark Email and free signup.
+- [Pricing](https://www.benchmarkemail.com/pricing/): Plan tiers, free plan details, and feature comparison.
+- [Features](https://www.benchmarkemail.com/features/): Full list of email marketing features and tools.
+- [Email Marketing](https://www.benchmarkemail.com/email-marketing/): A guide to email marketing for busy marketers.
+- [Email Builder](https://www.benchmarkemail.com/features/email-builder/): Drag-and-drop editor for designing emails without code.
+- [Signup Forms](https://www.benchmarkemail.com/features/forms/): Build embedded and pop-up forms to grow your list.
+- [Contact Management](https://www.benchmarkemail.com/features/contact-management/): Organize, segment, and manage subscriber lists.
+- [Reporting &amp; Analytics](https://www.benchmarkemail.com/features/reporting/): Track opens, clicks, and campaign performance.
+- [API](https://www.benchmarkemail.com/features/api/): Connect Benchmark Email to your own apps and data.
+- [Integrations](https://www.benchmarkemail.com/integrations/): Connect Benchmark with 8,000+ third-party tools through Zapier.
+- [Data Regions](https://www.benchmarkemail.com/data-regions/): Where your data is stored and regional hosting options.
+- [About Benchmark Email](https://www.benchmarkemail.com/about-us/): Company background, mission, and team.
+- [Contact Sales](https://www.benchmarkemail.com/talk-to-sales/): Talk to the sales team about plans and pricing.
+
+## Product Documentation
+
+- [Documentation](https://benchmarkemail.helpscoutdocs.com/): Help articles and how-to guides for using the product.
+- [API Documentation](https://www.benchmarkemail.com/features/api/): Reference for developers building on the Benchmark API.
+
+## Industry Solutions
+
+- [Nonprofits](https://www.benchmarkemail.com/benchmark-email-nonprofits/): Email marketing tailored for nonprofit organizations.
+- [Manufacturing](https://www.benchmarkemail.com/manufacturing/): Email marketing solutions for manufacturers.
+- [Hospitality](https://www.benchmarkemail.com/hospitality/): Email marketing for hotels, restaurants, and travel.
+- [Financial Services](https://www.benchmarkemail.com/financial-services/): Email marketing for banks, insurers, and advisors.
+- [Retail](https://www.benchmarkemail.com/retail/): Email marketing for retail and ecommerce brands.
+
+## AI &amp; Email Marketing Resources
+
+- [AI Email Marketing](https://www.benchmarkemail.com/blog/ai-email-marketing/): How AI is used to improve email marketing campaigns.
+- [AI Email Summaries](https://www.benchmarkemail.com/blog/ai-email-summaries-marketing/): Using AI-generated summaries in your marketing emails.
+- [AI Prompts for Marketers](https://www.benchmarkemail.com/blog/ai-prompts-every-marketer-should-know/): Practical AI prompts every marketer should know.
+- [Email Deliverability](https://www.benchmarkemail.com/blog/email-deliverability-101/): Fundamentals of getting emails into the inbox.
+- [Email Segmentation](https://www.benchmarkemail.com/blog/email-marketing-segmentation-4-ways-to-divide-your-list/): Four ways to divide your list for better targeting.
+- [Email Personalization](https://www.benchmarkemail.com/blog/personalization/): Techniques for personalizing email content.
+- [Email Analytics](https://www.benchmarkemail.com/blog/email-marketing-analytics-dashboard/): Building and reading an email analytics dashboard.
+- [Email Design](https://www.benchmarkemail.com/blog/email-design-best-practices/): Best practices for designing effective emails.
+- [Email Marketing Trends](https://www.benchmarkemail.com/blog/email-marketing-trends-and-tools/): Current trends and tools in email marketing.
+- [Blog](https://www.benchmarkemail.com/blog/): Full library of email marketing articles and guides.
+
+## Supported Languages
+
+- English
+- Spanish
+- French
+- German
+- Italian
+- Japanese
+- Traditional Chinese
+- Simplified Chinese
+- Portuguese (Brazil)
+
+## Product Categories
+
+- Email Marketing
+- Marketing Automation
+- Email Templates
+- Signup Forms
+- Landing Pages
+- Contact Management
+- Audience Segmentation
+- Email Personalization
+- Transactional Integrations
+- Analytics &amp; Reporting
+- API
+- AI Writing
+- AI Email Optimization
+
+## Intended Audience
+
+- Small Businesses
+- Marketing Teams
+- Agencies
+- Ecommerce
+- SaaS
+- Nonprofits
+- Educational Institutions
+- Hospitality
+- Manufacturing
+- Financial Services
+
+## Get Started
+
+- [Benchmark Email](https://www.benchmarkemail.com/): Home page and free signup.
+- [Create a free account](https://app.benchmarkemail.io/register): Start sending free in under 15 minutes.

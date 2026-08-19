@@ -1,0 +1,137 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Benchmark Email RESTful API v3.0 ABTest Creation Video Gallery API",
+    "version": "3.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "AuthToken",
+      "value": "{{AuthToken}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Video Gallery",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get a list of videos",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://clientapi.benchmarkemail.com/Video",
+            "params": [
+              {
+                "name": "Filter",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "PageNumber",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "PageSize",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "OrderBy",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "SortOrder",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "<h4>Get a list of videos</h4>\n<b>Query string parameters : </b>\n  <table border=\"0\" cellspacing=\"0\" cellpadding=\"0\">\n    <tr>\n      <th class=\"w_para\">Parameter</th>\n      <th class=\"w_required\">Required</th>\n      <th class=\"w_type\">Type</th>\n      <th class=\"w_desc\">Description</th>\n    </tr>\n    <tr>\n      <td>Filter</td>\n      <td>Optional</td>\n      <td>int</td>\n      <td>Filter</td>\n    </tr>\n    <tr>\n      <td>PageNumber</td>\n      <td>Required</td>\n      <td>int</td>\n      <td>Page Numbe"
+        },
+        {
+          "info": {
+            "name": "Uploading videos",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://clientapi.benchmarkemail.com/Video",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "<h4>Uploading videos</h4>\n<b>Query string parameters : </b> None <br />\n<b>Request Body parameters : </b>\n  <table border=\"0\" cellspacing=\"0\" cellpadding=\"0\">\n    <tr>\n      <th class=\"w_para\">Parameter</th>\n      <th class=\"w_required\">Required</th>\n      <th class=\"w_type\">Type</th>\n      <th class=\"w_desc\">Description</th>\n    </tr>\n    <tr>\n      <td>VideoUrl</td>\n      <td>Required</td>\n      <td>string</td>\n      <td>URL of a video</td>\n    </tr>\n  </table>\n  <b>Response body parameters : "
+        },
+        {
+          "info": {
+            "name": "Getting video details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://clientapi.benchmarkemail.com/Video/:VideoID",
+            "params": [
+              {
+                "name": "VideoID",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "<h4>Getting video details</h4>\n<b>Query string parameters : </b> None <br />\n<b>Request Body parameters : </b>\n<table border=\"0\" cellspacing=\"0\" cellpadding=\"0\">\n<tr>\n  <th class=\"w_para\">Parameter</th>\n  <th class=\"w_required\">Required</th>\n  <th class=\"w_type\">Type</th>\n  <th class=\"w_desc\">Description</th>\n</tr>\n<tr>\n  <td>VideoID</td>\n  <td>Required</td>\n  <td>string</td>\n  <td>ID of the video</td>\n</tr>\n</table>\n<b>Response Body parameters : </b>\n<table border=\"0\" cellspacing=\"0\" cellpaddin"
+        },
+        {
+          "info": {
+            "name": "Deleting videos",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://clientapi.benchmarkemail.com/Video/:VideoID",
+            "params": [
+              {
+                "name": "VideoID",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "<h4>Deleting videos</h4>\n<b>Query string parameters : </b> None <br />\n<b>Request Body parameters : </b>\n<table border=\"0\" cellspacing=\"0\" cellpadding=\"0\">\n<tr>\n  <th class=\"w_para\">Parameter</th>\n  <th class=\"w_required\">Required</th>\n  <th class=\"w_type\">Type</th>\n  <th class=\"w_desc\">Description</th>\n</tr>\n<tr>\n  <td>VideoID</td>\n  <td>Required</td>\n  <td>string</td>\n  <td>ID of the video (can be comma seperated multiple too)</td>\n</tr>\n</table>\n<b>Response Body parameters : </b>\n<table borde"
+        },
+        {
+          "info": {
+            "name": "Sharing video",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://clientapi.benchmarkemail.com/Video/:VideoID/Copy",
+            "params": [
+              {
+                "name": "VideoID",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "<h4>Sharing video</h4>\n<b>Query string parameters : </b> \n<table border=\"0\" cellspacing=\"0\" cellpadding=\"0\">\n<tr>\n  <th class=\"w_para\">Parameter</th>\n  <th class=\"w_required\">Required</th>\n  <th class=\"w_type\">Type</th>\n  <th class=\"w_desc\">Description</th>\n</tr>\n<tr>\n  <td>VideoID</td>\n  <td>Required</td>\n  <td>string</td>\n  <td>ID of the video</td>\n</tr>\n</table>\n<b>Request Body parameters : </b>\n<table border=\"0\" cellspacing=\"0\" cellpadding=\"0\">\n<tr>\n  <th class=\"w_para\">Parameter</th>\n  <th "
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,214 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Benchmark Email RESTful API v3.0 ABTest Creation Engagement API",
+    "version": "3.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "AuthToken",
+      "value": "{{AuthToken}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Engagement",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get a Campaign List of Engagement",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://clientapi.benchmarkemail.com/Engagement/CampaignList",
+            "params": [
+              {
+                "name": "PageNumber",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "PageSize",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "OrderBy",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "Filter",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "SortOrder",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "<h4>Get a Campaign List of Engagement</h4>\n<b>Query string parameters :</b>\n<table>\n  <thead>\n    <tr>\n      <th>Parameter</th>\n      <th>Required</th>\n      <th>Type</th>\n      <th>Description</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td>PageNumber</td>\n      <td>Optional</td>\n      <td>string</td>\n      <td>Page Number</td>\n    </tr>\n    <tr>\n      <td>PageSize</td>\n      <td>Optional</td>\n      <td>string</td>\n      <td>Number of rows on the page</td>\n    </tr>\n    <tr>\n      <td>Or"
+        },
+        {
+          "info": {
+            "name": "Get a URLList of Engagement",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://clientapi.benchmarkemail.com/Engagement/URLList",
+            "params": [
+              {
+                "name": "Filter",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "EmailIDs",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "PageNumber",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "PageSize",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "OrderBy",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "SortOrder",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "<h4>Get a URLList of Engagement</h4>\n<b>Query string parameters :</b>\n<table>\n  <thead>\n    <tr>\n      <th>Parameter</th>\n      <th>Required</th>\n      <th>Type</th>\n      <th>Description</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td>EmailIDs</td>\n      <td>Required</td>\n      <td>string</td>\n      <td>List of Email Ids</td>\n    </tr>\n    <tr>\n      <td>PageNumber</td>\n      <td>Optional</td>\n      <td>string</td>\n      <td>Page Number</td>\n    </tr>\n    <tr>\n      <td>PageSize</td>\n   "
+        },
+        {
+          "info": {
+            "name": "Get a ClickURLContactCount of Engagement",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://clientapi.benchmarkemail.com/Engagement/ClickURLContactCount",
+            "params": [
+              {
+                "name": "CampaignURLList",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "ClickAll",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "<h4>Get a ClickURLContactCount of Engagement</h4>\n<b>Query string parameters :</b>\n<table>\n  <thead>\n    <tr>\n      <th>Parameter</th>\n      <th>Required</th>\n      <th>Type</th>\n      <th>Description</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td>CampaignURLList</td>\n      <td>Required</td>\n      <td>string</td>\n      <td>Campaign URL List</td>\n    </tr>\n    <tr>\n      <td>ClickAll</td>\n      <td>Optional</td>\n      <td>string</td>\n      <td>&nbsp;</td>\n    </tr>\n  </tbody>\n</table>\n\n<b"
+        },
+        {
+          "info": {
+            "name": "Get Click Contact Count",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://clientapi.benchmarkemail.com/Engagement/ClickContactCount",
+            "params": [
+              {
+                "name": "EmailIDList",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "FilterType",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "<h4>Get Click Contact Count</h4>\n<b>Query string parameters :</b>\n<table>\n  <thead>\n    <tr>\n      <th>Parameter</th>\n      <th>Required</th>\n      <th>Type</th>\n      <th>Description</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td>EmailIDList</td>\n      <td>Required</td>\n      <td>string</td>\n      <td>List of Email ID</td>\n    </tr>\n    <tr>\n      <td>FilterType</td>\n      <td>Required</td>\n      <td>string</td>\n      <td>1 (for Any)</td>\n    </tr>\n  </tbody>\n</table>\n\n<b>Response body "
+        },
+        {
+          "info": {
+            "name": "Create List of Engagement",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://clientapi.benchmarkemail.com/Engagement/CreateList",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "<h4>Create List of Engagement</h4>\n<b>Query string parameters :</b> None <br>\n<b>Request Body Parameters</b>\n<table>\n  <thead>\n    <tr>\n      <th>Parameter</th>\n      <th>Required</th>\n      <th>Type</th>\n      <th>New List Name</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td>ListName</td>\n      <td>Required</td>\n      <td>string</td>\n      <td>New List Name</td>\n    </tr>\n    <tr>\n      <td>Type</td>\n      <td>Required</td>\n      <td>string</td>\n      <td>Type of list</td>\n    </tr>\n    "
+        },
+        {
+          "info": {
+            "name": "Get Non Contact Count",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://clientapi.benchmarkemail.com/Engagement/NonContactCount",
+            "params": [
+              {
+                "name": "EmailIDList",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "FilterType",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "<h4>Get Non Contact Count</h4>\n<b>Query string parameters :</b>\n<table>\n  <thead>\n    <tr>\n      <th>Parameter</th>\n      <th>Required</th>\n      <th>Type</th>\n      <th>Description</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td>EmailIDList</td>\n      <td>Required</td>\n      <td>string</td>\n      <td>List of Email ID</td>\n    </tr>\n    <tr>\n      <td>FilterType</td>\n      <td>Required</td>\n      <td>string</td>\n      <td>1 (for Any)</td>\n    </tr>\n  </tbody>\n</table>\n\n<b>Response body pa"
+        },
+        {
+          "info": {
+            "name": "Get Open Contact Count",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://clientapi.benchmarkemail.com/Engagement/OpenContactCount",
+            "params": [
+              {
+                "name": "EmailIDList",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "FilterType",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "<h4>Get Open Contact Count</h4>\n<b>Query string parameters :</b>\n<table>\n  <thead>\n    <tr>\n      <th>Parameter</th>\n      <th>Required</th>\n      <th>Type</th>\n      <th>Description</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td>EmailIDList</td>\n      <td>Required</td>\n      <td>string</td>\n      <td>List of Email ID</td>\n    </tr>\n    <tr>\n      <td>FilterType</td>\n      <td>Required</td>\n      <td>string</td>\n      <td>1 (for Any)</td>\n    </tr>\n  </tbody>\n</table>\n\n<b>Response body p"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

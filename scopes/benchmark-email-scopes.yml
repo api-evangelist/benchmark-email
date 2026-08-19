@@ -1,0 +1,133 @@
+generated: '2026-08-13'
+method: searched
+source: https://developers.benchmarkemail.io/authentication.md (read 2026-08-13)
+docs: https://developers.benchmarkemail.io/authentication
+name: Benchmark Email API Key Scopes
+description: >-
+  Benchmark Email publishes a complete, enumerated permission reference for its v1 API.
+  These are API-KEY scopes, not OAuth scopes — there is no OAuth or OIDC anywhere in the
+  product, and derive-oauth-scopes.py found zero oauth2 security schemes in the spec.
+  The scopes are nevertheless a real, documented, per-key authorization model in the
+  {resource}:{access} form, enforced at request time with a 403 that names the scope you
+  are missing.
+scheme:
+  type: apiKey
+  in: header
+  name: X-API-Key
+  oauth2: false
+  openid_connect: false
+  note: >-
+    Scopes are selected at key-creation time in Settings > API Keys by an Owner-role user.
+    There is no authorization endpoint, no consent screen and no token exchange — the scope
+    set is baked into the key.
+scope_format: '{resource}:{access}'
+write_implies_read: true
+scopes:
+- name: contacts:read
+  resource: contacts
+  access: read
+  description: >-
+    Read contacts, lists, contact structures, search contacts, export contacts, and view
+    contact events and history.
+  operations:
+  - get_api_contact
+  - get_api_contact_by_contactId
+  - get_api_contact_events
+  - get_api_contact_by_contactId_events
+  - post_api_contact_search
+  - post_api_contact_export
+  - get_api_contact_structure
+  - get_api_contact_structure_by_contactStructureId
+  - get_api_contact_structure_by_contactStructureId_lists
+  - get_api_contact_structure_by_contactStructureId_lists_all
+  - get_api_contact_structure_by_contactStructureId_lists_by_listId
+- name: contacts:write
+  resource: contacts
+  access: write
+  includes:
+  - contacts:read
+  description: Create, update and delete contacts and lists; update contact structures.
+  operations:
+  - post_api_contact
+  - put_api_contact_by_contactId
+  - patch_api_contact_by_contactId
+  - delete_api_contact_by_contactId
+  - post_api_contact_structure
+  - put_api_contact_structure_by_contactStructureId
+  - post_api_contact_structure_by_contactStructureId_lists
+  - patch_api_contact_structure_by_contactStructureId_lists_by_listId
+  - delete_api_contact_structure_by_contactStructureId_lists_by_listId
+  - delete_api_contact_structure_by_contactStructureId_lists
+  - post_api_contact_structure_by_contactStructureId_lists_merge
+  - post_api_contact_structure_by_contactStructureId_lists_by_listId_duplicate
+- name: campaigns:read
+  resource: campaigns
+  access: read
+  description: Read campaigns and browse email templates.
+  operations:
+  - get_api_email_campaign
+  - get_api_email_campaign_by_campaignId
+  - get_api_email_template
+  - getEmailTemplateCategories
+  - get_api_email_template_by_id
+- name: campaigns:write
+  resource: campaigns
+  access: write
+  includes:
+  - campaigns:read
+  description: Create, update, delete and duplicate campaigns.
+  operations:
+  - post_api_email_campaign
+  - patch_api_email_campaign_by_campaignId
+  - delete_api_email_campaign_by_campaignId
+  - post_api_email_campaign_by_campaignId_duplicate
+- name: reports:read
+  resource: reports
+  access: read
+  description: View dashboard summaries and email performance reports.
+  operations:
+  - get_api_reports_dashboard
+  - get_api_reports_email_overall
+  - get_api_reports_email_overall_histogram
+  - get_api_reports_email_by_id
+  - get_api_reports_email_by_id_engagement
+- name: domains:read
+  resource: domains
+  access: read
+  description: View email sending domains.
+  operations:
+  - get_api_email_domain
+  - get_api_email_domain_grey_label
+  - get_api_email_domain_by_domainId
+summary:
+  scope_count: 6
+  resources: 4
+  write_scopes: 2
+  read_scopes: 4
+  no_write_scope_for:
+  - reports
+  - domains
+observations:
+- >-
+  There is no reports:write or domains:write. Reports are inherently read-only, and domain
+  VERIFICATION is a deliberate web-only flow — the API can read a sending domain's
+  verification status but cannot verify one.
+- >-
+  The scope-to-operation mapping above is derived from the resource descriptions on the
+  authentication page plus the tag on each operation in the OpenAPI. The OpenAPI itself
+  declares a single apiKeyAuth scheme with NO per-operation security requirements, so the
+  spec does not tell a client which scope an operation needs — only the prose does. That is
+  the gap worth closing: adding per-operation security to the spec would make the scope
+  model machine-readable.
+- >-
+  Scope failures are self-describing at runtime: a 403 returns "API key missing required
+  scope: contacts:write", naming exactly what to grant.
+- >-
+  Least-privilege guidance is published, with worked examples (a reporting dashboard needs
+  only reports:read; a contact sync needs contacts:write).
+legacy_api:
+  name: Benchmark Classic RESTful API v3.0
+  scopes: none
+  note: >-
+    The classic API's Admin API Token is all-or-nothing over the whole account. The scoped
+    key model exists only on the v1 API.

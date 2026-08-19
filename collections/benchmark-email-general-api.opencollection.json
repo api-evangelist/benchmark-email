@@ -1,0 +1,1148 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Benchmark Email RESTful API v3.0 ABTest Creation General API",
+    "version": "3.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "AuthToken",
+      "value": "{{AuthToken}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "General",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Notification",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://clientapi.benchmarkemail.com/Client/Notification"
+          },
+          "docs": "<h4>Get Notification</h4>\n<b>Response body parameters :</b>\n<table>\n  <thead>\n    <tr>\n      <th>Parameter</th>\n      <th>Type</th>\n      <th>Description</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td>Data</td>\n      <td><a href=\"http://www.benchmarkemail.com/models.htm#ClientNotificationData\" >NotificationData</a></td>\n      <td>Array</td>\n    </tr>\n    <tr>\n      <td>Errors</td>\n      <td><a href=\"http://www.benchmarkemail.com/models.htm#ErrorData\" >ErrorData</a></td>\n      <td>Array</"
+        },
+        {
+          "info": {
+            "name": "Check if Responsive",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://clientapi.benchmarkemail.com/Client/Responsive"
+          },
+          "docs": "<h4>Check if Responsive </h4>\n<b>Response body parameters :</b>\n<table>\n  <thead>\n    <tr>\n      <th>Parameter</th>\n      <th>Type</th>\n      <th>Description</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td>IsResponsive</td>\n      <td>String</td>\n      <td>0=Not,1 =Responsive </td>\n    </tr>\n    <tr>\n      <td>Errors</td>\n      <td><a href=\"http://www.benchmarkemail.com/models.htm#ErrorData\" >ErrorData</a></td>\n      <td>Array</td>\n    </tr>\n    <tr>\n      <td>Status</td>\n      <td>string<"
+        },
+        {
+          "info": {
+            "name": "Set Responsive",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://clientapi.benchmarkemail.com/Client/Responsive",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "<h4>Set Responsive</h4>\n<b>Body Parameters (to be encoded as a JSON string)</b>\n<table>\n<thead>\n<tr>\n<th>Key</th>\n<th>Required</th>\n<th>Description</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td>IsResponsive</td>\n<td>Required</td>\n<td>Is Responsive=1,Not = 0 </td>\n</tr>\n</tbody>\n</table>\n<b>Response body parameters :</b>\n<table>\n  <thead>\n    <tr>\n      <th>Parameter</th>\n      <th>Type</th>\n      <th>Description</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td>IsResponsive</td>\n      <td>String</td"
+        },
+        {
+          "info": {
+            "name": "Get Clients Rating Range",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://clientapi.benchmarkemail.com/Client/RatingRange"
+          },
+          "docs": "<h4>Get Clients Rating Range</h4>\n<table>\n  <thead>\n    <tr>\n      <th>Parameter</th>\n      <th>Type</th>\n      <th>Description</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td>MinRating</td>\n      <td>String</td>\n      <td>Min Rating </td>\n    </tr>\n    <tr>\n      <td>MaxRating</td>\n      <td>string</td>\n      <td>Max Rating</td>\n    </tr>\n  </tbody>\n</table>"
+        },
+        {
+          "info": {
+            "name": "Get Archive Domain Name",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://clientapi.benchmarkemail.com/Client/Archive/Domain"
+          },
+          "docs": "<h4>Get Archive Domain Name</h4>\n<b>Query String Parameters :</b> None <br>\n\n<b>Request Body Parameters:</b> None <br>\n\n<b>Response Body Parameters :</b>\n<table>\n  <thead>\n    <tr>\n      <th>Parameter</th>\n      <th>Type</th>\n      <th>Description</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td>DomainName</td>\n      <td>string</td>\n      <td>Domain Name</td>\n    </tr>\n  </tbody>\n</table>"
+        },
+        {
+          "info": {
+            "name": "Get Community Domain",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://clientapi.benchmarkemail.com/Client/Community/Domain"
+          },
+          "docs": "<h4>Get Community Domain</h4>\n<b>Query String Parameters :</b> None <br>\n\n<b>Request Body Parameters:</b> None <br>\n\n<b>Response Body Parameters :</b>\n<table>\n  <thead>\n    <tr>\n      <th>Parameter</th>\n      <th>Type</th>\n      <th>Description</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td>DomainName</td>\n      <td>string</td>\n      <td>Domain Name</td>\n    </tr>\n  </tbody>\n</table>"
+        },
+        {
+          "info": {
+            "name": "Get DMARC List",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://clientapi.benchmarkemail.com/Client/DMarc"
+          },
+          "docs": "<h4>Get DMarc List</h4>\n<b>Query String Parameters :</b> None <br>\n\n<b>Request Body Parameters:</b> None <br>\n\n<b>Response Body Parameters :</b>\n<table>\n  <thead>\n    <tr>\n      <th>Parameter</th>\n      <th>Type</th>\n      <th>Description</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td>Data</td>\n      <td><a href=\"http://www.benchmarkemail.com/models.htm#ClientGenericList\" >GenericList</a></td>\n      <td>Generic List</td>\n    </tr>\n  </tbody>\n</table>"
+        },
+        {
+          "info": {
+            "name": "Get List Upload Terms",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://clientapi.benchmarkemail.com/Client/ListUploadTerms"
+          },
+          "docs": "<h4>Get List Upload Terms</h4>\n<b>Response Body Parameters :</b>\n<table>\n  <thead>\n    <tr>\n      <th>Parameter</th>\n      <th>Type</th>\n      <th>Description</th>\n    </tr>\n  </thead>\n  <tbody>\n  <tr>\n      <td>Status</td>\n      <td>String</td>\n      <td>1=successfull,-1 not success</td>\n    </tr>\n    <tr>\n      <td>Error</td>\n      <td><a href=\"http://www.benchmarkemail.com/models.htm#ErrorData\">ErrorData</a></td>\n      <td>Array of error</td>\n    </tr>\n    <tr>\n      <td>Data</td>\n      <td><"
+        },
+        {
+          "info": {
+            "name": "Modify Contact List",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://clientapi.benchmarkemail.com/Contact/:ListID",
+            "params": [
+              {
+                "name": "ListID",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Modifies an existing contact list\r\n<h4>URL Parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th>\r\n<th>Required</th>\r\n<th>Description</th>\r\n</tr>\r\n</thead>\r\n<tbody>\r\n<tr>\r\n<td>{{ListID}}</td>\r\n<td>required</td>\r\n<td>ID of the contact list</td>\r\n</tr>\r\n</tbody>\r\n</table><br />\r\n<h4>Body Parameters (To be passed as a JSON string)</h4>\r\n<table>\r\n  <thead>\r\n    <tr><th>Key</th><th>Required</th><th>Description</th></tr>\r\n  </thead>\r\n  <tbody>\r\n    <tr><td>Name</td><td>optional</td><td>List Name</td></"
+        },
+        {
+          "info": {
+            "name": "Delete the selected contacts from current lists",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://clientapi.benchmarkemail.com/Contact/ContactDetails",
+            "params": [
+              {
+                "name": "Search",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "Filter",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "<h4>Delete the selected contacts from current lists </h4>\r\n<h4>Request body  parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Required</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>Search</td><td>optional</td><td>string</td><td>Search value like email address</td></tr>\r\n<tr><td>Filter</td><td>optional</td><td>string</td><td>Filter value</td></tr>\r\n</tbody>\r\n</table>\r\n\r\n<h4>Body Parameters (To be passed as a JSON string)</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><"
+        },
+        {
+          "info": {
+            "name": "Download report",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://clientapi.benchmarkemail.com/Contact/:ID/Download",
+            "params": [
+              {
+                "name": "ID",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "<h4>Download report</h4>\r\n<h4>URL Parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Required</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>{{ID}}</td><td>required</td><td>string</td><td>IDs of the list</td></tr>\r\n</tbody>\r\n</table>\r\n\r\n<h4>Body Parameters (To be passed as a JSON string)</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Required</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>PIN</td><td>required</td><td>string</td><td>4 digit Sec"
+        },
+        {
+          "info": {
+            "name": "Compare contacts",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://clientapi.benchmarkemail.com/Contact/:ListIDs/Compare",
+            "params": [
+              {
+                "name": "ListIDs",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Compares contacts\n<h4>Response: 1 if successful, -1 if error</h4>\n<h4>URL Parameters</h4>\n<table>\n<thead>\n<tr>\n<th>Key</th>\n<th>Required</th>\n<th>Description</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td>{{ListIDs}}</td>\n<td>required</td>\n<td>IDs of the lists</td>\n</tr>\n</tbody>\n</table>\n\n<h4>Response body parameters</h4>\n<table>\n<thead>\n<tr>\n<th>Key</th><th>Type</th><th>Description</th></tr>\n</thead>\n<tbody>\n<tr><td>Status</td><td>string</td><td>1 if successful, -1 if error</td></tr>\n</tbody>\n</table>"
+        },
+        {
+          "info": {
+            "name": "Clean List",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://clientapi.benchmarkemail.com/Contact/:CleanListID/Clean",
+            "params": [
+              {
+                "name": "CleanListID",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Cleans the specified list\n<h4>URL Parameters</h4>\n<table>\n<thead>\n<tr>\n<th>Key</th>\n<th>Required</th>\n<th>Description</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td>{{CleanListID}}</td>\n<td>required</td>\n<td>ID of the contact list to be cleaned</td>\n</tr>\n</tbody>\n</table>\n\n<h4>Body Parameters (to be encoded as a JSON string)</h4>\n<table>\n<thead>\n<tr>\n<th>Key</th>\n<th>Required</th>\n<th>Description</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td>HardBounces</td>\n<td>required</td>\n<td>1 if hard bounces are to be clean"
+        },
+        {
+          "info": {
+            "name": "Delete Trash List",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://clientapi.benchmarkemail.com/Contact/:ListID/Trash",
+            "params": [
+              {
+                "name": "ListID",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "<h4>Delete Trash List</h4>\r\n<h4>URL Parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Required</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>{{ListID}}</td><td>required</td><td>string</td><td>ID of the list</td></tr>\r\n</tbody>\r\n</table>\r\n\r\n<h4>Response body parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>Status</td><td>string</td><td>1 if successful, -1 if error</td></tr>\r\n<tr><td>Error</td><t"
+        },
+        {
+          "info": {
+            "name": "Delete the selected contacts from current list from contact details page",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://clientapi.benchmarkemail.com/Contact/:listID/ContactDetails/:ContactID",
+            "params": [
+              {
+                "name": "listID",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "ContactID",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "<h4>Delete the selected contacts from current list from contact details page</h4>\r\n<h4>URL Parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Required</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody\r\n<tr><td>{{ListID}}</td><td>optional</td><td>string</td><td>ID of the list</td></tr>\r\n<tr><td>{{ContactID}}</td><td>optional</td><td>string</td><td>ID of the contact</td></tr>\r\n</tbody>\r\n</table>\r\n\r\n<h4>Request body  parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Required"
+        },
+        {
+          "info": {
+            "name": "Delete the selected contacts from ALL lists from Contact Details page ",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://clientapi.benchmarkemail.com/Contact/:ListID/ContactDetails/All/:ContactID",
+            "params": [
+              {
+                "name": "ListID",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "ContactID",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "<h4>Delete the selected contacts from ALL lists from Contact Details page </h4>\r\n<h4>URL Parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Required</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody\r\n<tr><td>{{ListID}}</td><td>required</td><td>string</td><td>ID of the list</td></tr>\r\n<tr><td>{{ContactID}}</td><td>required</td><td>string</td><td>ID of the contact</td></tr>\r\n</tbody>\r\n</table>\r\n\r\n<h4>Response body parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Type</th><"
+        },
+        {
+          "info": {
+            "name": "DELETE Contact only from search contact page",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://clientapi.benchmarkemail.com/Contact/ContactDetails/:ContactID",
+            "params": [
+              {
+                "name": "ContactID",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "<h4>Delete Contact only from search contact page</h4>\r\n<h4>URL Parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Required</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody\r\n<tr><td>{{ContactID}}</td><td>required</td><td>string</td><td>ID of the contact</td></tr>\r\n</tbody>\r\n</table>\r\n\r\n<h4>Request body  parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Required</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>Search</td><td>optional</td><td>string</t"
+        },
+        {
+          "info": {
+            "name": "Move Contacts to Do Not Contact (i.e Master Unsubscribe list)",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://clientapi.benchmarkemail.com/Contact/:ListID/MoveToDNC/:ContactID",
+            "params": [
+              {
+                "name": "ListID",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "ContactID",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "<h4>Move Contacts to Do Not Contact (i.e Master Unsubscribe list)</h4>\r\n<h4>URL Parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Required</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>{{ListID}}</td><td>required</td><td>string</td><td>ID of the list</td></tr>\r\n<tr><td>{{ContactIDs}}</td><td>required</td><td>string</td><td>ID of the Contact</td></tr>\r\n</tbody>\r\n</table>\r\n\r\n<h4>Response body parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Type</th><th>Desc"
+        },
+        {
+          "info": {
+            "name": "Move Contacts",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://clientapi.benchmarkemail.com/Contact/:ListID/MoveContacts/:TargetListID/:ContactIDs",
+            "params": [
+              {
+                "name": "ListID",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "TargetListID",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "ContactIDs",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "<h4>Move Contacts</h4>\r\n<h4>URL Parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Required</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>{{ListID}}</td><td>required</td><td>string</td><td>ID of the list</td></tr>\r\n<tr><td>{{TargetListIDs}}</td><td>required</td><td>string</td><td>ID of the target list where the contact is to be moved</td></tr>\r\n<tr><td>{{ContactIDs}}</td><td>required</td><td>string</td><td>ID of the Contact</td></tr>\r\n</tbody>\r\n</table>\r\n\r\n<h4>Resp"
+        },
+        {
+          "info": {
+            "name": "Move Bulk Contacts",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://clientapi.benchmarkemail.com/Contact/:ListID/MoveContacts",
+            "params": [
+              {
+                "name": "ListID",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "<h4>Move Bulk Contacts</h4>\r\n<h4>URL Parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Required</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>{{ListID}}</td><td>required</td><td>string</td><td>ID of the list</td></tr>\r\n</tbody>\r\n</table>\r\n\r\n<h4>Body Parameters (To be passed as a JSON string)</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Required</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>TargetListIDs</td><td>required</td><td>string</td"
+        },
+        {
+          "info": {
+            "name": "Copy Contacts",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://clientapi.benchmarkemail.com/Contact/CopyContacts/:ListID/:ContactID",
+            "params": [
+              {
+                "name": "ListID",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "ContactID",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "<h4>Copy Contacts</h4>\r\n<h4>URL Parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Required</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>{{ListID}}</td><td>required</td><td>string</td><td>ID of the list</td></tr>\r\n<tr><td>{{ContactID}}</td><td>required</td><td>string</td><td>ID of the contact</td></tr>\r\n</tbody>\r\n</table>\r\n\r\n<h4>Response body parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>Sta"
+        },
+        {
+          "info": {
+            "name": "Copy Bulk Contacts",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://clientapi.benchmarkemail.com/Contact/CopyContacts"
+          },
+          "docs": "<h4>Copy Bulk Contacts</h4>\r\n\r\n<h4>Body Parameters (To be passed as a JSON string)</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Required</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>TargetListIDs</td><td>required</td><td>string</td><td>Target List ID</td></tr>\r\n<tr><td>ContactIDs</td><td>required</td><td>string</td><td>Comma separated list of Contact IDs</td></tr>\r\n</tbody>\r\n</table>\r\n\r\n<h4>Response body parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Type</th"
+        },
+        {
+          "info": {
+            "name": "Share Lists with SubAccounts",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://clientapi.benchmarkemail.com/Contact/:ListID/ShareLists/:ClientIDs",
+            "params": [
+              {
+                "name": "ListID",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "ClientIDs",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "<h4>Share Lists with SubAccounts</h4>\r\n<h4>URL Parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Required</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>{{ListID}}</td><td>required</td><td>string</td><td>ID of the list</td></tr>\r\n<tr><td>{{ClientIDs}}</td><td>required</td><td>string</td><td>Client ID of the sub-accounts with whom to share</td></tr>\r\n</tbody>\r\n</table>\r\n\r\n<h4>Response body parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Type</th><th>Descrip"
+        },
+        {
+          "info": {
+            "name": "Resend Email",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://clientapi.benchmarkemail.com/Contact/:ListID/ResendEmails",
+            "params": [
+              {
+                "name": "ListID",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "<h4>Resend Email</h4>\r\n<h4>URL Parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Required</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>{{ListID}}</td><td>required</td><td>string</td><td>ID of the list</td></tr>\r\n</tbody>\r\n</table>\r\n\r\n<h4>Post Parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Required</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>{{ContactID}}</td><td>required</td><td>string</td><td>IDs of the contact</td></tr>\r\n</t"
+        },
+        {
+          "info": {
+            "name": "Get contact Merge List",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://clientapi.benchmarkemail.com/Contact/:ListIDs/MergeLists",
+            "params": [
+              {
+                "name": "ListIDs",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "<h4>Get contact Merge List</h4>\r\n<h4>URL Parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Required</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>{{ListIDs}}</td><td>required</td><td>string</td><td>IDs of the lists</td></tr>\r\n</tbody>\r\n</table>\r\n\r\n<h4>Response body parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>Status</td><td>string</td><td>1 if successful, -1 if error</td></tr>\r\n<tr><td>Data"
+        },
+        {
+          "info": {
+            "name": "Merge contacts into Existing List",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://clientapi.benchmarkemail.com/Contact/:ListIDs/MergeIntoExistingList",
+            "params": [
+              {
+                "name": "ListIDs",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "<h4>Merge contacts into Existing List</h4>\r\n<h4>URL Parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Required</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>{{ListIDs}}</td><td>required</td><td>string</td><td>IDs of the lists</td></tr>\r\n</tbody>\r\n</table>\r\n\r\n<h4>Body Parameters (To be passed as a JSON string)</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Required</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>TargetListID</td><td>optional</"
+        },
+        {
+          "info": {
+            "name": "Merge contacts into new list",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://clientapi.benchmarkemail.com/Contact/:ListIDs/MergeIntoListNewList",
+            "params": [
+              {
+                "name": "ListIDs",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "<h4>Merge contacts into new list</h4>\r\n<h4>URL Parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Required</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>{{ListIDs}}</td><td>required</td><td>string</td><td>IDs of the lists</td></tr>\r\n</tbody>\r\n</table>\r\n\r\n<h4>Body Parameters (To be passed as a JSON string)</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Required</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>NewList</td><td>required</td><td>str"
+        },
+        {
+          "info": {
+            "name": "Split contacts into new list",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://clientapi.benchmarkemail.com/Contact/:ListID/SplitIntoListNewList",
+            "params": [
+              {
+                "name": "ListID",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "<h4>Split contacts into new list</h4>\r\n<h4>URL Parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Required</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>{{ListIDs}}</td><td>required</td><td>string</td><td>IDs of the lists</td></tr>\r\n</tbody>\r\n</table>\r\n\r\n<h4>Body Parameters (To be passed as a JSON string)</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Required</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>NewList</td><td>required</td><td>str"
+        },
+        {
+          "info": {
+            "name": "Delete List",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://clientapi.benchmarkemail.com/Contact/DeleteList/:ListIDss",
+            "params": [
+              {
+                "name": "ListIDss",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "<h4>Delete List</h4>\r\n<h4>URL Parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Required</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>{{ListIDs}}</td><td>required</td><td>string</td><td>IDs of the lists</td></tr>\r\n</tbody>\r\n</table>\r\n\r\n<h4>Response body parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>Status</td><td>string</td><td>1 if successful, -1 if error</td></tr>\r\n<tr><td>Error</td><td><"
+        },
+        {
+          "info": {
+            "name": "Delete Trash List",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://clientapi.benchmarkemail.com/Contact/DeleteTrashList/:ListIDs",
+            "params": [
+              {
+                "name": "ListIDs",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "<h4>Get a list of contacts</h4>\r\n<h4>URL Parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Required</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>{{ListIDs}}</td><td>required</td><td>string</td><td>IDs of the lists</td></tr>\r\n</tbody>\r\n</table>\r\n\r\n<h4>Response body parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>Status</td><td>string</td><td>1 if successful, -1 if error</td></tr>\r\n<tr><td>Erro"
+        },
+        {
+          "info": {
+            "name": "Restore Trash List",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://clientapi.benchmarkemail.com/Contact/RestoreTrashList/:ListIDs",
+            "params": [
+              {
+                "name": "ListIDs",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "<h4>Restore Trash List</h4>\r\n<h4>URL Parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Required</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>{{ListIDs}}</td><td>required</td><td>string</td><td>IDs of the lists</td></tr>\r\n</tbody>\r\n</table>\r\n\r\n<h4>Response body parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>Status</td><td>string</td><td>1 if successful, -1 if error</td></tr>\r\n<tr><td>Error</t"
+        },
+        {
+          "info": {
+            "name": "Copy an existing email",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://clientapi.benchmarkemail.com/Emails/:ID",
+            "params": [
+              {
+                "name": "ID",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "<h4>Copy an existing email</h4>\r\n<h4>URL Parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Required</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>{{ID}}</td><td>required</td><td>string</td><td>ID of the email</td></tr>\r\n</tbody>\r\n</table>\r\n\r\n<h4>Body Parameters (To be passed as a JSON string)</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Required</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>Name</td><td>required</td><td>string</td><td>Nam"
+        },
+        {
+          "info": {
+            "name": "Delete the email",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://clientapi.benchmarkemail.com/Emails/:ID",
+            "params": [
+              {
+                "name": "ID",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "<h4>Delete the email</h4>\r\n<h4>URL Parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Required</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>{{ID}}</td><td>required</td><td>string</td><td>IDs of the email</td></tr>\r\n</tbody>\r\n</table>\r\n\r\n<h4>Response body parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>Status</td><td>string</td><td>1 if successful, -1 if error</td></tr>\r\n<tr><td>Data</td><td><a"
+        },
+        {
+          "info": {
+            "name": "Restore an email from Trash",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://clientapi.benchmarkemail.com/Emails/:ID/Trash",
+            "params": [
+              {
+                "name": "ID",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "<h4>Get a list of contacts</h4>\r\n<h4>URL Parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Required</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>{{ID}}</td><td>required</td><td>string</td><td>IDs of the email</td></tr>\r\n</tbody>\r\n</table>\r\n\r\n<h4>Response body parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>Status</td><td>string</td><td>1 if successful, -1 if error</td></tr>\r\n<tr><td>Data</td>"
+        },
+        {
+          "info": {
+            "name": "Permenantly delete an email from Trash",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://clientapi.benchmarkemail.com/Emails/:ID/Trash",
+            "params": [
+              {
+                "name": "ID",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "<h4>Permenantly delete an email from Trash</h4>\r\n<h4>URL Parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Required</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>{{ID}}</td><td>required</td><td>string</td><td>IDs of the email</td></tr>\r\n</tbody>\r\n</table>\r\n\r\n<h4>Response body parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>Status</td><td>string</td><td>1 if successful, -1 if error</td></tr>\r\n<"
+        },
+        {
+          "info": {
+            "name": "Get the Preview for the email",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://clientapi.benchmarkemail.com/Emails/:ID/Preview",
+            "params": [
+              {
+                "name": "ID",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "<h4>Get a list of contacts</h4>\r\n\r\n<h4>Query String parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Required</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>EmailAddress</td><td>optional</td><td>string</td><td>Email Address</td></tr>\r\n<tr><td>HTMLContent</td><td>optional</td><td>string</td><td>HTML Content</td></tr>\r\n<tr><td>TextContent</td><td>optional</td><td>string</td><td>Text Content</td></tr>\r\n</tbody>\r\n</table>\r\n\r\n<h4>Response body parameters</h4>\r\n<table>\r"
+        },
+        {
+          "info": {
+            "name": "Add Email to Community",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://clientapi.benchmarkemail.com/Emails/Community/:ID",
+            "params": [
+              {
+                "name": "ID",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "<h4>Get a list of contacts</h4>\r\n<h4>URL Parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Required</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>{{ID}}</td><td>required</td><td>string</td><td>ID of the email</td></tr>\r\n</tbody>\r\n</table>\r\n\r\n<h4>Body Parameters (To be passed as a JSON string)</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Required</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>Community</td><td>required</td><td>string</td><t"
+        },
+        {
+          "info": {
+            "name": "GET Community Email By ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://clientapi.benchmarkemail.com/Emails/CommunityGetEmail/:ID",
+            "params": [
+              {
+                "name": "ID",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "<h4>Get a list of contacts</h4>\r\n<h4>URL Parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Required</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>{{ID}}</td><td>required</td><td>string</td><td>ID of the Email</td></tr>\r\n</tbody>\r\n</table>\r\n\r\n<h4>Response body parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>ID</td><td>string</td><td>ID</td></tr>\r\n<tr><td>CommunityName</td><td>string</td><td>Com"
+        },
+        {
+          "info": {
+            "name": "Share Template to sub accounts",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://clientapi.benchmarkemail.com/Emails/:ID/ShareTemplate",
+            "params": [
+              {
+                "name": "ID",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "<h4>Share Template to sub accounts</h4>\r\n<h4>URL Parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Required</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>{{ID}}</td><td>required</td><td>string</td><td>ID of the Email</td></tr>\r\n</tbody>\r\n</table>\r\n\r\n<h4>Body Parameters (To be passed as a JSON string)</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Required</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>SubAccount</td><td>required</td><td>stri"
+        },
+        {
+          "info": {
+            "name": "Delete ABSplit Campaign",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://clientapi.benchmarkemail.com/Emails/:ID/ABSplit",
+            "params": [
+              {
+                "name": "ID",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "<h4>Delete ABSplit Campaign</h4>\r\n\r\n<h4>URL parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Required</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>ID</td><td>optional</td><td>string</td><td>ID of the email</td></tr>\r\n</tbody>\r\n</table>\r\n\r\n<h4>Response body parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>Status</td><td>string</td><td>1 if successful, -1 if error</td></tr>\r\n<tr><td>Error</td><"
+        },
+        {
+          "info": {
+            "name": "Get list of automation ",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://clientapi.benchmarkemail.com/Automation",
+            "params": [
+              {
+                "name": "PageNumber",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "PageSize",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "Filter",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "OrderBy",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "SortOrder",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get a list of automation\n<h4>Query String Parameter : </h4>\n<table>\n<thead>\n<tr>\n<th>Key</th>\n<th>Required</th>\n<th>Description</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td>PageNumber</td>\n<td>optional</td>\n<td>Page Number</td>\n</tr>\n<tr>\n<td>PageSize</td>\n<td>optional</td>\n<td>Number of records to show per page</td>\n</tr>\n<tr>\n<td>Filter</td>\n<td>optional</td>\n<td>Filter for automation name</td>\n</tr>\n<tr>\n<td>OrderBy</td>\n<td>optional</td>\n<td>Column by which to sort like name,schedule,email,status,da"
+        },
+        {
+          "info": {
+            "name": "Delete an Automation",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://clientapi.benchmarkemail.com/Automation/:AutomationID",
+            "params": [
+              {
+                "name": "AutomationID",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete an automation\r\n<h4>URL Parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th>\r\n<th>Required</th>\r\n<th>Description</th>\r\n</tr>\r\n</thead>\r\n<tbody>\r\n<tr>\r\n<td>{{AutomationID}}</td>\r\n<td>Required</td>\r\n<td>Automation ID</td>\r\n</tr>\r\n</tbody>\r\n</table>\r\n<h4>Response body parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>Status</td><td>String</td><td>1 if success, -1 if error</td></tr>\r\n<tr><td>Error</td><td><a href=\"http://ww"
+        },
+        {
+          "info": {
+            "name": "Copy email in an Automation",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://clientapi.benchmarkemail.com/Automation/:AutomationID/Emails/:AutomationDetailID",
+            "params": [
+              {
+                "name": "AutomationID",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "AutomationDetailID",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Create copy of an Automation email\r\n<h4>URL Parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th>\r\n<th>Required</th>\r\n<th>Description</th>\r\n</tr>\r\n</thead>\r\n<tbody>\r\n<tr>\r\n<td>{{AutomationID}}</td>\r\n<td>Required</td>\r\n<td>Automation ID</a>\r\n</tr>\r\n<tr>\r\n<td>{{AutomationDetailID}}</td>\r\n<td>Required</td>\r\n<td>Automation email ID</a>\r\n</tr>\r\n</tbody>\r\n</table>\r\n<h4>Response body parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>"
+        },
+        {
+          "info": {
+            "name": "Delete an Automation Email",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://clientapi.benchmarkemail.com/Automation/:AutomationID/Emails/:AutomationDetailID",
+            "params": [
+              {
+                "name": "AutomationID",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "AutomationDetailID",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete an Automation Email \r\n<h4>URL Parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th>\r\n<th>Required</th>\r\n<th>Description</th>\r\n</tr>\r\n</thead>\r\n<tbody>\r\n<tr>\r\n<td>{{AutomationID}}</td>\r\n<td>Required</td>\r\n<td>Automation ID</a>\r\n</tr>\r\n<tr>\r\n<td>{{AutomationDetailID}}</td>\r\n<td>Required</td>\r\n<td>Automation Email ID</a>\r\n</tr>\r\n</tbody>\r\n</table>\r\n<h4>Response body parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>Status<"
+        },
+        {
+          "info": {
+            "name": "Create copy of exiting Automation",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://clientapi.benchmarkemail.com/Automation/:AutomationID/Copy",
+            "params": [
+              {
+                "name": "AutomationID",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create copy of an Automation\r\n<h4>URL Parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th>\r\n<th>Required</th>\r\n<th>Description</th>\r\n</tr>\r\n</thead>\r\n<tbody>\r\n<tr>\r\n<td>{{AutomationID}}</td>\r\n<td>Required</td>\r\n<td>Automation ID</a>\r\n</tr>\r\n</tbody>\r\n</table>\r\n<h4>Body Parameters (to be encoded as a JSON string)</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th>\r\n<th>Required</th>\r\n<th>Description</th>\r\n</tr>\r\n</thead>\r\n<tbody>\r\n<tr>\r\n<td>{{Name}}</td>\r\n<td>Required</td>\r\n<td>Name of the new automation"
+        },
+        {
+          "info": {
+            "name": "Get a list of AB Tests",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://clientapi.benchmarkemail.com/ABSplit/",
+            "params": [
+              {
+                "name": "PageNumber",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "PageSize",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "Filter",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "FilterType",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "OrderBy",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "SortOrder",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get a Inbox List\r\n<h4>URL body parameter</h4>\r\n  <table>\r\n    <tr>\r\n      <th>Parameter</th>\r\n      <th>Type</th>\r\n      <th>Description</th>\r\n    </tr>\r\n    <tr>\r\n      <td>PageNumber</td>\r\n      <td>string</td>\r\n      <td>Page Number</td>\r\n    </tr>\r\n    <tr>\r\n      <td>PageSize</td>\r\n      <td>string</td>\r\n      <td>Number of rows on the page</td>\r\n    </tr>\r\n    <tr>\r\n      <td>OrderBy</td>\r\n      <td>string</td>\r\n      <td>Order By Column</td>\r\n    </tr>\r\n    <tr>\r\n      <td>Filter</td>\r\n  "
+        },
+        {
+          "info": {
+            "name": "Delete the AB Test email",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://clientapi.benchmarkemail.com/ABSplit/:ID",
+            "params": [
+              {
+                "name": "ID",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Move the email to trash\r\n <h4>URL parameters:</h4>\r\n  <table>\r\n    <tr>\r\n      <th>Parameter</th>\r\n      <th>Type</th>\r\n      <th>Description</th>\r\n    </tr>\r\n    <tr>\r\n      <td>ID</td>\r\n      <td>string</td>\r\n      <td>ABSplit ID</td>\r\n    </tr>\r\n  </table>\r\n  <h4>Response body parameters:</h4>\r\n  <table>\r\n    <tr>\r\n      <th>Parameter</th>\r\n      <th>Type</th>\r\n      <th>Description</th>\r\n    </tr>\r\n    <tr>\r\n      <td>Status</td>\r\n      <td>string</td>\r\n      <td>1 if successful, -1 if error"
+        },
+        {
+          "info": {
+            "name": "Update the AB Test Status",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://clientapi.benchmarkemail.com/ABSplit/:ID/Status",
+            "params": [
+              {
+                "name": "ID",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update the ABSplit Status\r\n<h4>URL parameters:</h4>\r\n<table>\r\n<tr>\r\n  <th>Parameter</th>\r\n  <th>Type</th>\r\n  <th>Description</th>\r\n</tr>\r\n<tr>\r\n  <td>ID</td>\r\n  <td>string</td>\r\n  <td>ABSplit ID</td>\r\n</tr>\r\n</table>\r\n<h4>Body Parameters (to be encoded as a JSON string)</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th>\r\n<th>Required</th>\r\n<th>Description</th>\r\n</tr>\r\n</thead>\r\n<tbody>\r\n<tr>\r\n<td>Status</td>\r\n<td>Required</td>\r\n<td>Status of AB test like draft/START/SCHEDULE/AUTOMATIC/SUSPEND/RESCHEDULE"
+        },
+        {
+          "info": {
+            "name": "Get a list of survey",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://clientapi.benchmarkemail.com/Survey",
+            "params": [
+              {
+                "name": "PageNumber",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "PageSize",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "OrderBy",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "Filter",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "SortOrder",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "<h4>Get a list of survey</h4>\n<b>Query string parameters:</b>\n<table>\n  <thead>\n    <th>Parameter</th>\n    <th>Required</th>\n    <th>Type</th>\n    <th>Description</th>\n  </thead>\n  <tbody>\n    <tr>\n      <td>PageNumber</td>\n      <td>Optional</td>\n      <td>int</td>\n      <td>Page Number</td>\n    </tr>\n    <tr>\n      <td>PageSize</td>\n      <td>Optional</td>\n      <td>int</td>\n      <td>Number of rows on the page</td>\n    </tr>\n    <tr>\n      <td>OrderBy</td>\n      <td>Optional</td>\n      <td>st"
+        },
+        {
+          "info": {
+            "name": "Copy a Survey",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://clientapi.benchmarkemail.com/Survey/:ID/Copy",
+            "params": [
+              {
+                "name": "ID",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "<h4>Copy a Survey</h4>\n<b>Query String Parameters : </b> None <br>\n<b>Request Body Parameters : </b>\n<table>\n  <thead>\n    <tr>\n      <th>Parameter</th>\n      <th>Required</th>\n      <th>Type</th>\n      <th>Description</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td>ID</td>\n      <td>Required</td>\n      <td>string</td>\n      <td>Survey ID</td>\n    </tr>\n    <tr>\n      <td>Name</td>\n      <td>Required</td>\n      <td>string</td>\n      <td>Survey Name</td>\n    </tr>\n  </tbody>\n</table>\n<b>Re"
+        },
+        {
+          "info": {
+            "name": "Delete a Survey",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://clientapi.benchmarkemail.com/Survey/:ID",
+            "params": [
+              {
+                "name": "ID",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "<h4>Delete a Survey</h4>\n<b>Query string Parameters : </b> None <br>\n<b>Request Body Parameters : </b>\n<table>\n  <thead>\n    <tr>\n      <th>Parameter</th>\n      <th>Required</th>\n      <th>Type</th>\n      <th>Description</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td>ID</td>\n      <td>Required</td>\n      <td>string</td>\n      <td>Survey ID</td>\n    </tr>\n  </tbody>\n</table>\n\n<b>Response Body Parameters : </b>\n<table>\n  <thead>\n    <tr>\n      <th>Parameter</th>\n      <th>Type</th>\n      <"
+        },
+        {
+          "info": {
+            "name": "Update status of the survey",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://clientapi.benchmarkemail.com/Survey/:ID/StatusUpdate/:Status",
+            "params": [
+              {
+                "name": "ID",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "Status",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "<h4>Update status of the survey</h4>\n<b>Query string parameters : </b> None <br>\n<b>Request Body Parameters:</b>\n<table>\n  <thead>\n    <tr>\n      <th>Parameter</th>\n      <th>Required</th>\n      <th>Type</th>\n      <th>Description</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td>ID</td>\n      <td>Required</td>\n      <td>string</td>\n      <td>Survey ID</td>\n    </tr>\n    <tr>\n      <td>Status</td>\n      <td>Required</td>\n      <td>string</td>\n      <td>1 Active, 0 Inactive, 3 Reactivate</td"
+        },
+        {
+          "info": {
+            "name": "Get list of Polls.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://clientapi.benchmarkemail.com/Poll/",
+            "params": [
+              {
+                "name": "Filter",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "PageNumber",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "PageSize",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "OrderBy",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "SortOrder",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "status",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "<h4>Get list of Polls.</h4>\n<b>Query string parameters : </b>\n  <table>\n    <tr>\n      <th>Parameter</th>\n      <th>Required</th>\n      <th>Type</th>\n      <th>Description</th>\n    </tr>\n    <tr>\n      <td>Filter</td>\n      <td>Optional</td>\n      <td>int</td>\n      <td>Filterr</td>\n    </tr>\n    <tr>\n      <td>PageNumber</td>\n      <td>Required</td>\n      <td>int</td>\n      <td>Page Number</td>\n    </tr>\n    <tr>\n      <td>PageSize</td>\n      <td>Required</td>\n      <td>int</td>\n      <td>Numbe"
+        },
+        {
+          "info": {
+            "name": "Copy a poll",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://clientapi.benchmarkemail.com/Poll/:PollID/Copy",
+            "params": [
+              {
+                "name": "PollID",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "<h4>Copy a poll</h4>\n<b>Query string parameters : </b>\n<table>\n  <tr>\n    <th>Parameter</th>\n    <th>Required</th>\n    <th>Type</th>\n    <th>Description</th>\n  </tr>\n  <tr>\n    <td>PollID</td>\n    <td>Required</td>\n    <td>string</td>\n    <td>Poll ID</td>\n  </tr>\n</table>\n<b>Request Body Parameters : </b>\n<table>\n  <tr>\n    <th>Parameter</th>\n    <th>Required</th>\n    <th>Type</th>\n    <th>Description</th>\n  </tr>\n  <tr>\n    <td>Name</td>\n    <td>Required</td>\n    <td>string</td>\n    <td>Name of"
+        },
+        {
+          "info": {
+            "name": "Delete a poll",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://clientapi.benchmarkemail.com/Poll/:PollID",
+            "params": [
+              {
+                "name": "PollID",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "<h4>Delete a poll</h4>\n<b>Query string parameters : </b> None <br>\n<b>Request Body Parameters : </b>\n<table>\n  <tr>\n    <th>Parameter</th>\n    <th>Required</th>\n    <th>Type</th>\n    <th>Description</th>\n  </tr>\n  <tr>\n    <td>PollID</td>\n    <td>Required</td>\n    <td>string</td>\n    <td>Poll ID</td>\n  </tr>\n</table>\n<b>Response Body Parameters : </b>\n<table>\n  <tr>\n    <th>Parameter</th>\n    <th>Type</th>\n    <th>Description</th>\n  </tr>\n  <tr>\n    <td>Response</td>\n    <td>int</td>\n    <td>ID "
+        },
+        {
+          "info": {
+            "name": "Get preview of a poll",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://clientapi.benchmarkemail.com/Poll/:PollID/Render",
+            "params": [
+              {
+                "name": "PollID",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "<h4>Get preview of a poll</h4>\n<b>Query string parameters :</b> None <br>\n<b>Request Body parameters:</b>\n<table>\n  <thead>\n    <tr>\n      <th>Parameter</th>\n      <th>Required</th>\n      <th>Type</th>\n      <th>Description</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td>PollID</td>\n      <td>Required</td>\n      <td>String</td>\n      <td>Poll ID</td>\n    </tr>\n  </tbody>\n</table>\n\n<b>Response body parameters :</b>\n<table>\n  <thead>\n    <tr>\n      <th>Parameter</th>\n      <th>Type</th>\n   "
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

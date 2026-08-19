@@ -1,0 +1,313 @@
+generated: '2026-08-13'
+method: derived
+source: >-
+  openapi/benchmark-email-api-openapi.json (inline response schemas and path structure),
+  enriched from https://developers.benchmarkemail.io/scenarios/manage-contacts,
+  /scenarios/manage-lists, /scenarios/manage-custom-fields and
+  /.well-known/agent-skills/benchmarkinternetgroup/skill.md, read 2026-08-13
+name: Benchmark Email v1 Data Model
+description: >-
+  Entity-relationship graph for the Benchmark Email v1 API. Derived structurally rather
+  than from $refs, because the published OpenAPI declares components.schemas as EMPTY —
+  there is not one named schema and not one $ref in the whole document. Every shape below
+  was read out of an inline response schema or out of the path hierarchy. The centre of the
+  model is Contact Structure: it owns the field definitions and the lists, and nothing about
+  a contact can be written without it.
+schema_source_note: >-
+  components.schemas is empty and $ref count is zero. 27 of 89 responses carry an inline
+  schema; 0 of 15 request bodies carry any schema at all. Request shapes below are
+  reconstructed from the documentation's worked examples, not from the contract.
+identifier_convention:
+  style: 24-character hexadecimal MongoDB ObjectId
+  example: 64a1b2c3d4e5f6a7b8c9d0e1
+  prefixed: false
+  version_field: __v
+  note: >-
+    Ids carry no type prefix, so a contact id and a list id are indistinguishable outside
+    their path context. Mutable entities carry __v for optimistic locking.
+entities:
+- name: ContactStructure
+  path: /api/contact-structure
+  description: >-
+    The schema definition for contacts on an account. Declares the key field (usually
+    Email), the custom field definitions, and the tag vocabulary. Root of the contact side
+    of the model.
+  operations:
+  - get_api_contact_structure
+  - post_api_contact_structure
+  - get_api_contact_structure_by_contactStructureId
+  - put_api_contact_structure_by_contactStructureId
+  fields:
+  - _id
+  - label
+  - keyName
+  - keyType
+  - fields[]
+  - tags[]
+  scope: contacts:read / contacts:write
+  note: >-
+    Must be fetched first for every contact operation — contact writes reference field
+    definitions by their _id, not by label.
+- name: ContactField
+  parent: ContactStructure
+  description: A single custom or predefined field definition on a contact structure.
+  fields:
+  - _id
+  - label
+  - dataType
+  - required
+  - predefinedField
+  embedded: true
+- name: Contact
+  path: /api/contact
+  description: A subscriber record, valued against the field definitions of its contact structure.
+  operations:
+  - get_api_contact
+  - post_api_contact
+  - get_api_contact_by_contactId
+  - put_api_contact_by_contactId
+  - patch_api_contact_by_contactId
+  - delete_api_contact_by_contactId
+  - post_api_contact_search
+  - post_api_contact_export
+  fields:
+  - _id
+  - key
+  - contactStructureId
+  - fields[]
+  - status.primary
+  - status.secondary
+  - createdAt
+  - __v
+  status_values:
+    primary:
+    - Active
+    - Inactive
+    secondary:
+    - confirmed
+    - Unsubscribe
+    note: >-
+      Case-sensitive. Setting Inactive requires both primary and secondary. An Inactive
+      contact cannot be reactivated through the API — the contact must opt in again.
+  scope: contacts:read / contacts:write
+- name: ContactEvent
+  path: /api/contact/events
+  description: Append-only activity record for a contact, readable by polling.
+  operations:
+  - get_api_contact_events
+  - get_api_contact_by_contactId_events
+  fields:
+  - contactId
+  - emailCampaignId
+  - emailCampaignName
+  - emailBounceType
+  - emailBounceSubType
+  - emailBounceDiagCode
+  - emailComplaintFeedbackType
+  immutable: true
+  retention_window: 1-90 days via pastDays, defaults to 30
+  scope: contacts:read
+  catalog: asyncapi/benchmark-email-events.yml
+- name: List
+  path: /api/contact-structure/{contactStructureId}/lists
+  description: A named grouping of contacts. Nested UNDER a contact structure, not a top-level resource.
+  operations:
+  - get_api_contact_structure_by_contactStructureId_lists
+  - get_api_contact_structure_by_contactStructureId_lists_all
+  - post_api_contact_structure_by_contactStructureId_lists
+  - get_api_contact_structure_by_contactStructureId_lists_by_listId
+  - patch_api_contact_structure_by_contactStructureId_lists_by_listId
+  - delete_api_contact_structure_by_contactStructureId_lists_by_listId
+  - delete_api_contact_structure_by_contactStructureId_lists
+  - post_api_contact_structure_by_contactStructureId_lists_merge
+  - post_api_contact_structure_by_contactStructureId_lists_by_listId_duplicate
+  fields:
+  - _id
+  - name
+  - type
+  - totalContacts
+  - totalCampaigns
+  - createdAt
+  - updatedAt
+  - __v
+  scope: contacts:read / contacts:write
+- name: EmailCampaign
+  path: /api/email/campaign
+  description: An email send, creatable and configurable via API but schedulable and sendable only in the UI.
+  operations:
+  - get_api_email_campaign
+  - post_api_email_campaign
+  - get_api_email_campaign_by_campaignId
+  - patch_api_email_campaign_by_campaignId
+  - delete_api_email_campaign_by_campaignId
+  - post_api_email_campaign_by_campaignId_duplicate
+  fields:
+  - _id
+  - name
+  - from
+  - previewText
+  - previewImageUrl
+  - status
+  - scheduledAt
+  - cancelledAt
+  - sentCount
+  - failedCount
+  - stats.clicks.rate
+  - createdAt
+  status_values:
+  - draft
+  - scheduled
+  - sending
+  - sent
+  - paused
+  - failed
+  - cancelled
+  scope: campaigns:read / campaigns:write
+- name: EmailTemplate
+  path: /api/email/template
+  description: A reusable design a campaign can start from. Read-only through the API.
+  operations:
+  - get_api_email_template
+  - getEmailTemplateCategories
+  - get_api_email_template_by_id
+  fields:
+  - id
+  - name
+  - subject
+  - lang
+  - imageUrl
+  - order
+  - unlayerId
+  - attributeIds[]
+  scope: campaigns:read
+  note: >-
+    Uses a bare "id" rather than "_id" and carries unlayerId, exposing that the editor is
+    Unlayer. The only entity in the model that breaks the _id convention.
+- name: EmailTemplateCategory
+  path: /api/email/template/categories
+  description: Category attributes used to filter the template library.
+  operations:
+  - getEmailTemplateCategories
+  scope: campaigns:read
+- name: EmailDomain
+  path: /api/email/domain
+  description: >-
+    A sending domain with its DKIM/SPF DNS verification state. Read-only — verification is
+    a web flow.
+  operations:
+  - get_api_email_domain
+  - get_api_email_domain_grey_label
+  - get_api_email_domain_by_domainId
+  fields:
+  - _id
+  - createdAt
+  - dkim.status
+  - dkim.records[].name
+  - dkim.records[].type
+  - dkim.records[].value
+  - dkim.records[].ttl
+  - dkim.verificationInfo.errorCode
+  - dkim.verificationInfo.lastRecordFound
+  scope: domains:read
+- name: Report
+  path: /api/reports
+  description: >-
+    Aggregate and per-campaign performance. Not a stored entity — a computed projection
+    over campaigns and contact events.
+  operations:
+  - get_api_reports_dashboard
+  - get_api_reports_email_overall
+  - get_api_reports_email_overall_histogram
+  - get_api_reports_email_by_id
+  - get_api_reports_email_by_id_engagement
+  scope: reports:read
+relationships:
+- from: ContactStructure
+  to: ContactField
+  type: has_many
+  via: fields[]
+  binding: embedded
+- from: ContactStructure
+  to: List
+  type: has_many
+  via: path nesting /api/contact-structure/{contactStructureId}/lists
+  binding: path
+- from: Contact
+  to: ContactStructure
+  type: belongs_to
+  via: contactStructureId
+  binding: id-reference
+  required_on_write: true
+- from: Contact
+  to: ContactField
+  type: has_many
+  via: fields[]._id
+  binding: id-reference
+  note: Each value on a contact references a field definition id from its structure.
+- from: Contact
+  to: List
+  type: has_many
+  via: lists[] on create/update
+  binding: id-reference
+- from: List
+  to: Contact
+  type: has_many
+  via: totalContacts (count only; membership is read via POST /api/contact/search with a LIST_ID filter)
+  binding: derived
+- from: ContactEvent
+  to: Contact
+  type: belongs_to
+  via: contactId
+  binding: id-reference
+- from: ContactEvent
+  to: EmailCampaign
+  type: belongs_to
+  via: emailCampaignId
+  binding: id-reference
+- from: EmailCampaign
+  to: List
+  type: has_many
+  via: lists[] on create/update
+  binding: id-reference
+- from: EmailCampaign
+  to: EmailDomain
+  type: belongs_to
+  via: from (the sender address must sit on a verified sending domain)
+  binding: value-reference
+  note: >-
+    Soft relationship — the link is the domain part of the from address, not an id. Check
+    with GET /api/email/domain before creating a campaign.
+- from: EmailCampaign
+  to: EmailTemplate
+  type: belongs_to
+  via: template selection at creation
+  binding: id-reference
+  note: Duplicating an existing campaign is the documented alternative to starting from a template.
+- from: List
+  to: List
+  type: has_many
+  via: POST /lists/merge (merges several lists into a new one)
+  binding: operation
+- from: Report
+  to: EmailCampaign
+  type: belongs_to
+  via: '{id} path parameter on /api/reports/email/{id}'
+  binding: id-reference
+entry_points:
+  required_first_call: GET /api/contact-structure
+  reason: >-
+    Field ids and the structure id are prerequisites for every contact write, and lists are
+    addressed beneath the structure. Nothing else in the model can be written without it.
+gaps:
+- >-
+  components.schemas is empty. Every entity above had to be reconstructed from inline
+  response schemas and prose. A code generator run against this spec produces untyped
+  request bodies.
+- >-
+  All fifteen request bodies are declared as bare application/json with no schema, so the
+  contract does not state a single required field on any write — including
+  contactStructureId, whose absence is the API's most commonly documented 400.
+- >-
+  List membership has no direct read operation. Fetching the contacts on a list means
+  POST /api/contact/search with a LIST_ID filter, which is not discoverable from the path
+  hierarchy.

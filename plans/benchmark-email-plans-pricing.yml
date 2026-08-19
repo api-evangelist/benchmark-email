@@ -1,8 +1,14 @@
+generated: '2026-08-13'
+method: searched
+source: https://www.benchmarkemail.com/pricing/ and https://www.benchmarkemail.com/features/api/
+plan_count: 3
+api_included_on_all_plans: true
+api_overage_charges: false
 name: Benchmark Email Plans and Pricing
 description: Benchmark Email offers three pricing tiers based on contact count. All plans include API access at no extra cost. The API is available with up to 2 active keys on Free and up to 10 keys on Pro. Enterprise plans offer custom key limits.
 url: https://www.benchmarkemail.com/pricing/
 created: '2026-06-13'
-modified: '2026-06-13'
+modified: '2026-08-13'
 plans:
   - name: Free
     description: Entry-level plan for small senders with core email marketing features. Includes 2 active API keys.
@@ -93,3 +99,40 @@ plans:
       - Custom sending domains
       - Dedicated account support
       - Custom API key quotas
+api_quota_by_plan:
+  note: >-
+    The v1 API's monthly request quota is derived from the plan's contact limit, published
+    at https://developers.benchmarkemail.io/rate-limits. It is not listed on the pricing
+    page, so it is recorded here.
+  formula:
+    free: contact limit x 10
+    paid: contact limit x 100
+  examples:
+  - plan: Free
+    contacts: 500
+    monthly_api_requests: 5000
+  - plan: Pro
+    contacts: 1000
+    monthly_api_requests: 100000
+  - plan: Pro
+    contacts: 100000
+    monthly_api_requests: 10000000
+  hourly_limit_all_plans: 3600
+  detail: rate-limits/benchmark-email-rate-limits.yml
+paymentMethods:
+- Credit card (Visa, Mastercard, Amex)
+- Apple Pay
+- Google Pay
+- Amazon Pay
+- Stripe Link
+notes:
+- >-
+  API access is included at no extra cost on every plan, including Free, and there are no
+  per-request charges. Cost scales with stored contacts, not with API usage.
+- >-
+  The API key quota is the only API-specific plan difference: 2 keys on Free, 10 on Pro,
+  custom on Enterprise. Benchmark's guidance is one key per integration so each carries its
+  own scopes and can be deactivated independently.
+- >-
+  The v1 API scope model (No Access / Read / Read & Write per resource) is available on all
+  plans, not gated behind a tier.

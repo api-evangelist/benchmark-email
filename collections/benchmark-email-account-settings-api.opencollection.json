@@ -1,0 +1,254 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Benchmark Email RESTful API v3.0 ABTest Creation Account Settings API",
+    "version": "3.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "AuthToken",
+      "value": "{{AuthToken}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Account Settings",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Update Client Accounts Setting",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://clientapi.benchmarkemail.com/Client/Setting",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "<h4>Update Client Accounts Setting</h4>\n<b>Query String Parameters :</b> None <br>\n\n<b>Request Body Parameters:</b> \n<table>\n  <thead>\n    <tr>\n      <th>Parameter</th>\n      <th>Type</th>\n      <th>Description</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td>Company</td>\n      <td><a href=\"http://www.benchmarkemail.com/models.htm#ClientSettingCompanyData\" >SettingCompanyData</a></td>\n      <td>Setting Company Data</td>\n    </tr>\n    <tr>\n      <td>Language</td>\n      <td>string</td>\n     "
+        },
+        {
+          "info": {
+            "name": "Change Password",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://clientapi.benchmarkemail.com/Client/Password",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "<h4>Change Password</h4>\n<b>Body Parameters (to be encoded as a JSON string)</b>\n<table>\n<thead>\n<tr>\n<th>Key</th>\n<th>Required</th>\n<th>Description</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td>NewPassword</td>\n<td>Required</td>\n<td>New Password</td>\n</tr>\n<tr>\n<td>ConfirmPassword</td>\n<td>Required</td>\n<td>Confirm Password</td>\n</tr>\n</tbody>\n</table>\n<b>Response Body Parameters :</b>\n<table>\n  <thead>\n    <tr>\n      <th>Parameter</th>\n      <th>Type</th>\n      <th>Description</th>\n    </tr>\n  </thead>"
+        },
+        {
+          "info": {
+            "name": "Send Reset Email",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://clientapi.benchmarkemail.com/Client/Email/ResetLink"
+          },
+          "docs": "<h4>Send Reset Email to change primary email</h4>\n<b>Response Body Parameters :</b>\n<table>\n  <thead>\n    <tr>\n      <th>Parameter</th>\n      <th>Type</th>\n      <th>Description</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td>retVal</td>\n      <td>string</td>\n      <td>return Value</td>\n    </tr>\n    <tr>\n      <td>Error</td>\n      <td><a href=\"http://www.benchmarkemail.com/models.htm#ErrorData\" >ErrorData</a></td>\n      <td>Array of error</td>\n    </tr>\n    <tr>\n      <td>Status</td>\n   "
+        },
+        {
+          "info": {
+            "name": "Get All Confirmed Email",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://clientapi.benchmarkemail.com/Client/ConfirmedEmail/All"
+          },
+          "docs": "<h4>Get All Confirmed Email</h4>\n<b>Query string parameters :</b> None <br>\n\n<b>Request Body parameters:</b> None <br>\n\n<b>Response body parameters :</b>\n<table>\n  <thead>\n    <tr>\n      <th>Parameter</th>\n      <th>Type</th>\n      <th>Description</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td>Count</td>\n      <td>string</td>\n      <td>Total Confirmed Emails</td>\n    </tr>\n    <tr>\n      <td>Data</td>\n      <td><a href=\"http://www.benchmarkemail.com/models.htm#ClientConfirmEmailAllData\" "
+        },
+        {
+          "info": {
+            "name": "Send Confirm Email Verification Email",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://clientapi.benchmarkemail.com/Client/ConfirmedEmail/Email",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "<h4>Send Confirm Email Verification Email</h4>\n<b>Query string parameters :</b> None <br>\n\n<b>Request Body parameters:</b> \n<table>\n  <thead>\n    <tr>\n      <th>Parameter</th>\n      <th>Required</th>\n      <th>Type</th>\n      <th>Description</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td>EmailIDs</td>\n      <td>Required</td>\n      <td>string</td>\n      <td>Email Address</td>\n    </tr>\n  </tbody>\n</table>\n<b>Response body parameters :</b>\n<table>\n  <thead>\n    <tr>\n      <th>Parameter</th"
+        },
+        {
+          "info": {
+            "name": "Get List of Confirmed Emails",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://clientapi.benchmarkemail.com/Client/ConfirmedEmail"
+          },
+          "docs": "<h4>Get List of Confirmed Emails</h4>\n<b>Query String Parameters :</b> None <br>\n\n<b>Request Body Parameters:</b> None <br>\n\n<b>Response Body Parameters :</b>\n<table>\n  <thead>\n    <tr>\n      <th>Parameter</th>\n      <th>Type</th>\n      <th>Description</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td>Emails</td>\n      <td>string</td>\n      <td>List of Emails</td>\n    </tr>\n    <tr>\n      <td>Error</td>\n      <td><a href=\"http://www.benchmarkemail.com/models.htm#ErrorData\" >ErrorData</a></t"
+        },
+        {
+          "info": {
+            "name": "Get Current email at the time of Reset Email",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://clientapi.benchmarkemail.com/Client/Email/Reset",
+            "params": [
+              {
+                "name": "GUID",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "<h4>Get Current email at the time of Reset Email </h4>\n<b>Query String Parameter : </b>\n<table>\n<thead>\n<tr>\n<th>Key</th>\n<th>Required</th>\n<th>Description</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td>GUID</td>\n<td>optional</td>\n<td>Unique ID</td>\n</tr>\n</tbody>\n</table>\n<b>Response body parameters</b>\n<table>\n<thead>\n<tr>\n<th>Key</th><th>Type</th><th>Description</th></tr>\n</thead>\n<tbody>\n<tr><td>Email</td><td>String</td><td>Email Address</td></tr>\n<tr><td>Status</td><td>String</td><td>1 if success, -1"
+        },
+        {
+          "info": {
+            "name": "Update/Reset Email ",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://clientapi.benchmarkemail.com/Client/Email/Reset",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "<h4>Reset primary email </h4>\r\n<b>URL Parameters (To be encoded as JSON parameter)</b>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th>\r\n<th>Required</th>\r\n<th>Description</th>\r\n</tr>\r\n</thead>\r\n<tbody>\r\n<tr>\r\n<td>GUID</td>\r\n<td>Required</td>\r\n<td>The ID which is available on the email link send for reset the email</a>\r\n</tr>\r\n<tr>\r\n<td>NewEmail</td>\r\n<td>Required</td>\r\n<td>New Email</a>\r\n</tr>\r\n<tr>\r\n<td>ConfirmEmail</td>\r\n<td>Required</td>\r\n<td>Confirm Email</a>\r\n</tr>\r\n</tbody>\r\n</table>\r\n<b>Response bo"
+        },
+        {
+          "info": {
+            "name": "Get Client Details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://clientapi.benchmarkemail.com/Client/"
+          },
+          "docs": "<h4>Get Client Details</h4>\n<b>Query String Parameters :</b> None <br>\n\n<b>Request Body Parameters:</b> None <br>\n\n<b>Response Body Parameters :</b>\n<table>\n  <thead>\n    <tr>\n      <th>Parameter</th>\n      <th>Type</th>\n      <th>Description</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td>Response</td>\n      <td><a href=\"http://www.benchmarkemail.com/models.htm#ClientProfileData\" >ProfileData</a></td>\n      <td>Client Profile data</td>\n    </tr>\n  </tbody>\n</table>"
+        },
+        {
+          "info": {
+            "name": "Update/Edit Profile",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://clientapi.benchmarkemail.com/Client/",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "<h4>Update/Edit Profile like first name,phone no etc </h4>\r\n<b>URL Parameters (To be encoded as JSON parameter)</b>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th>\r\n<th>Required</th>\r\n<th>Description</th>\r\n</tr>\r\n</thead>\r\n<tbody>\r\n<tr>\r\n<td>FirstName</td>\r\n<td>Required</td>\r\n<td>First Name</a>\r\n</tr>\r\n<tr>\r\n<td>LastName</td>\r\n<td>Required</td>\r\n<td>Last Name</a>\r\n</tr>\r\n<tr>\r\n<td>PhoneNo</td>\r\n<td>Required</td>\r\n<td>Phone Number</a>\r\n</tr>\r\n</tbody>\r\n</table>\r\n<b>Response body parameters</b>\r\n<table>\r\n<t"
+        },
+        {
+          "info": {
+            "name": "Get Token",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://clientapi.benchmarkemail.com/Client/Token/:Type",
+            "params": [
+              {
+                "name": "Type",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "<h4>Get Token</h4>\n<b>Query String Parameters :</b> None <br>\n\n<b>Request Body Parameters:</b> None <br>\n\n<b>Response Body Parameters :</b>\n<table>\n  <thead>\n    <tr>\n      <th>Parameter</th>\n      <th>Type</th>\n      <th>Description</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td>AuthURL</td>\n      <td>string</td>\n      <td>Auth URL</td>\n    </tr>\n    <tr>\n      <td>Name</td>\n      <td>string</td>\n      <td>Client Name</td>\n    </tr>\n    <tr>\n      <td>Secret</td>\n      <td>string</td>\n "
+        },
+        {
+          "info": {
+            "name": "Generate Token",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://clientapi.benchmarkemail.com/Client/Token"
+          },
+          "docs": "<h4>Generate Token</h4>\n<b>Query String Parameters :</b> None <br>\n\n<b>Request Body Parameters:</b> None <br>\n\n<b>Response Body Parameters :</b>\n<table>\n  <thead>\n    <tr>\n      <th>Parameter</th>\n      <th>Type</th>\n      <th>Description</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td>retVal</td>\n      <td>string</td>\n      <td>Token</td>\n    </tr>\n  </tbody>\n</table>"
+        },
+        {
+          "info": {
+            "name": "Get Token Details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://clientapi.benchmarkemail.com/Client/Token/:Type/Detail",
+            "params": [
+              {
+                "name": "Type",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "<h4>Get Token Details</h4>"
+        },
+        {
+          "info": {
+            "name": "Get Client Filter Domain",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://clientapi.benchmarkemail.com/Client/FilterDomain"
+          },
+          "docs": "<h4>Get Client Filter Domain</h4>\n<b>Query String Parameters :</b> None <br>\n\n<b>Request Body Parameters:</b> None <br>\n\n<b>Response Body Parameters :</b>\n<table>\n  <thead>\n    <tr>\n      <th>Parameter</th>\n      <th>Type</th>\n      <th>Description</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td>Count</td>\n      <td>string</td>\n      <td>Number of Domains</td>\n    </tr>\n    <tr>\n      <td>Data</td>\n      <td><a href=\"http://www.benchmarkemail.com/models.htm#ClientFilterDomain\" >ClientFilt"
+        },
+        {
+          "info": {
+            "name": "Save Website Domain",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://clientapi.benchmarkemail.com/Client/InitSurvey",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "<h4>Provide your domain name to link it to your account</h4>\n<b>Response Body Parameters : </b>\n<table>\n<thead>\n<tr>\n<th>Parameter</th>\n<th>Required</th>\n<th>Type</th>\n<th>Description</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td>CompanyWebsite</td>\n<td>Required</td>\n<td>String</td>\n<td>Company Website like BobsVacations.com</td>\n</tr>\n</tbody>\n</table>"
+        },
+        {
+          "info": {
+            "name": "Resend Confirm Email",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://clientapi.benchmarkemail.com/Client/ConfirmedEmail/:Email",
+            "params": [
+              {
+                "name": "Email",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "<h4>Resend Confirm Email</h4>\n<b>Query string parameters :</b> None <br>\n\n<b>Request Body parameters:</b> \n<table>\n  <thead>\n    <tr>\n      <th>Parameter</th>\n      <th>Required</th>\n      <th>Type</th>\n      <th>Description</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td>Email</td>\n      <td>Required</td>\n      <td>string</td>\n      <td>Email ID</td>\n    </tr>\n  </tbody>\n</table>\n<b>Response body parameters :</b>\n<table>\n  <thead>\n    <tr>\n      <th>Parameter</th>\n      <th>Type</th>\n   "
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

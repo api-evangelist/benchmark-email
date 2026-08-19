@@ -1,0 +1,145 @@
+generated: '2026-08-13'
+method: searched
+source: >-
+  npm registry, PyPI, RubyGems, NuGet, Packagist and the github.com/BenchmarkEmail account,
+  queried unauthenticated on 2026-08-13; cross-checked against
+  https://developers.benchmarkemail.io/ and https://www.benchmarkemail.com/features/api/
+name: Benchmark Email Client Packages
+description: >-
+  Benchmark Email publishes NO maintained first-party SDK for either of its two APIs. The
+  new v1 API (developers.benchmarkemail.io, X-API-Key) ships an OpenAPI, an Agent Skill and
+  a curl-first quickstart with no client library of any kind — its own documentation tells
+  developers to hand the OpenAPI to an AI coding assistant instead. The only first-party
+  code that exists is six abandoned GitHub wrappers for the retired XML-RPC v1.0 API, none
+  of which was ever published to a package registry and none of which has been touched
+  since 2018. Everything on a public registry is third-party.
+summary:
+  total: 9
+  official: 6
+  official_and_maintained: 0
+  registries_searched:
+  - npm
+  - PyPI
+  - RubyGems
+  - Maven Central
+  - NuGet
+  - Packagist
+  - pkg.go.dev
+  - crates.io
+  registries_with_first_party_package: []
+  newest_first_party_release: null
+  newest_first_party_commit: '2018-10-10'
+packages:
+- name: benchmarkemail-nodejs
+  language: JavaScript
+  registry: github
+  official: true
+  url: https://github.com/BenchmarkEmail/benchmarkemail-nodejs
+  version: null
+  published: null
+  api: Benchmark Email XML-RPC API v1.0
+  note: >-
+    First-party, but never released as an npm package and never tagged — checked, nothing
+    to record. Last commit 2018-10-10. Wraps the retired XML-RPC v1.0 API, not the current
+    v1 REST API or the classic v3.0 REST API.
+- name: benchmarkemail-php-API-wrapper
+  language: PHP
+  registry: github
+  official: true
+  url: https://github.com/BenchmarkEmail/benchmarkemail-php-API-wrapper
+  version: null
+  published: null
+  api: Benchmark Email XML-RPC API v1.0
+  note: >-
+    First-party. Not on Packagist — a Packagist search for "benchmarkemail" and "benchmark
+    email" returns no Benchmark package. Last commit 2016-05-27.
+- name: benchmarkemail-java-API-wrapper
+  language: Java
+  registry: github
+  official: true
+  url: https://github.com/BenchmarkEmail/benchmarkemail-java-API-wrapper
+  version: null
+  published: null
+  api: Benchmark Email XML-RPC API v1.0
+  note: First-party. Not on Maven Central. Last commit 2015-05-29.
+- name: benchmarkemail-.NET-cSharp-API-wrapper
+  language: C#
+  registry: github
+  official: true
+  url: https://github.com/BenchmarkEmail/benchmarkemail-.NET-cSharp-API-wrapper
+  version: null
+  published: null
+  api: Benchmark Email XML-RPC API v1.0
+  note: >-
+    First-party. Not on NuGet — an api.nuget.org query for "benchmarkemail" returns 0 hits.
+    Last commit 2016-05-27.
+- name: bmerubywrapper
+  language: Ruby
+  registry: github
+  official: true
+  url: https://github.com/BenchmarkEmail/bmerubywrapper
+  version: null
+  published: null
+  api: Benchmark Email XML-RPC API v1.0
+  note: First-party. Not on RubyGems. Last commit 2014-10-31.
+- name: bmejavawrapper
+  language: Java
+  registry: github
+  official: true
+  url: https://github.com/BenchmarkEmail/bmejavawrapper
+  version: null
+  published: null
+  api: Benchmark Email XML-RPC API v1.0
+  note: >-
+    First-party. Superseded by benchmarkemail-java-API-wrapper. Last commit 2014-10-22.
+- name: benchmarkemail
+  language: JavaScript
+  registry: npm
+  official: false
+  url: https://www.npmjs.com/package/benchmarkemail
+  version: 1.0.0
+  published: '2013-04-10'
+  api: Benchmark Email XML-RPC API v1.0
+  note: >-
+    Published by the npm account "benchmarkemailnode" (himali@cybermaxsolutions.com) and
+    sourced from github.com/benchmarkemailnode/benchmarkemail-nodejs, not from the
+    BenchmarkEmail GitHub account. Not marked official — the publishing identity is a third
+    party. Single release, 2013.
+- name: benchmark_email
+  language: Ruby
+  registry: rubygems
+  official: false
+  url: https://rubygems.org/gems/benchmark_email
+  version: 0.1.4
+  published: '2019-03-24'
+  api: Benchmark Email RESTful API v3.0
+  note: >-
+    Community gem by "alea12" (github.com/alea12/benchmark_email). The only registry
+    package that targets the classic v3.0 REST API. Last release 2019-03-24, which predates
+    the current v1 API entirely.
+- name: benchmark_email_api
+  language: Ruby
+  registry: rubygems
+  official: false
+  url: https://rubygems.org/gems/benchmark_email_api
+  version: 0.0.1
+  published: '2015-07-10'
+  api: Benchmark Email XML-RPC API v1.0
+  note: Community gem by "resj". Single 0.0.1 release, no homepage, abandoned since 2015.
+findings:
+- >-
+  Decay signal: the newest first-party client code of any kind is a 2018 commit, and the
+  newest registry package that mentions Benchmark Email at all is a third-party gem from
+  2019. Both predate the v1 API documented at developers.benchmarkemail.io. A developer
+  who reaches for an SDK today will find only libraries for an API Benchmark no longer
+  runs.
+- >-
+  This is a deliberate posture, not an oversight. The v1 API landing page
+  (https://www.benchmarkemail.com/features/api/) offers "JSON over HTTP" and an "OpenAPI
+  specification published", and tells the reader to "hand it to your developer, or use an
+  AI coding assistant to build the integration yourself." The SDK layer has been replaced
+  by the spec plus the Agent Skill.
+- >-
+  Consequence for scoring: there is no maintained official SDK to point an sdk_count check
+  at. The six first-party repos are real provider-published client code and are recorded as
+  official:true, but every one of them is registry-absent and stale by seven years or more.

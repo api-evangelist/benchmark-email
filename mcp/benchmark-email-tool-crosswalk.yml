@@ -1,0 +1,347 @@
+generated: '2026-08-13'
+method: derived
+source: >-
+  openapi/benchmark-email-api-openapi.json (fetched from
+  https://developers.benchmarkemail.io/openapi.json) crosswalked against the live
+  tools/list response from https://developers.benchmarkemail.io/mcp
+name: Benchmark Email MCP to REST Tool Crosswalk
+description: >-
+  Binds every tool on Benchmark Email's published MCP server to the REST operations it
+  backs. The finding is a clean separation: the MCP server is a documentation-search
+  server, so NONE of its three tools map to a REST operation, and ALL forty operations of
+  the v1 REST API are rest_only. An agent can ask this MCP server how the API works, but
+  it cannot use it to do anything in a Benchmark Email account.
+surfaces:
+  openapi:
+    url: openapi/benchmark-email-api-openapi.json
+    source: https://developers.benchmarkemail.io/openapi.json
+    gated: false
+    note: >-
+      servers[] is templated as {apiBaseUrl} with an empty default; the real base is
+      per-account and regional, https://api-{region}-{cluster}.benchmarkemail.io, shown on
+      Settings > API Keys.
+  mcp:
+    url: https://developers.benchmarkemail.io/mcp
+    gated: false
+    note: Anonymous tools/list returned 200 with three tools on 2026-08-13.
+  graphql: null
+  legacy_openapi:
+    url: openapi/benchmark-email-general-api-openapi.yml
+    source: 'https://developer.benchmarkemail.com/ (Benchmark Classic RESTful API v3.0)'
+    gated: false
+    note: >-
+      The classic v3.0 API (296 operations against clientapi.benchmarkemail.com, AuthToken
+      header) is a separate product surface and is not crosswalked here. No MCP tool
+      touches it either.
+coverage:
+  mcp_tools: 3
+  mcp_tools_bound_to_rest: 0
+  rest_operations: 40
+  rest_operations_with_tool: 0
+  rest_only: 40
+  mcp_only: 3
+crosswalk: []
+mcp_only:
+- tool: search_benchmark_email_api
+  reason: >-
+    Full-text search over the developer documentation site. Backed by the docs platform's
+    own index, not by any Benchmark Email REST endpoint.
+- tool: query_docs_filesystem_benchmark_email_api
+  reason: >-
+    Read-only shell-like queries over a virtualized in-memory filesystem of the
+    documentation. No public REST equivalent.
+- tool: submit_feedback
+  reason: >-
+    Files a documentation defect with the docs team. No public REST equivalent and not an
+    account-level operation.
+rest_only:
+- operationId: "delete_api_contact_by_contactId"
+  tag: "contact"
+  path: "DELETE /api/contact/{contactId}"
+  summary: "Delete a contact by id"
+  reason: >-
+    No MCP tool exposes this operation; the published MCP server is documentation-search
+    only.
+- operationId: "get_api_contact"
+  tag: "contact"
+  path: "GET /api/contact"
+  summary: "Get all contacts"
+  reason: >-
+    No MCP tool exposes this operation; the published MCP server is documentation-search
+    only.
+- operationId: "get_api_contact_by_contactId"
+  tag: "contact"
+  path: "GET /api/contact/{contactId}"
+  summary: "Get a contact by id"
+  reason: >-
+    No MCP tool exposes this operation; the published MCP server is documentation-search
+    only.
+- operationId: "get_api_contact_by_contactId_events"
+  tag: "contact"
+  path: "GET /api/contact/{contactId}/events"
+  summary: "Get contact events"
+  reason: >-
+    No MCP tool exposes this operation; the published MCP server is documentation-search
+    only.
+- operationId: "get_api_contact_events"
+  tag: "contact"
+  path: "GET /api/contact/events"
+  summary: "Get account contact events"
+  reason: >-
+    No MCP tool exposes this operation; the published MCP server is documentation-search
+    only.
+- operationId: "patch_api_contact_by_contactId"
+  tag: "contact"
+  path: "PATCH /api/contact/{contactId}"
+  summary: "Partial update a contact by id"
+  reason: >-
+    No MCP tool exposes this operation; the published MCP server is documentation-search
+    only.
+- operationId: "post_api_contact"
+  tag: "contact"
+  path: "POST /api/contact"
+  summary: "Create a new contact"
+  reason: >-
+    No MCP tool exposes this operation; the published MCP server is documentation-search
+    only.
+- operationId: "post_api_contact_export"
+  tag: "contact"
+  path: "POST /api/contact/export"
+  summary: "Export contacts"
+  reason: >-
+    No MCP tool exposes this operation; the published MCP server is documentation-search
+    only.
+- operationId: "post_api_contact_search"
+  tag: "contact"
+  path: "POST /api/contact/search"
+  summary: "Search for contacts"
+  reason: >-
+    No MCP tool exposes this operation; the published MCP server is documentation-search
+    only.
+- operationId: "put_api_contact_by_contactId"
+  tag: "contact"
+  path: "PUT /api/contact/{contactId}"
+  summary: "Update a contact by id"
+  reason: >-
+    No MCP tool exposes this operation; the published MCP server is documentation-search
+    only.
+- operationId: "get_api_contact_structure"
+  tag: "contact-structure"
+  path: "GET /api/contact-structure"
+  summary: "Get all contact structures"
+  reason: >-
+    No MCP tool exposes this operation; the published MCP server is documentation-search
+    only.
+- operationId: "get_api_contact_structure_by_contactStructureId"
+  tag: "contact-structure"
+  path: "GET /api/contact-structure/{contactStructureId}"
+  summary: "Get a contact structure by id"
+  reason: >-
+    No MCP tool exposes this operation; the published MCP server is documentation-search
+    only.
+- operationId: "post_api_contact_structure"
+  tag: "contact-structure"
+  path: "POST /api/contact-structure"
+  summary: "Create a new contact structure"
+  reason: >-
+    No MCP tool exposes this operation; the published MCP server is documentation-search
+    only.
+- operationId: "put_api_contact_structure_by_contactStructureId"
+  tag: "contact-structure"
+  path: "PUT /api/contact-structure/{contactStructureId}"
+  summary: "Update a contact structure by id"
+  reason: >-
+    No MCP tool exposes this operation; the published MCP server is documentation-search
+    only.
+- operationId: "delete_api_email_campaign_by_campaignId"
+  tag: "email-campaign"
+  path: "DELETE /api/email/campaign/{campaignId}"
+  summary: "Delete campaign by id"
+  reason: >-
+    No MCP tool exposes this operation; the published MCP server is documentation-search
+    only.
+- operationId: "get_api_email_campaign"
+  tag: "email-campaign"
+  path: "GET /api/email/campaign"
+  summary: "Get all campaigns"
+  reason: >-
+    No MCP tool exposes this operation; the published MCP server is documentation-search
+    only.
+- operationId: "get_api_email_campaign_by_campaignId"
+  tag: "email-campaign"
+  path: "GET /api/email/campaign/{campaignId}"
+  summary: "Get campaign by id"
+  reason: >-
+    No MCP tool exposes this operation; the published MCP server is documentation-search
+    only.
+- operationId: "patch_api_email_campaign_by_campaignId"
+  tag: "email-campaign"
+  path: "PATCH /api/email/campaign/{campaignId}"
+  summary: "Update campaign by id"
+  reason: >-
+    No MCP tool exposes this operation; the published MCP server is documentation-search
+    only.
+- operationId: "post_api_email_campaign"
+  tag: "email-campaign"
+  path: "POST /api/email/campaign"
+  summary: "Add a campaign"
+  reason: >-
+    No MCP tool exposes this operation; the published MCP server is documentation-search
+    only.
+- operationId: "post_api_email_campaign_by_campaignId_duplicate"
+  tag: "email-campaign"
+  path: "POST /api/email/campaign/{campaignId}/duplicate"
+  summary: "Duplicate an existing campaign"
+  reason: >-
+    No MCP tool exposes this operation; the published MCP server is documentation-search
+    only.
+- operationId: "get_api_email_domain"
+  tag: "email-domain"
+  path: "GET /api/email/domain"
+  summary: "Get all domains"
+  reason: >-
+    No MCP tool exposes this operation; the published MCP server is documentation-search
+    only.
+- operationId: "get_api_email_domain_by_domainId"
+  tag: "email-domain"
+  path: "GET /api/email/domain/{domainId}"
+  summary: "Get a domain by id"
+  reason: >-
+    No MCP tool exposes this operation; the published MCP server is documentation-search
+    only.
+- operationId: "get_api_email_domain_grey_label"
+  tag: "email-domain"
+  path: "GET /api/email/domain/grey-label"
+  summary: "Get the grey label domain for the account"
+  reason: >-
+    No MCP tool exposes this operation; the published MCP server is documentation-search
+    only.
+- operationId: "getEmailTemplateCategories"
+  tag: "email-template"
+  path: "GET /api/email/template/categories"
+  summary: "Get email template categories"
+  reason: >-
+    No MCP tool exposes this operation; the published MCP server is documentation-search
+    only.
+- operationId: "get_api_email_template"
+  tag: "email-template"
+  path: "GET /api/email/template"
+  summary: "Get email templates"
+  reason: >-
+    No MCP tool exposes this operation; the published MCP server is documentation-search
+    only.
+- operationId: "get_api_email_template_by_id"
+  tag: "email-template"
+  path: "GET /api/email/template/{id}"
+  summary: "Get email template by ID"
+  reason: >-
+    No MCP tool exposes this operation; the published MCP server is documentation-search
+    only.
+- operationId: "delete_api_contact_structure_by_contactStructureId_lists"
+  tag: "lists"
+  path: "DELETE /api/contact-structure/{contactStructureId}/lists"
+  summary: "Delete multiple lists"
+  reason: >-
+    No MCP tool exposes this operation; the published MCP server is documentation-search
+    only.
+- operationId: "delete_api_contact_structure_by_contactStructureId_lists_by_listId"
+  tag: "lists"
+  path: "DELETE /api/contact-structure/{contactStructureId}/lists/{listId}"
+  summary: "Delete a list by id"
+  reason: >-
+    No MCP tool exposes this operation; the published MCP server is documentation-search
+    only.
+- operationId: "get_api_contact_structure_by_contactStructureId_lists"
+  tag: "lists"
+  path: "GET /api/contact-structure/{contactStructureId}/lists"
+  summary: "Get paginated lists"
+  reason: >-
+    No MCP tool exposes this operation; the published MCP server is documentation-search
+    only.
+- operationId: "get_api_contact_structure_by_contactStructureId_lists_all"
+  tag: "lists"
+  path: "GET /api/contact-structure/{contactStructureId}/lists/all"
+  summary: "Get all lists"
+  reason: >-
+    No MCP tool exposes this operation; the published MCP server is documentation-search
+    only.
+- operationId: "get_api_contact_structure_by_contactStructureId_lists_by_listId"
+  tag: "lists"
+  path: "GET /api/contact-structure/{contactStructureId}/lists/{listId}"
+  summary: "Get a list by id"
+  reason: >-
+    No MCP tool exposes this operation; the published MCP server is documentation-search
+    only.
+- operationId: "patch_api_contact_structure_by_contactStructureId_lists_by_listId"
+  tag: "lists"
+  path: "PATCH /api/contact-structure/{contactStructureId}/lists/{listId}"
+  summary: "Update a list by id"
+  reason: >-
+    No MCP tool exposes this operation; the published MCP server is documentation-search
+    only.
+- operationId: "post_api_contact_structure_by_contactStructureId_lists"
+  tag: "lists"
+  path: "POST /api/contact-structure/{contactStructureId}/lists"
+  summary: "Create a new list"
+  reason: >-
+    No MCP tool exposes this operation; the published MCP server is documentation-search
+    only.
+- operationId: "post_api_contact_structure_by_contactStructureId_lists_by_listId_duplicate"
+  tag: "lists"
+  path: "POST /api/contact-structure/{contactStructureId}/lists/{listId}/duplicate"
+  summary: "Duplicate a list"
+  reason: >-
+    No MCP tool exposes this operation; the published MCP server is documentation-search
+    only.
+- operationId: "post_api_contact_structure_by_contactStructureId_lists_merge"
+  tag: "lists"
+  path: "POST /api/contact-structure/{contactStructureId}/lists/merge"
+  summary: "Merge lists into a new list."
+  reason: >-
+    No MCP tool exposes this operation; the published MCP server is documentation-search
+    only.
+- operationId: "get_api_reports_dashboard"
+  tag: "reports"
+  path: "GET /api/reports/dashboard"
+  summary: "Get dashboard snapshot reports"
+  reason: >-
+    No MCP tool exposes this operation; the published MCP server is documentation-search
+    only.
+- operationId: "get_api_reports_email_by_id"
+  tag: "reports"
+  path: "GET /api/reports/email/{id}"
+  summary: "Get individual email campaign reports"
+  reason: >-
+    No MCP tool exposes this operation; the published MCP server is documentation-search
+    only.
+- operationId: "get_api_reports_email_by_id_engagement"
+  tag: "reports"
+  path: "GET /api/reports/email/{id}/engagement"
+  summary: "Get individual email campaign engagement reports"
+  reason: >-
+    No MCP tool exposes this operation; the published MCP server is documentation-search
+    only.
+- operationId: "get_api_reports_email_overall"
+  tag: "reports"
+  path: "GET /api/reports/email/overall"
+  summary: "Get overall email reports"
+  reason: >-
+    No MCP tool exposes this operation; the published MCP server is documentation-search
+    only.
+- operationId: "get_api_reports_email_overall_histogram"
+  tag: "reports"
+  path: "GET /api/reports/email/overall/histogram"
+  summary: "Get overall email histogram by event type"
+  reason: >-
+    No MCP tool exposes this operation; the published MCP server is documentation-search
+    only.
+notes:
+- >-
+  Confidence on every row is high because both sides were read from live sources on
+  2026-08-13: the OpenAPI was fetched from the provider's own docs host and the MCP tool
+  list came back unauthenticated from a real tools/list call.
+- >-
+  The gap is the finding. Benchmark Email has done the harder half of agent readiness, with
+  a published OpenAPI, a published Agent Skill, an Agent Card, an llms.txt and a live MCP
+  endpoint, but the MCP endpoint only describes the API. Wiring the forty REST operations
+  into MCP tools would make the account itself callable by an agent.

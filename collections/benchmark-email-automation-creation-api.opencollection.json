@@ -1,0 +1,207 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Benchmark Email RESTful API v3.0 ABTest Creation Automation Creation API",
+    "version": "3.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "AuthToken",
+      "value": "{{AuthToken}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Automation Creation",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get details of an Automation",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://clientapi.benchmarkemail.com/Automation/:AutomationID",
+            "params": [
+              {
+                "name": "AutomationID",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get details of an Automation\r\n<h4>URL Parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th>\r\n<th>Required</th>\r\n<th>Description</th>\r\n</tr>\r\n</thead>\r\n<tbody>\r\n<tr>\r\n<td>{{AutomationID}}</td>\r\n<td>Required</td>\r\n<td>Automation ID</a>\r\n</tr>\r\n</tbody>\r\n</table>\r\n<h4>Response body parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>Status</td><td>String</td><td>1 if success, -1 if error</td></tr>\r\n<tr><td>Data</td><td><a href='htt"
+        },
+        {
+          "info": {
+            "name": " Update an Automation",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://clientapi.benchmarkemail.com/Automation/:AutomationID",
+            "params": [
+              {
+                "name": "AutomationID",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create an Automation\r\n<h4>URL Parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th>\r\n<th>Required</th>\r\n<th>Type</th>\r\n</tr>\r\n</thead>\r\n<tbody>\r\n<tr>\r\n<td>{{AutomationID}}</td>\r\n<td>Required</td>\r\n<td>Automation ID</a>\r\n</tr>\r\n</tbody>\r\n</table>\r\n<h4>Body Parameters (to be encoded as a JSON string)</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th>\r\n<th>Required</th>\r\n<th>Type</th>\r\n</tr>\r\n</thead>\r\n<tbody>\r\n<tr>\r\n<td>Detail</td>\r\n<td>Required</td>\r\n<td>See for details on <a href='http://www.benchmarkem"
+        },
+        {
+          "info": {
+            "name": "Get details for an Automation Email",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://clientapi.benchmarkemail.com/Automation/:AutomationID/Emails/:AutomationDetailID",
+            "params": [
+              {
+                "name": "AutomationID",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "AutomationDetailID",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Create copy of an Automation email\r\n<h4>URL Parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th>\r\n<th>Required</th>\r\n<th>Description</th>\r\n</tr>\r\n</thead>\r\n<tbody>\r\n<tr>\r\n<td>{{AutomationID}}</td>\r\n<td>Required</td>\r\n<td>Automation ID</a>\r\n</tr>\r\n<tr>\r\n<td>{{AutomationDetailID}}</td>\r\n<td>Required</td>\r\n<td>Automation email ID</a>\r\n</tr>\r\n</tbody>\r\n</table>\r\n<h4>Response body parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>"
+        },
+        {
+          "info": {
+            "name": "Update Email in Automation   ",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://clientapi.benchmarkemail.com/Automation/:AutomationID/Emails/:AutomationDetailID",
+            "params": [
+              {
+                "name": "AutomationID",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "AutomationDetailID",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create an Automation\r\n<h4>URL Parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th>\r\n<th>Required</th>\r\n<th>Description</th>\r\n</tr>\r\n</thead>\r\n<tbody>\r\n<tr>\r\n<td>{{AutomationID}}</td>\r\n<td>Required</td>\r\n<td>Automation ID</a>\r\n</tr>\r\n<tr>\r\n<td>{{AutomationDetailID}}</td>\r\n<td>Required</td>\r\n<td>Automation Email ID</a>\r\n</tr>\r\n</tbody>\r\n</table>\r\n<h4>Body Parameters (to be encoded as a JSON string)</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th>\r\n<th>Required</th>\r\n<th>Description</th>\r\n</tr>\r\n</thead"
+        },
+        {
+          "info": {
+            "name": "Create an Automation",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://clientapi.benchmarkemail.com/Automation/",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create an Automation\r\n<h4>Body Parameters (to be encoded as a JSON string)</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th>\r\n<th>Required</th>\r\n<th>Type</th>\r\n</tr>\r\n</thead>\r\n<tbody>\r\n<tr>\r\n<td>Detail</td>\r\n<td>Required</td>\r\n<td>See for details on <a href= 'http://www.benchmarkemail.com/models.htm#AutomationDetailData'>AutomationDetailData</a></td>\r\n</tr>\r\n</tbody>\r\n</table>\r\n<h4>Response body parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbo"
+        },
+        {
+          "info": {
+            "name": "Create Email Content for an Automation",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://clientapi.benchmarkemail.com/Automation/:AutomationID/Emails/:AutomationDetailID/Content",
+            "params": [
+              {
+                "name": "AutomationID",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "AutomationDetailID",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create email content for an Automation\r\n<h4>URL Parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th>\r\n<th>Required</th>\r\n<th>Description</th>\r\n</tr>\r\n</thead>\r\n<tbody>\r\n<tr>\r\n<td>{{AutomationID}}</td>\r\n<td>Required</td>\r\n<td>Automation ID</a>\r\n</tr>\r\n<tr>\r\n<td>{{AutomationDetailID}}</td>\r\n<td>Required</td>\r\n<td>Automation Email ID</a>\r\n</tr>\r\n</tbody>\r\n</table>\r\n<h4>Body Parameters (to be encoded as a JSON string)</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th>\r\n<th>Required</th>\r\n<th>Type</th>\r\n</t"
+        },
+        {
+          "info": {
+            "name": "Update Email Content for an Automation",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://clientapi.benchmarkemail.com/Automation/:AutomationID/Emails/:AutomationDetailID/Content",
+            "params": [
+              {
+                "name": "AutomationID",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "AutomationDetailID",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update email content for an Automation\r\n<h4>URL Parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th>\r\n<th>Required</th>\r\n<th>Description</th>\r\n</tr>\r\n</thead>\r\n<tbody>\r\n<tr>\r\n<td>{{AutomationID}}</td>\r\n<td>Required</td>\r\n<td>Automation ID</a>\r\n</tr>\r\n<tr>\r\n<td>{{AutomationDetailID}}</td>\r\n<td>Required</td>\r\n<td>Automation Email ID</a>\r\n</tr>\r\n</tbody>\r\n</table>\r\n<h4>Body Parameters (to be encoded as a JSON string)</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th>\r\n<th>Required</th>\r\n<th>Type</th>\r\n</t"
+        },
+        {
+          "info": {
+            "name": "Add Email in Automation",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://clientapi.benchmarkemail.com/Automation/:AutomationID/Emails",
+            "params": [
+              {
+                "name": "AutomationID",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create an Automation\r\n<h4>URL Parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th>\r\n<th>Required</th>\r\n<th>Description</th>\r\n</tr>\r\n</thead>\r\n<tbody>\r\n<tr>\r\n<td>{{AutomationID}}</td>\r\n<td>Required</td>\r\n<td>Automation ID</a>\r\n</tr>\r\n</tbody>\r\n</table>\r\n<h4>Body Parameters (to be encoded as a JSON string)</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th>\r\n<th>Required</th>\r\n<th>Type</th>\r\n</tr>\r\n</thead>\r\n<tbody>\r\n<tr>\r\n<td>Detail</td>\r\n<td>Required</td>\r\n<td>See for details on <a href='http://www.benc"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

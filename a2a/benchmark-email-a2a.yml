@@ -1,0 +1,67 @@
+generated: '2026-08-13'
+method: probed
+source: https://developers.benchmarkemail.io/.well-known/agent-card.json
+name: Benchmark Email A2A Agent Card
+description: >-
+  Benchmark Email serves a real A2A Agent Card from its developer documentation host,
+  developers.benchmarkemail.io. The card was fetched anonymously and saved verbatim to
+  a2a/benchmark-email-agent-card.json. It advertises one skill that points at a
+  provider-published Agent Skill document, and declares HTTP+JSON as its preferred
+  transport.
+discovery:
+  path: /.well-known/agent-card.json
+  canonical: true
+  host: developers.benchmarkemail.io
+x-evidence:
+  fetched: '2026-08-13'
+  url: https://developers.benchmarkemail.io/.well-known/agent-card.json
+  http_status: 200
+  content_type: application/json
+card:
+  name: Benchmark Email API
+  url: https://developers.benchmarkemail.io/
+  version: 1.0.0
+  protocolVersion: '0.3'
+  preferredTransport: HTTP+JSON
+  provider_organization: Benchmark Email API
+  documentationUrl: https://developers.benchmarkemail.io/
+  capabilities:
+    streaming: false
+    pushNotifications: false
+  skills:
+  - id: benchmarkinternetgroup
+    name: Benchmarkinternetgroup
+    url: https://developers.benchmarkemail.io/.well-known/agent-skills/benchmarkinternetgroup/skill.md
+grade: conformant
+grade_basis: >-
+  Graded against A2A 1.0.0. Hard checks all pass: capabilities is a JSON object,
+  protocolVersion is present, and skills is an array. Optional fields
+  preferredTransport, defaultInputModes and defaultOutputModes are all present.
+deviations:
+- field: protocolVersion
+  observed: '0.3'
+  note: >-
+    Declares A2A protocol 0.3 rather than 1.0.0. Not a conformance failure — the card
+    shape is valid — but agents targeting 1.0.0 should expect a 0.3-era feature set.
+- field: skills[0].tags
+  observed: []
+  note: >-
+    The single skill declares an empty tags array, so the card carries no capability
+    keywords an agent can match on beyond the free-text description.
+- field: skills[0].inputModes / outputModes
+  observed: absent
+  note: >-
+    The skill does not narrow input/output modes, so the card-level text/plain defaults
+    apply.
+- field: url
+  observed: https://developers.benchmarkemail.io/
+  note: >-
+    The card's url points at the documentation site rather than an A2A JSON-RPC endpoint.
+    supportedInterfaces names the same documentation URL. There is no callable A2A agent
+    behind this card today — it is a discovery/description surface that routes agents to
+    the published Agent Skill and OpenAPI.
+related:
+- type: AgentSkill
+  url: skills/benchmark-email-benchmarkinternetgroup.md
+- type: MCPServer
+  url: mcp/benchmark-email-mcp.yml

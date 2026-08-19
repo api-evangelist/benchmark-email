@@ -1,0 +1,238 @@
+generated: '2026-08-13'
+method: derived
+source: >-
+  openapi/benchmark-email-api-openapi.json, openapi/*.yml (classic v3.0),
+  https://developers.benchmarkemail.io/{authentication,rate-limits,errors}.md,
+  https://www.benchmarkemail.com/privacy-policy/,
+  https://www.benchmarkemail.com/anti-spam-policy/, https://www.benchmarkemail.com/terms-of-use/,
+  security/benchmark-email-domain-security.yml and the well-known probe, assessed 2026-08-13
+name: Benchmark Email Standards Conformance
+description: >-
+  What Benchmark Email actually conforms to, asserted per standard with the evidence that
+  settles it. The picture is a provider that has adopted the DESCRIPTION standards well
+  — OpenAPI, llms.txt, A2A, MCP — and adopted almost none of the HTTP runtime standards.
+  Authentication is a bare API key, errors are proprietary, rate-limit headers are X-prefixed
+  rather than the IETF draft, and there is no idempotency, no conditional requests and no
+  RFC 8594 deprecation signalling.
+standards:
+- id: openapi
+  name: OpenAPI Specification
+  conforms: true
+  version: 3.0.0
+  evidence: >-
+    https://developers.benchmarkemail.io/openapi.json parses as OpenAPI 3.0.0 with 27 paths
+    and 40 operations. Also linked from llms.txt under "OpenAPI Specs" and advertised on
+    the product page as "OpenAPI specification published".
+  caveat: >-
+    Structurally valid but thin: components.schemas is empty, there are zero $refs, all 15
+    request bodies declare application/json with NO schema, and only 27 of 89 responses
+    carry one. servers[] is a variable with an empty default.
+- id: json-schema
+  name: JSON Schema
+  conforms: partial
+  evidence: >-
+    Inline OpenAPI 3.0 Schema Objects on 27 responses (enums, minimum/maximum, nullable,
+    format: float). No standalone JSON Schema documents and no $schema declarations.
+- id: oauth2
+  name: OAuth 2.0
+  conforms: false
+  evidence: >-
+    No oauth2 security scheme in either OpenAPI (derive-oauth-scopes.py found 0).
+    /.well-known/oauth-authorization-server and /.well-known/oauth-protected-resource 404 on
+    every host. Authentication is a static X-API-Key.
+- id: oidc
+  name: OpenID Connect
+  conforms: false
+  evidence: /.well-known/openid-configuration returns 404 on all four real hosts.
+- id: rfc9457
+  name: 'RFC 9457: Problem Details for HTTP APIs'
+  conforms: false
+  evidence: >-
+    Errors are a proprietary {"errors":[{"errorType","message"}]} array served as
+    application/json. No application/problem+json, no type URI, no instance. See
+    errors/benchmark-email-problem-types.yml.
+- id: rfc6750
+  name: 'RFC 6750: Bearer Token Usage'
+  conforms: false
+  evidence: >-
+    Credentials travel in a custom X-API-Key header, not Authorization: Bearer. The classic
+    v3.0 API uses a different custom header again, AuthToken.
+- id: rfc9116
+  name: 'RFC 9116: security.txt'
+  conforms: false
+  evidence: >-
+    /.well-known/security.txt returns 404 on developers.benchmarkemail.io,
+    www.benchmarkemail.com, developer.benchmarkemail.com and clientapi.benchmarkemail.com.
+    app.benchmarkemail.io returns 200 but with the SPA HTML shell, which is not a document.
+- id: rfc9727
+  name: 'RFC 9727: API Catalog'
+  conforms: false
+  evidence: /.well-known/api-catalog returns 404 on every host.
+- id: rfc8594
+  name: 'RFC 8594: Sunset HTTP Header'
+  conforms: false
+  evidence: >-
+    No Sunset or Deprecation header documented, and zero operations marked deprecated:true
+    across both specs — despite an active generation change from classic v3.0 to v1.
+- id: rfc7232
+  name: 'RFC 7232: Conditional Requests (ETag / If-Match)'
+  conforms: false
+  evidence: >-
+    No ETag or If-Match. Concurrency is handled with a body-level __v version field and a
+    400 ConcurrencyError instead of HTTP-native preconditions.
+- id: idempotency
+  name: Idempotency keys
+  conforms: false
+  evidence: >-
+    No Idempotency-Key header on either API. The published dedup pattern is a
+    read-before-write against POST /api/contact/search, which is not an idempotency
+    guarantee.
+- id: pagination
+  name: Documented pagination
+  conforms: true
+  evidence: >-
+    page and size query parameters with declared minimums on the list, campaign, event and
+    search operations; responses wrap in a records[] envelope with a total. GET /api/contact
+    is deliberately unpaginated and the provider's own Agent Skill flags it as small-account
+    only.
+- id: ietf-ratelimit-headers
+  name: IETF draft RateLimit header fields
+  conforms: false
+  evidence: >-
+    Uses X-RateLimit-Limit/Remaining/Reset plus X-Monthly-Limit/Remaining. The IETF draft
+    names them without the X- prefix. Retry-After (RFC 7231) IS used correctly on 429.
+- id: retry-after
+  name: 'RFC 7231: Retry-After'
+  conforms: true
+  evidence: >-
+    Documented and returned on all three 429 conditions — hourly limit, monthly quota and
+    failed-authentication IP block — with published exponential-backoff guidance capped at
+    300 seconds.
+- id: llmstxt
+  name: llms.txt
+  conforms: true
+  evidence: >-
+    Two served: https://developers.benchmarkemail.io/llms.txt (developer index, plus an
+    llms-full.txt) and https://www.benchmarkemail.com/llms.txt (marketing index).
+  caveat: >-
+    The marketing one is HTML-entity-escaped (&gt;, &amp;) rather than plain markdown, so a
+    strict consumer renders it wrong.
+- id: a2a
+  name: 'A2A Agent Card (Agent2Agent)'
+  conforms: true
+  version: '0.3'
+  evidence: >-
+    https://developers.benchmarkemail.io/.well-known/agent-card.json returns 200
+    application/json. Graded conformant against A2A 1.0.0 — capabilities is an object,
+    protocolVersion is present, skills is an array. See a2a/benchmark-email-a2a.yml.
+- id: mcp
+  name: Model Context Protocol
+  conforms: true
+  version: '2025-06-18'
+  evidence: >-
+    https://developers.benchmarkemail.io/mcp answered an anonymous tools/list with 200 over
+    Streamable HTTP, returning 3 tools. serverInfo declares protocolVersion 2025-06-18.
+  caveat: >-
+    Documentation-search server only. No tool calls the Benchmark Email REST API. See
+    mcp/benchmark-email-tool-crosswalk.yml.
+- id: agent-skills
+  name: Agent Skills
+  conforms: true
+  evidence: >-
+    https://developers.benchmarkemail.io/.well-known/agent-skills/benchmarkinternetgroup/skill.md
+    returns a real SKILL.md with name/description frontmatter, endpoint tables, decision
+    guidance and a verification checklist. Referenced from the Agent Card and from the
+    introduction page.
+- id: asyncapi
+  name: AsyncAPI
+  conforms: false
+  evidence: >-
+    No AsyncAPI document for either the classic push webhooks or the v1 pull event feed;
+    /asyncapi.json and /asyncapi.yaml both 404. An event surface exists — 14 enumerated
+    event types — but it is not described by a contract. See
+    asyncapi/benchmark-email-events.yml.
+- id: graphql
+  name: GraphQL
+  conforms: false
+  evidence: No /graphql endpoint on any host; the product is REST only.
+- id: json-api
+  name: 'JSON:API'
+  conforms: false
+  evidence: >-
+    Responses use a proprietary records[]/total envelope, not JSON:API's data/errors/included
+    document structure, and Content-Type is application/json.
+- id: odata
+  name: OData
+  conforms: false
+  evidence: No $filter/$select/$expand; search is a POST body with a proprietary filter model.
+- id: scim
+  name: SCIM
+  conforms: false
+  evidence: >-
+    Contacts are marketing subscribers, not identity records, and user management is
+    explicitly outside the API-key surface.
+- id: fhir
+  name: FHIR
+  conforms: false
+  applicable: false
+  evidence: Not a healthcare API.
+- id: fapi
+  name: 'FAPI (Financial-grade API)'
+  conforms: false
+  applicable: false
+  evidence: Not a financial API.
+- id: psd2
+  name: PSD2
+  conforms: false
+  applicable: false
+  evidence: Not a payments API.
+- id: tls
+  name: TLS in transit
+  conforms: true
+  evidence: >-
+    All hosts serve HTTPS. TLSv1.3 on www.benchmarkemail.com and
+    developer.benchmarkemail.com, TLSv1.2 on clientapi.benchmarkemail.com. HSTS is present
+    on developer.benchmarkemail.com only. See security/benchmark-email-domain-security.yml.
+- id: gdpr
+  name: 'GDPR / UK GDPR'
+  conforms: claimed
+  evidence: >-
+    https://www.benchmarkemail.com/privacy-policy/ names Benchmark Internet Group as data
+    controller under GDPR and UK GDPR, describes a controller/processor split for customer
+    data, and cites standard contractual clauses for cross-border transfer. Data residency
+    options are published at https://www.benchmarkemail.com/data-regions/.
+- id: ccpa
+  name: 'CCPA / California Privacy'
+  conforms: claimed
+  evidence: The privacy policy carries a dedicated California Privacy section on access, deletion and sharing rights.
+- id: can-spam
+  name: 'CAN-SPAM / anti-spam policy'
+  conforms: claimed
+  evidence: >-
+    A published anti-spam policy at https://www.benchmarkemail.com/anti-spam-policy/, and
+    the API enforces it — an Inactive (unsubscribed) contact cannot be reactivated through
+    the API by design.
+- id: soc2
+  name: 'SOC 2'
+  conforms: unknown
+  evidence: >-
+    No SOC 2 claim found on the marketing site, privacy policy or terms of use, and there is
+    no trust center — probe-security-programs.py returned trust=none. Absence of a public
+    claim, not evidence of absence of an audit.
+- id: iso27001
+  name: 'ISO/IEC 27001'
+  conforms: unknown
+  evidence: No ISO 27001 claim found on any public page.
+- id: hipaa
+  name: HIPAA
+  conforms: false
+  applicable: false
+  evidence: No BAA or HIPAA claim published; the platform is not marketed for PHI.
+summary:
+  asserted: 28
+  conforms_true: 9
+  conforms_claimed: 3
+  conforms_false: 14
+  conforms_unknown: 2
+  strongest_area: agent and description surfaces (OpenAPI, llms.txt, A2A, MCP, Agent Skills)
+  weakest_area: HTTP runtime standards (errors, auth, idempotency, conditional requests, deprecation)

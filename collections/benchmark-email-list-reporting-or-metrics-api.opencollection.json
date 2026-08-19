@@ -1,0 +1,209 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Benchmark Email RESTful API v3.0 ABTest Creation List Reporting or  Metrics API",
+    "version": "3.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "AuthToken",
+      "value": "{{AuthToken}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "List Reporting or  Metrics",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "/{{ListID}}/ContactSummary || Send Performance, Get the contact summary",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://clientapi.benchmarkemail.com/Contact/:ListID/ContactSummary",
+            "params": [
+              {
+                "name": "ListID",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get summary details of a contact list\n<h4>URL Parameters</h4>\n<table>\n<thead>\n<tr>\n<th>Key</th>\n<th>Required</th>\n<th>Description</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td>{{ListID}}</td>\n<td>required</td>\n<td>ID of the contact list</td>\n</tr>\n</tbody>\n</table>\n\n<h4>Response body parameters</h4>\n<table>\n<thead>\n<tr>\n<th>Key</th><th>Type</th><th>Description</th></tr>\n</thead>\n<tbody>\n<tr><td>Status</td><td>string</td><td>1 if successful, -1 if error</td></tr>\n<tr><td>Data</td><td>ContactSummaryRecord<"
+        },
+        {
+          "info": {
+            "name": "Get the clean count ",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://clientapi.benchmarkemail.com/Contact/:ListID/CleanCount",
+            "params": [
+              {
+                "name": "ListID",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "ct",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "ctc",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Gets the clean count\r\n<h4>URL Parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th>\r\n<th>Required</th>\r\n<th>Description</th>\r\n</tr>\r\n</thead>\r\n<tbody>\r\n<tr>\r\n<td>{{ListID}}</td>\r\n<td>required</td>\r\n<td>ID of the contact ID</td>\r\n</tr>\r\n</tbody>\r\n</table>\r\n\r\n<h4>Query String Parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th>\r\n<th>Required</th>\r\n<th>Description</th>\r\n</tr>\r\n</thead>\r\n<tbody>\r\n<tr>\r\n<td>ct</td>\r\n<td>required</td>\r\n<td>Clean Type</td>\r\n</tr>\r\n<tr>\r\n<td>ctc</td>\r\n<td>required</td>"
+        },
+        {
+          "info": {
+            "name": "Get Download report",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://clientapi.benchmarkemail.com/Contact/:ID/Download",
+            "params": [
+              {
+                "name": "ID",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "<h4>Get a list of contacts</h4>\r\n<h4>URL Parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Required</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>{{ID}}</td><td>required</td><td>string</td><td>IDs of the lists</td></tr>\r\n</tbody>\r\n</table>\r\n\r\n<h4>Response body parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>Status</td><td>string</td><td>1 if successful, -1 error</td></tr>\r\n<tr><td>ListName</td"
+        },
+        {
+          "info": {
+            "name": "/Count/{{ListIDs}}/{{SegmentIDs}} ||Get Contacts Count",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://clientapi.benchmarkemail.com/Contact/Count/:ListIDs/:SegmentIDs",
+            "params": [
+              {
+                "name": "ListIDs",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "SegmentIDs",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "<h4>Get Contacts Count</h4>\r\n<h4>URL Parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Required</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>{{ListIDs}}</td><td>required</td><td>string</td><td>IDs of the lists</td></tr>\r\n<tr><td>{{SegmentIDs}}</td><td>required</td><td>string</td><td>IDs of the segments</td></tr>\r\n</tbody>\r\n</table>\r\n\r\n<h4>Query String parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Required</th><th>Type</th><th>Description</th></tr>\r\n</t"
+        },
+        {
+          "info": {
+            "name": "/TrashCount | Get TrashCount",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://clientapi.benchmarkemail.com/Contact/TrashCount"
+          },
+          "docs": "<h4>Get a list of contacts</h4>\r\n\r\n<h4>Response body parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>Status</td><td>string</td><td>1 if successful, -1 if error</td></tr>\r\n<tr><td>Count</td><td>int</td><td>Total count</td></tr>\r\n</tbody>\r\n</table>"
+        },
+        {
+          "info": {
+            "name": "/ExportToList? | Engagement Reporting, Get Export List",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://clientapi.benchmarkemail.com/Contact/ExportToList",
+            "params": [
+              {
+                "name": "ReportFor",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "EmailID",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "IsOverWrite",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Export List\r\n\r\n<h4>Query String Parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th>\r\n<th>Required</th>\r\n<th>Description</th>\r\n</tr>\r\n</thead>\r\n<tbody>\r\n<tr>\r\n<td>ReportFor</td>\r\n<td>optional</td>\r\n<td><ul><li><code>1</code> - Clicks</li><li><code>2</code> - Forwards</li><li><code>3</code> - Bounces</li><li><code>5</code> - Unsubscribe</li><li><code>6</code> - Opens</li><li><code>7</code> - Unopens</li><li><code>8</code> – Clicks For url</li><li><code>11</code> - Individual Survey</li><li><code"
+        },
+        {
+          "info": {
+            "name": "/ContactImportStatus | Get Contact Import Status",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://clientapi.benchmarkemail.com/Contact/ContactImportStatus"
+          },
+          "docs": "<h4>Get Contact Import Status</h4>\r\n\r\n<h4>Response body parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>Status</td><td>string</td><td>1 if successful, -1 if error</td></tr>\r\n<tr><td>ImportType</td><td>string</td><td>Import Type</td></tr>\r\n<tr><td>ContactFound</td><td>string</td><td>Contact Found Count</td></tr>\r\n<tr><td>ContactIncrease</td><td>string</td><td></td></tr>\r\n<tr><td>Count</td><td>int</td><td>Total count</td></tr>"
+        },
+        {
+          "info": {
+            "name": "/{{ListID}}/AuditHistory || Get contact audit history",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://clientapi.benchmarkemail.com/Contact/:ListID/AuditHistory",
+            "params": [
+              {
+                "name": "ListID",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "<h4>Get contact audit history</h4>\r\n<h4>URL Parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Required</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>{{ListID}}</td><td>required</td><td>string</td><td>ID of the list</td></tr>\r\n</tbody>\r\n</table>\r\n\r\n<h4>Query String parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Required</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>PageNumber</td><td>optional</td><td>int</td><td>Page number</td></"
+        },
+        {
+          "info": {
+            "name": "Get contact audit history detail",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://clientapi.benchmarkemail.com/Contact/:ListID/AuditHistoryDetails/:BatchID/:GroupID",
+            "params": [
+              {
+                "name": "ListID",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "BatchID",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "GroupID",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "<h5> see /{{ListID}}/AuditHistory || Get contact audit history - to get BatchID</h5>\r\n<h4>Get contact audit history detail</h4>\r\n<h4>URL Parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Required</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>{{ListID}}</td><td>required</td><td>string</td><td>ID of the list</td></tr>\r\n<tr><td>{{BatchID}}</td><td>required</td><td>string</td><td>ID of the batch</td></tr>\r\n<tr><td>{{GroupID}}</td><td>required</td><td>string</td><td>ID"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

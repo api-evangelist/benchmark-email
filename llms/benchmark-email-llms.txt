@@ -1,0 +1,59 @@
+# Benchmark Email API
+
+## Docs
+
+- [Benchmark Email API](https://developers.benchmarkemail.io/introduction.md): Manage contacts, campaigns, reports, and domains programmatically.
+- [Authentication](https://developers.benchmarkemail.io/authentication.md): Authenticate API requests with an API key and manage permissions via scopes.
+- [Rate Limits](https://developers.benchmarkemail.io/rate-limits.md): Hourly request limits and monthly quotas that govern your API usage.
+- [Errors](https://developers.benchmarkemail.io/errors.md): HTTP status codes and the JSON error format returned by the API.
+- [Manage Contacts](https://developers.benchmarkemail.io/scenarios/manage-contacts.md): Create, read, update, and delete contacts using the API.
+- [Manage Campaigns](https://developers.benchmarkemail.io/scenarios/manage-campaigns.md): Create, update, and manage email campaigns using the API.
+- [Manage Lists](https://developers.benchmarkemail.io/scenarios/manage-lists.md): Create and manage contact lists to segment your audience.
+- [Manage Custom Fields](https://developers.benchmarkemail.io/scenarios/manage-custom-fields.md): View and update the contact structure that defines fields on your contacts.
+- [Search Contacts](https://developers.benchmarkemail.io/scenarios/search-contacts.md): Find contacts by email, custom field values, or other criteria.
+- [View Reports](https://developers.benchmarkemail.io/scenarios/view-reports.md): Retrieve dashboard summaries, email performance metrics, and engagement data.
+- [Migration from Legacy](https://developers.benchmarkemail.io/scenarios/migration-from-legacy.md): Migrate contact data into Benchmark Email: contact structure, lists, imports, and verification.
+- [Get all contacts](https://developers.benchmarkemail.io/api-reference/contact/get-all-contacts.md)
+- [Create a new contact](https://developers.benchmarkemail.io/api-reference/contact/create-a-new-contact.md)
+- [Get account contact events](https://developers.benchmarkemail.io/api-reference/contact/get-account-contact-events.md): Get all contact events for the account
+- [Export contacts](https://developers.benchmarkemail.io/api-reference/contact/export-contacts.md)
+- [Search for contacts](https://developers.benchmarkemail.io/api-reference/contact/search-for-contacts.md)
+- [Get a contact by id](https://developers.benchmarkemail.io/api-reference/contact/get-a-contact-by-id.md)
+- [Update a contact by id](https://developers.benchmarkemail.io/api-reference/contact/update-a-contact-by-id.md)
+- [Delete a contact by id](https://developers.benchmarkemail.io/api-reference/contact/delete-a-contact-by-id.md)
+- [Partial update a contact by id](https://developers.benchmarkemail.io/api-reference/contact/partial-update-a-contact-by-id.md)
+- [Get contact events](https://developers.benchmarkemail.io/api-reference/contact/get-contact-events.md): Get events for a contact
+- [Get all contact structures](https://developers.benchmarkemail.io/api-reference/contact-structure/get-all-contact-structures.md)
+- [Create a new contact structure](https://developers.benchmarkemail.io/api-reference/contact-structure/create-a-new-contact-structure.md)
+- [Get a contact structure by id](https://developers.benchmarkemail.io/api-reference/contact-structure/get-a-contact-structure-by-id.md)
+- [Update a contact structure by id](https://developers.benchmarkemail.io/api-reference/contact-structure/update-a-contact-structure-by-id.md)
+- [Get paginated lists](https://developers.benchmarkemail.io/api-reference/lists/get-paginated-lists.md)
+- [Create a new list](https://developers.benchmarkemail.io/api-reference/lists/create-a-new-list.md)
+- [Delete multiple lists](https://developers.benchmarkemail.io/api-reference/lists/delete-multiple-lists.md)
+- [Get all lists](https://developers.benchmarkemail.io/api-reference/lists/get-all-lists.md)
+- [Merge lists into a new list.](https://developers.benchmarkemail.io/api-reference/lists/merge-lists-into-a-new-list.md)
+- [Get a list by id](https://developers.benchmarkemail.io/api-reference/lists/get-a-list-by-id.md)
+- [Delete a list by id](https://developers.benchmarkemail.io/api-reference/lists/delete-a-list-by-id.md)
+- [Update a list by id](https://developers.benchmarkemail.io/api-reference/lists/update-a-list-by-id.md)
+- [Duplicate a list](https://developers.benchmarkemail.io/api-reference/lists/duplicate-a-list.md)
+- [Get all campaigns](https://developers.benchmarkemail.io/api-reference/email-campaign/get-all-campaigns.md)
+- [Add a campaign](https://developers.benchmarkemail.io/api-reference/email-campaign/add-a-campaign.md)
+- [Get campaign by id](https://developers.benchmarkemail.io/api-reference/email-campaign/get-campaign-by-id.md)
+- [Delete campaign by id](https://developers.benchmarkemail.io/api-reference/email-campaign/delete-campaign-by-id.md)
+- [Update campaign by id](https://developers.benchmarkemail.io/api-reference/email-campaign/update-campaign-by-id.md)
+- [Duplicate an existing campaign](https://developers.benchmarkemail.io/api-reference/email-campaign/duplicate-an-existing-campaign.md)
+- [Get all domains](https://developers.benchmarkemail.io/api-reference/email-domain/get-all-domains.md)
+- [Get the grey label domain for the account](https://developers.benchmarkemail.io/api-reference/email-domain/get-the-grey-label-domain-for-the-account.md)
+- [Get a domain by id](https://developers.benchmarkemail.io/api-reference/email-domain/get-a-domain-by-id.md)
+- [Get email templates](https://developers.benchmarkemail.io/api-reference/email-template/get-email-templates.md): Get email templates with optional filters
+- [Get email template categories](https://developers.benchmarkemail.io/api-reference/email-template/get-email-template-categories.md): Get all email template categories
+- [Get email template by ID](https://developers.benchmarkemail.io/api-reference/email-template/get-email-template-by-id.md): Get an email template by its ID
+- [Get dashboard snapshot reports](https://developers.benchmarkemail.io/api-reference/reports/get-dashboard-snapshot-reports.md)
+- [Get overall email reports](https://developers.benchmarkemail.io/api-reference/reports/get-overall-email-reports.md)
+- [Get overall email histogram by event type](https://developers.benchmarkemail.io/api-reference/reports/get-overall-email-histogram-by-event-type.md)
+- [Get individual email campaign reports](https://developers.benchmarkemail.io/api-reference/reports/get-individual-email-campaign-reports.md)
+- [Get individual email campaign engagement reports](https://developers.benchmarkemail.io/api-reference/reports/get-individual-email-campaign-engagement-reports.md)
+
+## OpenAPI Specs
+
+- [openapi](https://developers.benchmarkemail.io/openapi.json)

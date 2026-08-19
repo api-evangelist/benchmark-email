@@ -1,0 +1,141 @@
+generated: '2026-08-13'
+method: searched
+source: >-
+  https://developers.benchmarkemail.io/introduction.md,
+  https://developers.benchmarkemail.io/scenarios/migration-from-legacy.md,
+  https://www.benchmarkemail.com/features/api/, https://www.benchmarkemail.com/status/,
+  https://developer.benchmarkemail.com/ and the github.com/BenchmarkEmail account, read
+  2026-08-13
+name: Benchmark Email API Lifecycle
+description: >-
+  Benchmark Email is mid-generation-change and says so in public. Three API generations
+  exist: a retired XML-RPC v1.0, a classic REST v3.0 still documented and still serving at
+  clientapi.benchmarkemail.com, and a new v1 REST API on the benchmarkemail.io platform
+  with a different host, a different auth header and a documented migration path. What is
+  missing is any formal deprecation machinery — no sunset dates, no Deprecation or Sunset
+  headers, no versioning policy, and no changelog.
+generations:
+- name: Benchmark Email XML-RPC API v1.0
+  status: retired
+  transport: XML-RPC
+  clients:
+  - https://github.com/BenchmarkEmail/benchmarkemail-nodejs
+  - https://github.com/BenchmarkEmail/benchmarkemail-php-API-wrapper
+  - https://github.com/BenchmarkEmail/benchmarkemail-java-API-wrapper
+  - https://github.com/BenchmarkEmail/benchmarkemail-.NET-cSharp-API-wrapper
+  - https://github.com/BenchmarkEmail/bmerubywrapper
+  - https://github.com/BenchmarkEmail/bmejavawrapper
+  note: >-
+    No retirement announcement was found. The evidence is indirect: every wrapper repo is
+    unmaintained (newest commit 2018-10-10), none is archived, and no current documentation
+    references XML-RPC. Leaving six unarchived repos for a retired API is itself a decay
+    signal for anyone who finds them by search.
+- name: Benchmark Classic RESTful API v3.0
+  status: active-legacy
+  version: 3.0.0
+  host: https://clientapi.benchmarkemail.com
+  auth: AuthToken header (Admin API Token)
+  docs: https://developer.benchmarkemail.com/
+  docs_platform: Postman documenter (collection 1505830/RVfsHZ2Y)
+  operations: 296
+  deprecated_operations_in_spec: 0
+  supporting_repo: https://github.com/BenchmarkEmail/RESTful-API-v3
+  supporting_repo_last_push: '2019-07-29'
+  note: >-
+    Still live and still documented. Benchmark refers to this generation as "Benchmark
+    Classic" in product UI and on the status page, which tracks Benchmark and Benchmark
+    Classic as two separate systems. No sunset date has been published.
+- name: Benchmark Email API v1
+  status: current
+  version: 1.0.0
+  host: https://api-{region}-{cluster}.benchmarkemail.io
+  auth: X-API-Key header, scoped
+  docs: https://developers.benchmarkemail.io/
+  docs_platform: Mintlify
+  openapi: https://developers.benchmarkemail.io/openapi.json
+  operations: 40
+  deprecated_operations_in_spec: 0
+  note: >-
+    Narrower on purpose. Forty operations against the classic API's 296 — campaign
+    scheduling and sending, domain verification, surveys, polls, sub-accounts, the image
+    and video galleries and the agency/partner surfaces have no v1 equivalent.
+migration:
+  published: true
+  url: https://developers.benchmarkemail.io/scenarios/migration-from-legacy
+  scope: >-
+    Data migration INTO Benchmark Email — contact structure, lists, contact import,
+    verification. It is written for a customer arriving from another platform.
+  gap: >-
+    There is no classic-v3.0-to-v1 endpoint mapping. A customer already integrated against
+    clientapi.benchmarkemail.com gets no table telling them which v1 operation replaces
+    which classic one, and for many classic capabilities the answer would be "none yet".
+deprecation_policy:
+  published: false
+  sunset_header: false
+  deprecation_header: false
+  rfc8594: false
+  note: >-
+    No deprecation policy page, no advance-notice commitment, and no RFC 8594 Sunset or
+    Deprecation response headers documented on either API. Neither OpenAPI marks a single
+    operation deprecated:true.
+versioning_policy:
+  published: false
+  scheme: product generation
+  in_url: false
+  in_header: false
+  note: >-
+    v1 paths are unversioned (/api/contact). There is no documented rule for how a breaking
+    change would be introduced or signalled.
+changelog:
+  published: false
+  probed:
+  - url: https://developers.benchmarkemail.io/changelog
+    status: 404
+  - url: https://developers.benchmarkemail.io/changelog.md
+    status: 404
+  - url: https://developers.benchmarkemail.io/updates
+    status: 404
+  note: >-
+    The developer docs index (llms.txt) lists eleven guides plus the API reference and no
+    changelog entry. See changelog/benchmark-email-changelog.yml.
+status_page:
+  published: true
+  url: https://www.benchmarkemail.com/status/
+  hosted: self-hosted page on the marketing site
+  third_party_provider: null
+  machine_readable: false
+  subdomain_probed:
+  - url: https://status.benchmarkemail.com/
+    status: '000 (DNS does not resolve)'
+  covers:
+  - Benchmark (new platform)
+  - Benchmark Classic
+  format: >-
+    Reverse-chronological dated notes with a plain-language state, e.g. "Benchmark is 100%
+    operational." Most recent entries observed were October 2025.
+  gaps:
+  - No JSON/RSS/Atom feed and no components API — a monitor cannot poll it.
+  - No incident history archive, no uptime percentages and no subscribe-to-updates control.
+  - Separate timelines for the two platforms, with different timezones (CDT and PT).
+sla:
+  published: false
+  note: >-
+    No uptime commitment, credit schedule or support-response SLA found on the pricing
+    page, the terms of use or the status page. Enterprise plans are "talk to sales", so any
+    SLA is presumably contractual and not public.
+support:
+  help_center: https://benchmarkemail.helpscoutdocs.com/
+  sales: https://www.benchmarkemail.com/talk-to-sales/
+  developer_feedback: >-
+    The MCP server exposes a submit_feedback tool that files documentation defects with the
+    docs team — an unusual and genuinely useful agent-reachable support channel.
+  issue_tracker: https://github.com/BenchmarkEmail/RESTful-API-v3/issues
+recommendations:
+- >-
+  Publish a classic-to-v1 endpoint mapping. It is the single highest-value missing document
+  for existing integrators.
+- >-
+  State a support position for the classic v3.0 API — maintained indefinitely, or sunsetting
+  on a date. Right now an integrator cannot tell which.
+- Archive the six XML-RPC wrapper repositories so search stops surfacing them as current.
+- Ship Deprecation and Sunset headers (RFC 8594) before the first v1 breaking change.

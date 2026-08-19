@@ -1,0 +1,234 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Benchmark Email RESTful API v3.0 ABTest Creation Sub-Account API",
+    "version": "3.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "AuthToken",
+      "value": "{{AuthToken}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Sub-Account",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Sub-Accounts",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://clientapi.benchmarkemail.com/Client/SubAccount"
+          },
+          "docs": "<h4>Get Sub-Accounts</h4>\n<b>Query string parameters :</b> None <br>\n\n<b>Response Body Parameters :</b>\n<table>\n  <thead>\n    <tr>\n      <th>Parameter</th>\n      <th>Type</th>\n      <th>Description</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td>Count</td>\n      <td>String</td>\n      <td>Number of Sub-Accounts</td>\n    </tr>\n    <tr>\n      <td>Data</td>\n      <td><a href=\"http://www.benchmarkemail.com/models.htm#ClientDetail\" >ClientDetail</a></td>\n      <td>&nbsp;</td>\n    </tr>\n    <tr>"
+        },
+        {
+          "info": {
+            "name": "Create Sub-Account",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://clientapi.benchmarkemail.com/Client/SubAccount",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "<h4>Create Sub-Account</h4>\n<b>URL parameters (to be encoded as JSON in body) :</b>\n<table>\n  <thead>\n    <tr>\n      <th>Parameter</th>\n      <th>Required</th>\n      <th>Type</th>\n      <th>Description</th>\n    </tr>\n  </thead>\n  <tbody>\n     <tr>\n      <td>Detail</td>\n      <td>Required</td>\n      <td>SubAccountDetail</td>\n      <td>Sub Account Detail Array</td>\n    </tr>\n  </tbody>\n</table>\n<b>Response Body Parameters :</b>\n<table>\n  <thead>\n    <tr>\n      <th>Parameter</th>\n      <th>Type</th"
+        },
+        {
+          "info": {
+            "name": "Get Sub-Account History",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://clientapi.benchmarkemail.com/Client/SubAccount/History"
+          },
+          "docs": "<h4>Get Sub-Account History</h4>\n<b>Query string parameters :</b> None <br>\n\n<b>Response Body Parameters :</b>\n<table>\n  <thead>\n    <tr>\n      <th>Parameter</th>\n      <th>Type</th>\n      <th>Description</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td>Data</td>\n      <td><a href=\"http://www.benchmarkemail.com/models.htm#ClientDate\" >ClientDate</a></td>\n      <td>&nbsp;</td>\n    </tr>\n    <tr>\n      <td>Status</td>\n      <td>string</td>\n      <td>1 = Successful, -1 Error</td>\n    </tr>\n  "
+        },
+        {
+          "info": {
+            "name": "Get Sub-Account Details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://clientapi.benchmarkemail.com/Client/SubAccount/:ID",
+            "params": [
+              {
+                "name": "ID",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "<h4>Get Sub-Account Details</h4>\n<b>Query string parameters :</b>\n<table>\n  <thead>\n    <tr>\n      <th>Parameter</th>\n      <th>Required</th>\n      <th>Type</th>\n      <th>Description</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td>ID</td>\n      <td>Required</td>\n      <td>string</td>\n      <td>Client ID</td>\n    </tr>\n  </tbody>\n</table>\n<b>Response Body Parameters :</b>\n<table>\n  <thead>\n    <tr>\n      <th>Parameter</th>\n      <th>Type</th>\n      <th>Description</th>\n    </tr>\n  </thead"
+        },
+        {
+          "info": {
+            "name": "Update Sub Account",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://clientapi.benchmarkemail.com/Client/SubAccount/:ID",
+            "params": [
+              {
+                "name": "ID",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "<h4>Update Sub Account</h4>\n<b>Query String Parameter:</b>\n<table>\n  <thead>\n    <tr>\n      <th>Parameter</th>\n      <th>Required</th>\n      <th>Type</th>\n      <th>Description</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td>ID</td>\n      <td>Required</td>\n      <td>string</td>\n      <td>Sub Account ID</td>\n    </tr>\n  </tbody>\n</table>\n<b>URL parameters (to be encoded as JSON in body) :</b>\n<table>\n  <thead>\n    <tr>\n      <th>Parameter</th>\n      <th>Required</th>\n      <th>Type</th>\n  "
+        },
+        {
+          "info": {
+            "name": "/Plan | Plan Details & Limits, Get Plan Information",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://clientapi.benchmarkemail.com/Client/Plan"
+          },
+          "docs": "<h4>Get Client's Plan Information</h4>\n<b>Response Body Parameters :</b>\n<table>\n  <thead>\n    <tr>\n      <th>Parameter</th>\n      <th>Type</th>\n      <th>Description</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td>Addon</td>\n      <td><a href=\"http://www.benchmarkemail.com/models.htm#ClientAddonResult\" >AddonResult</a></td>\n      <td>&nbsp;</td>\n    </tr>\n    <tr>\n      <td>EmailPlan</td>\n      <td><a href=\"http://www.benchmarkemail.com/models.htm#ClientEmailPlanResult\" >EmailPlanResult<"
+        },
+        {
+          "info": {
+            "name": "Get Profile Details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://clientapi.benchmarkemail.com/Client/ProfileDetails"
+          },
+          "docs": "<h4>Get Client's Profile Details</h4>\n<b>Response Body Parameters :</b>\n<table>\n  <thead>\n    <tr>\n      <th>Parameter</th>\n      <th>Type</th>\n      <th>Description</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td>Responce</td>\n      <td><a href=\"http://www.benchmarkemail.com/models.htm#ClientProfileDetails\" >ClientProfileDetails</a></td>\n      <td>Array</td>\n    </tr>\n  </tbody>\n</table>"
+        },
+        {
+          "info": {
+            "name": "Change Sub-Account status",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://clientapi.benchmarkemail.com/Client/SubAccount/:ID/Status",
+            "params": [
+              {
+                "name": "ID",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "<h4>Change Sub-Account status</h4>\n<b>Query string parameters :</b> None <br>\n\n<b>Request Body parameters:</b>\n<table>\n  <thead>\n    <tr>\n      <th>Parameter</th>\n      <th>Required</th>\n      <th>Type</th>\n      <th>Description</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td>Status</td>\n      <td>Required</td>\n      <td>string</td>\n      <td>1 to activate, 0 to deactivate</td>\n    </tr>\n  </tbody>\n</table>\n\n<b>Response body parameters :</b>\n<table>\n  <thead>\n    <tr>\n      <th>Parameter<"
+        },
+        {
+          "info": {
+            "name": "Get Sub-Account history details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://clientapi.benchmarkemail.com/Client/SubAccount/History/:HistoryID",
+            "params": [
+              {
+                "name": "HistoryID",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "ID",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "StartDate",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "EndDate",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "<h4>Get Sub-Account history details</h4>\n<b>Query string parameters :</b>\n<table>\n  <thead>\n    <tr>\n      <th>Parameter</th>\n      <th>Required</th>\n      <th>Type</th>\n      <th>Description</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td>ID</td>\n      <td>Required</td>\n      <td>string</td>\n      <td>History ID</td>\n    </tr>\n    <tr>\n      <td>StartDate</td>\n      <td>Required</td>\n      <td>string</td>\n      <td>Billing cycle start date</td>\n    </tr>\n    <tr>\n      <td>EndDate</td>\n "
+        },
+        {
+          "info": {
+            "name": "Get Sub-Account balance",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://clientapi.benchmarkemail.com/Client/SubAccount/:ID/Balance",
+            "params": [
+              {
+                "name": "ID",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "<h4>Get Sub-Account balance</h4>\n<b>Query string parameters :</b>\n<table>\n  <thead>\n    <tr>\n      <th>Parameter</th>\n      <th>Required</th>\n      <th>Type</th>\n      <th>Description</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td>ID</td>\n      <td>Required</td>\n      <td>string</td>\n      <td>Sub-Account holder client ID</td>\n    </tr>\n  </tbody>\n</table>\n\n<b>Response body parameters :</b>\n<table>\n  <thead>\n    <tr>\n      <th>Parameter</th>\n      <th>Type</th>\n      <th>Description</th>"
+        },
+        {
+          "info": {
+            "name": "Add/Remove inbox tests from Sub-Account",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://clientapi.benchmarkemail.com/Client/SubAccount/:ID/Inbox",
+            "params": [
+              {
+                "name": "ID",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "<h4>Add/Remove inbox tests from Sub-Account</h4>\n<b>Request Body parameters:</b>\n<table>\n  <thead>\n    <tr>\n      <th>Parameter</th>\n      <th>Required</th>\n      <th>Type</th>\n      <th>Description</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td>ID</td>\n      <td>Required</td>\n      <td>string</td>\n      <td>Sub-Account holder Client ID</td>\n    </tr>\n    <tr>\n      <td>Tests</td>\n      <td>Required</td>\n      <td>int</td>\n      <td>&nbsp;</td>\n    </tr>\n  </tbody>\n</table>\n\n<b>Response "
+        },
+        {
+          "info": {
+            "name": "Get Sub-Accounts plan list",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://clientapi.benchmarkemail.com/Client/SubAccount/:ID/PlanList",
+            "params": [
+              {
+                "name": "ID",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "<h4>Get Sub-Accounts plan list</h4>\n<b>Request Body parameters:</b>\n<table>\n  <thead>\n    <tr>\n      <th>Parameter</th>\n      <th>Required</th>\n      <th>Type</th>\n      <th>Description</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td>ID</td>\n      <td>Required</td>\n      <td>string</td>\n      <td>Sub-Account holder client ID</td>\n    </tr>\n  </tbody>\n</table>\n\n<b>Response body parameters :</b>\n<table>\n  <thead>\n    <tr>\n      <th>Parameter</th>\n      <th>Type</th>\n      <th>Description</t"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

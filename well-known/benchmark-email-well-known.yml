@@ -1,0 +1,213 @@
+generated: '2026-08-13'
+method: probed
+source: live HTTPS probes of every Benchmark Email host named in apis.yml and in openapi servers[]
+name: Benchmark Email /.well-known Probe
+description: >-
+  Anonymous probe of the standard /.well-known discovery paths across all five Benchmark
+  Email hosts. One real document was found: an A2A Agent Card on the developer
+  documentation host. Everything else 404s. Two hosts answer 200 with an HTML shell for
+  every path (app.benchmarkemail.io is an SPA catch-all) — those are recorded as misses,
+  not hits, because a 200 that returns HTML is not a document.
+probed: '2026-08-13'
+hosts:
+- host: developers.benchmarkemail.io
+  note: Benchmark Email v1 API developer documentation (Mintlify).
+  paths:
+  - path: /.well-known/agent-card.json
+    status: 200
+    content_type: application/json
+    document: true
+    file: ../a2a/benchmark-email-agent-card.json
+  - path: /.well-known/agent.json
+    status: 404
+    document: false
+  - path: /.well-known/security.txt
+    status: 404
+    document: false
+  - path: /.well-known/openid-configuration
+    status: 404
+    document: false
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+    document: false
+  - path: /.well-known/oauth-protected-resource
+    status: 404
+    document: false
+  - path: /.well-known/api-catalog
+    status: 404
+    document: false
+  - path: /.well-known/ai-plugin.json
+    status: 404
+    document: false
+  - path: /.well-known/agent-skills/benchmarkinternetgroup/skill.md
+    status: 200
+    content_type: text/markdown
+    document: true
+    file: ../skills/benchmark-email-benchmarkinternetgroup.md
+    note: >-
+      Non-standard but real. Also served identically at
+      /.well-known/skills/benchmarkinternetgroup/SKILL.md; both bodies are byte-identical.
+  - path: /llms.txt
+    status: 200
+    content_type: text/plain
+    document: true
+    file: ../llms/benchmark-email-llms.txt
+- host: www.benchmarkemail.com
+  note: Benchmark Email marketing site (WordPress behind Cloudflare).
+  paths:
+  - path: /.well-known/security.txt
+    status: 404
+    document: false
+  - path: /.well-known/openid-configuration
+    status: 404
+    document: false
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+    document: false
+  - path: /.well-known/oauth-protected-resource
+    status: 404
+    document: false
+  - path: /.well-known/api-catalog
+    status: 404
+    document: false
+  - path: /.well-known/ai-plugin.json
+    status: 404
+    document: false
+  - path: /.well-known/agent-card.json
+    status: 404
+    document: false
+  - path: /.well-known/agent.json
+    status: 404
+    document: false
+  - path: /llms.txt
+    status: 200
+    content_type: text/plain
+    document: true
+    file: ../llms/benchmark-email-www-llms.txt
+    note: >-
+      A second, marketing-side llms.txt distinct from the developer one. Served with
+      x-robots-tag noindex. Its body is HTML-entity-escaped (&gt;, &amp;) rather than plain
+      markdown, which a strict llms.txt consumer will render wrong.
+- host: clientapi.benchmarkemail.com
+  note: Benchmark Classic RESTful API v3.0 host.
+  paths:
+  - path: /.well-known/security.txt
+    status: 404
+    document: false
+  - path: /.well-known/openid-configuration
+    status: 404
+    document: false
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+    document: false
+  - path: /.well-known/oauth-protected-resource
+    status: 404
+    document: false
+  - path: /.well-known/api-catalog
+    status: 404
+    document: false
+  - path: /.well-known/ai-plugin.json
+    status: 404
+    document: false
+  - path: /.well-known/agent-card.json
+    status: 404
+    document: false
+  - path: /.well-known/agent.json
+    status: 404
+    document: false
+  - path: /llms.txt
+    status: 404
+    document: false
+- host: developer.benchmarkemail.com
+  note: Benchmark Classic API documentation (Postman documenter).
+  paths:
+  - path: /.well-known/security.txt
+    status: 404
+    document: false
+  - path: /.well-known/openid-configuration
+    status: 404
+    document: false
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+    document: false
+  - path: /.well-known/oauth-protected-resource
+    status: 404
+    document: false
+  - path: /.well-known/api-catalog
+    status: 404
+    document: false
+  - path: /.well-known/ai-plugin.json
+    status: 404
+    document: false
+  - path: /.well-known/agent-card.json
+    status: 404
+    document: false
+  - path: /.well-known/agent.json
+    status: 404
+    document: false
+  - path: /llms.txt
+    status: 404
+    document: false
+- host: app.benchmarkemail.io
+  note: >-
+    Benchmark Email v1 web application. SPA catch-all — every path below returned 200 with
+    the same 5,849-byte HTML application shell. NONE of these are hits.
+  paths:
+  - path: /.well-known/security.txt
+    status: 200
+    content_type: text/html
+    document: false
+  - path: /.well-known/openid-configuration
+    status: 200
+    content_type: text/html
+    document: false
+  - path: /.well-known/oauth-authorization-server
+    status: 200
+    content_type: text/html
+    document: false
+  - path: /.well-known/oauth-protected-resource
+    status: 200
+    content_type: text/html
+    document: false
+  - path: /.well-known/api-catalog
+    status: 200
+    content_type: text/html
+    document: false
+  - path: /.well-known/ai-plugin.json
+    status: 200
+    content_type: text/html
+    document: false
+  - path: /.well-known/agent-card.json
+    status: 200
+    content_type: text/html
+    document: false
+  - path: /.well-known/agent.json
+    status: 200
+    content_type: text/html
+    document: false
+  - path: /llms.txt
+    status: 200
+    content_type: text/html
+    document: false
+summary:
+  hosts_probed: 5
+  paths_probed: 45
+  real_documents: 4
+  security_txt: false
+  openid_configuration: false
+  oauth_metadata: false
+  api_catalog: false
+  ai_plugin: false
+  agent_card: true
+  llms_txt: true
+gaps:
+- >-
+  No security.txt (RFC 9116) on any host. Benchmark Email publishes no machine-readable
+  vulnerability-disclosure contact.
+- >-
+  No /.well-known/api-catalog (RFC 9727) linking the two API surfaces, which is the one
+  discovery document that would tie the classic v3.0 API and the new v1 API together.
+- >-
+  app.benchmarkemail.io answers 200 with the SPA shell for every /.well-known/* path. Any
+  scanner that trusts a status code over a content type will read this host as serving
+  eight documents it does not serve.

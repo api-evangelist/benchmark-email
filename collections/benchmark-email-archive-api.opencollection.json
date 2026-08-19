@@ -1,0 +1,292 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Benchmark Email RESTful API v3.0 ABTest Creation Archive API",
+    "version": "3.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "AuthToken",
+      "value": "{{AuthToken}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Archive",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get a list of emails for archive",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://clientapi.benchmarkemail.com/Archive",
+            "params": [
+              {
+                "name": "PageNumber",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "PageSize",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "Filter",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "OrderBy",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "SortOrder",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get a list of emails for archive\n<h4>Query String Parameter : </h4>\n<table>\n<thead>\n<tr>\n<th>Key</th>\n<th>Required</th>\n<th>Description</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td>PageNumber</td>\n<td>optional</td>\n<td>Page Number</td>\n</tr>\n<tr>\n<td>PageSize</td>\n<td>optional</td>\n<td>Number of records to show per page</td>\n</tr>\n<tr>\n<td>Filter</td>\n<td>optional</td>\n<td>Filter for archive name</td>\n</tr>\n<tr>\n<td>OrderBy</td>\n<td>optional</td>\n<td>The column to sort on</td>\n</tr>\n<tr>\n<td>SortOrder</"
+        },
+        {
+          "info": {
+            "name": "Adding an email to archive",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://clientapi.benchmarkemail.com/Archive/",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Add an email to archive page\r\n<h4>Body Parameters (to be encoded as a JSON string)</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th>\r\n<th>Required</th>\r\n<th>Description</th>\r\n</tr>\r\n</thead>\r\n<tbody>\r\n<tr>\r\n<td>EmailID</td>\r\n<td>Required</td>\r\n<td>ID of the Email which want to add as archive</td>\r\n</tr>\r\n</tbody>\r\n</table>\r\n<h4>Response body parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>Return value</td><td>String</td><td>1 if su"
+        },
+        {
+          "info": {
+            "name": "Update archive home page data",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://clientapi.benchmarkemail.com/Archive/",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update archieve home page data like Page Title ,logo,header,footer etc\r\n<h4>Body Parameters (to be encoded as a JSON string)</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th>\r\n<th>Required</th>\r\n<th>Type</th>\r\n</tr>\r\n</thead>\r\n<tbody>\r\n<tr>\r\n<td>data</td>\r\n<td>Required</td>\r\n<td><a href=http://www.benchmarkemail.com/models.htm#ArchiveHomePageData>ArchiveHomePageData</a></td>\r\n</tr>\r\n</tbody>\r\n</table>\r\n<h4>Response body parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Type</th><th>Description</"
+        },
+        {
+          "info": {
+            "name": "Delete email from archive",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://clientapi.benchmarkemail.com/Archive/:ID",
+            "params": [
+              {
+                "name": "ID",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete an email from archive\r\n<h4>URL Parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th>\r\n<th>Required</th>\r\n<th>Description</th>\r\n</tr>\r\n</thead>\r\n<tbody>\r\n<tr>\r\n<td>{{ID}}</td>\r\n<td>Required</td>\r\n<td>Archive ID</td>\r\n</tr>\r\n</tbody>\r\n</table>\r\n<h4>Response body parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>Return value</td><td>String</td><td>1 if success, -1 if error</td></tr>\r\n</tbody>\r\n</table>"
+        },
+        {
+          "info": {
+            "name": "Get details about Archive Page",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://clientapi.benchmarkemail.com/Archive/Domain"
+          },
+          "docs": "Getting details about Archive Page\n<h4>Response body parameters</h4>\n<table>\n<thead>\n<tr>\n<th>Key</th><th>Type</th><th>Description</th></tr>\n</thead>\n<tbody>\n<tr><td>ArchiveURL</td><td>String</td><td>Archive URL</td></tr>\n<tr><td>Share</td><td>String</td><td>Share</td></tr>\n<tr><td>SharePanel</td><td>String</td><td>Share Panel</td></tr>\n<tr><td>Domain</td><td>String</td><td>Domain</td></tr>\n<tr><td>ArchiveRootURL</td><td>String</td><td>Archive Root URL</td></tr>\n<tr><td>Image</td><td>String</td>"
+        },
+        {
+          "info": {
+            "name": "Adding or Updating  archive domain",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://clientapi.benchmarkemail.com/Archive/AddDomain",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Add / Update archive domain\r\n<h4>Body Parameters (to be encoded as a JSON string)</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th>\r\n<th>Required</th>\r\n<th>Description</th>\r\n</tr>\r\n</thead>\r\n<tbody>\r\n<tr>\r\n<td>Domain</td>\r\n<td>Required</td>\r\n<td>Name of the Archive Domain</td>\r\n</tr>\r\n</tbody>\r\n</table>"
+        },
+        {
+          "info": {
+            "name": "Get HTML for button",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://clientapi.benchmarkemail.com/Archive/:mode",
+            "params": [
+              {
+                "name": "mode",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get HTML for button\n<h4>URL Parameters</h4>\n<table>\n<thead>\n<tr>\n<th>Key</th>\n<th>Required</th>\n<th>Description</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td>{{Mode}}</td>\n<td>Required</td>\n<td>ID of the button selected for archive(eg. 1,2,3,4,5,6,1000 etc)</td>\n</tr>\n</tbody>\n</table>\n\n<h4>Response body parameters</h4>\n<table>\n<thead>\n<tr>\n<th>Key</th>\n<th>Type</th>\n<th>Description</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td>Code</td>\n<td>String</td>\n<td>HTML of button</td>\n</tr>\n<tr>\n<td>ArchiveURL</td>\n<td>S"
+        },
+        {
+          "info": {
+            "name": "Get image for button",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://clientapi.benchmarkemail.com/Archive/Image/:mode",
+            "params": [
+              {
+                "name": "mode",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get HTML for button\n<h4>URL Parameters</h4>\n<table>\n<thead>\n<tr>\n<th>Key</th>\n<th>Required</th>\n<th>Description</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td>{{Mode}}</td>\n<td>Required</td>\n<td>ID of the button selected for archive(eg. 1,2,3,4,5,6,1000 etc)</td>\n</tr>\n</tbody>\n</table>\n\n<h4>Response body parameters</h4>\n<table>\n<thead>\n<tr>\n<th>Key</th>\n<th>Type</th>\n<th>Description</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td>Image</td>\n<td>String</td>\n<td>URL of the image</td>\n</tr>\n<tr>\n<td>Status</td>\n<td>In"
+        },
+        {
+          "info": {
+            "name": "Getting list of archive pages",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://clientapi.benchmarkemail.com/Archive/ArchivePages"
+          },
+          "docs": "<h4>Response body parameters</h4>\n<table>\n<thead>\n<tr>\n<th>Key</th>\n<th>Type</th>\n<th>Description</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td>Count</td>\n<td>Int</td>\n<td>Count of the archive pages</td>\n</tr>\n<tr>\n<td>Status</td>\n<td>String</td>\n<td>1 if success, -1 if error</td>\n</tr>\n<tr>\n<td>HideThumbnail</td>\n<td>String</td>\n<td>Whether the thumbnail should be hidden or not</td>\n</tr>\n<tr>\n<td>ArchiveIDs</td>\n<td>String</td>\n<td>Comma separated list of archive IDs</td>\n</tr>\n<tr>\n<td>Data</td>\n<td><"
+        },
+        {
+          "info": {
+            "name": "Update the Archive Home Page",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://clientapi.benchmarkemail.com/Archive/AddArchiveHome",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update the Archive Home Page\r\n<h4>Body Parameters (to be encoded as a JSON string)</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th>\r\n<th>Required</th>\r\n<th>Description</th>\r\n</tr>\r\n</thead>\r\n<tbody>\r\n<tr>\r\n<td>SelArchiveIDs</td>\r\n<td>Required</td>\r\n<td>ID of the Email which want to add as archive</td>\r\n</tr>\r\n<tr>\r\n<td>Vieworders</td>\r\n<td>Required</td>\r\n<td>view order for email</td>\r\n</tr>\r\n<tr>\r\n<td>chkHide</td>\r\n<td>Required</td>\r\n<td>include thumbnail or not either true or false</td>\r\n</tr>\r\n</tbo"
+        },
+        {
+          "info": {
+            "name": "Getting the archive home page",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://clientapi.benchmarkemail.com/Archive/ArchiveHomePage"
+          },
+          "docs": "Get the archive home page\r\n<h4>Response body parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>Status</td><td>String</td><td>1 if success, -1 if error</td></tr>\r\n<tr><td>Data</td><td><a href=\"http://www.benchmarkemail.com/models.htm#ArchiveHomePageData\">ArchiveHomePageData</a></td><td>Array</td></tr>\r\n</tbody>\r\n</table>"
+        },
+        {
+          "info": {
+            "name": "Get the details of archive email",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://clientapi.benchmarkemail.com/Archive/:ArchiveID/Detail",
+            "params": [
+              {
+                "name": "ArchiveID",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get the details of archive email which id is pass\n<h4>URL Parameters</h4>\n<table>\n<thead>\n<tr>\n<th>Key</th>\n<th>Required</th>\n<th>Description</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td>{{ArchiveID}}</td>\n<td>Required</td>\n<td>Archive ID</td>\n</tr>\n</tbody>\n</table>\n\n<h4>Response body parameters</h4>\n<table>\n<thead>\n<tr>\n<th>Key</th>\n<th>Type</th>\n<th>Description</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td>ArchiveRootURL</td>\n<td>String</td>\n<td>Archive main URL</td>\n</tr>\n<tr>\n<td>EmailID</td>\n<td>String</td"
+        },
+        {
+          "info": {
+            "name": "Update the archive email details",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://clientapi.benchmarkemail.com/Archive/:ArchiveID/Update",
+            "params": [
+              {
+                "name": "ArchiveID",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update the archive email details like description,URL etc\r\n<h4>Body Parameters (to be encoded as a JSON string)</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th>\r\n<th>Required</th>\r\n<th>Type</th>\r\n</tr>\r\n</thead>\r\n<tbody>\r\n<tr>\r\n<td>ArchiveID</td>\r\n<td>Required</td>\r\n<td>Archive ID</td>\r\n</tr>\r\n<tr>\r\n<td>data</td>\r\n<td>Required</td>\r\n<td><a href=http://www.benchmarkemail.com/models.htm#ArchiveData>ArchiveData</a></td>\r\n</tr>\r\n</tbody>\r\n</table>\r\n<h4>Response body parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>"
+        },
+        {
+          "info": {
+            "name": "Get Archive Home Data",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://clientapi.benchmarkemail.com/Archive/ArchiveHome/:Domain/:Type",
+            "params": [
+              {
+                "name": "Domain",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "Type",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "<h4>Get the details of archive email which id is pass</h4>\r\n\r\n<h4>URL Parameters</h4>\r\n<table>\r\n<thead>\r\n<tr><th>Key</th><th>Required</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>Domain</td><td>Required</td><td>Archive Domain</td></tr>\r\n<tr><td>Type</td><td>Required</td><td>Type\r\n<code>Home</code> - Home\r\n<code>Image</code> - Image</td></tr>\r\n</tbody>\r\n</table>\r\n\r\n<h4>Response body parameters</h4>\r\n<table>\r\n<thead>\r\n<tr><th>Key</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<"
+        },
+        {
+          "info": {
+            "name": "Get HTML for Archive Newsletter",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://clientapi.benchmarkemail.com/Archive/ArchiveEmail/:Domain",
+            "params": [
+              {
+                "name": "Domain",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "<h4>Get HTML for Archive Newsletter</h4>\r\n\r\n<h4>URL Parameters</h4>\r\n<table>\r\n<thead>\r\n<tr><th>Key</th><th>Required</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>Domain</td><td>Required</td><td>Archive Domain</td></tr>\r\n</tbody>\r\n</table>\r\n\r\n<h4>Body Parameters (to be encoded as a JSON string)</h4>\r\n<table>\r\n<thead>\r\n<tr><th>Key</th><th>Required</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>ArchiveURL</td><td>Required</td><td>Archive URL</td></tr>\r\n<tr><td>Archive ID</td>"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

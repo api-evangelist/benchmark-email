@@ -1,0 +1,217 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Benchmark Email RESTful API v3.0 ABTest Creation Image Gallery API",
+    "version": "3.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "AuthToken",
+      "value": "{{AuthToken}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Image Gallery",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get account summary",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://clientapi.benchmarkemail.com/Images/Summary"
+          },
+          "docs": "<h4>Get account summary</h4>\n<b>Query string parameters : </b> None <br>\n<b>Request body parameters : </b> None <br>\n<b>Response body parameters : </b>\n<table>\n  <thead>\n    <tr>\n      <th>Parameter</th>\n      <th>Type</th>\n      <th>Description</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td>FreePlan</td>\n      <td>int</td>\n      <td>1 = FreePlan, 0 = PaidPlan</td>\n    </tr>\n    <tr>\n      <td>Limit</td>\n      <td>int</td>\n      <td>Total Space</td>\n    </tr>\n    <tr>\n      <td>PremiumCl"
+        },
+        {
+          "info": {
+            "name": "Get a list of images",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://clientapi.benchmarkemail.com/Images/",
+            "params": [
+              {
+                "name": "Filter",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "PageNumber",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "PageSize",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "OrderBy",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "SortOrder",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "<h4>Get a list of images</h4>\n<b>Query string parameters : </b>\n  <table>\n    <tr>\n      <th>Parameter</th>\n      <th>Required</th>\n      <th>Type</th>\n      <th>Description</th>\n    </tr>\n    <tr>\n      <td>Filter</td>\n      <td>Optional</td>\n      <td>int</td>\n      <td>Filterr</td>\n    </tr>\n    <tr>\n      <td>PageNumber</td>\n      <td>Required</td>\n      <td>int</td>\n      <td>Page Number</td>\n    </tr>\n    <tr>\n      <td>PageSize</td>\n      <td>Required</td>\n      <td>int</td>\n      <td>Num"
+        },
+        {
+          "info": {
+            "name": "Upload an Image",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://clientapi.benchmarkemail.com/Images/",
+            "body": {
+              "type": "multipart-form",
+              "data": []
+            }
+          },
+          "docs": "<h4>Upload an Image</h4>\n<b>Query string parameters : </b> None <br>\n\n<b>Response Body Parameters : </b>\n  <table>\n    <tr>\n      <th>Parameter</th>\n      <th>Required</th>\n      <th>Type</th>\n      <th>Description</th>\n    </tr>\n    <tr>\n      <td>Data</td>\n      <td>Required</td>\n      <td>File</td>\n      <td>Image file to be uploaded</td>\n    </tr>\n  </table>\n  <b>Response body parameters : </b>\n  <table border=\"0\" cellspacing=\"0\" cellpadding=\"0\">\n    <tr>\n      <th class=\"w_para\">Parameter</"
+        },
+        {
+          "info": {
+            "name": "Get image details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://clientapi.benchmarkemail.com/Images/:ImageID",
+            "params": [
+              {
+                "name": "ImageID",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "<h4>Get image details</h4>\n<b>Query string parameters : </b> None <br>\n<b>Request Body Parameter</b>\n  <table border=\"0\" cellspacing=\"0\" cellpadding=\"0\">\n    <tr>\n      <th>Parameter</th>\n      <th>Required</th>\n      <th>Type</th>\n      <th>Description</th>\n    </tr>\n    <tr>\n      <td>ImageID</td>\n      <td>Required</td>\n      <td>string</td>\n      <td>Image ID</td>\n    </tr>\n  </table>\n<b>Response body parameters : </b>\n<table>\n  <tr>\n    <th>Parameter</th>\n    <th>Type</th>\n    <th>Descripti"
+        },
+        {
+          "info": {
+            "name": "Update an image",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://clientapi.benchmarkemail.com/Images/:ImageID",
+            "params": [
+              {
+                "name": "ImageID",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "<h4>Update an image</h4>\n<b>Query string parameters : </b>\n<table>\n  <tr>\n    <th>Parameter</th>\n    <th>Required</th>\n    <th>Type</th>\n    <th>Description</th>\n  </tr>\n  <tr>\n    <td>ImageID</td>\n    <td>Required</td>\n    <td>string</td>\n    <td>Image ID</td>\n  </tr>\n</table>\n<b>Request Body Parameters : </b>\n<table>\n  <tr>\n    <th>Parameter</th>\n    <th>Required</th>\n    <th>Type</th>\n    <th>Description</th>\n  </tr>\n  <tr>\n    <td>ImageURL</td>\n    <td>Required if ImageName is not passed</td"
+        },
+        {
+          "info": {
+            "name": "Delete an image",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://clientapi.benchmarkemail.com/Images/:ImageID",
+            "params": [
+              {
+                "name": "ImageID",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "<h4>Delete an image</h4>\n<b>Query string parameters : </b> None <br>\n<b>Request Body Parameters : </b>\n<table>\n  <tr>\n    <th>Parameter</th>\n    <th>Required</th>\n    <th>Type</th>\n    <th>Description</th>\n  </tr>\n  <tr>\n    <td>ImageID</td>\n    <td>Required</td>\n    <td>string</td>\n    <td>Image ID</td>\n  </tr>\n</table>\n<b>Response Body Parameters : </b>\n<table>\n  <tr>\n    <th>Parameter</th>\n    <th>Type</th>\n    <th>Description</th>\n  </tr>\n  <tr>\n    <td>Response</td>\n    <td>int</td>\n    <td"
+        },
+        {
+          "info": {
+            "name": "Copy image to sub-account",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://clientapi.benchmarkemail.com/Images/:ImageID/Copy",
+            "params": [
+              {
+                "name": "ImageID",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "<h4>Copy image to sub-account</h4>\n<b>Query string parameters : </b>\n<table>\n  <tr>\n    <th>Parameter</th>\n    <th>Required</th>\n    <th>Type</th>\n    <th>Description</th>\n  </tr>\n  <tr>\n    <td>ImageID</td>\n    <td>Required</td>\n    <td>string</td>\n    <td>Image ID</td>\n  </tr>\n</table>\n<b>Request Body Parameters : </b>\n<table>\n  <tr>\n    <th>Parameter</th>\n    <th>Required</th>\n    <th>Type</th>\n    <th>Description</th>\n  </tr>\n  <tr>\n    <td>Clients</td>\n    <td>Required</td>\n    <td>string</"
+        },
+        {
+          "info": {
+            "name": "Get list of Giphy images",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://clientapi.benchmarkemail.com/Images/Giphy/Images/List",
+            "params": [
+              {
+                "name": "PageNumber",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "PageSize",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "Filter",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "<h4>Get list of Giphy images</h4>\n<b>Query string parameters : </b> \n<table>\n  <thead>\n    <tr>\n      <th>Parameter</th>\n      <th>Required</th>\n      <th>Type</th>\n      <th>Description</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td>PageNumber</td>\n      <td>Optional</td>\n      <td>string</td>\n      <td>Page Number</td>\n    </tr>\n    <tr>\n      <td>PageSize</td>\n      <td>Optional</td>\n      <td>string</td>\n      <td>Number of records per page</td>\n    </tr>\n    <tr>\n      <td>Filter</t"
+        },
+        {
+          "info": {
+            "name": "Upload Logo Image",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://clientapi.benchmarkemail.com/Images/:ImageType/:Extra",
+            "params": [
+              {
+                "name": "ImageType",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "Extra",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "multipart-form",
+              "data": []
+            }
+          },
+          "docs": "<h4>Upload Logo Image</h4>\n<b>Query string parameters : </b> None <br>\n\n<b>Response Body Parameters : </b>\n  <table>\n    <tr>\n      <th>Parameter</th>\n      <th>Required</th>\n      <th>Type</th>\n      <th>Description</th>\n    </tr>\n    <tr>\n      <td>Data</td>\n      <td>Required</td>\n      <td>File</td>\n      <td>Image file to be uploaded</td>\n    </tr>\n    <tr>\n      <td>ImageType</td>\n      <td>Required</td>\n      <td>string</td>\n      <td>Type of a image</td>\n    </tr>\n    <tr>\n      <td>Extr"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

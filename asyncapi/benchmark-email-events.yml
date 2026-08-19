@@ -1,0 +1,131 @@
+generated: '2026-08-13'
+method: searched
+source: >-
+  https://developers.benchmarkemail.io/openapi.json (event type enums on GET
+  /api/contact/events) and
+  https://github.com/BenchmarkEmail/RESTful-API-v3/tree/master/Use%20Cases%20and%20Solutions%20Sandbox
+  (classic v3.0 webhook payload flags), read 2026-08-13
+name: Benchmark Email Event and Webhook Surface
+description: >-
+  Benchmark Email has an event surface on both of its APIs, but publishes NO AsyncAPI
+  document for either — searched /asyncapi.yaml, /asyncapi.json, the developer docs index
+  (llms.txt) and the GitHub account, all miss. The two surfaces work in opposite
+  directions: the classic v3.0 API PUSHES to a webhook URL you register per list, while the
+  new v1 API offers no webhooks at all and instead exposes a PULL event feed you poll. An
+  integration that moves from classic to v1 loses push delivery.
+asyncapi_published: false
+asyncapi_searched:
+- url: https://developers.benchmarkemail.io/asyncapi.json
+  status: 404
+- url: https://developers.benchmarkemail.io/asyncapi.yaml
+  status: 404
+surfaces:
+- name: Benchmark Email v1 contact event feed
+  style: pull
+  api: benchmark-email:benchmark-email-api
+  transport: HTTPS polling
+  operations:
+  - operationId: get_api_contact_events
+    path: GET /api/contact/events
+    summary: Get all contact events for the account
+    scope: contacts:read
+  - operationId: get_api_contact_by_contactId_events
+    path: GET /api/contact/{contactId}/events
+    summary: Get events for a single contact
+    scope: contacts:read
+  delivery_note: >-
+    Read-only. There is no subscription, no callback registration and no signature to
+    verify — the consumer polls and filters by event type. Nothing in the v1 OpenAPI
+    declares a webhooks or callbacks block.
+  event_types:
+  - id: contact-created
+    domain: contact
+  - id: contact-updated
+    domain: contact
+  - id: contact-update-failed
+    domain: contact
+  - id: contact-unsubscribed
+    domain: contact
+  - id: contact-reactivated
+    domain: contact
+  - id: email-sent
+    domain: email
+  - id: email-delivered
+    domain: email
+  - id: email-bounced
+    domain: email
+  - id: email-delayed
+    domain: email
+  - id: email-rejected
+    domain: email
+  - id: email-complaint
+    domain: email
+  - id: email-opened
+    domain: email
+  - id: email-clicked
+    domain: email
+  - id: email-skipped
+    domain: email
+  first_touch_event_types:
+    note: >-
+      A reduced enum used where only the first occurrence per recipient is reported.
+    values:
+    - email-sent
+    - email-delivered
+    - email-bounced
+    - first-contact-unsubscribed
+    - first-email-complaint
+    - first-email-opened
+    - first-email-clicked
+- name: Benchmark Classic v3.0 webhooks
+  style: push
+  api: benchmark-email:benchmark-email-webhooks-api
+  transport: HTTP POST to a customer-supplied ClientUrl
+  scope_of_subscription: per contact list (ContactMasterID)
+  operations:
+  - operationId: post__contact__listid__webhooks
+    path: POST /Contact/{ListID}/Webhooks
+    summary: Create a webhook for a list
+  - operationId: get__contact__listid__webhooks
+    path: GET /Contact/{ListID}/Webhooks
+    summary: List webhooks on a list
+  - operationId: patch__contact__listid__webhooks__id
+    path: PATCH /Contact/{ListID}/Webhooks/{ID}
+    summary: Update a webhook
+  - operationId: delete__contact__listid__webhooks__id
+    path: DELETE /Contact/{ListID}/Webhooks/{ID}
+    summary: Delete a webhook
+  subscription_model: >-
+    One webhook record carries five independent boolean flags, each "1" to subscribe and
+    "0" to ignore. A single registration can therefore cover several event types.
+  event_flags:
+  - flag: Subscribes
+    meaning: A contact subscribed to the list.
+  - flag: Unsubscribes
+    meaning: A contact unsubscribed from the list.
+  - flag: EmailChanged
+    meaning: A contact's email address changed.
+  - flag: ProfileUpdates
+    meaning: A contact field value changed.
+  - flag: CleanedAddress
+    meaning: An address was cleaned (hard bounce or invalid) off the list.
+  payload_fields:
+  - ClientUrl
+  - ContactMasterID
+security:
+  signature_verification: none published
+  replay_protection: none published
+  note: >-
+    The classic webhook documentation specifies no signing secret, no HMAC header and no
+    timestamp — a receiver cannot verify that a POST came from Benchmark Email other than
+    by keeping the ClientUrl secret. This is a real gap worth reporting to the provider.
+gaps:
+- >-
+  No AsyncAPI document for either surface, so the event catalog above had to be recovered
+  from an OpenAPI enum and a GitHub markdown example rather than read from a contract.
+- >-
+  The new v1 API has no webhooks. Fourteen event types are enumerated and readable only by
+  polling, which is a step back from the classic push webhooks for any integration that
+  needs low latency.
+- >-
+  No webhook signature scheme is published for the classic surface.
