@@ -35,6 +35,21 @@ tags:
   - Automation
   - Transactional Email
   - Marketing
+  - List
+  - Segmentation
+  - Reporting
+  - Deliverability
+  - Sending Domains
+  - Email Templates
+  - Webhook
+  - Agent Ready
+tags_raw:
+  - Email Marketing
+  - Campaigns
+  - Contacts
+  - Automation
+  - Transactional Email
+  - Marketing
   - Lists
   - Segmentation
   - Reporting
@@ -225,7 +240,8 @@ apis:
   description: General operations
   humanURL: https://developer.benchmarkemail.com/
   baseURL: https://clientapi.benchmarkemail.com
-  tags:
+  tags: []
+  tags_raw:
   - General
   properties:
   - type: OpenAPI
@@ -498,6 +514,8 @@ apis:
   humanURL: https://developer.benchmarkemail.com/
   baseURL: https://clientapi.benchmarkemail.com
   tags:
+  - Webhook
+  tags_raw:
   - Webhooks
   properties:
   - type: OpenAPI
@@ -518,6 +536,13 @@ apis:
   humanURL: https://developers.benchmarkemail.io/
   baseURL: https://api-{region}-{cluster}.benchmarkemail.io
   tags:
+  - Contacts
+  - List
+  - Email Campaigns
+  - Email Templates
+  - Sending Domains
+  - Reports
+  tags_raw:
   - Contacts
   - Lists
   - Email Campaigns
