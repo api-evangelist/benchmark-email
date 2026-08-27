@@ -526,34 +526,16 @@ apis:
     url: https://github.com/BenchmarkEmail/RESTful-API-v3
   - type: PostmanCollection
     url: https://github.com/BenchmarkEmail/RESTful-API-v3/tree/master/Postman%20Collections
-- aid: benchmark-email:benchmark-email-api
-  name: Benchmark Email API
-  description: The current Benchmark Email REST API on the benchmarkemail.io platform. Manages
-    contacts, contact structures and custom fields, lists, email campaigns, email templates,
-    sending domains and performance reports. Authenticated with a scoped X-API-Key and served
-    from a per-account regional base URL. Campaign scheduling and sending, and sending-domain
-    verification, are deliberately web-only.
-  humanURL: https://developers.benchmarkemail.io/
-  baseURL: https://api-{region}-{cluster}.benchmarkemail.io
+- aid: benchmark-email:benchmark-email-contact-api
+  name: Benchmark Email Contact API
+  description: Contact related endpoints
+  humanURL: https://developer.benchmarkemail.com/
+  baseURL: https://clientapi.benchmarkemail.com
   tags:
-  - Contacts
-  - List
-  - Email Campaigns
-  - Email Templates
-  - Sending Domains
-  - Reports
-  tags_raw:
-  - Contacts
-  - Lists
-  - Email Campaigns
-  - Email Templates
-  - Sending Domains
-  - Reports
+  - contact
   properties:
   - type: OpenAPI
-    url: openapi/benchmark-email-api-openapi.json
-  - type: Overlay
-    url: overlays/benchmark-email-api-overlay.yaml
+    url: openapi/benchmark-email-contact-api-openapi.yml
   - type: Documentation
     url: https://developers.benchmarkemail.io/
   - type: APIReference
@@ -572,17 +554,189 @@ apis:
     url: conventions/benchmark-email-conventions.yml
   - type: DataModel
     url: data-model/benchmark-email-data-model.yml
-  - type: MCPServer
-    url: mcp/benchmark-email-mcp.yml
   - type: ToolCrosswalk
     url: mcp/benchmark-email-tool-crosswalk.yml
   - type: AgentCard
     url: a2a/benchmark-email-a2a.yml
   - type: LLMsTxt
     url: llms/benchmark-email-llms.txt
+- aid: benchmark-email:benchmark-email-contact-structure-api
+  name: Benchmark Email Contact Structure API
+  description: Contact structure related endpoints
+  humanURL: https://developer.benchmarkemail.com/
+  baseURL: https://clientapi.benchmarkemail.com
+  tags:
+  - contact-structure
+  properties:
+  - type: OpenAPI
+    url: openapi/benchmark-email-contact-structure-api-openapi.yml
+  - type: Documentation
+    url: https://developers.benchmarkemail.io/
+  - type: APIReference
+    url: https://developers.benchmarkemail.io/api-reference
+  - type: GettingStarted
+    url: https://developers.benchmarkemail.io/introduction
+  - type: Authentication
+    url: authentication/benchmark-email-authentication.yml
+  - type: OAuthScopes
+    url: scopes/benchmark-email-scopes.yml
+  - type: ErrorCatalog
+    url: errors/benchmark-email-problem-types.yml
+  - type: RateLimits
+    url: rate-limits/benchmark-email-rate-limits.yml
+  - type: Conventions
+    url: conventions/benchmark-email-conventions.yml
+  - type: DataModel
+    url: data-model/benchmark-email-data-model.yml
+  - type: ToolCrosswalk
+    url: mcp/benchmark-email-tool-crosswalk.yml
+  - type: AgentCard
+    url: a2a/benchmark-email-a2a.yml
+  - type: LLMsTxt
+    url: llms/benchmark-email-llms.txt
+- aid: benchmark-email:benchmark-email-email-campaign-api
+  name: Benchmark Email Email Campaign API
+  description: Email campaign related endpoints
+  humanURL: https://developer.benchmarkemail.com/
+  baseURL: https://clientapi.benchmarkemail.com
+  tags:
+  - email-campaign
+  properties:
+  - type: OpenAPI
+    url: openapi/benchmark-email-email-campaign-api-openapi.yml
+  - type: Documentation
+    url: https://developers.benchmarkemail.io/
+  - type: APIReference
+    url: https://developers.benchmarkemail.io/api-reference
+  - type: GettingStarted
+    url: https://developers.benchmarkemail.io/introduction
+  - type: Authentication
+    url: authentication/benchmark-email-authentication.yml
+  - type: OAuthScopes
+    url: scopes/benchmark-email-scopes.yml
+  - type: ErrorCatalog
+    url: errors/benchmark-email-problem-types.yml
+  - type: RateLimits
+    url: rate-limits/benchmark-email-rate-limits.yml
+  - type: Conventions
+    url: conventions/benchmark-email-conventions.yml
+  - type: DataModel
+    url: data-model/benchmark-email-data-model.yml
+  - type: ToolCrosswalk
+    url: mcp/benchmark-email-tool-crosswalk.yml
+  - type: AgentCard
+    url: a2a/benchmark-email-a2a.yml
+  - type: LLMsTxt
+    url: llms/benchmark-email-llms.txt
+- aid: benchmark-email:benchmark-email-email-domain-api
+  name: Benchmark Email Email Domain API
+  description: Email domain related endpoints
+  humanURL: https://developer.benchmarkemail.com/
+  baseURL: https://clientapi.benchmarkemail.com
+  tags:
+  - email-domain
+  properties:
+  - type: OpenAPI
+    url: openapi/benchmark-email-email-domain-api-openapi.yml
+  - type: Documentation
+    url: https://developers.benchmarkemail.io/
+  - type: APIReference
+    url: https://developers.benchmarkemail.io/api-reference
+  - type: GettingStarted
+    url: https://developers.benchmarkemail.io/introduction
+  - type: Authentication
+    url: authentication/benchmark-email-authentication.yml
+  - type: OAuthScopes
+    url: scopes/benchmark-email-scopes.yml
+  - type: ErrorCatalog
+    url: errors/benchmark-email-problem-types.yml
+  - type: RateLimits
+    url: rate-limits/benchmark-email-rate-limits.yml
+  - type: Conventions
+    url: conventions/benchmark-email-conventions.yml
+  - type: DataModel
+    url: data-model/benchmark-email-data-model.yml
+  - type: ToolCrosswalk
+    url: mcp/benchmark-email-tool-crosswalk.yml
+  - type: AgentCard
+    url: a2a/benchmark-email-a2a.yml
+  - type: LLMsTxt
+    url: llms/benchmark-email-llms.txt
+- aid: benchmark-email:benchmark-email-email-template-api
+  name: Benchmark Email Email Template API
+  description: Email template related endpoints
+  humanURL: https://developer.benchmarkemail.com/
+  baseURL: https://clientapi.benchmarkemail.com
+  tags:
+  - email-template
+  properties:
+  - type: OpenAPI
+    url: openapi/benchmark-email-email-template-api-openapi.yml
+  - type: Documentation
+    url: https://developers.benchmarkemail.io/
+  - type: APIReference
+    url: https://developers.benchmarkemail.io/api-reference
+  - type: GettingStarted
+    url: https://developers.benchmarkemail.io/introduction
+  - type: Authentication
+    url: authentication/benchmark-email-authentication.yml
+  - type: OAuthScopes
+    url: scopes/benchmark-email-scopes.yml
+  - type: ErrorCatalog
+    url: errors/benchmark-email-problem-types.yml
+  - type: RateLimits
+    url: rate-limits/benchmark-email-rate-limits.yml
+  - type: Conventions
+    url: conventions/benchmark-email-conventions.yml
+  - type: DataModel
+    url: data-model/benchmark-email-data-model.yml
+  - type: ToolCrosswalk
+    url: mcp/benchmark-email-tool-crosswalk.yml
+  - type: AgentCard
+    url: a2a/benchmark-email-a2a.yml
+  - type: LLMsTxt
+    url: llms/benchmark-email-llms.txt
+- aid: benchmark-email:benchmark-email-lists-api
+  name: Benchmark Email Lists API
+  description: List related endpoints
+  humanURL: https://developer.benchmarkemail.com/
+  baseURL: https://clientapi.benchmarkemail.com
+  tags:
+  - lists
+  properties:
+  - type: OpenAPI
+    url: openapi/benchmark-email-lists-api-openapi.yml
+  - type: Documentation
+    url: https://developers.benchmarkemail.io/
+  - type: APIReference
+    url: https://developers.benchmarkemail.io/api-reference
+  - type: GettingStarted
+    url: https://developers.benchmarkemail.io/introduction
+  - type: Authentication
+    url: authentication/benchmark-email-authentication.yml
+  - type: OAuthScopes
+    url: scopes/benchmark-email-scopes.yml
+  - type: ErrorCatalog
+    url: errors/benchmark-email-problem-types.yml
+  - type: RateLimits
+    url: rate-limits/benchmark-email-rate-limits.yml
+  - type: Conventions
+    url: conventions/benchmark-email-conventions.yml
+  - type: DataModel
+    url: data-model/benchmark-email-data-model.yml
+  - type: ToolCrosswalk
+    url: mcp/benchmark-email-tool-crosswalk.yml
+  - type: AgentCard
+    url: a2a/benchmark-email-a2a.yml
+  - type: LLMsTxt
+    url: llms/benchmark-email-llms.txt
+common:
+  - type: Overlay
+    url: overlays/benchmark-email-api-overlay.yaml
+  - type: MCPServer
+    url: mcp/benchmark-email-mcp.yml
   - type: AgentSkill
     url: skills/_index.yml
-common:
   - type: IssueTracker
     url: https://github.com/BenchmarkEmail/RESTful-API-v3/issues
   - type: AgenticAccess
