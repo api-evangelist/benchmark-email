@@ -10,6 +10,19 @@ description: Benchmark Email is an email marketing platform for small businesses
   publishes an OpenAPI, two llms.txt files, an A2A Agent Card, an Agent Skill and a live
   documentation MCP endpoint, but ships no maintained SDK, no sandbox, no changelog and no
   deprecation policy.
+deliveryModel:
+  model: unknown
+  open_source: unknown
+  commercial: true
+  callable_host: true
+  label: Delivery model not determined — needs a product licence on record
+  confidence: low
+  source:
+  - openapi
+  - pricing
+  - repository-unlicensed
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: freemium
   onboarding: self-serve
