@@ -1,0 +1,84 @@
+slug: benchmark-email
+provider: Benchmark Email
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Software & Technology
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 7
+edges:
+- tag: Automation Creation
+  spec_file: benchmark-email-automation-creation-api-openapi.yml
+  capability_id: BC-400.60
+  capability_id_l1: BC-400
+  capability_name: Digital Marketing Management
+  confidence: 0.85
+  evidence: POST /Automation/  Create an Automation; POST /Automation/{AutomationID}/Emails/{AutomationDetailID}/Content  Create
+    Email Content for an Automation
+  reason: Creating and updating email automations and their email content is textbook marketing automation,
+    which sits under Digital Marketing Management.
+- tag: Email  Email Rss Creation
+  spec_file: benchmark-email-email-email-rss-creation-api-openapi.yml
+  capability_id: BC-400.60
+  capability_id_l1: BC-400
+  capability_name: Digital Marketing Management
+  confidence: 0.85
+  evidence: POST /Emails/  Create Email; POST /Emails/{ID}/Schedule  Send Email; POST /Emails/{ID}/RSSSchedule  Schedule
+    RSS Emails; GET /Emails/{ID}/Spam  SpamCheck
+  reason: Creating, testing, scheduling and sending email campaigns is email/digital marketing execution
+    — the core of Digital Marketing Management.
+- tag: Segments
+  spec_file: benchmark-email-segments-api-openapi.yml
+  capability_id: BC-420.20
+  capability_id_l1: BC-420
+  capability_name: Customer Segmentation Management
+  confidence: 0.85
+  evidence: POST /Contact/{ListID}/Segments "Creating segment from contact IDs"; POST /Contact/Segments/{SegmentID}/Criteria
+    "Create Criteria"
+  reason: Full CRUD over contact segments and segment criteria on the customer/subscriber base is plainly
+    customer segmentation management.
+- tag: Webhooks
+  spec_file: benchmark-email-webhooks-api-openapi.yml
+  capability_id: BC-4270.80
+  capability_id_l1: BC-4270
+  capability_name: Webhook & Event Subscription Management
+  confidence: 0.85
+  evidence: POST /Contact/{ListID}/Webhooks "Create Webhook"; PATCH .../Webhooks/{ID} "Update Webhook";
+    DELETE "Delete the Webhooks"
+  reason: Lifecycle CRUD over outbound webhook subscriptions for list events is exactly webhook and event
+    subscription management in the platform's developer/API ecosystem.
+- tag: email-campaign
+  spec_file: benchmark-email-email-campaign-api-openapi.yml
+  capability_id: BC-400.60
+  capability_id_l1: BC-400
+  capability_name: Digital Marketing Management
+  confidence: 0.8
+  evidence: POST /api/email/campaign 'Add a campaign'; POST /api/email/campaign/{campaignId}/duplicate
+    'Duplicate an existing campaign'
+  reason: Creation and lifecycle management of email marketing campaigns on an email marketing platform
+    — squarely digital marketing / marketing automation. Slight ambiguity between Digital Marketing and
+    Demand Generation sub-capabilities.
+- tag: Survey Creation
+  spec_file: benchmark-email-survey-creation-api-openapi.yml
+  capability_id: BC-430.50
+  capability_id_l1: BC-430
+  capability_name: Customer Feedback Management
+  confidence: 0.75
+  evidence: '"Add Question to Survey", "Update Question of a Survey", "Get template list of survey"'
+  reason: Survey and survey-question authoring is squarely survey/feedback programme tooling used for
+    voice-of-customer capture.
+- tag: Survey
+  spec_file: benchmark-email-survey-api-openapi.yml
+  capability_id: BC-430.50
+  capability_id_l1: BC-430
+  capability_name: Customer Feedback Management
+  confidence: 0.7
+  evidence: POST /Survey "Create a Survey"; POST /Survey/{ID}/CopyTemplate "Use template for Survey"
+  reason: Survey creation from templates is survey/voice-of-customer feedback collection. Only two operations,
+    so confidence is capped.

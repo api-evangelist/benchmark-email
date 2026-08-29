@@ -744,6 +744,9 @@ apis:
   - type: LLMsTxt
     url: llms/benchmark-email-llms.txt
 common:
+  - type: CapabilityMap
+    url: capabilities/benchmark-email-capability-edges.yml
+    name: Benchmark Email Business Capability Map
   - type: Overlay
     url: overlays/benchmark-email-api-overlay.yaml
   - type: MCPServer
