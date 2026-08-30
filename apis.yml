@@ -545,6 +545,8 @@ apis:
   humanURL: https://developer.benchmarkemail.com/
   baseURL: https://clientapi.benchmarkemail.com
   tags:
+  - Contact
+  tags_raw:
   - contact
   properties:
   - type: OpenAPI
@@ -681,6 +683,8 @@ apis:
   humanURL: https://developer.benchmarkemail.com/
   baseURL: https://clientapi.benchmarkemail.com
   tags:
+  - EmailTemplate
+  tags_raw:
   - email-template
   properties:
   - type: OpenAPI
@@ -715,6 +719,8 @@ apis:
   humanURL: https://developer.benchmarkemail.com/
   baseURL: https://clientapi.benchmarkemail.com
   tags:
+  - List
+  tags_raw:
   - lists
   properties:
   - type: OpenAPI
