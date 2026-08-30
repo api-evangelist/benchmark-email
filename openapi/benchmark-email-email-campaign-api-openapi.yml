@@ -1,0 +1,488 @@
+openapi: 3.2.0
+info:
+  description: 'Public REST API for Benchmark Email.
+
+
+    Authenticate every request by including your API key in the `X-API-Key` header.
+
+    Each key is issued with one or more scopes that control which endpoints it may call.
+
+
+    Rate limits: 60 requests per minute per account.
+
+    Monthly quota: determined by your subscription plan.'
+  title: Benchmark Email Email Campaign API
+  version: 1.0.0
+servers:
+- description: Your account's API base URL. Copy the full URL shown on Settings > API Keys in your Benchmark Email account and paste it here.
+  url: '{apiBaseUrl}'
+  variables:
+    apiBaseUrl:
+      default: ''
+      description: Your account's API base URL. Copy it from Settings > API Keys in your Benchmark Email account.
+security:
+- apiKeyAuth: []
+tags:
+- description: Email campaign related endpoints
+  name: email-campaign
+paths:
+  /api/email/campaign:
+    get:
+      operationId: get_api_email_campaign
+      parameters:
+      - description: page number
+        in: query
+        name: page
+        schema:
+          minimum: 1
+          type: integer
+      - description: page size
+        in: query
+        name: size
+        schema:
+          minimum: 1
+          type: integer
+      - in: query
+        name: statuses
+        schema:
+          enum:
+          - scheduled
+          - sent
+          - draft
+          - sending
+          - paused
+          - failed
+          - cancelled
+          type: string
+      - description: 'Sorting parameter with the format ''field:direction''. Supported fields: name, createdAt, updatedAt, scheduledAt.'
+        examples:
+          ascSort:
+            summary: ascending sort by name
+            value: name:asc
+          descSort:
+            summary: descending sort by createdAt
+            value: createdAt:desc
+        in: query
+        name: sort
+        required: false
+        schema:
+          pattern: ^[a-zA-Z0-9_]+:(asc|desc)$
+          type: string
+      - description: A string used to filter the search results. The maximum length is 50 characters.
+        in: query
+        name: criteria
+        schema:
+          maxLength: 50
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  records:
+                    items:
+                      properties:
+                        _id:
+                          description: Id of the campaign
+                          type: string
+                        cancelledAt:
+                          description: Timestamp when the campaign was cancelled or failed
+                          type:
+                          - string
+                          - 'null'
+                        createdAt:
+                          description: Date and time of creation
+                          type: string
+                        failedCount:
+                          description: Failed sent count
+                          type: number
+                        from:
+                          description: From email address
+                          type: string
+                        name:
+                          description: Name of the campaign
+                          type: string
+                        previewImageUrl:
+                          description: Email Preview Image Url
+                          type: string
+                        previewText:
+                          description: Preview text of the email
+                          type: string
+                        scheduledAt:
+                          description: Date and time of scheduled email
+                          type: string
+                        sentCount:
+                          description: Successfully sent count
+                          type: number
+                        stats:
+                          description: email campaign stats
+                          properties:
+                            clicks:
+                              properties:
+                                rate:
+                                  description: Campaign click rate
+                                  example: 15.75
+                                  format: float
+                                  type: number
+                                unique:
+                                  description: Campaign clicked count
+                                  example: 145
+                                  type: number
+                              type: object
+                            delivered:
+                              description: Campaign total delivered count
+                              example: 599
+                              type: number
+                            opens:
+                              properties:
+                                rate:
+                                  description: Campaign open rate
+                                  example: 25.35
+                                  format: float
+                                  type: number
+                                unique:
+                                  description: Campaign opened count
+                                  example: 255
+                                  type: number
+                              type: object
+                            sent:
+                              description: Campaign total sent count
+                              example: 650
+                              type: number
+                          type: object
+                        status:
+                          description: Status of the campaign
+                          type: string
+                        subStatus:
+                          description: Granular failure/cancellation reason. Null for non-failure states or legacy campaigns.
+                          enum:
+                          - null
+                          type:
+                          - string
+                          - 'null'
+                        subject:
+                          description: Subject of the email
+                          type: string
+                        totalRecipients:
+                          description: Total email recipients
+                          type: number
+                        updatedAt:
+                          description: Date and time of last update
+                          type: string
+                      type: object
+                    type: array
+                  total:
+                    description: Total number of campaigns
+                    type: number
+                type: object
+          description: Successfully retrieved
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+      security:
+      - apiKeyAuth: []
+      summary: Get all campaigns
+      tags:
+      - email-campaign
+      x-api-key-scope: campaigns:read
+    post:
+      operationId: post_api_email_campaign
+      requestBody:
+        content:
+          application/json: {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  _id:
+                    description: Id of the campaign
+                    type: string
+                  cancelledAt:
+                    description: Timestamp when the campaign was cancelled or failed
+                    type:
+                    - string
+                    - 'null'
+                  createdAt:
+                    description: Date and time of creation
+                    type: string
+                  failedCount:
+                    description: Failed sent count
+                    type: number
+                  previewImageUrl:
+                    description: Email Preview Image Url
+                    type: string
+                  scheduledAt:
+                    description: Date and time of scheduled email
+                    type: string
+                  sentCount:
+                    description: Successfully sent count
+                    type: number
+                  status:
+                    description: Status of the campaign
+                    type: string
+                  subStatus:
+                    description: Granular failure/cancellation reason. Null for non-failure states or legacy campaigns.
+                    enum:
+                    - null
+                    type:
+                    - string
+                    - 'null'
+                  totalRecipients:
+                    description: Total email recipients
+                    type: number
+                  updatedAt:
+                    description: Date and time of last update
+                    type: string
+                type: object
+          description: Successfully created
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+      security:
+      - apiKeyAuth: []
+      summary: Add a campaign
+      tags:
+      - email-campaign
+      x-api-key-scope: campaigns:write
+  /api/email/campaign/{campaignId}:
+    delete:
+      operationId: delete_api_email_campaign_by_campaignId
+      parameters:
+      - in: path
+        name: campaignId
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: Successfully deleted
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Campaign not found
+      security:
+      - apiKeyAuth: []
+      summary: Delete campaign by id
+      tags:
+      - email-campaign
+      x-api-key-scope: campaigns:write
+    get:
+      operationId: get_api_email_campaign_by_campaignId
+      parameters:
+      - in: path
+        name: campaignId
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  _id:
+                    description: Id of the campaign
+                    type: string
+                  cancelledAt:
+                    description: Timestamp when the campaign was cancelled or failed
+                    type:
+                    - string
+                    - 'null'
+                  createdAt:
+                    description: Date and time of creation
+                    type: string
+                  failedCount:
+                    description: Failed sent count
+                    type: number
+                  previewImageUrl:
+                    description: Email Preview Image Url
+                    type: string
+                  scheduledAt:
+                    description: Date and time of scheduled email
+                    type: string
+                  sentCount:
+                    description: Successfully sent count
+                    type: number
+                  status:
+                    description: Status of the campaign
+                    type: string
+                  subStatus:
+                    description: Granular failure/cancellation reason. Null for non-failure states or legacy campaigns.
+                    enum:
+                    - null
+                    type:
+                    - string
+                    - 'null'
+                  totalRecipients:
+                    description: Total email recipients
+                    type: number
+                  updatedAt:
+                    description: Date and time of last update
+                    type: string
+                type: object
+          description: Successfully retrieved
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      security:
+      - apiKeyAuth: []
+      summary: Get campaign by id
+      tags:
+      - email-campaign
+      x-api-key-scope: campaigns:read
+    patch:
+      operationId: patch_api_email_campaign_by_campaignId
+      parameters:
+      - in: path
+        name: campaignId
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json: {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  _id:
+                    description: Id of the campaign
+                    type: string
+                  cancelledAt:
+                    description: Timestamp when the campaign was cancelled or failed
+                    type:
+                    - string
+                    - 'null'
+                  createdAt:
+                    description: Date and time of creation
+                    type: string
+                  failedCount:
+                    description: Failed sent count
+                    type: number
+                  previewImageUrl:
+                    description: Email Preview Image Url
+                    type: string
+                  scheduledAt:
+                    description: Date and time of scheduled email
+                    type: string
+                  sentCount:
+                    description: Successfully sent count
+                    type: number
+                  status:
+                    description: Status of the campaign
+                    type: string
+                  subStatus:
+                    description: Granular failure/cancellation reason. Null for non-failure states or legacy campaigns.
+                    enum:
+                    - null
+                    type:
+                    - string
+                    - 'null'
+                  totalRecipients:
+                    description: Total email recipients
+                    type: number
+                  updatedAt:
+                    description: Date and time of last update
+                    type: string
+                type: object
+          description: Successfully updated
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      security:
+      - apiKeyAuth: []
+      summary: Update campaign by id
+      tags:
+      - email-campaign
+      x-api-key-scope: campaigns:write
+  /api/email/campaign/{campaignId}/duplicate:
+    post:
+      operationId: post_api_email_campaign_by_campaignId_duplicate
+      parameters:
+      - in: path
+        name: campaignId
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json: {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  _id:
+                    description: Id of the campaign
+                    type: string
+                  cancelledAt:
+                    description: Timestamp when the campaign was cancelled or failed
+                    type:
+                    - string
+                    - 'null'
+                  createdAt:
+                    description: Date and time of creation
+                    type: string
+                  failedCount:
+                    description: Failed sent count
+                    type: number
+                  previewImageUrl:
+                    description: Email Preview Image Url
+                    type: string
+                  scheduledAt:
+                    description: Date and time of scheduled email
+                    type: string
+                  sentCount:
+                    description: Successfully sent count
+                    type: number
+                  status:
+                    description: Status of the campaign
+                    type: string
+                  subStatus:
+                    description: Granular failure/cancellation reason. Null for non-failure states or legacy campaigns.
+                    enum:
+                    - null
+                    type:
+                    - string
+                    - 'null'
+                  totalRecipients:
+                    description: Total email recipients
+                    type: number
+                  updatedAt:
+                    description: Date and time of last update
+                    type: string
+                type: object
+          description: Successfully duplicated
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      security:
+      - apiKeyAuth: []
+      summary: Duplicate an existing campaign
+      tags:
+      - email-campaign
+      x-api-key-scope: campaigns:write
+components:
+  securitySchemes:
+    apiKeyAuth:
+      description: API key authentication
+      in: header
+      name: X-API-Key
+      type: apiKey

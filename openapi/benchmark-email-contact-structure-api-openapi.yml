@@ -1,0 +1,150 @@
+openapi: 3.2.0
+info:
+  description: 'Public REST API for Benchmark Email.
+
+
+    Authenticate every request by including your API key in the `X-API-Key` header.
+
+    Each key is issued with one or more scopes that control which endpoints it may call.
+
+
+    Rate limits: 60 requests per minute per account.
+
+    Monthly quota: determined by your subscription plan.'
+  title: Benchmark Email Contact Structure API
+  version: 1.0.0
+servers:
+- description: Your account's API base URL. Copy the full URL shown on Settings > API Keys in your Benchmark Email account and paste it here.
+  url: '{apiBaseUrl}'
+  variables:
+    apiBaseUrl:
+      default: ''
+      description: Your account's API base URL. Copy it from Settings > API Keys in your Benchmark Email account.
+security:
+- apiKeyAuth: []
+tags:
+- description: Contact structure related endpoints
+  name: contact-structure
+paths:
+  /api/contact-structure:
+    get:
+      operationId: get_api_contact_structure
+      responses:
+        '200':
+          description: Successful
+      security:
+      - apiKeyAuth: []
+      summary: Get all contact structures
+      tags:
+      - contact-structure
+      x-api-key-scope: contacts:read
+    post:
+      operationId: post_api_contact_structure
+      requestBody:
+        content:
+          application/json: {}
+      responses:
+        '200':
+          description: Successfully created
+      security:
+      - apiKeyAuth: []
+      summary: Create a new contact structure
+      tags:
+      - contact-structure
+      x-api-key-scope: contacts:write
+  /api/contact-structure/{contactStructureId}:
+    get:
+      operationId: get_api_contact_structure_by_contactStructureId
+      parameters:
+      - in: path
+        name: contactStructureId
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful
+      security:
+      - apiKeyAuth: []
+      summary: Get a contact structure by id
+      tags:
+      - contact-structure
+      x-api-key-scope: contacts:read
+    put:
+      operationId: put_api_contact_structure_by_contactStructureId
+      parameters:
+      - in: path
+        name: contactStructureId
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json: {}
+      responses:
+        '200':
+          description: Successfully updated
+        '400':
+          content:
+            application/json:
+              schema:
+                properties:
+                  errors:
+                    description: List of application errors
+                    items:
+                      properties:
+                        debug:
+                          properties:
+                            affectedForms:
+                              description: Forms that reference the contact field(s) being removed
+                              items:
+                                properties:
+                                  _id:
+                                    description: Form ID
+                                    type: string
+                                  name:
+                                    description: Form name
+                                    type: string
+                                required:
+                                - _id
+                                - name
+                                type: object
+                              type: array
+                          required:
+                          - affectedForms
+                          type: object
+                        errorType:
+                          description: Error code (e.g. ContactFieldInUseError, ValidationError)
+                          type: string
+                        field:
+                          description: Field path when applicable
+                          type: string
+                        fieldId:
+                          description: Field identifier when applicable
+                          type: string
+                        message:
+                          description: Human-readable error message
+                          type: string
+                      required:
+                      - message
+                      - errorType
+                      - debug
+                      type: object
+                    type: array
+                required:
+                - errors
+                type: object
+          description: Contact field(s) cannot be removed because they are used by one or more forms (ContactFieldInUseError). Response body includes errors[].debug.affectedForms (array of { _id, name }) for UI display. Update or unpublish the affected forms first.
+      security:
+      - apiKeyAuth: []
+      summary: Update a contact structure by id
+      tags:
+      - contact-structure
+      x-api-key-scope: contacts:write
+components:
+  securitySchemes:
+    apiKeyAuth:
+      description: API key authentication
+      in: header
+      name: X-API-Key
+      type: apiKey

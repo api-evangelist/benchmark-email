@@ -1,0 +1,262 @@
+openapi: 3.2.0
+info:
+  description: 'Public REST API for Benchmark Email.
+
+
+    Authenticate every request by including your API key in the `X-API-Key` header.
+
+    Each key is issued with one or more scopes that control which endpoints it may call.
+
+
+    Rate limits: 60 requests per minute per account.
+
+    Monthly quota: determined by your subscription plan.'
+  title: Benchmark Email Email Template API
+  version: 1.0.0
+servers:
+- description: Your account's API base URL. Copy the full URL shown on Settings > API Keys in your Benchmark Email account and paste it here.
+  url: '{apiBaseUrl}'
+  variables:
+    apiBaseUrl:
+      default: ''
+      description: Your account's API base URL. Copy it from Settings > API Keys in your Benchmark Email account.
+security:
+- apiKeyAuth: []
+tags:
+- description: Email template related endpoints
+  name: email-template
+paths:
+  /api/email/template:
+    get:
+      description: Get email templates with optional filters
+      operationId: get_api_email_template
+      parameters:
+      - description: Language code
+        in: query
+        name: lang
+        required: true
+        schema:
+          type: string
+      - description: Search term to filter templates
+        in: query
+        name: searchTerm
+        schema:
+          type: string
+      - description: Template attribute IDs to filter by
+        example:
+        - 6b1234567890123456789012
+        explode: false
+        in: query
+        name: attributeIds
+        schema:
+          items:
+            type: string
+          type: array
+      - description: Flag to retrieve only internal templates (by default false)
+        example: true
+        in: query
+        name: internal
+        schema:
+          type: boolean
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  records:
+                    items:
+                      properties:
+                        attributeIds:
+                          items:
+                            description: Template category attribute IDs
+                            type: string
+                          type: array
+                        id:
+                          description: Template ID
+                          type: string
+                        imageUrl:
+                          description: Template image URL
+                          type: string
+                        lang:
+                          description: Language code
+                          type: string
+                        name:
+                          description: Template name
+                          type: string
+                        order:
+                          description: Display order (ascending, 1-indexed). Present only when explicitly assigned.
+                          minimum: 1
+                          type: integer
+                        subject:
+                          description: Template subject
+                          type: string
+                        unlayerId:
+                          description: Template Unlayer ID
+                          type: string
+                      type: object
+                    type: array
+                  total:
+                    description: Total number of templates
+                    type: number
+                type: object
+          description: Successful operation
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '500':
+          description: Internal server error
+      security:
+      - apiKeyAuth: []
+      summary: Get email templates
+      tags:
+      - email-template
+      x-api-key-scope: campaigns:read
+  /api/email/template/categories:
+    get:
+      description: Get all email template categories
+      operationId: getEmailTemplateCategories
+      parameters:
+      - description: Language code
+        in: query
+        name: lang
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  records:
+                    description: List of template categories
+                    items:
+                      properties:
+                        attributes:
+                          description: List of attributes in this category
+                          items:
+                            properties:
+                              categoryId:
+                                description: Parent category ID
+                                type: string
+                              id:
+                                description: Attribute ID
+                                type: string
+                              lang:
+                                description: Language code
+                                type: string
+                              order:
+                                description: Attribute display order
+                                type: integer
+                              value:
+                                description: Attribute display value
+                                type: string
+                            type: object
+                          type: array
+                        id:
+                          description: Category ID
+                          type: string
+                        lang:
+                          description: Language code
+                          type: string
+                        name:
+                          description: Category name
+                          type: string
+                        order:
+                          description: Category display order
+                          type: integer
+                      type: object
+                    type: array
+                  total:
+                    description: Total number of categories
+                    type: integer
+                type: object
+          description: Successful operation
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '500':
+          description: Internal server error
+      security:
+      - apiKeyAuth: []
+      summary: Get email template categories
+      tags:
+      - email-template
+      x-api-key-scope: campaigns:read
+  /api/email/template/{id}:
+    get:
+      description: Get an email template by its ID
+      operationId: get_api_email_template_by_id
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      - description: Language code
+        in: query
+        name: lang
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  attributeIds:
+                    items:
+                      description: Template category attribute IDs
+                      type: string
+                    type: array
+                  design:
+                    description: Unlayer JSON of the template
+                    type: string
+                  html:
+                    description: HTML body of the template
+                    type: string
+                  id:
+                    description: Template ID
+                    type: string
+                  imageUrl:
+                    description: Template image URL
+                    type: string
+                  lang:
+                    description: Language code
+                    type: string
+                  name:
+                    description: Template name
+                    type: string
+                  order:
+                    description: Display order (ascending, 1-indexed). Present only when explicitly assigned.
+                    minimum: 1
+                    type: integer
+                  subject:
+                    description: Template subject
+                    type: string
+                  unlayerId:
+                    description: Template Unlayer ID
+                    type: string
+                type: object
+          description: Successful operation
+        '401':
+          description: Unauthorized
+        '500':
+          description: Internal server error
+      security:
+      - apiKeyAuth: []
+      summary: Get email template by ID
+      tags:
+      - email-template
+      x-api-key-scope: campaigns:read
+components:
+  securitySchemes:
+    apiKeyAuth:
+      description: API key authentication
+      in: header
+      name: X-API-Key
+      type: apiKey

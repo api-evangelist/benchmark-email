@@ -1,0 +1,408 @@
+openapi: 3.2.0
+info:
+  description: 'Public REST API for Benchmark Email.
+
+
+    Authenticate every request by including your API key in the `X-API-Key` header.
+
+    Each key is issued with one or more scopes that control which endpoints it may call.
+
+
+    Rate limits: 60 requests per minute per account.
+
+    Monthly quota: determined by your subscription plan.'
+  title: Benchmark Email Lists API
+  version: 1.0.0
+servers:
+- description: Your account's API base URL. Copy the full URL shown on Settings > API Keys in your Benchmark Email account and paste it here.
+  url: '{apiBaseUrl}'
+  variables:
+    apiBaseUrl:
+      default: ''
+      description: Your account's API base URL. Copy it from Settings > API Keys in your Benchmark Email account.
+security:
+- apiKeyAuth: []
+tags:
+- description: List related endpoints
+  name: lists
+paths:
+  /api/contact-structure/{contactStructureId}/lists:
+    delete:
+      operationId: delete_api_contact_structure_by_contactStructureId_lists
+      parameters:
+      - in: path
+        name: contactStructureId
+        required: true
+        schema:
+          format: mongo-id
+          type: string
+      requestBody:
+        content:
+          application/json: {}
+      responses:
+        '204':
+          description: Successfully deleted
+        '400':
+          description: Invalid request
+      security:
+      - apiKeyAuth: []
+      summary: Delete multiple lists
+      tags:
+      - lists
+      x-api-key-scope: contacts:write
+    get:
+      operationId: get_api_contact_structure_by_contactStructureId_lists
+      parameters:
+      - in: path
+        name: contactStructureId
+        required: true
+        schema:
+          format: mongo-id
+          type: string
+      - description: page number
+        in: query
+        name: page
+        schema:
+          minimum: 1
+          type: integer
+      - description: page size
+        in: query
+        name: size
+        schema:
+          minimum: 1
+          type: integer
+      - description: 'Sorting parameter with the format ''field:direction''. Supported fields: name, createdAt, updatedAt.'
+        examples:
+          ascSort:
+            summary: ascending sort by name
+            value: name:asc
+          descSort:
+            summary: descending sort by createdAt
+            value: createdAt:desc
+        in: query
+        name: sort
+        required: false
+        schema:
+          pattern: ^[a-zA-Z0-9_]+:(asc|desc)$
+          type: string
+      - description: A string used to filter the search results. The maximum length is 50 characters.
+        in: query
+        name: criteria
+        schema:
+          maxLength: 50
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                items:
+                  properties:
+                    __v:
+                      type: number
+                    _id:
+                      type: string
+                    createdAt:
+                      type: string
+                    name:
+                      type: string
+                    totalCampaigns:
+                      type: number
+                    totalContacts:
+                      type: number
+                    type:
+                      type: string
+                    updatedAt:
+                      type: string
+                  type: object
+                type: array
+          description: Successful
+      security:
+      - apiKeyAuth: []
+      summary: Get paginated lists
+      tags:
+      - lists
+      x-api-key-scope: contacts:read
+    post:
+      operationId: post_api_contact_structure_by_contactStructureId_lists
+      parameters:
+      - in: path
+        name: contactStructureId
+        required: true
+        schema:
+          format: mongo-id
+          type: string
+      requestBody:
+        content:
+          application/json: {}
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                properties:
+                  __v:
+                    type: number
+                  _id:
+                    type: string
+                  createdAt:
+                    type: string
+                  name:
+                    type: string
+                  type:
+                    type: string
+                  updatedAt:
+                    type: string
+                type: object
+          description: Successfully created
+        '400':
+          description: Invalid request
+      security:
+      - apiKeyAuth: []
+      summary: Create a new list
+      tags:
+      - lists
+      x-api-key-scope: contacts:write
+  /api/contact-structure/{contactStructureId}/lists/all:
+    get:
+      operationId: get_api_contact_structure_by_contactStructureId_lists_all
+      parameters:
+      - in: path
+        name: contactStructureId
+        required: true
+        schema:
+          format: mongo-id
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                items:
+                  properties:
+                    _id:
+                      type: string
+                    name:
+                      type: string
+                    type:
+                      type: string
+                  type: object
+                type: array
+          description: Successful
+      security:
+      - apiKeyAuth: []
+      summary: Get all lists
+      tags:
+      - lists
+      x-api-key-scope: contacts:read
+  /api/contact-structure/{contactStructureId}/lists/merge:
+    post:
+      operationId: post_api_contact_structure_by_contactStructureId_lists_merge
+      parameters:
+      - in: path
+        name: contactStructureId
+        required: true
+        schema:
+          format: mongo-id
+          type: string
+      requestBody:
+        content:
+          application/json: {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  __v:
+                    type: number
+                  _id:
+                    type: string
+                  createdAt:
+                    type: string
+                  name:
+                    type: string
+                  type:
+                    type: string
+                  updatedAt:
+                    type: string
+                type: object
+          description: Successfully merged lists
+        '400':
+          description: Invalid request
+      security:
+      - apiKeyAuth: []
+      summary: Merge lists into a new list.
+      tags:
+      - lists
+      x-api-key-scope: contacts:write
+  /api/contact-structure/{contactStructureId}/lists/{listId}:
+    delete:
+      operationId: delete_api_contact_structure_by_contactStructureId_lists_by_listId
+      parameters:
+      - in: path
+        name: contactStructureId
+        required: true
+        schema:
+          format: mongo-id
+          type: string
+      - in: path
+        name: listId
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: Successfully deleted
+        '400':
+          description: Invalid request
+      security:
+      - apiKeyAuth: []
+      summary: Delete a list by id
+      tags:
+      - lists
+      x-api-key-scope: contacts:write
+    get:
+      operationId: get_api_contact_structure_by_contactStructureId_lists_by_listId
+      parameters:
+      - in: path
+        name: contactStructureId
+        required: true
+        schema:
+          format: mongo-id
+          type: string
+      - in: path
+        name: listId
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  __v:
+                    type: number
+                  _id:
+                    type: string
+                  createdAt:
+                    type: string
+                  name:
+                    type: string
+                  type:
+                    type: string
+                  updatedAt:
+                    type: string
+                type: object
+          description: Successful
+        '400':
+          description: Invalid request
+      security:
+      - apiKeyAuth: []
+      summary: Get a list by id
+      tags:
+      - lists
+      x-api-key-scope: contacts:read
+    patch:
+      operationId: patch_api_contact_structure_by_contactStructureId_lists_by_listId
+      parameters:
+      - in: path
+        name: contactStructureId
+        required: true
+        schema:
+          format: mongo-id
+          type: string
+      - in: path
+        name: listId
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json: {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  __v:
+                    type: number
+                  _id:
+                    type: string
+                  createdAt:
+                    type: string
+                  name:
+                    type: string
+                  type:
+                    type: string
+                  updatedAt:
+                    type: string
+                type: object
+          description: Successfully updated
+        '400':
+          description: Invalid request
+      security:
+      - apiKeyAuth: []
+      summary: Update a list by id
+      tags:
+      - lists
+      x-api-key-scope: contacts:write
+  /api/contact-structure/{contactStructureId}/lists/{listId}/duplicate:
+    post:
+      operationId: post_api_contact_structure_by_contactStructureId_lists_by_listId_duplicate
+      parameters:
+      - in: path
+        name: contactStructureId
+        required: true
+        schema:
+          format: mongo-id
+          type: string
+      - in: path
+        name: listId
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json: {}
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                properties:
+                  __v:
+                    type: number
+                  _id:
+                    type: string
+                  createdAt:
+                    type: string
+                  name:
+                    type: string
+                  type:
+                    type: string
+                  updatedAt:
+                    type: string
+                type: object
+          description: Successfully duplicated
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      security:
+      - apiKeyAuth: []
+      summary: Duplicate a list
+      tags:
+      - lists
+      x-api-key-scope: contacts:write
+components:
+  securitySchemes:
+    apiKeyAuth:
+      description: API key authentication
+      in: header
+      name: X-API-Key
+      type: apiKey

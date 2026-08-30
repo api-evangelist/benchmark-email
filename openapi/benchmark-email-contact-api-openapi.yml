@@ -1,0 +1,489 @@
+openapi: 3.2.0
+info:
+  description: 'Public REST API for Benchmark Email.
+
+
+    Authenticate every request by including your API key in the `X-API-Key` header.
+
+    Each key is issued with one or more scopes that control which endpoints it may call.
+
+
+    Rate limits: 60 requests per minute per account.
+
+    Monthly quota: determined by your subscription plan.'
+  title: Benchmark Email Contact API
+  version: 1.0.0
+servers:
+- description: Your account's API base URL. Copy the full URL shown on Settings > API Keys in your Benchmark Email account and paste it here.
+  url: '{apiBaseUrl}'
+  variables:
+    apiBaseUrl:
+      default: ''
+      description: Your account's API base URL. Copy it from Settings > API Keys in your Benchmark Email account.
+security:
+- apiKeyAuth: []
+tags:
+- description: Contact related endpoints
+  name: contact
+paths:
+  /api/contact:
+    get:
+      operationId: get_api_contact
+      responses:
+        '200':
+          description: Successful
+      security:
+      - apiKeyAuth: []
+      summary: Get all contacts
+      tags:
+      - contact
+      x-api-key-scope: contacts:read
+    post:
+      operationId: post_api_contact
+      requestBody:
+        content:
+          application/json: {}
+      responses:
+        '200':
+          description: Successfully created
+      security:
+      - apiKeyAuth: []
+      summary: Create a new contact
+      tags:
+      - contact
+      x-api-key-scope: contacts:write
+  /api/contact/events:
+    get:
+      description: Get all contact events for the account
+      operationId: get_api_contact_events
+      parameters:
+      - description: Filter events by type
+        example:
+        - contact-created
+        - contact-updated
+        explode: false
+        in: query
+        name: types
+        schema:
+          items:
+            enum:
+            - contact-created
+            - contact-updated
+            - contact-update-failed
+            - contact-unsubscribed
+            - contact-reactivated
+            - email-sent
+            - email-bounced
+            - email-delivered
+            - email-delayed
+            - email-rejected
+            - email-complaint
+            - email-opened
+            - email-clicked
+            - email-skipped
+            type: string
+          type: array
+      - description: Filter events from the last N days (1-90). Defaults to 30 when omitted
+        example: 30
+        in: query
+        name: pastDays
+        required: false
+        schema:
+          default: 30
+          maximum: 90
+          minimum: 1
+          type: integer
+      - description: page number
+        in: query
+        name: page
+        schema:
+          minimum: 1
+          type: integer
+      - description: page size
+        in: query
+        name: size
+        schema:
+          minimum: 1
+          type: integer
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  records:
+                    items:
+                      properties:
+                        contactId:
+                          type: string
+                        emailBounceDiagCode:
+                          type: string
+                        emailBounceSubType:
+                          type: string
+                        emailBounceType:
+                          type: string
+                        emailCampaignId:
+                          type: string
+                        emailCampaignName:
+                          type: string
+                        emailComplaintFeedbackType:
+                          type: string
+                        emailDelayType:
+                          type: string
+                        emailLinkId:
+                          type: string
+                        emailRejectReason:
+                          type: string
+                        emailSender:
+                          type: string
+                        emailSenderName:
+                          type: string
+                        emailSmtpResponse:
+                          type: string
+                        emailSubject:
+                          type: string
+                        emailTargetUrl:
+                          type: string
+                        emailTo:
+                          type: string
+                        importId:
+                          type: string
+                        importOriginalFileName:
+                          type: string
+                        source:
+                          type: string
+                        timestamp:
+                          format: date-time
+                          type: string
+                        triggeredBy:
+                          description: Present on contact-created/contact-updated events when a triggering user is recorded. The type and userId fields come from the event index.
+                          properties:
+                            type:
+                              description: The type of actor that triggered the event (e.g. 'user', 'admin')
+                              type: string
+                            userId:
+                              description: The ID of the user who triggered the event
+                              type: string
+                          type: object
+                        type:
+                          type: string
+                      type: object
+                    type: array
+                  total:
+                    type: integer
+                type: object
+          description: Contact events for the account
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+      security:
+      - apiKeyAuth: []
+      summary: Get account contact events
+      tags:
+      - contact
+      x-api-key-scope: contacts:read
+  /api/contact/export:
+    post:
+      operationId: post_api_contact_export
+      requestBody:
+        content:
+          application/json: {}
+      responses:
+        '200':
+          content:
+            text/csv: {}
+          description: Successful
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+      security:
+      - apiKeyAuth: []
+      summary: Export contacts
+      tags:
+      - contact
+      x-api-key-scope: contacts:read
+  /api/contact/search:
+    post:
+      operationId: post_api_contact_search
+      requestBody:
+        content:
+          application/json: {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  contacts:
+                    items:
+                      properties:
+                        _id:
+                          description: Id of the contact
+                          type: string
+                        contactStructureId:
+                          description: Id of the contact structure
+                          type: string
+                        createdAt:
+                          description: Date of creation
+                          type: string
+                        fields:
+                          items:
+                            properties:
+                              _id:
+                                description: Id of the field
+                                type: string
+                              value:
+                                description: Value of the field
+                                type: string
+                            type: object
+                          type: array
+                        key:
+                          description: Primary key of the contact
+                          type: string
+                        tags:
+                          items:
+                            properties:
+                              _id:
+                                description: Id of the tag
+                                type: string
+                            type: object
+                          type: array
+                        updatedAt:
+                          description: Date of update
+                          type: string
+                      type: object
+                    type: array
+                  totalRecords:
+                    description: Total number of records
+                    type: number
+                type: object
+          description: Successful
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+      security:
+      - apiKeyAuth: []
+      summary: Search for contacts
+      tags:
+      - contact
+      x-api-key-scope: contacts:read
+  /api/contact/{contactId}:
+    delete:
+      operationId: delete_api_contact_by_contactId
+      parameters:
+      - in: path
+        name: contactId
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successfully deleted
+        '404':
+          description: Contact not found
+      security:
+      - apiKeyAuth: []
+      summary: Delete a contact by id
+      tags:
+      - contact
+      x-api-key-scope: contacts:write
+    get:
+      operationId: get_api_contact_by_contactId
+      parameters:
+      - in: path
+        name: contactId
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successfully created
+        '404':
+          description: Contact not found
+      security:
+      - apiKeyAuth: []
+      summary: Get a contact by id
+      tags:
+      - contact
+      x-api-key-scope: contacts:read
+    patch:
+      operationId: patch_api_contact_by_contactId
+      parameters:
+      - in: path
+        name: contactId
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json: {}
+      responses:
+        '200':
+          description: Successfully updated
+        '404':
+          description: Contact not found
+      security:
+      - apiKeyAuth: []
+      summary: Partial update a contact by id
+      tags:
+      - contact
+      x-api-key-scope: contacts:write
+    put:
+      operationId: put_api_contact_by_contactId
+      parameters:
+      - in: path
+        name: contactId
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json: {}
+      responses:
+        '200':
+          description: Successfully updated
+        '404':
+          description: Contact not found
+      security:
+      - apiKeyAuth: []
+      summary: Update a contact by id
+      tags:
+      - contact
+      x-api-key-scope: contacts:write
+  /api/contact/{contactId}/events:
+    get:
+      description: Get events for a contact
+      operationId: get_api_contact_by_contactId_events
+      parameters:
+      - description: The contact id
+        in: path
+        name: contactId
+        required: true
+        schema:
+          type: string
+      - description: Filter events by type
+        example:
+        - contact-created
+        - contact-updated
+        explode: false
+        in: query
+        name: types
+        schema:
+          items:
+            enum:
+            - contact-created
+            - contact-updated
+            - contact-update-failed
+            - contact-unsubscribed
+            - contact-reactivated
+            - email-sent
+            - email-bounced
+            - email-delivered
+            - email-delayed
+            - email-rejected
+            - email-complaint
+            - email-opened
+            - email-clicked
+            - email-skipped
+            type: string
+          type: array
+      - description: page number
+        in: query
+        name: page
+        schema:
+          minimum: 1
+          type: integer
+      - description: page size
+        in: query
+        name: size
+        schema:
+          minimum: 1
+          type: integer
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  records:
+                    items:
+                      properties:
+                        contactId:
+                          type: string
+                        emailBounceDiagCode:
+                          type: string
+                        emailBounceSubType:
+                          type: string
+                        emailBounceType:
+                          type: string
+                        emailCampaignId:
+                          type: string
+                        emailCampaignName:
+                          type: string
+                        emailComplaintFeedbackType:
+                          type: string
+                        emailDelayType:
+                          type: string
+                        emailLinkId:
+                          type: string
+                        emailRejectReason:
+                          type: string
+                        emailSender:
+                          type: string
+                        emailSenderName:
+                          type: string
+                        emailSmtpResponse:
+                          type: string
+                        emailSubject:
+                          type: string
+                        emailTargetUrl:
+                          type: string
+                        emailTo:
+                          type: string
+                        importId:
+                          type: string
+                        importOriginalFileName:
+                          type: string
+                        source:
+                          type: string
+                        timestamp:
+                          format: date-time
+                          type: string
+                        triggeredBy:
+                          description: Present on contact-created/contact-updated events when a triggering user is recorded. The type and userId fields come from the event index.
+                          properties:
+                            type:
+                              description: The type of actor that triggered the event (e.g. 'user', 'admin')
+                              type: string
+                            userId:
+                              description: The ID of the user who triggered the event
+                              type: string
+                          type: object
+                        type:
+                          type: string
+                      type: object
+                    type: array
+                  total:
+                    type: integer
+                type: object
+          description: Events for the contact
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+      security:
+      - apiKeyAuth: []
+      summary: Get contact events
+      tags:
+      - contact
+      x-api-key-scope: contacts:read
+components:
+  securitySchemes:
+    apiKeyAuth:
+      description: API key authentication
+      in: header
+      name: X-API-Key
+      type: apiKey
