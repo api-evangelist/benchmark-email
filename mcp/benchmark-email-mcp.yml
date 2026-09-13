@@ -2,20 +2,22 @@ generated: '2026-08-13'
 method: probed
 source: https://developers.benchmarkemail.io/mcp
 name: Benchmark Email Documentation MCP Server
-description: >-
-  Benchmark Email ships a live, anonymous, remote MCP server at
-  https://developers.benchmarkemail.io/mcp. A tools/list call over Streamable HTTP
-  returned three tools verbatim (saved to mcp/benchmark-email-mcp-tools.json). This is a
-  DOCUMENTATION server, not an operations server: the tools search and read the developer
-  documentation site and file feedback against it. None of them call the Benchmark Email
-  REST API. An agent that wants to create a contact or a campaign must still call
-  the REST API directly with an X-API-Key.
+description: 'Benchmark Email ships a live, anonymous, remote MCP server at https://developers.benchmarkemail.io/mcp.
+  A tools/list call over Streamable HTTP returned three tools verbatim (saved to mcp/benchmark-email-mcp-tools.json).
+  This is a DOCUMENTATION server, not an operations server: the tools search and read the developer documentation
+  site and file feedback against it. None of them call the Benchmark Email REST API. An agent that wants
+  to create a contact or a campaign must still call the REST API directly with an X-API-Key.'
 status: published
 deployment:
   mode: remote
   endpoint: https://developers.benchmarkemail.io/mcp
   auth: none
   verified: probed
+  probe_prior: (never probed)
+  probe: live
+  probe_why: live
+  checked: '2026-09-11'
+  source: claimed-backlog re-probe 2026-09-11
 server_info:
   name: Benchmark Email API
   version: 1.0.0
@@ -38,39 +40,32 @@ tools:
 - name: search_benchmark_email_api
   title: Search documentation
   category: documentation
-  description: >-
-    Search across the Benchmark Email API knowledge base to find relevant information,
-    code examples, API references, and guides.
+  description: Search across the Benchmark Email API knowledge base to find relevant information, code
+    examples, API references, and guides.
   input_schema_properties:
   - query
 - name: query_docs_filesystem_benchmark_email_api
   title: null
   category: documentation
-  description: >-
-    Run a read-only shell-like query against a virtualized in-memory filesystem containing
+  description: Run a read-only shell-like query against a virtualized in-memory filesystem containing
     only the Benchmark Email API documentation.
   input_schema_properties:
   - command
 - name: submit_feedback
   title: Submit documentation feedback
   category: feedback
-  description: >-
-    Report a problem with this documentation site so the docs team can fix it.
+  description: Report a problem with this documentation site so the docs team can fix it.
   input_schema_properties:
   - path
   - feedback
 notes:
-- >-
-  The server is unauthenticated and answered anonymously; no OAuth challenge was issued.
-  /.well-known/oauth-authorization-server and /.well-known/oauth-protected-resource both
-  404 on this host, consistent with an unauthenticated server.
-- >-
-  No stdio/npx package is published for this server — it is remote only. mcp.benchmarkemail.io
-  does not resolve (NXDOMAIN).
-- >-
-  Because the tool surface is documentation search rather than API operations, every REST
-  operation in openapi/benchmark-email-api-openapi.json is rest_only in the crosswalk. See
-  mcp/benchmark-email-tool-crosswalk.yml.
+- The server is unauthenticated and answered anonymously; no OAuth challenge was issued. /.well-known/oauth-authorization-server
+  and /.well-known/oauth-protected-resource both 404 on this host, consistent with an unauthenticated
+  server.
+- No stdio/npx package is published for this server — it is remote only. mcp.benchmarkemail.io does not
+  resolve (NXDOMAIN).
+- Because the tool surface is documentation search rather than API operations, every REST operation in
+  openapi/benchmark-email-api-openapi.json is rest_only in the crosswalk. See mcp/benchmark-email-tool-crosswalk.yml.
 related:
 - type: ToolCrosswalk
   url: mcp/benchmark-email-tool-crosswalk.yml
