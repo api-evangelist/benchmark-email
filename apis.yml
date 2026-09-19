@@ -144,6 +144,8 @@ apis:
   humanURL: https://developer.benchmarkemail.com/
   baseURL: https://clientapi.benchmarkemail.com
   tags:
+  - Archives
+  tags_raw:
   - Archive
   properties:
   - type: OpenAPI
@@ -353,6 +355,8 @@ apis:
   humanURL: https://developer.benchmarkemail.com/
   baseURL: https://clientapi.benchmarkemail.com
   tags:
+  - Partners
+  tags_raw:
   - Partner
   properties:
   - type: OpenAPI
@@ -449,6 +453,8 @@ apis:
   humanURL: https://developer.benchmarkemail.com/
   baseURL: https://clientapi.benchmarkemail.com
   tags:
+  - Sub Account
+  tags_raw:
   - Sub-Account
   properties:
   - type: OpenAPI
@@ -465,6 +471,8 @@ apis:
   humanURL: https://developer.benchmarkemail.com/
   baseURL: https://clientapi.benchmarkemail.com
   tags:
+  - Surveys
+  tags_raw:
   - Survey
   properties:
   - type: OpenAPI
