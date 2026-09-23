@@ -24,7 +24,7 @@ security:
 - apiKeyAuth: []
 tags:
 - description: List related endpoints
-  name: lists
+  name: Lists
 paths:
   /api/contact-structure/{contactStructureId}/lists:
     delete:
@@ -48,7 +48,7 @@ paths:
       - apiKeyAuth: []
       summary: Delete multiple lists
       tags:
-      - lists
+      - Lists
       x-api-key-scope: contacts:write
     get:
       operationId: get_api_contact_structure_by_contactStructureId_lists
@@ -121,7 +121,7 @@ paths:
       - apiKeyAuth: []
       summary: Get paginated lists
       tags:
-      - lists
+      - Lists
       x-api-key-scope: contacts:read
     post:
       operationId: post_api_contact_structure_by_contactStructureId_lists
@@ -161,7 +161,7 @@ paths:
       - apiKeyAuth: []
       summary: Create a new list
       tags:
-      - lists
+      - Lists
       x-api-key-scope: contacts:write
   /api/contact-structure/{contactStructureId}/lists/all:
     get:
@@ -193,7 +193,7 @@ paths:
       - apiKeyAuth: []
       summary: Get all lists
       tags:
-      - lists
+      - Lists
       x-api-key-scope: contacts:read
   /api/contact-structure/{contactStructureId}/lists/merge:
     post:
@@ -232,9 +232,9 @@ paths:
           description: Invalid request
       security:
       - apiKeyAuth: []
-      summary: Merge lists into a new list.
+      summary: Merge lists into a new list
       tags:
-      - lists
+      - Lists
       x-api-key-scope: contacts:write
   /api/contact-structure/{contactStructureId}/lists/{listId}:
     delete:
@@ -260,7 +260,7 @@ paths:
       - apiKeyAuth: []
       summary: Delete a list by id
       tags:
-      - lists
+      - Lists
       x-api-key-scope: contacts:write
     get:
       operationId: get_api_contact_structure_by_contactStructureId_lists_by_listId
@@ -302,7 +302,7 @@ paths:
       - apiKeyAuth: []
       summary: Get a list by id
       tags:
-      - lists
+      - Lists
       x-api-key-scope: contacts:read
     patch:
       operationId: patch_api_contact_structure_by_contactStructureId_lists_by_listId
@@ -347,7 +347,7 @@ paths:
       - apiKeyAuth: []
       summary: Update a list by id
       tags:
-      - lists
+      - Lists
       x-api-key-scope: contacts:write
   /api/contact-structure/{contactStructureId}/lists/{listId}/duplicate:
     post:
@@ -397,7 +397,7 @@ paths:
       - apiKeyAuth: []
       summary: Duplicate a list
       tags:
-      - lists
+      - Lists
       x-api-key-scope: contacts:write
 components:
   securitySchemes:

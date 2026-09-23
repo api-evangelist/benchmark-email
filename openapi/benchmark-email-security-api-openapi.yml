@@ -1,6 +1,6 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Benchmark Email RESTful API v3.0 ABTest Creation Security API
+  title: Benchmark Email RESTful API v3.0 Security API
   description: 'RESTful API for managing email marketing contacts, lists, campaigns, automations, reports, images, and webhooks within the Benchmark Email platform. To use the API, you need a Benchmark Email API token available at https://ui.benchmarkemail.com/Integrate#API. Rate limit: 500 calls per 2 minutes and 60,000 calls per day.'
   version: 3.0.0
   contact:
@@ -33,12 +33,38 @@ paths:
           description: Unauthorized
         '404':
           description: Not found
-      description: "<h4>Get Client Account Settings</h4>\n<b>Query String Parameters :</b> None <br>\n\n<b>Request Body Parameters:</b> None <br>\n\n<b>Response Body Parameters :</b>\n<table>\n  <thead>\n    <tr>\n      <th>Parameter</th>\n      <th>Type</th>\n      <th>Description</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td>Company</td>\n      <td><a href=\"http://www.benchmarkemail.com/models.htm#ClientSettingCompanyData\" >SettingCompanyData</a></td>\n      <td>Array of error</td>\n    </tr>\n    <tr>\n      <td>Footer"
+      description: 'Get Client Account Settings
+
+
+        Query String Parameters : None
+
+
+        Request Body Parameters: None
+
+
+        Response Body Parameters :
+
+
+        Parameter
+
+        Type
+
+        Description
+
+
+        Company
+
+        SettingCompanyData
+
+        Array of error
+
+
+        Footer'
   /Client/PIN:
     post:
       tags:
       - Security
-      summary: 'Change Security PIN '
+      summary: Change Security PIN
       operationId: post__client_pin
       parameters: []
       responses:
@@ -50,7 +76,44 @@ paths:
           description: Unauthorized
         '404':
           description: Not found
-      description: "<h4>Change Security PIN</h4>\n<b>Body Parameters (to be encoded as a JSON string)</b>\n<table>\n<thead>\n<tr>\n<th>Key</th>\n<th>Required</th>\n<th>Description</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td>ResetPIN</td>\n<td>Required</td>\n<td>New PIN</td>\n</tr>\n<tr>\n<td>ResetConfirmPIN</td>\n<td>Required</td>\n<td>Confirm New PIN</td>\n</tr>\n<tr>\n<td>ResetOldPIN</td>\n<td>Required</td>\n<td>Current PIN</td>\n</tr>\n</tbody>\n</table>\n<b>Response Body Parameters :</b>\n<table>\n  <thead>\n    <tr>\n      <th>Parameter</th>\n "
+      description: 'Change Security PIN
+
+
+        Body Parameters (to be encoded as a JSON string)
+
+
+        Key
+
+        Required
+
+        Description
+
+
+        ResetPIN
+
+        Required
+
+        New PIN
+
+
+        ResetConfirmPIN
+
+        Required
+
+        Confirm New PIN
+
+
+        ResetOldPIN
+
+        Required
+
+        Current PIN
+
+
+        Response Body Parameters :
+
+
+        Parameter'
       requestBody:
         content:
           application/json:
@@ -71,7 +134,41 @@ paths:
           description: Unauthorized
         '404':
           description: Not found
-      description: "<h4>Save Security PIN</h4>\n<b>Body Parameters (to be encoded as a JSON string)</b>\n<table>\n<thead>\n<tr>\n<th>Key</th>\n<th>Required</th>\n<th>Description</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td>NewPIN</td>\n<td>Required</td>\n<td>New PIN</td>\n</tr>\n<tr>\n<td>ConfirmNewPIN</td>\n<td>Required</td>\n<td>Confirm New PIN</td>\n</tr>\n</tbody>\n</table>\n<b>Response Body Parameters :</b>\n<table>\n  <thead>\n    <tr>\n      <th>Parameter</th>\n      <th>Type</th>\n      <th>Description</th>\n    </tr>\n  </thead>\n  <tbody>\n"
+      description: 'Save Security PIN
+
+
+        Body Parameters (to be encoded as a JSON string)
+
+
+        Key
+
+        Required
+
+        Description
+
+
+        NewPIN
+
+        Required
+
+        New PIN
+
+
+        ConfirmNewPIN
+
+        Required
+
+        Confirm New PIN
+
+
+        Response Body Parameters :
+
+
+        Parameter
+
+        Type
+
+        Description'
       requestBody:
         content:
           application/json:
@@ -93,7 +190,41 @@ paths:
           description: Unauthorized
         '404':
           description: Not found
-      description: "<h4>Disable Security PIN</h4>\n<b>Body Parameters (to be encoded as a JSON string)</b>\n<table>\n<thead>\n<tr>\n<th>Key</th>\n<th>Required</th>\n<th>Description</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td>DisableOldPIN</td>\n<td>Required</td>\n<td>Old PIN</td>\n</tr>\n</tbody>\n</table>\n<b>Response Body Parameters :</b>\n<table>\n  <thead>\n    <tr>\n      <th>Parameter</th>\n      <th>Type</th>\n      <th>Description</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td>retVal</td>\n      <td>string</td>\n      <td>retu"
+      description: 'Disable Security PIN
+
+
+        Body Parameters (to be encoded as a JSON string)
+
+
+        Key
+
+        Required
+
+        Description
+
+
+        DisableOldPIN
+
+        Required
+
+        Old PIN
+
+
+        Response Body Parameters :
+
+
+        Parameter
+
+        Type
+
+        Description
+
+
+        retVal
+
+        string
+
+        retu'
       requestBody:
         content:
           application/json:
@@ -115,7 +246,36 @@ paths:
           description: Unauthorized
         '404':
           description: Not found
-      description: "<h4>Send PIN via email incase you forgot</h4>\n<b>Response Body Parameters :</b>\n<table>\n  <thead>\n    <tr>\n      <th>Parameter</th>\n      <th>Type</th>\n      <th>Description</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td>retVal</td>\n      <td>string</td>\n      <td>return Value</td>\n    </tr>\n    <tr>\n      <td>Error</td>\n      <td><a href=\"http://www.benchmarkemail.com/models.htm#ErrorData\" >ErrorData</a></td>\n      <td>Array of error</td>\n    </tr>\n    <tr>\n      <td>Status</td>\n      <"
+      description: 'Send PIN via email incase you forgot
+
+
+        Response Body Parameters :
+
+
+        Parameter
+
+        Type
+
+        Description
+
+
+        retVal
+
+        string
+
+        return Value
+
+
+        Error
+
+        ErrorData
+
+        Array of error
+
+
+        Status
+
+        <'
 components:
   securitySchemes:
     apiKeyAuth:

@@ -1,6 +1,6 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Benchmark Email RESTful API v3.0 ABTest Creation Partner API
+  title: Benchmark Email RESTful API v3.0 Partner API
   description: 'RESTful API for managing email marketing contacts, lists, campaigns, automations, reports, images, and webhooks within the Benchmark Email platform. To use the API, you need a Benchmark Email API token available at https://ui.benchmarkemail.com/Integrate#API. Rate limit: 500 calls per 2 minutes and 60,000 calls per day.'
   version: 3.0.0
   contact:
@@ -33,7 +33,35 @@ paths:
           description: Unauthorized
         '404':
           description: Not found
-      description: "<h4>Get Commission List</h4>\n<b>Query string parameters :</b> None <br>\n\n<b>Request Body parameters:</b> None <br>\n\n<b>Response Body Parameters :</b>\n<table>\n  <thead>\n    <tr>\n      <th>Parameter</th>\n      <th>Type</th>\n      <th>Description</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td>Count</td>\n      <td>String</td>\n      <td>Number of Commission List</td>\n    </tr>\n    <tr>\n      <td>Data</td>\n      <td><a href=\"http://www.benchmarkemail.com/models.htm#PartnerCommissionsListData\" "
+      description: 'Get Commission List
+
+
+        Query string parameters : None
+
+
+        Request Body parameters: None
+
+
+        Response Body Parameters :
+
+
+        Parameter
+
+        Type
+
+        Description
+
+
+        Count
+
+        String
+
+        Number of Commission List
+
+
+        Data
+
+        <a href="http://www.benchmarkemail.com/models.htm#PartnerCommissionsListData"'
   /Partner/ReferralsList:
     get:
       tags:
@@ -50,7 +78,35 @@ paths:
           description: Unauthorized
         '404':
           description: Not found
-      description: "<h4>Get referrals list</h4>\n<b>Query string parameters :</b> None <br>\n\n<b>Request Body parameters:</b> None <br>\n\n<b>Response Body Parameters :</b>\n<table>\n  <thead>\n    <tr>\n      <th>Parameter</th>\n      <th>Type</th>\n      <th>Description</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td>Count</td>\n      <td>String</td>\n      <td>Number of Commission List</td>\n    </tr>\n    <tr>\n      <td>Data</td>\n      <td><a href=\"http://www.benchmarkemail.com/models.htm#PartnerReferralsListData\" >Pa"
+      description: 'Get referrals list
+
+
+        Query string parameters : None
+
+
+        Request Body parameters: None
+
+
+        Response Body Parameters :
+
+
+        Parameter
+
+        Type
+
+        Description
+
+
+        Count
+
+        String
+
+        Number of Commission List
+
+
+        Data
+
+        Pa'
   /Partner/ReferralsLevel1List:
     get:
       tags:
@@ -82,7 +138,44 @@ paths:
           description: Unauthorized
         '404':
           description: Not found
-      description: "<h4>Get Referrals Level 1 List</h4>\n<b>Query string parameters :</b> \n<table>\n  <thead>\n    <tr>\n      <th>Parameter</th>\n      <th>Required</th>\n      <th>Type</th>\n      <th>Description</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td>imonth</td>\n      <td>Required</td>\n      <td>String</td>\n      <td>Month</td>\n    </tr>\n    <tr>\n      <td>iyear</td>\n      <td>Required</td>\n      <td>String</td>\n      <td>Year</td>\n    </tr>\n    <tr>\n      <td>Sort</td>\n      <td>Required</td>\n      <td"
+      description: 'Get Referrals Level 1 List
+
+
+        Query string parameters :
+
+
+        Parameter
+
+        Required
+
+        Type
+
+        Description
+
+
+        imonth
+
+        Required
+
+        String
+
+        Month
+
+
+        iyear
+
+        Required
+
+        String
+
+        Year
+
+
+        Sort
+
+        Required
+
+        <td'
   /Partner/WebPageAdsDetail:
     get:
       tags:
@@ -99,7 +192,40 @@ paths:
           description: Unauthorized
         '404':
           description: Not found
-      description: "<h4>Get Web Page Ads Detail</h4>\n<b>Query string parameters :</b> None <br>\n\n<b>Request Body parameters:</b> None <br>\n\n<b>Response Body Parameters :</b>\n<table>\n  <thead>\n    <tr>\n      <th>Parameter</th>\n      <th>Type</th>\n      <th>Description</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td>ID</td>\n      <td>String</td>\n      <td>&nbsp;</td>\n    </tr>\n    <tr>\n      <td>ClientID</td>\n      <td>string</td>\n      <td>Client ID</td>\n    </tr>\n    <tr>\n      <td>HtmlResponse</td>\n      <t"
+      description: 'Get Web Page Ads Detail
+
+
+        Query string parameters : None
+
+
+        Request Body parameters: None
+
+
+        Response Body Parameters :
+
+
+        Parameter
+
+        Type
+
+        Description
+
+
+        ID
+
+        String
+
+
+        ClientID
+
+        string
+
+        Client ID
+
+
+        HtmlResponse
+
+        <t'
   /Partner/CommissionLevel1List:
     get:
       tags:
@@ -131,7 +257,42 @@ paths:
           description: Unauthorized
         '404':
           description: Not found
-      description: "<h4>Get Partner Commission Level 1 List</h4>\n<b>Query string parameters :</b> \n<table>\n  <thead>\n    <tr>\n      <th>Parameter</th>\n      <th>Required</th>\n      <th>Type</th>\n      <th>Description</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td>imonth</td>\n      <td>Required</td>\n      <td>String</td>\n      <td>Month</td>\n    </tr>\n    <tr>\n      <td>iyear</td>\n      <td>Required</td>\n      <td>String</td>\n      <td>Year</td>\n    </tr>\n    <tr>\n      <td>Sort</td>\n      <td>Required</td>\n"
+      description: 'Get Partner Commission Level 1 List
+
+
+        Query string parameters :
+
+
+        Parameter
+
+        Required
+
+        Type
+
+        Description
+
+
+        imonth
+
+        Required
+
+        String
+
+        Month
+
+
+        iyear
+
+        Required
+
+        String
+
+        Year
+
+
+        Sort
+
+        Required'
   /Partner/CommissionLevel2List:
     get:
       tags:
@@ -153,7 +314,38 @@ paths:
           description: Unauthorized
         '404':
           description: Not found
-      description: "<h4>Get Partner Commission Level 2 List</h4>\n<b>Query string parameters :</b> \n<table>\n  <thead>\n    <tr>\n      <th>Parameter</th>\n      <th>Required</th>\n      <th>Type</th>\n      <th>Description</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td>Client ID</td>\n      <td>Required</td>\n      <td>String</td>\n      <td>Client ID</td>\n    </tr>\n  </tbody>\n</table>\n\n<b>Response Body Parameters :</b>\n<table>\n  <thead>\n    <tr>\n      <th>Parameter</th>\n      <th>Type</th>\n      <th>Description</th"
+      description: 'Get Partner Commission Level 2 List
+
+
+        Query string parameters :
+
+
+        Parameter
+
+        Required
+
+        Type
+
+        Description
+
+
+        Client ID
+
+        Required
+
+        String
+
+        Client ID
+
+
+        Response Body Parameters :
+
+
+        Parameter
+
+        Type
+
+        Description</th'
   /Partner/Profile:
     get:
       tags:
@@ -170,7 +362,30 @@ paths:
           description: Unauthorized
         '404':
           description: Not found
-      description: "<h4>Get Profile Details</h4>\n<b>Query String Parameters : </b> None <br>\n\n<b>Request Body Parameters : </b> None <br>\n\n<b>Response Body Parameter : </b>\n<table>\n  <thead>\n    <tr>\n      <th>Parameter</th>\n      <th>Type</th>\n      <th>Description</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td>Response</td>\n      <td><a href=\"http://www.benchmarkemail.com/models.htm#PartnerProfileData\" > ProfileData </a></td>\n      <td>Partner Profile Details</td>\n    </tr>\n  </tbody>\n</table>"
+      description: 'Get Profile Details
+
+
+        Query String Parameters : None
+
+
+        Request Body Parameters : None
+
+
+        Response Body Parameter :
+
+
+        Parameter
+
+        Type
+
+        Description
+
+
+        Response
+
+        ProfileData
+
+        Partner Profile Details'
     patch:
       tags:
       - Partner
@@ -186,7 +401,33 @@ paths:
           description: Unauthorized
         '404':
           description: Not found
-      description: "<h4>Update Profile Details</h4>\n<b>Query String Parameters : </b> None <br>\n\n<b>Request Body Parameters : </b>\n<table>\n  <thead>\n    <tr>\n      <th>Parameter</th>\n      <th>Type</th>\n      <th>Description</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td>Detail</td>\n      <td><a href=\"http://www.benchmarkemail.com/models.htm#PartnerProfileUpdate\" > ProfileUpdate </a></td>\n      <td>Partner Profile Details</td>\n    </tr>\n  </tbody>\n</table>\n\n<b>Response Body Parameter : </b>\n<table>\n  <thead"
+      description: 'Update Profile Details
+
+
+        Query String Parameters : None
+
+
+        Request Body Parameters :
+
+
+        Parameter
+
+        Type
+
+        Description
+
+
+        Detail
+
+        ProfileUpdate
+
+        Partner Profile Details
+
+
+        Response Body Parameter :
+
+
+        <thead'
       requestBody:
         content:
           application/json:

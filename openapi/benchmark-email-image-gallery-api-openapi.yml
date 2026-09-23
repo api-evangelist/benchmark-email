@@ -1,6 +1,6 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Benchmark Email RESTful API v3.0 ABTest Creation Image Gallery API
+  title: Benchmark Email RESTful API v3.0 Image Gallery API
   description: 'RESTful API for managing email marketing contacts, lists, campaigns, automations, reports, images, and webhooks within the Benchmark Email platform. To use the API, you need a Benchmark Email API token available at https://ui.benchmarkemail.com/Integrate#API. Rate limit: 500 calls per 2 minutes and 60,000 calls per day.'
   version: 3.0.0
   contact:
@@ -33,7 +33,40 @@ paths:
           description: Unauthorized
         '404':
           description: Not found
-      description: "<h4>Get account summary</h4>\n<b>Query string parameters : </b> None <br>\n<b>Request body parameters : </b> None <br>\n<b>Response body parameters : </b>\n<table>\n  <thead>\n    <tr>\n      <th>Parameter</th>\n      <th>Type</th>\n      <th>Description</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td>FreePlan</td>\n      <td>int</td>\n      <td>1 = FreePlan, 0 = PaidPlan</td>\n    </tr>\n    <tr>\n      <td>Limit</td>\n      <td>int</td>\n      <td>Total Space</td>\n    </tr>\n    <tr>\n      <td>PremiumCl"
+      description: 'Get account summary
+
+
+        Query string parameters : None
+
+
+        Request body parameters : None
+
+
+        Response body parameters :
+
+
+        Parameter
+
+        Type
+
+        Description
+
+
+        FreePlan
+
+        int
+
+        1 = FreePlan, 0 = PaidPlan
+
+
+        Limit
+
+        int
+
+        Total Space
+
+
+        PremiumCl'
   /Images/:
     get:
       tags:
@@ -75,7 +108,46 @@ paths:
           description: Unauthorized
         '404':
           description: Not found
-      description: "<h4>Get a list of images</h4>\n<b>Query string parameters : </b>\n  <table>\n    <tr>\n      <th>Parameter</th>\n      <th>Required</th>\n      <th>Type</th>\n      <th>Description</th>\n    </tr>\n    <tr>\n      <td>Filter</td>\n      <td>Optional</td>\n      <td>int</td>\n      <td>Filterr</td>\n    </tr>\n    <tr>\n      <td>PageNumber</td>\n      <td>Required</td>\n      <td>int</td>\n      <td>Page Number</td>\n    </tr>\n    <tr>\n      <td>PageSize</td>\n      <td>Required</td>\n      <td>int</td>\n      <td>Num"
+      description: 'Get a list of images
+
+
+        Query string parameters :
+
+
+        Parameter
+
+        Required
+
+        Type
+
+        Description
+
+
+        Filter
+
+        Optional
+
+        int
+
+        Filterr
+
+
+        PageNumber
+
+        Required
+
+        int
+
+        Page Number
+
+
+        PageSize
+
+        Required
+
+        int
+
+        Num'
     post:
       tags:
       - Image Gallery
@@ -91,7 +163,37 @@ paths:
           description: Unauthorized
         '404':
           description: Not found
-      description: "<h4>Upload an Image</h4>\n<b>Query string parameters : </b> None <br>\n\n<b>Response Body Parameters : </b>\n  <table>\n    <tr>\n      <th>Parameter</th>\n      <th>Required</th>\n      <th>Type</th>\n      <th>Description</th>\n    </tr>\n    <tr>\n      <td>Data</td>\n      <td>Required</td>\n      <td>File</td>\n      <td>Image file to be uploaded</td>\n    </tr>\n  </table>\n  <b>Response body parameters : </b>\n  <table border=\"0\" cellspacing=\"0\" cellpadding=\"0\">\n    <tr>\n      <th class=\"w_para\">Parameter</"
+      description: 'Upload an Image
+
+
+        Query string parameters : None
+
+
+        Response Body Parameters :
+
+
+        Parameter
+
+        Required
+
+        Type
+
+        Description
+
+
+        Data
+
+        Required
+
+        File
+
+        Image file to be uploaded
+
+
+        Response body parameters :
+
+
+        Parameter</'
       requestBody:
         content:
           multipart/form-data:
@@ -118,7 +220,41 @@ paths:
           description: Unauthorized
         '404':
           description: Not found
-      description: "<h4>Get image details</h4>\n<b>Query string parameters : </b> None <br>\n<b>Request Body Parameter</b>\n  <table border=\"0\" cellspacing=\"0\" cellpadding=\"0\">\n    <tr>\n      <th>Parameter</th>\n      <th>Required</th>\n      <th>Type</th>\n      <th>Description</th>\n    </tr>\n    <tr>\n      <td>ImageID</td>\n      <td>Required</td>\n      <td>string</td>\n      <td>Image ID</td>\n    </tr>\n  </table>\n<b>Response body parameters : </b>\n<table>\n  <tr>\n    <th>Parameter</th>\n    <th>Type</th>\n    <th>Descripti"
+      description: 'Get image details
+
+
+        Query string parameters : None
+
+
+        Request Body Parameter
+
+
+        Parameter
+
+        Required
+
+        Type
+
+        Description
+
+
+        ImageID
+
+        Required
+
+        string
+
+        Image ID
+
+
+        Response body parameters :
+
+
+        Parameter
+
+        Type
+
+        Descripti'
     delete:
       tags:
       - Image Gallery
@@ -139,7 +275,48 @@ paths:
           description: Unauthorized
         '404':
           description: Not found
-      description: "<h4>Delete an image</h4>\n<b>Query string parameters : </b> None <br>\n<b>Request Body Parameters : </b>\n<table>\n  <tr>\n    <th>Parameter</th>\n    <th>Required</th>\n    <th>Type</th>\n    <th>Description</th>\n  </tr>\n  <tr>\n    <td>ImageID</td>\n    <td>Required</td>\n    <td>string</td>\n    <td>Image ID</td>\n  </tr>\n</table>\n<b>Response Body Parameters : </b>\n<table>\n  <tr>\n    <th>Parameter</th>\n    <th>Type</th>\n    <th>Description</th>\n  </tr>\n  <tr>\n    <td>Response</td>\n    <td>int</td>\n    <td"
+      description: 'Delete an image
+
+
+        Query string parameters : None
+
+
+        Request Body Parameters :
+
+
+        Parameter
+
+        Required
+
+        Type
+
+        Description
+
+
+        ImageID
+
+        Required
+
+        string
+
+        Image ID
+
+
+        Response Body Parameters :
+
+
+        Parameter
+
+        Type
+
+        Description
+
+
+        Response
+
+        int
+
+        <td'
     patch:
       tags:
       - Image Gallery
@@ -160,7 +337,45 @@ paths:
           description: Unauthorized
         '404':
           description: Not found
-      description: "<h4>Update an image</h4>\n<b>Query string parameters : </b>\n<table>\n  <tr>\n    <th>Parameter</th>\n    <th>Required</th>\n    <th>Type</th>\n    <th>Description</th>\n  </tr>\n  <tr>\n    <td>ImageID</td>\n    <td>Required</td>\n    <td>string</td>\n    <td>Image ID</td>\n  </tr>\n</table>\n<b>Request Body Parameters : </b>\n<table>\n  <tr>\n    <th>Parameter</th>\n    <th>Required</th>\n    <th>Type</th>\n    <th>Description</th>\n  </tr>\n  <tr>\n    <td>ImageURL</td>\n    <td>Required if ImageName is not passed</td"
+      description: 'Update an image
+
+
+        Query string parameters :
+
+
+        Parameter
+
+        Required
+
+        Type
+
+        Description
+
+
+        ImageID
+
+        Required
+
+        string
+
+        Image ID
+
+
+        Request Body Parameters :
+
+
+        Parameter
+
+        Required
+
+        Type
+
+        Description
+
+
+        ImageURL
+
+        Required if ImageName is not passed</td'
   /Images/{ImageID}/Copy:
     post:
       tags:
@@ -182,7 +397,47 @@ paths:
           description: Unauthorized
         '404':
           description: Not found
-      description: "<h4>Copy image to sub-account</h4>\n<b>Query string parameters : </b>\n<table>\n  <tr>\n    <th>Parameter</th>\n    <th>Required</th>\n    <th>Type</th>\n    <th>Description</th>\n  </tr>\n  <tr>\n    <td>ImageID</td>\n    <td>Required</td>\n    <td>string</td>\n    <td>Image ID</td>\n  </tr>\n</table>\n<b>Request Body Parameters : </b>\n<table>\n  <tr>\n    <th>Parameter</th>\n    <th>Required</th>\n    <th>Type</th>\n    <th>Description</th>\n  </tr>\n  <tr>\n    <td>Clients</td>\n    <td>Required</td>\n    <td>string</"
+      description: 'Copy image to sub-account
+
+
+        Query string parameters :
+
+
+        Parameter
+
+        Required
+
+        Type
+
+        Description
+
+
+        ImageID
+
+        Required
+
+        string
+
+        Image ID
+
+
+        Request Body Parameters :
+
+
+        Parameter
+
+        Required
+
+        Type
+
+        Description
+
+
+        Clients
+
+        Required
+
+        string</'
   /Images/Giphy/Images/List:
     get:
       tags:
@@ -214,7 +469,40 @@ paths:
           description: Unauthorized
         '404':
           description: Not found
-      description: "<h4>Get list of Giphy images</h4>\n<b>Query string parameters : </b> \n<table>\n  <thead>\n    <tr>\n      <th>Parameter</th>\n      <th>Required</th>\n      <th>Type</th>\n      <th>Description</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td>PageNumber</td>\n      <td>Optional</td>\n      <td>string</td>\n      <td>Page Number</td>\n    </tr>\n    <tr>\n      <td>PageSize</td>\n      <td>Optional</td>\n      <td>string</td>\n      <td>Number of records per page</td>\n    </tr>\n    <tr>\n      <td>Filter</t"
+      description: 'Get list of Giphy images
+
+
+        Query string parameters :
+
+
+        Parameter
+
+        Required
+
+        Type
+
+        Description
+
+
+        PageNumber
+
+        Optional
+
+        string
+
+        Page Number
+
+
+        PageSize
+
+        Optional
+
+        string
+
+        Number of records per page
+
+
+        Filter</t'
   /Images/{ImageType}/{Extra}:
     post:
       tags:
@@ -241,7 +529,43 @@ paths:
           description: Unauthorized
         '404':
           description: Not found
-      description: "<h4>Upload Logo Image</h4>\n<b>Query string parameters : </b> None <br>\n\n<b>Response Body Parameters : </b>\n  <table>\n    <tr>\n      <th>Parameter</th>\n      <th>Required</th>\n      <th>Type</th>\n      <th>Description</th>\n    </tr>\n    <tr>\n      <td>Data</td>\n      <td>Required</td>\n      <td>File</td>\n      <td>Image file to be uploaded</td>\n    </tr>\n    <tr>\n      <td>ImageType</td>\n      <td>Required</td>\n      <td>string</td>\n      <td>Type of a image</td>\n    </tr>\n    <tr>\n      <td>Extr"
+      description: 'Upload Logo Image
+
+
+        Query string parameters : None
+
+
+        Response Body Parameters :
+
+
+        Parameter
+
+        Required
+
+        Type
+
+        Description
+
+
+        Data
+
+        Required
+
+        File
+
+        Image file to be uploaded
+
+
+        ImageType
+
+        Required
+
+        string
+
+        Type of a image
+
+
+        Extr'
       requestBody:
         content:
           multipart/form-data:

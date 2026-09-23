@@ -1,6 +1,6 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Benchmark Email RESTful API v3.0 ABTest Creation Survey API
+  title: Benchmark Email RESTful API v3.0 Survey API
   description: 'RESTful API for managing email marketing contacts, lists, campaigns, automations, reports, images, and webhooks within the Benchmark Email platform. To use the API, you need a Benchmark Email API token available at https://ui.benchmarkemail.com/Integrate#API. Rate limit: 500 calls per 2 minutes and 60,000 calls per day.'
   version: 3.0.0
   contact:
@@ -33,7 +33,34 @@ paths:
           description: Unauthorized
         '404':
           description: Not found
-      description: "<h4>Create a Survey</h4>\n<b>Query String Parameters : </b> None <br>\n<b>Request Body Parameters : </b>\n<table>\n  <thead>\n    <tr>\n      <th>Parameter</th>\n      <th>Required</th>\n      <th>Type</th>\n      <th>Description</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td>Data</td>\n      <td>Required</td>\n      <td><a href=\"http://www.benchmarkemail.com/models.htm#SurveyData\" >SurveyData</a></td>\n      <td>Array of survey data post.</td>\n    </tr>\n  </tbody>\n</table>\n<b>Response Body Paramete"
+      description: 'Create a Survey
+
+
+        Query String Parameters : None
+
+
+        Request Body Parameters :
+
+
+        Parameter
+
+        Required
+
+        Type
+
+        Description
+
+
+        Data
+
+        Required
+
+        SurveyData
+
+        Array of survey data post.
+
+
+        Response Body Paramete'
       requestBody:
         content:
           application/json:
@@ -60,7 +87,43 @@ paths:
           description: Unauthorized
         '404':
           description: Not found
-      description: "<h4>Copy template in Survey</h4>\n<b>Query string parameters : </b> None <br>\n<b>Request Body Parameters : </b>\n<table>\n  <thead>\n    <tr>\n      <th>Parameter</th>\n      <th>Required</th>\n      <th>Type</th>\n      <th>Description</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td>ID</td>\n      <td>Required</td>\n      <td>string</td>\n      <td>Survey ID</td>\n    </tr>\n    <tr>\n      <td>Name</td>\n      <td>Required</td>\n      <td>string</td>\n      <td>Survey name</td>\n    </tr>\n  </tbody>\n</ta"
+      description: 'Copy template in Survey
+
+
+        Query string parameters : None
+
+
+        Request Body Parameters :
+
+
+        Parameter
+
+        Required
+
+        Type
+
+        Description
+
+
+        ID
+
+        Required
+
+        string
+
+        Survey ID
+
+
+        Name
+
+        Required
+
+        string
+
+        Survey name
+
+
+        </ta'
       requestBody:
         content:
           application/json:

@@ -1,6 +1,6 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Benchmark Email RESTful API v3.0 ABTest Creation Engagement API
+  title: Benchmark Email RESTful API v3.0 Engagement API
   description: 'RESTful API for managing email marketing contacts, lists, campaigns, automations, reports, images, and webhooks within the Benchmark Email platform. To use the API, you need a Benchmark Email API token available at https://ui.benchmarkemail.com/Integrate#API. Rate limit: 500 calls per 2 minutes and 60,000 calls per day.'
   version: 3.0.0
   contact:
@@ -58,7 +58,40 @@ paths:
           description: Unauthorized
         '404':
           description: Not found
-      description: "<h4>Get a Campaign List of Engagement</h4>\n<b>Query string parameters :</b>\n<table>\n  <thead>\n    <tr>\n      <th>Parameter</th>\n      <th>Required</th>\n      <th>Type</th>\n      <th>Description</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td>PageNumber</td>\n      <td>Optional</td>\n      <td>string</td>\n      <td>Page Number</td>\n    </tr>\n    <tr>\n      <td>PageSize</td>\n      <td>Optional</td>\n      <td>string</td>\n      <td>Number of rows on the page</td>\n    </tr>\n    <tr>\n      <td>Or"
+      description: 'Get a Campaign List of Engagement
+
+
+        Query string parameters :
+
+
+        Parameter
+
+        Required
+
+        Type
+
+        Description
+
+
+        PageNumber
+
+        Optional
+
+        string
+
+        Page Number
+
+
+        PageSize
+
+        Optional
+
+        string
+
+        Number of rows on the page
+
+
+        Or'
   /Engagement/URLList:
     get:
       tags:
@@ -105,7 +138,40 @@ paths:
           description: Unauthorized
         '404':
           description: Not found
-      description: "<h4>Get a URLList of Engagement</h4>\n<b>Query string parameters :</b>\n<table>\n  <thead>\n    <tr>\n      <th>Parameter</th>\n      <th>Required</th>\n      <th>Type</th>\n      <th>Description</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td>EmailIDs</td>\n      <td>Required</td>\n      <td>string</td>\n      <td>List of Email Ids</td>\n    </tr>\n    <tr>\n      <td>PageNumber</td>\n      <td>Optional</td>\n      <td>string</td>\n      <td>Page Number</td>\n    </tr>\n    <tr>\n      <td>PageSize</td>\n   "
+      description: 'Get a URLList of Engagement
+
+
+        Query string parameters :
+
+
+        Parameter
+
+        Required
+
+        Type
+
+        Description
+
+
+        EmailIDs
+
+        Required
+
+        string
+
+        List of Email Ids
+
+
+        PageNumber
+
+        Optional
+
+        string
+
+        Page Number
+
+
+        PageSize'
   /Engagement/ClickURLContactCount:
     get:
       tags:
@@ -132,7 +198,38 @@ paths:
           description: Unauthorized
         '404':
           description: Not found
-      description: "<h4>Get a ClickURLContactCount of Engagement</h4>\n<b>Query string parameters :</b>\n<table>\n  <thead>\n    <tr>\n      <th>Parameter</th>\n      <th>Required</th>\n      <th>Type</th>\n      <th>Description</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td>CampaignURLList</td>\n      <td>Required</td>\n      <td>string</td>\n      <td>Campaign URL List</td>\n    </tr>\n    <tr>\n      <td>ClickAll</td>\n      <td>Optional</td>\n      <td>string</td>\n      <td>&nbsp;</td>\n    </tr>\n  </tbody>\n</table>\n\n<b"
+      description: 'Get a ClickURLContactCount of Engagement
+
+
+        Query string parameters :
+
+
+        Parameter
+
+        Required
+
+        Type
+
+        Description
+
+
+        CampaignURLList
+
+        Required
+
+        string
+
+        Campaign URL List
+
+
+        ClickAll
+
+        Optional
+
+        string
+
+
+        <b'
   /Engagement/ClickContactCount:
     get:
       tags:
@@ -159,7 +256,40 @@ paths:
           description: Unauthorized
         '404':
           description: Not found
-      description: "<h4>Get Click Contact Count</h4>\n<b>Query string parameters :</b>\n<table>\n  <thead>\n    <tr>\n      <th>Parameter</th>\n      <th>Required</th>\n      <th>Type</th>\n      <th>Description</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td>EmailIDList</td>\n      <td>Required</td>\n      <td>string</td>\n      <td>List of Email ID</td>\n    </tr>\n    <tr>\n      <td>FilterType</td>\n      <td>Required</td>\n      <td>string</td>\n      <td>1 (for Any)</td>\n    </tr>\n  </tbody>\n</table>\n\n<b>Response body "
+      description: 'Get Click Contact Count
+
+
+        Query string parameters :
+
+
+        Parameter
+
+        Required
+
+        Type
+
+        Description
+
+
+        EmailIDList
+
+        Required
+
+        string
+
+        List of Email ID
+
+
+        FilterType
+
+        Required
+
+        string
+
+        1 (for Any)
+
+
+        Response body'
   /Engagement/CreateList:
     post:
       tags:
@@ -176,7 +306,40 @@ paths:
           description: Unauthorized
         '404':
           description: Not found
-      description: "<h4>Create List of Engagement</h4>\n<b>Query string parameters :</b> None <br>\n<b>Request Body Parameters</b>\n<table>\n  <thead>\n    <tr>\n      <th>Parameter</th>\n      <th>Required</th>\n      <th>Type</th>\n      <th>New List Name</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td>ListName</td>\n      <td>Required</td>\n      <td>string</td>\n      <td>New List Name</td>\n    </tr>\n    <tr>\n      <td>Type</td>\n      <td>Required</td>\n      <td>string</td>\n      <td>Type of list</td>\n    </tr>\n    "
+      description: 'Create List of Engagement
+
+
+        Query string parameters : None
+
+
+        Request Body Parameters
+
+
+        Parameter
+
+        Required
+
+        Type
+
+        New List Name
+
+
+        ListName
+
+        Required
+
+        string
+
+        New List Name
+
+
+        Type
+
+        Required
+
+        string
+
+        Type of list'
       requestBody:
         content:
           application/json:
@@ -208,7 +371,40 @@ paths:
           description: Unauthorized
         '404':
           description: Not found
-      description: "<h4>Get Non Contact Count</h4>\n<b>Query string parameters :</b>\n<table>\n  <thead>\n    <tr>\n      <th>Parameter</th>\n      <th>Required</th>\n      <th>Type</th>\n      <th>Description</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td>EmailIDList</td>\n      <td>Required</td>\n      <td>string</td>\n      <td>List of Email ID</td>\n    </tr>\n    <tr>\n      <td>FilterType</td>\n      <td>Required</td>\n      <td>string</td>\n      <td>1 (for Any)</td>\n    </tr>\n  </tbody>\n</table>\n\n<b>Response body pa"
+      description: 'Get Non Contact Count
+
+
+        Query string parameters :
+
+
+        Parameter
+
+        Required
+
+        Type
+
+        Description
+
+
+        EmailIDList
+
+        Required
+
+        string
+
+        List of Email ID
+
+
+        FilterType
+
+        Required
+
+        string
+
+        1 (for Any)
+
+
+        Response body pa'
   /Engagement/OpenContactCount:
     get:
       tags:
@@ -235,7 +431,40 @@ paths:
           description: Unauthorized
         '404':
           description: Not found
-      description: "<h4>Get Open Contact Count</h4>\n<b>Query string parameters :</b>\n<table>\n  <thead>\n    <tr>\n      <th>Parameter</th>\n      <th>Required</th>\n      <th>Type</th>\n      <th>Description</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td>EmailIDList</td>\n      <td>Required</td>\n      <td>string</td>\n      <td>List of Email ID</td>\n    </tr>\n    <tr>\n      <td>FilterType</td>\n      <td>Required</td>\n      <td>string</td>\n      <td>1 (for Any)</td>\n    </tr>\n  </tbody>\n</table>\n\n<b>Response body p"
+      description: 'Get Open Contact Count
+
+
+        Query string parameters :
+
+
+        Parameter
+
+        Required
+
+        Type
+
+        Description
+
+
+        EmailIDList
+
+        Required
+
+        string
+
+        List of Email ID
+
+
+        FilterType
+
+        Required
+
+        string
+
+        1 (for Any)
+
+
+        Response body p'
 components:
   securitySchemes:
     apiKeyAuth:

@@ -1,4 +1,4 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
   title: Benchmark Email RESTful API v3.0 ABTest Creation API
   description: 'RESTful API for managing email marketing contacts, lists, campaigns, automations, reports, images, and webhooks within the Benchmark Email platform. To use the API, you need a Benchmark Email API token available at https://ui.benchmarkemail.com/Integrate#API. Rate limit: 500 calls per 2 minutes and 60,000 calls per day.'
@@ -33,7 +33,31 @@ paths:
           description: Unauthorized
         '404':
           description: Not found
-      description: "Create AB split\r\n<h4>Body Parameters (to be encoded as a JSON string)</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th>\r\n<th>Required</th>\r\n<th>Description</th>\r\n</tr>\r\n</thead>\r\n<tbody>\r\n<tr>\r\n<td>Name</td>\r\n<td>Required</td>\r\n<td>Name of AB test</td>\r\n</tr>\r\n<tr>\r\n<td>Type</td>\r\n<td>Required</td>\r\n<td>Test type (like 1,2,3,4) <code>1.From Name / Subject Line Test</code> <code>2.Campaign vs. Campaign Test</code> <code>3.Multiple Variable Test</code> <code>4.Delivery Time Test</code></td>\r\n</tr>\r\n<tr>\r"
+      description: 'Create AB split
+
+
+        Body Parameters (to be encoded as a JSON string)
+
+
+        Key
+
+        Required
+
+        Description
+
+
+        Name
+
+        Required
+
+        Name of AB test
+
+
+        Type
+
+        Required
+
+        Test type (like 1,2,3,4) 1.From Name / Subject Line Test 2.Campaign vs. Campaign Test 3.Multiple Variable Test 4.Delivery Time Test'
       requestBody:
         content:
           application/json:
@@ -60,7 +84,41 @@ paths:
           description: Unauthorized
         '404':
           description: Not found
-      description: "Get Details for the AB Split\r\n<h4>URL parameter :</h4>\r\n<table>\r\n    <tr>\r\n      <th>Parameter</th>\r\n      <th>Type</th>\r\n      <th>Description</th>\r\n    </tr>\r\n    <tr>\r\n      <td>ID</td>\r\n      <td>string</td>\r\n      <td>ABSplit ID</td>\r\n    </tr>\r\n  </table>\r\n  <h4>Response body parameters:</h4>\r\n  <table>\r\n    <tr>\r\n      <th>Parameter</th>\r\n      <th>Type</th>\r\n      <th>Description</th>\r\n    </tr>\r\n    <tr>\r\n      <td>Status</td>\r\n      <td>string</td>\r\n      <td>1 if successful, -1 if err"
+      description: 'Get Details for the AB Split
+
+
+        URL parameter :
+
+
+        Parameter
+
+        Type
+
+        Description
+
+
+        ID
+
+        string
+
+        ABSplit ID
+
+
+        Response body parameters:
+
+
+        Parameter
+
+        Type
+
+        Description
+
+
+        Status
+
+        string
+
+        1 if successful, -1 if err'
     patch:
       tags:
       - ABTest Creation
@@ -81,7 +139,48 @@ paths:
           description: Unauthorized
         '404':
           description: Not found
-      description: "Update AB split\r\n<h4>URL parameters:</h4>\r\n<table>\r\n<tr>\r\n  <th>Parameter</th>\r\n  <th>Type</th>\r\n  <th>Description</th>\r\n</tr>\r\n<tr>\r\n  <td>ID</td>\r\n  <td>string</td>\r\n  <td>ABSplit ID</td>\r\n</tr>\r\n</table>\r\n<h4>Body Parameters (to be encoded as a JSON string)</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th>\r\n<th>Required</th>\r\n<th>Description</th>\r\n</tr>\r\n</thead>\r\n<tbody>\r\n<tr>\r\n<td>Name</td>\r\n<td>Required</td>\r\n<td>Name of AB test</td>\r\n</tr>\r\n<tr>\r\n<td>Type</td>\r\n<td>Required</td>\r\n<td>Test type ("
+      description: 'Update AB split
+
+
+        URL parameters:
+
+
+        Parameter
+
+        Type
+
+        Description
+
+
+        ID
+
+        string
+
+        ABSplit ID
+
+
+        Body Parameters (to be encoded as a JSON string)
+
+
+        Key
+
+        Required
+
+        Description
+
+
+        Name
+
+        Required
+
+        Name of AB test
+
+
+        Type
+
+        Required
+
+        Test type ('
       requestBody:
         content:
           application/json:

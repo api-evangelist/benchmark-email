@@ -1,6 +1,6 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Benchmark Email RESTful API v3.0 ABTest Creation Automation Creation API
+  title: Benchmark Email RESTful API v3.0 Automation Creation API
   description: 'RESTful API for managing email marketing contacts, lists, campaigns, automations, reports, images, and webhooks within the Benchmark Email platform. To use the API, you need a Benchmark Email API token available at https://ui.benchmarkemail.com/Integrate#API. Rate limit: 500 calls per 2 minutes and 60,000 calls per day.'
   version: 3.0.0
   contact:
@@ -21,7 +21,7 @@ paths:
     patch:
       tags:
       - Automation Creation
-      summary: ' Update an Automation'
+      summary: Update an Automation
       operationId: patch__automation__automationid
       parameters:
       - name: AutomationID
@@ -38,7 +38,41 @@ paths:
           description: Unauthorized
         '404':
           description: Not found
-      description: "Create an Automation\r\n<h4>URL Parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th>\r\n<th>Required</th>\r\n<th>Type</th>\r\n</tr>\r\n</thead>\r\n<tbody>\r\n<tr>\r\n<td>{{AutomationID}}</td>\r\n<td>Required</td>\r\n<td>Automation ID</a>\r\n</tr>\r\n</tbody>\r\n</table>\r\n<h4>Body Parameters (to be encoded as a JSON string)</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th>\r\n<th>Required</th>\r\n<th>Type</th>\r\n</tr>\r\n</thead>\r\n<tbody>\r\n<tr>\r\n<td>Detail</td>\r\n<td>Required</td>\r\n<td>See for details on <a href='http://www.benchmarkem"
+      description: 'Create an Automation
+
+
+        URL Parameters
+
+
+        Key
+
+        Required
+
+        Type
+
+
+        {{AutomationID}}
+
+        Required
+
+        Automation ID
+
+
+        Body Parameters (to be encoded as a JSON string)
+
+
+        Key
+
+        Required
+
+        Type
+
+
+        Detail
+
+        Required
+
+        See for details on <a href=''http://www.benchmarkem'
       requestBody:
         content:
           application/json:
@@ -64,7 +98,36 @@ paths:
           description: Unauthorized
         '404':
           description: Not found
-      description: "Get details of an Automation\r\n<h4>URL Parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th>\r\n<th>Required</th>\r\n<th>Description</th>\r\n</tr>\r\n</thead>\r\n<tbody>\r\n<tr>\r\n<td>{{AutomationID}}</td>\r\n<td>Required</td>\r\n<td>Automation ID</a>\r\n</tr>\r\n</tbody>\r\n</table>\r\n<h4>Response body parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>Status</td><td>String</td><td>1 if success, -1 if error</td></tr>\r\n<tr><td>Data</td><td><a href='htt"
+      description: 'Get details of an Automation
+
+
+        URL Parameters
+
+
+        Key
+
+        Required
+
+        Description
+
+
+        {{AutomationID}}
+
+        Required
+
+        Automation ID
+
+
+        Response body parameters
+
+
+        KeyTypeDescription
+
+
+        StatusString1 if success, -1 if error
+
+
+        Data<a href=''htt'
   /Automation/{AutomationID}/Emails/{AutomationDetailID}:
     get:
       tags:
@@ -91,11 +154,41 @@ paths:
           description: Unauthorized
         '404':
           description: Not found
-      description: "Create copy of an Automation email\r\n<h4>URL Parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th>\r\n<th>Required</th>\r\n<th>Description</th>\r\n</tr>\r\n</thead>\r\n<tbody>\r\n<tr>\r\n<td>{{AutomationID}}</td>\r\n<td>Required</td>\r\n<td>Automation ID</a>\r\n</tr>\r\n<tr>\r\n<td>{{AutomationDetailID}}</td>\r\n<td>Required</td>\r\n<td>Automation email ID</a>\r\n</tr>\r\n</tbody>\r\n</table>\r\n<h4>Response body parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>"
+      description: 'Create copy of an Automation email
+
+
+        URL Parameters
+
+
+        Key
+
+        Required
+
+        Description
+
+
+        {{AutomationID}}
+
+        Required
+
+        Automation ID
+
+
+        {{AutomationDetailID}}
+
+        Required
+
+        Automation email ID
+
+
+        Response body parameters
+
+
+        KeyTypeDescription'
     patch:
       tags:
       - Automation Creation
-      summary: 'Update Email in Automation   '
+      summary: Update Email in Automation
       operationId: patch__automation__automationid__emails__automationdetailid
       parameters:
       - name: AutomationID
@@ -117,7 +210,44 @@ paths:
           description: Unauthorized
         '404':
           description: Not found
-      description: "Create an Automation\r\n<h4>URL Parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th>\r\n<th>Required</th>\r\n<th>Description</th>\r\n</tr>\r\n</thead>\r\n<tbody>\r\n<tr>\r\n<td>{{AutomationID}}</td>\r\n<td>Required</td>\r\n<td>Automation ID</a>\r\n</tr>\r\n<tr>\r\n<td>{{AutomationDetailID}}</td>\r\n<td>Required</td>\r\n<td>Automation Email ID</a>\r\n</tr>\r\n</tbody>\r\n</table>\r\n<h4>Body Parameters (to be encoded as a JSON string)</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th>\r\n<th>Required</th>\r\n<th>Description</th>\r\n</tr>\r\n</thead"
+      description: 'Create an Automation
+
+
+        URL Parameters
+
+
+        Key
+
+        Required
+
+        Description
+
+
+        {{AutomationID}}
+
+        Required
+
+        Automation ID
+
+
+        {{AutomationDetailID}}
+
+        Required
+
+        Automation Email ID
+
+
+        Body Parameters (to be encoded as a JSON string)
+
+
+        Key
+
+        Required
+
+        Description
+
+
+        </thead'
       requestBody:
         content:
           application/json:
@@ -139,7 +269,33 @@ paths:
           description: Unauthorized
         '404':
           description: Not found
-      description: "Create an Automation\r\n<h4>Body Parameters (to be encoded as a JSON string)</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th>\r\n<th>Required</th>\r\n<th>Type</th>\r\n</tr>\r\n</thead>\r\n<tbody>\r\n<tr>\r\n<td>Detail</td>\r\n<td>Required</td>\r\n<td>See for details on <a href= 'http://www.benchmarkemail.com/models.htm#AutomationDetailData'>AutomationDetailData</a></td>\r\n</tr>\r\n</tbody>\r\n</table>\r\n<h4>Response body parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbo"
+      description: 'Create an Automation
+
+
+        Body Parameters (to be encoded as a JSON string)
+
+
+        Key
+
+        Required
+
+        Type
+
+
+        Detail
+
+        Required
+
+        See for details on AutomationDetailData
+
+
+        Response body parameters
+
+
+        KeyTypeDescription
+
+
+        <tbo'
       requestBody:
         content:
           application/json:
@@ -171,7 +327,43 @@ paths:
           description: Unauthorized
         '404':
           description: Not found
-      description: "Create email content for an Automation\r\n<h4>URL Parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th>\r\n<th>Required</th>\r\n<th>Description</th>\r\n</tr>\r\n</thead>\r\n<tbody>\r\n<tr>\r\n<td>{{AutomationID}}</td>\r\n<td>Required</td>\r\n<td>Automation ID</a>\r\n</tr>\r\n<tr>\r\n<td>{{AutomationDetailID}}</td>\r\n<td>Required</td>\r\n<td>Automation Email ID</a>\r\n</tr>\r\n</tbody>\r\n</table>\r\n<h4>Body Parameters (to be encoded as a JSON string)</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th>\r\n<th>Required</th>\r\n<th>Type</th>\r\n</t"
+      description: 'Create email content for an Automation
+
+
+        URL Parameters
+
+
+        Key
+
+        Required
+
+        Description
+
+
+        {{AutomationID}}
+
+        Required
+
+        Automation ID
+
+
+        {{AutomationDetailID}}
+
+        Required
+
+        Automation Email ID
+
+
+        Body Parameters (to be encoded as a JSON string)
+
+
+        Key
+
+        Required
+
+        Type
+
+        </t'
       requestBody:
         content:
           application/json:
@@ -202,7 +394,43 @@ paths:
           description: Unauthorized
         '404':
           description: Not found
-      description: "Update email content for an Automation\r\n<h4>URL Parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th>\r\n<th>Required</th>\r\n<th>Description</th>\r\n</tr>\r\n</thead>\r\n<tbody>\r\n<tr>\r\n<td>{{AutomationID}}</td>\r\n<td>Required</td>\r\n<td>Automation ID</a>\r\n</tr>\r\n<tr>\r\n<td>{{AutomationDetailID}}</td>\r\n<td>Required</td>\r\n<td>Automation Email ID</a>\r\n</tr>\r\n</tbody>\r\n</table>\r\n<h4>Body Parameters (to be encoded as a JSON string)</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th>\r\n<th>Required</th>\r\n<th>Type</th>\r\n</t"
+      description: 'Update email content for an Automation
+
+
+        URL Parameters
+
+
+        Key
+
+        Required
+
+        Description
+
+
+        {{AutomationID}}
+
+        Required
+
+        Automation ID
+
+
+        {{AutomationDetailID}}
+
+        Required
+
+        Automation Email ID
+
+
+        Body Parameters (to be encoded as a JSON string)
+
+
+        Key
+
+        Required
+
+        Type
+
+        </t'
       requestBody:
         content:
           application/json:
@@ -229,7 +457,41 @@ paths:
           description: Unauthorized
         '404':
           description: Not found
-      description: "Create an Automation\r\n<h4>URL Parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th>\r\n<th>Required</th>\r\n<th>Description</th>\r\n</tr>\r\n</thead>\r\n<tbody>\r\n<tr>\r\n<td>{{AutomationID}}</td>\r\n<td>Required</td>\r\n<td>Automation ID</a>\r\n</tr>\r\n</tbody>\r\n</table>\r\n<h4>Body Parameters (to be encoded as a JSON string)</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th>\r\n<th>Required</th>\r\n<th>Type</th>\r\n</tr>\r\n</thead>\r\n<tbody>\r\n<tr>\r\n<td>Detail</td>\r\n<td>Required</td>\r\n<td>See for details on <a href='http://www.benc"
+      description: 'Create an Automation
+
+
+        URL Parameters
+
+
+        Key
+
+        Required
+
+        Description
+
+
+        {{AutomationID}}
+
+        Required
+
+        Automation ID
+
+
+        Body Parameters (to be encoded as a JSON string)
+
+
+        Key
+
+        Required
+
+        Type
+
+
+        Detail
+
+        Required
+
+        See for details on <a href=''http://www.benc'
       requestBody:
         content:
           application/json:

@@ -1,6 +1,6 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Benchmark Email RESTful API v3.0 ABTest Creation Account Settings API
+  title: Benchmark Email RESTful API v3.0 Account Settings API
   description: 'RESTful API for managing email marketing contacts, lists, campaigns, automations, reports, images, and webhooks within the Benchmark Email platform. To use the API, you need a Benchmark Email API token available at https://ui.benchmarkemail.com/Integrate#API. Rate limit: 500 calls per 2 minutes and 60,000 calls per day.'
   version: 3.0.0
   contact:
@@ -33,7 +33,32 @@ paths:
           description: Unauthorized
         '404':
           description: Not found
-      description: "<h4>Update Client Accounts Setting</h4>\n<b>Query String Parameters :</b> None <br>\n\n<b>Request Body Parameters:</b> \n<table>\n  <thead>\n    <tr>\n      <th>Parameter</th>\n      <th>Type</th>\n      <th>Description</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td>Company</td>\n      <td><a href=\"http://www.benchmarkemail.com/models.htm#ClientSettingCompanyData\" >SettingCompanyData</a></td>\n      <td>Setting Company Data</td>\n    </tr>\n    <tr>\n      <td>Language</td>\n      <td>string</td>\n     "
+      description: 'Update Client Accounts Setting
+
+
+        Query String Parameters : None
+
+
+        Request Body Parameters:
+
+
+        Parameter
+
+        Type
+
+        Description
+
+
+        Company
+
+        SettingCompanyData
+
+        Setting Company Data
+
+
+        Language
+
+        string'
       requestBody:
         content:
           application/json:
@@ -55,7 +80,41 @@ paths:
           description: Unauthorized
         '404':
           description: Not found
-      description: "<h4>Change Password</h4>\n<b>Body Parameters (to be encoded as a JSON string)</b>\n<table>\n<thead>\n<tr>\n<th>Key</th>\n<th>Required</th>\n<th>Description</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td>NewPassword</td>\n<td>Required</td>\n<td>New Password</td>\n</tr>\n<tr>\n<td>ConfirmPassword</td>\n<td>Required</td>\n<td>Confirm Password</td>\n</tr>\n</tbody>\n</table>\n<b>Response Body Parameters :</b>\n<table>\n  <thead>\n    <tr>\n      <th>Parameter</th>\n      <th>Type</th>\n      <th>Description</th>\n    </tr>\n  </thead>"
+      description: 'Change Password
+
+
+        Body Parameters (to be encoded as a JSON string)
+
+
+        Key
+
+        Required
+
+        Description
+
+
+        NewPassword
+
+        Required
+
+        New Password
+
+
+        ConfirmPassword
+
+        Required
+
+        Confirm Password
+
+
+        Response Body Parameters :
+
+
+        Parameter
+
+        Type
+
+        Description'
       requestBody:
         content:
           application/json:
@@ -77,7 +136,34 @@ paths:
           description: Unauthorized
         '404':
           description: Not found
-      description: "<h4>Send Reset Email to change primary email</h4>\n<b>Response Body Parameters :</b>\n<table>\n  <thead>\n    <tr>\n      <th>Parameter</th>\n      <th>Type</th>\n      <th>Description</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td>retVal</td>\n      <td>string</td>\n      <td>return Value</td>\n    </tr>\n    <tr>\n      <td>Error</td>\n      <td><a href=\"http://www.benchmarkemail.com/models.htm#ErrorData\" >ErrorData</a></td>\n      <td>Array of error</td>\n    </tr>\n    <tr>\n      <td>Status</td>\n   "
+      description: 'Send Reset Email to change primary email
+
+
+        Response Body Parameters :
+
+
+        Parameter
+
+        Type
+
+        Description
+
+
+        retVal
+
+        string
+
+        return Value
+
+
+        Error
+
+        ErrorData
+
+        Array of error
+
+
+        Status'
   /Client/ConfirmedEmail/All:
     get:
       tags:
@@ -94,7 +180,35 @@ paths:
           description: Unauthorized
         '404':
           description: Not found
-      description: "<h4>Get All Confirmed Email</h4>\n<b>Query string parameters :</b> None <br>\n\n<b>Request Body parameters:</b> None <br>\n\n<b>Response body parameters :</b>\n<table>\n  <thead>\n    <tr>\n      <th>Parameter</th>\n      <th>Type</th>\n      <th>Description</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td>Count</td>\n      <td>string</td>\n      <td>Total Confirmed Emails</td>\n    </tr>\n    <tr>\n      <td>Data</td>\n      <td><a href=\"http://www.benchmarkemail.com/models.htm#ClientConfirmEmailAllData\" "
+      description: 'Get All Confirmed Email
+
+
+        Query string parameters : None
+
+
+        Request Body parameters: None
+
+
+        Response body parameters :
+
+
+        Parameter
+
+        Type
+
+        Description
+
+
+        Count
+
+        string
+
+        Total Confirmed Emails
+
+
+        Data
+
+        <a href="http://www.benchmarkemail.com/models.htm#ClientConfirmEmailAllData"'
   /Client/ConfirmedEmail/Email:
     post:
       tags:
@@ -111,7 +225,37 @@ paths:
           description: Unauthorized
         '404':
           description: Not found
-      description: "<h4>Send Confirm Email Verification Email</h4>\n<b>Query string parameters :</b> None <br>\n\n<b>Request Body parameters:</b> \n<table>\n  <thead>\n    <tr>\n      <th>Parameter</th>\n      <th>Required</th>\n      <th>Type</th>\n      <th>Description</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td>EmailIDs</td>\n      <td>Required</td>\n      <td>string</td>\n      <td>Email Address</td>\n    </tr>\n  </tbody>\n</table>\n<b>Response body parameters :</b>\n<table>\n  <thead>\n    <tr>\n      <th>Parameter</th"
+      description: 'Send Confirm Email Verification Email
+
+
+        Query string parameters : None
+
+
+        Request Body parameters:
+
+
+        Parameter
+
+        Required
+
+        Type
+
+        Description
+
+
+        EmailIDs
+
+        Required
+
+        string
+
+        Email Address
+
+
+        Response body parameters :
+
+
+        Parameter</th'
       requestBody:
         content:
           application/json:
@@ -133,7 +277,35 @@ paths:
           description: Unauthorized
         '404':
           description: Not found
-      description: "<h4>Get List of Confirmed Emails</h4>\n<b>Query String Parameters :</b> None <br>\n\n<b>Request Body Parameters:</b> None <br>\n\n<b>Response Body Parameters :</b>\n<table>\n  <thead>\n    <tr>\n      <th>Parameter</th>\n      <th>Type</th>\n      <th>Description</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td>Emails</td>\n      <td>string</td>\n      <td>List of Emails</td>\n    </tr>\n    <tr>\n      <td>Error</td>\n      <td><a href=\"http://www.benchmarkemail.com/models.htm#ErrorData\" >ErrorData</a></t"
+      description: 'Get List of Confirmed Emails
+
+
+        Query String Parameters : None
+
+
+        Request Body Parameters: None
+
+
+        Response Body Parameters :
+
+
+        Parameter
+
+        Type
+
+        Description
+
+
+        Emails
+
+        string
+
+        List of Emails
+
+
+        Error
+
+        ErrorData</t'
   /Client/Email/Reset:
     get:
       tags:
@@ -155,63 +327,40 @@ paths:
           description: Unauthorized
         '404':
           description: Not found
-      description: '<h4>Get Current email at the time of Reset Email </h4>
+      description: 'Get Current email at the time of Reset Email
 
-        <b>Query String Parameter : </b>
 
-        <table>
+        Query String Parameter :
 
-        <thead>
 
-        <tr>
+        Key
 
-        <th>Key</th>
+        Required
 
-        <th>Required</th>
+        Description
 
-        <th>Description</th>
 
-        </tr>
+        GUID
 
-        </thead>
+        optional
 
-        <tbody>
+        Unique ID
 
-        <tr>
 
-        <td>GUID</td>
+        Response body parameters
 
-        <td>optional</td>
 
-        <td>Unique ID</td>
+        KeyTypeDescription
 
-        </tr>
 
-        </tbody>
+        EmailStringEmail Address
 
-        </table>
 
-        <b>Response body parameters</b>
-
-        <table>
-
-        <thead>
-
-        <tr>
-
-        <th>Key</th><th>Type</th><th>Description</th></tr>
-
-        </thead>
-
-        <tbody>
-
-        <tr><td>Email</td><td>String</td><td>Email Address</td></tr>
-
-        <tr><td>Status</td><td>String</td><td>1 if success, -1'
+        StatusString1 if success, -1'
     patch:
       tags:
       - Account Settings
-      summary: 'Update/Reset Email '
+      summary: Update/Reset Email
       operationId: patch__client_email_reset
       parameters: []
       responses:
@@ -223,7 +372,41 @@ paths:
           description: Unauthorized
         '404':
           description: Not found
-      description: "<h4>Reset primary email </h4>\r\n<b>URL Parameters (To be encoded as JSON parameter)</b>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th>\r\n<th>Required</th>\r\n<th>Description</th>\r\n</tr>\r\n</thead>\r\n<tbody>\r\n<tr>\r\n<td>GUID</td>\r\n<td>Required</td>\r\n<td>The ID which is available on the email link send for reset the email</a>\r\n</tr>\r\n<tr>\r\n<td>NewEmail</td>\r\n<td>Required</td>\r\n<td>New Email</a>\r\n</tr>\r\n<tr>\r\n<td>ConfirmEmail</td>\r\n<td>Required</td>\r\n<td>Confirm Email</a>\r\n</tr>\r\n</tbody>\r\n</table>\r\n<b>Response bo"
+      description: 'Reset primary email
+
+
+        URL Parameters (To be encoded as JSON parameter)
+
+
+        Key
+
+        Required
+
+        Description
+
+
+        GUID
+
+        Required
+
+        The ID which is available on the email link send for reset the email
+
+
+        NewEmail
+
+        Required
+
+        New Email
+
+
+        ConfirmEmail
+
+        Required
+
+        Confirm Email
+
+
+        Response bo'
       requestBody:
         content:
           application/json:
@@ -245,7 +428,44 @@ paths:
           description: Unauthorized
         '404':
           description: Not found
-      description: "<h4>Update/Edit Profile like first name,phone no etc </h4>\r\n<b>URL Parameters (To be encoded as JSON parameter)</b>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th>\r\n<th>Required</th>\r\n<th>Description</th>\r\n</tr>\r\n</thead>\r\n<tbody>\r\n<tr>\r\n<td>FirstName</td>\r\n<td>Required</td>\r\n<td>First Name</a>\r\n</tr>\r\n<tr>\r\n<td>LastName</td>\r\n<td>Required</td>\r\n<td>Last Name</a>\r\n</tr>\r\n<tr>\r\n<td>PhoneNo</td>\r\n<td>Required</td>\r\n<td>Phone Number</a>\r\n</tr>\r\n</tbody>\r\n</table>\r\n<b>Response body parameters</b>\r\n<table>\r\n<t"
+      description: 'Update/Edit Profile like first name,phone no etc
+
+
+        URL Parameters (To be encoded as JSON parameter)
+
+
+        Key
+
+        Required
+
+        Description
+
+
+        FirstName
+
+        Required
+
+        First Name
+
+
+        LastName
+
+        Required
+
+        Last Name
+
+
+        PhoneNo
+
+        Required
+
+        Phone Number
+
+
+        Response body parameters
+
+
+        <t'
       requestBody:
         content:
           application/json:
@@ -266,7 +486,30 @@ paths:
           description: Unauthorized
         '404':
           description: Not found
-      description: "<h4>Get Client Details</h4>\n<b>Query String Parameters :</b> None <br>\n\n<b>Request Body Parameters:</b> None <br>\n\n<b>Response Body Parameters :</b>\n<table>\n  <thead>\n    <tr>\n      <th>Parameter</th>\n      <th>Type</th>\n      <th>Description</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td>Response</td>\n      <td><a href=\"http://www.benchmarkemail.com/models.htm#ClientProfileData\" >ProfileData</a></td>\n      <td>Client Profile data</td>\n    </tr>\n  </tbody>\n</table>"
+      description: 'Get Client Details
+
+
+        Query String Parameters : None
+
+
+        Request Body Parameters: None
+
+
+        Response Body Parameters :
+
+
+        Parameter
+
+        Type
+
+        Description
+
+
+        Response
+
+        ProfileData
+
+        Client Profile data'
   /Client/Token/{Type}:
     get:
       tags:
@@ -288,7 +531,42 @@ paths:
           description: Unauthorized
         '404':
           description: Not found
-      description: "<h4>Get Token</h4>\n<b>Query String Parameters :</b> None <br>\n\n<b>Request Body Parameters:</b> None <br>\n\n<b>Response Body Parameters :</b>\n<table>\n  <thead>\n    <tr>\n      <th>Parameter</th>\n      <th>Type</th>\n      <th>Description</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td>AuthURL</td>\n      <td>string</td>\n      <td>Auth URL</td>\n    </tr>\n    <tr>\n      <td>Name</td>\n      <td>string</td>\n      <td>Client Name</td>\n    </tr>\n    <tr>\n      <td>Secret</td>\n      <td>string</td>\n "
+      description: 'Get Token
+
+
+        Query String Parameters : None
+
+
+        Request Body Parameters: None
+
+
+        Response Body Parameters :
+
+
+        Parameter
+
+        Type
+
+        Description
+
+
+        AuthURL
+
+        string
+
+        Auth URL
+
+
+        Name
+
+        string
+
+        Client Name
+
+
+        Secret
+
+        string'
   /Client/Token:
     post:
       tags:
@@ -305,7 +583,30 @@ paths:
           description: Unauthorized
         '404':
           description: Not found
-      description: "<h4>Generate Token</h4>\n<b>Query String Parameters :</b> None <br>\n\n<b>Request Body Parameters:</b> None <br>\n\n<b>Response Body Parameters :</b>\n<table>\n  <thead>\n    <tr>\n      <th>Parameter</th>\n      <th>Type</th>\n      <th>Description</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td>retVal</td>\n      <td>string</td>\n      <td>Token</td>\n    </tr>\n  </tbody>\n</table>"
+      description: 'Generate Token
+
+
+        Query String Parameters : None
+
+
+        Request Body Parameters: None
+
+
+        Response Body Parameters :
+
+
+        Parameter
+
+        Type
+
+        Description
+
+
+        retVal
+
+        string
+
+        Token'
   /Client/Token/{Type}/Detail:
     get:
       tags:
@@ -327,7 +628,6 @@ paths:
           description: Unauthorized
         '404':
           description: Not found
-      description: <h4>Get Token Details</h4>
   /Client/FilterDomain:
     get:
       tags:
@@ -344,7 +644,35 @@ paths:
           description: Unauthorized
         '404':
           description: Not found
-      description: "<h4>Get Client Filter Domain</h4>\n<b>Query String Parameters :</b> None <br>\n\n<b>Request Body Parameters:</b> None <br>\n\n<b>Response Body Parameters :</b>\n<table>\n  <thead>\n    <tr>\n      <th>Parameter</th>\n      <th>Type</th>\n      <th>Description</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td>Count</td>\n      <td>string</td>\n      <td>Number of Domains</td>\n    </tr>\n    <tr>\n      <td>Data</td>\n      <td><a href=\"http://www.benchmarkemail.com/models.htm#ClientFilterDomain\" >ClientFilt"
+      description: 'Get Client Filter Domain
+
+
+        Query String Parameters : None
+
+
+        Request Body Parameters: None
+
+
+        Response Body Parameters :
+
+
+        Parameter
+
+        Type
+
+        Description
+
+
+        Count
+
+        string
+
+        Number of Domains
+
+
+        Data
+
+        ClientFilt'
   /Client/InitSurvey:
     post:
       tags:
@@ -361,45 +689,28 @@ paths:
           description: Unauthorized
         '404':
           description: Not found
-      description: '<h4>Provide your domain name to link it to your account</h4>
+      description: 'Provide your domain name to link it to your account
 
-        <b>Response Body Parameters : </b>
 
-        <table>
+        Response Body Parameters :
 
-        <thead>
 
-        <tr>
+        Parameter
 
-        <th>Parameter</th>
+        Required
 
-        <th>Required</th>
+        Type
 
-        <th>Type</th>
+        Description
 
-        <th>Description</th>
 
-        </tr>
+        CompanyWebsite
 
-        </thead>
+        Required
 
-        <tbody>
+        String
 
-        <tr>
-
-        <td>CompanyWebsite</td>
-
-        <td>Required</td>
-
-        <td>String</td>
-
-        <td>Company Website like BobsVacations.com</td>
-
-        </tr>
-
-        </tbody>
-
-        </table>'
+        Company Website like BobsVacations.com'
       requestBody:
         content:
           application/json:
@@ -426,7 +737,39 @@ paths:
           description: Unauthorized
         '404':
           description: Not found
-      description: "<h4>Resend Confirm Email</h4>\n<b>Query string parameters :</b> None <br>\n\n<b>Request Body parameters:</b> \n<table>\n  <thead>\n    <tr>\n      <th>Parameter</th>\n      <th>Required</th>\n      <th>Type</th>\n      <th>Description</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td>Email</td>\n      <td>Required</td>\n      <td>string</td>\n      <td>Email ID</td>\n    </tr>\n  </tbody>\n</table>\n<b>Response body parameters :</b>\n<table>\n  <thead>\n    <tr>\n      <th>Parameter</th>\n      <th>Type</th>\n   "
+      description: 'Resend Confirm Email
+
+
+        Query string parameters : None
+
+
+        Request Body parameters:
+
+
+        Parameter
+
+        Required
+
+        Type
+
+        Description
+
+
+        Email
+
+        Required
+
+        string
+
+        Email ID
+
+
+        Response body parameters :
+
+
+        Parameter
+
+        Type'
 components:
   securitySchemes:
     apiKeyAuth:

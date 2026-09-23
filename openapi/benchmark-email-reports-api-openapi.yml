@@ -1,22 +1,895 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Benchmark Email RESTful API v3.0 ABTest Creation Reports API
-  description: 'RESTful API for managing email marketing contacts, lists, campaigns, automations, reports, images, and webhooks within the Benchmark Email platform. To use the API, you need a Benchmark Email API token available at https://ui.benchmarkemail.com/Integrate#API. Rate limit: 500 calls per 2 minutes and 60,000 calls per day.'
-  version: 3.0.0
-  contact:
-    name: Benchmark Email Developer Support
-    url: https://developer.benchmarkemail.com/
-  license:
-    name: Proprietary
+  title: Benchmark Email Reports API
+  version: '1.0'
+  description: 'Operations tagged reports across 2 of this provider''s published API definitions: benchmark-email-api-openapi.json, benchmark-email-benchmark-email-api-openapi.yml. Each path carries the servers of the definition it was published in.'
 servers:
+- description: Your account's API base URL. Copy the full URL shown on Settings > API Keys in your Benchmark Email account and paste it here.
+  url: '{apiBaseUrl}'
+  variables:
+    apiBaseUrl:
+      default: ''
+      description: Your account's API base URL. Copy it from Settings > API Keys in your Benchmark Email account.
 - url: https://clientapi.benchmarkemail.com
   description: Benchmark Email Client API
 security:
 - apiKeyAuth: []
 tags:
-- name: Reports
-  description: Campaign reporting and analytics
+- description: Report related endpoints
+  name: Reports
 paths:
+  /api/reports/dashboard:
+    get:
+      operationId: get_api_reports_dashboard
+      parameters:
+      - description: The number of past days (between 1 and 90) to retrieve report stats and precedent stats.
+        in: query
+        name: pastDays
+        required: true
+        schema:
+          maximum: 90
+          minimum: 1
+          type: integer
+      - description: The user timezone (IANA) code.
+        in: query
+        name: timezone
+        required: false
+        schema:
+          default: UTC
+          example: America/La_Paz
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  campaign:
+                    description: campaign reports
+                    properties:
+                      delivered:
+                        description: delivered emails statistics.
+                        properties:
+                          count:
+                            description: delivered email count.
+                            example: 2203
+                            type: integer
+                          diff:
+                            description: delivered email difference from previous period.
+                            example: 11.3
+                            format: float
+                            type: number
+                        type: object
+                      sent:
+                        description: sent emails statistics.
+                        properties:
+                          count:
+                            description: sent email count.
+                            example: 2379
+                            type: integer
+                          diff:
+                            description: sent email difference from previous period.
+                            example: 0.76
+                            format: float
+                            type: number
+                        type: object
+                      uniqueClicks:
+                        description: clicked emails statistics.
+                        properties:
+                          count:
+                            properties:
+                              diff:
+                                description: unique clicked email count difference from previous period.
+                                example: -21.52
+                                format: float
+                                type: number
+                              value:
+                                description: unique clicked email count
+                                example: 569
+                                type: integer
+                            type: object
+                          rate:
+                            properties:
+                              diff:
+                                description: unique clicked email rate difference from previous period.
+                                example: 20.47
+                                format: float
+                                type: number
+                              value:
+                                description: unique clicked email rate (opens/delivered)
+                                example: 25.83
+                                format: float
+                                type: number
+                            type: object
+                        type: object
+                      uniqueOpens:
+                        description: unique opened emails statistics.
+                        properties:
+                          count:
+                            properties:
+                              diff:
+                                description: unique opened email count difference from previous period.
+                                example: -23.41
+                                format: float
+                                type: number
+                              value:
+                                description: unique opened email count
+                                example: 733
+                                type: integer
+                            type: object
+                          rate:
+                            properties:
+                              diff:
+                                description: unique opened email rate difference from previous period.
+                                example: -22.41
+                                format: float
+                                type: number
+                              value:
+                                description: unique opened email rate (opens/delivered)
+                                example: 33.27
+                                format: float
+                                type: number
+                            type: object
+                        type: object
+                    type: object
+                  contact:
+                    properties:
+                      count:
+                        properties:
+                          diff:
+                            description: contact count diff from past time period
+                            example: 29.55
+                            format: float
+                            type: number
+                          value:
+                            description: current contact count
+                            example: 5900
+                            type: number
+                        type: object
+                      histogram:
+                        properties:
+                          end:
+                            description: contact snapshot histogram end date point
+                            example: '2024-10-29T00:00:00.000Z'
+                            format: date-time
+                            type: string
+                          histogram:
+                            items:
+                              properties:
+                                date:
+                                  example: '2024-09-23T17:00:00.000Z'
+                                  format: date-time
+                                  type: string
+                                total:
+                                  example: 4
+                                  type: integer
+                              type: object
+                            type: array
+                          peak:
+                            properties:
+                              date:
+                                example: '2024-09-23T17:00:00.000Z'
+                                format: date-time
+                                type: string
+                              total:
+                                example: 4
+                                type: integer
+                            type: object
+                          start:
+                            description: contact snapshot histogram start date point
+                            example: '2024-09-29T00:00:00.000Z'
+                            format: date-time
+                            type: string
+                        type: object
+                    type: object
+                type: object
+          description: Successfully report retrieved
+      security:
+      - apiKeyAuth: []
+      summary: Get dashboard snapshot reports
+      tags:
+      - Reports
+      x-api-key-scope: reports:read
+    servers:
+    - description: Your account's API base URL. Copy the full URL shown on Settings > API Keys in your Benchmark Email account and paste it here.
+      url: '{apiBaseUrl}'
+      variables:
+        apiBaseUrl:
+          default: ''
+          description: Your account's API base URL. Copy it from Settings > API Keys in your Benchmark Email account.
+  /api/reports/email/overall:
+    get:
+      operationId: get_api_reports_email_overall
+      parameters:
+      - description: The number of past days (between 1 and 90) to retrieve report stats and precedent stats.
+        in: query
+        name: pastDays
+        required: true
+        schema:
+          maximum: 90
+          minimum: 1
+          type: integer
+      - description: The user timezone (IANA) code.
+        in: query
+        name: timezone
+        required: false
+        schema:
+          default: UTC
+          example: America/La_Paz
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  campaignComparison:
+                    items:
+                      properties:
+                        _id:
+                          description: Campaign ID
+                          type: string
+                        name:
+                          description: Campaign name
+                          type: string
+                        rates:
+                          properties:
+                            clicks:
+                              description: Click rate
+                              format: float
+                              type: number
+                            opens:
+                              description: Open rate
+                              format: float
+                              type: number
+                          type: object
+                        scheduledAt:
+                          description: Campaign scheduled at
+                          format: date-time
+                          type: string
+                      type: object
+                    type: array
+                  deliveryTimeStats:
+                    description: Email delivery open rates by day time distribution statistics.
+                    properties:
+                      afternoon:
+                        description: Percentage of open rate for delivered in the afternoon. (10am-4pm)
+                        example: 39.18
+                        format: float
+                        type: number
+                      evening:
+                        description: Percentage of open rate for delivered in the evening. (4pm-10pm)
+                        example: 0
+                        format: float
+                        type: number
+                      morning:
+                        description: Percentage of open rate for delivered in the morning. (4am-10am)
+                        example: 34.28
+                        format: float
+                        type: number
+                      night:
+                        description: Percentage of open rate for delivered at night. (10pm-4am)
+                        example: 0
+                        format: float
+                        type: number
+                    type: object
+                  stats:
+                    properties:
+                      complaints:
+                        description: Complaint emails statistics.
+                        properties:
+                          count:
+                            properties:
+                              diff:
+                                description: Complaint count difference from previous period.
+                                example: 100
+                                format: float
+                                type: number
+                              prev:
+                                description: Previous period complaint email count.
+                                example: 5
+                                type: integer
+                              value:
+                                description: Complaint count.
+                                example: 10
+                                type: integer
+                            type: object
+                        type: object
+                      delivered:
+                        description: Delivered emails statistics.
+                        properties:
+                          count:
+                            properties:
+                              diff:
+                                description: Delivered email count difference from previous period.
+                                example: -42.95
+                                format: float
+                                type: number
+                              prev:
+                                description: Previous period delivered email count.
+                                example: 3722
+                                type: integer
+                              value:
+                                description: Delivered email count.
+                                example: 2611
+                                type: integer
+                            type: object
+                        type: object
+                      hardBounces:
+                        description: Hard bounce emails statistics.
+                        properties:
+                          count:
+                            properties:
+                              diff:
+                                description: Hard bounce email count difference from previous period.
+                                example: -25.64
+                                format: float
+                                type: number
+                              prev:
+                                description: Previous period hard bounce email count.
+                                example: 152
+                                type: integer
+                              value:
+                                description: Hard bounce email count.
+                                example: 116
+                                type: integer
+                            type: object
+                          rate:
+                            properties:
+                              diff:
+                                description: Hard bounce email rate difference from previous period.
+                                example: 30.21
+                                format: float
+                                type: number
+                              prev:
+                                description: Previous period hard bounce email rate (bounces/sent).
+                                example: 22.32
+                                format: float
+                                type: number
+                              value:
+                                description: Hard bounce email rate (bounces/sent).
+                                example: 28.53
+                                format: float
+                                type: number
+                            type: object
+                        type: object
+                      sent:
+                        description: Sent emails statistics.
+                        properties:
+                          count:
+                            properties:
+                              diff:
+                                description: Sent email count difference from previous period.
+                                example: -42.28
+                                format: float
+                                type: number
+                              prev:
+                                description: Previous period sent email count.
+                                example: 3942
+                                type: integer
+                              value:
+                                description: Sent email count.
+                                example: 2822
+                                type: integer
+                            type: object
+                        type: object
+                      softBounces:
+                        description: Soft bounce emails statistics.
+                        properties:
+                          count:
+                            properties:
+                              diff:
+                                description: Soft bounce email count difference from previous period.
+                                example: -39.1
+                                format: float
+                                type: number
+                              prev:
+                                description: Previous period soft bounce email count.
+                                example: 125
+                                type: integer
+                              value:
+                                description: Soft bounce email count.
+                                example: 95
+                                type: integer
+                            type: object
+                          rate:
+                            properties:
+                              diff:
+                                description: Soft bounce email rate difference from previous period.
+                                example: 30.21
+                                format: float
+                                type: number
+                              prev:
+                                description: Previous period soft bounce email rate (bounces/sent).
+                                example: 22.32
+                                format: float
+                                type: number
+                              value:
+                                description: Soft bounce email rate (bounces/sent).
+                                example: 28.53
+                                format: float
+                                type: number
+                            type: object
+                        type: object
+                      totalBounces:
+                        description: Total bounce emails statistics.
+                        properties:
+                          count:
+                            properties:
+                              diff:
+                                description: Total bounce email count difference from previous period.
+                                example: -25.64
+                                format: float
+                                type: number
+                              prev:
+                                description: Previous period total bounce email count.
+                                example: 152
+                                type: integer
+                              value:
+                                description: Total bounce email count.
+                                example: 116
+                                type: integer
+                            type: object
+                          rate:
+                            properties:
+                              diff:
+                                description: Total bounce email rate difference from previous period.
+                                example: 30.21
+                                format: float
+                                type: number
+                              prev:
+                                description: Previous period total bounce email rate (bounces/sent).
+                                example: 22.32
+                                format: float
+                                type: number
+                              value:
+                                description: Total bounce email rate (bounces/sent).
+                                example: 28.53
+                                format: float
+                                type: number
+                            type: object
+                        type: object
+                      uniqueClicks:
+                        description: Unique clicked emails statistics.
+                        properties:
+                          count:
+                            properties:
+                              diff:
+                                description: Unique clicked email count difference from previous period.
+                                example: -25.72
+                                format: float
+                                type: number
+                              prev:
+                                description: Previous period unique clicked email count.
+                                example: 1283
+                                type: integer
+                              value:
+                                description: Unique clicked email count.
+                                example: 745
+                                type: integer
+                            type: object
+                          rate:
+                            properties:
+                              diff:
+                                description: Unique clicked email rate difference from previous period.
+                                example: 30.21
+                                format: float
+                                type: number
+                              prev:
+                                description: Previous period unique clicked email rate (clicks/delivered).
+                                example: 22.32
+                                format: float
+                                type: number
+                              value:
+                                description: Unique clicked email rate (clicks/delivered).
+                                example: 28.53
+                                format: float
+                                type: number
+                            type: object
+                        type: object
+                      uniqueOpens:
+                        description: Unique opened emails statistics.
+                        properties:
+                          count:
+                            properties:
+                              diff:
+                                description: Unique opened email count difference from previous period.
+                                example: -28.34
+                                format: float
+                                type: number
+                              prev:
+                                description: Previous period unique opened email count.
+                                example: 1283
+                                type: integer
+                              value:
+                                description: Unique opened email count.
+                                example: 971
+                                type: integer
+                            type: object
+                          rate:
+                            properties:
+                              diff:
+                                description: Unique opened email rate difference from previous period.
+                                example: 25.64
+                                format: float
+                                type: number
+                              prev:
+                                description: Previous period unique opened email rate (opens/delivered).
+                                example: 27.32
+                                format: float
+                                type: number
+                              value:
+                                description: Unique opened email rate (opens/delivered).
+                                example: 37.19
+                                format: float
+                                type: number
+                            type: object
+                        type: object
+                      unsubscribes:
+                        description: Unsubscribed emails statistics.
+                        properties:
+                          count:
+                            properties:
+                              diff:
+                                description: Unsubscribe count difference from previous period.
+                                example: -25
+                                format: float
+                                type: number
+                              prev:
+                                description: Previous period unsubscribed email count.
+                                example: 125
+                                type: integer
+                              value:
+                                description: Unsubscribe count.
+                                example: 100
+                                type: integer
+                            type: object
+                        type: object
+                    type: object
+                type: object
+          description: Successfully report retrieved
+      security:
+      - apiKeyAuth: []
+      summary: Get overall email reports
+      tags:
+      - Reports
+      x-api-key-scope: reports:read
+    servers:
+    - description: Your account's API base URL. Copy the full URL shown on Settings > API Keys in your Benchmark Email account and paste it here.
+      url: '{apiBaseUrl}'
+      variables:
+        apiBaseUrl:
+          default: ''
+          description: Your account's API base URL. Copy it from Settings > API Keys in your Benchmark Email account.
+  /api/reports/email/overall/histogram:
+    get:
+      operationId: get_api_reports_email_overall_histogram
+      parameters:
+      - description: The number of past days (between 1 and 90) to retrieve the event type histogram.
+        in: query
+        name: pastDays
+        required: true
+        schema:
+          maximum: 90
+          minimum: 1
+          type: integer
+      - description: The requested campaign event type to generate the histogram.
+        in: query
+        name: eventType
+        required: true
+        schema:
+          enum:
+          - email-sent
+          - email-delivered
+          - email-bounced
+          - first-contact-unsubscribed
+          - first-email-complaint
+          - first-email-opened
+          - first-email-clicked
+          type: string
+      - description: The user timezone (IANA) code.
+        in: query
+        name: timezone
+        required: false
+        schema:
+          default: UTC
+          example: America/La_Paz
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                description: Campaign histogram details
+                properties:
+                  end:
+                    example: '2024-09-24T17:00:00.000Z'
+                    format: date-time
+                    type: string
+                  histogram:
+                    items:
+                      properties:
+                        date:
+                          example: '2024-09-23T17:00:00.000Z'
+                          format: date-time
+                          type: string
+                        detail:
+                          description: Details only for email-bounced event type
+                          properties:
+                            hard:
+                              example: 3
+                              type: integer
+                            soft:
+                              example: 1
+                              type: integer
+                          type: object
+                        total:
+                          example: 4
+                          type: integer
+                      type: object
+                    type: array
+                  peak:
+                    properties:
+                      endDate:
+                        example: '2024-09-23T17:00:00.000Z'
+                        format: date-time
+                        type: string
+                      startDate:
+                        example: '2024-09-23T17:00:00.000Z'
+                        format: date-time
+                        type: string
+                      total:
+                        example: 4
+                        type: integer
+                    type: object
+                  start:
+                    example: '2024-09-23T17:00:00.000Z'
+                    format: date-time
+                    type: string
+                type: object
+          description: Successfully report retrieved
+      security:
+      - apiKeyAuth: []
+      summary: Get overall email histogram by event type
+      tags:
+      - Reports
+      x-api-key-scope: reports:read
+    servers:
+    - description: Your account's API base URL. Copy the full URL shown on Settings > API Keys in your Benchmark Email account and paste it here.
+      url: '{apiBaseUrl}'
+      variables:
+        apiBaseUrl:
+          default: ''
+          description: Your account's API base URL. Copy it from Settings > API Keys in your Benchmark Email account.
+  /api/reports/email/{id}:
+    get:
+      operationId: get_api_reports_email_by_id
+      parameters:
+      - description: email campaign identifier
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  linkActivity:
+                    description: List of link activity
+                    items:
+                      properties:
+                        clicks:
+                          properties:
+                            total:
+                              example: 0
+                              type: integer
+                            unique:
+                              example: 0
+                              type: integer
+                          type: object
+                        id:
+                          example: 66f1a6e4698f1bca60424808
+                          type: string
+                        path:
+                          example: https://instagram.com/
+                          type: string
+                      type: object
+                    type: array
+                  stats:
+                    description: Statistics of the campaign
+                    properties:
+                      clicks:
+                        description: Email clicks statistics
+                        properties:
+                          last:
+                            example: '2024-09-27T18:28:40.575Z'
+                            format: date-time
+                            type: string
+                          rate:
+                            example: 25.8
+                            format: float
+                            type: number
+                          unique:
+                            example: 169
+                            type: integer
+                        type: object
+                      complaints:
+                        description: Number of complaints
+                        example: 0
+                        type: integer
+                      delivered:
+                        description: Total number of delivered emails
+                        example: 655
+                        type: integer
+                      hardBounces:
+                        description: Hard bounce emails statistics
+                        properties:
+                          count:
+                            example: 25
+                            type: integer
+                          rate:
+                            example: 3.81
+                            format: float
+                            type: number
+                        type: object
+                      opens:
+                        description: Email opens statistics
+                        properties:
+                          last:
+                            example: '2024-09-27T17:33:45.464Z'
+                            format: date-time
+                            type: string
+                          rate:
+                            example: 32.06
+                            format: float
+                            type: number
+                          unique:
+                            example: 210
+                            type: integer
+                        type: object
+                      sent:
+                        description: Total number of sent emails
+                        example: 697
+                        type: integer
+                      softBounces:
+                        description: Soft bounce emails statistics
+                        properties:
+                          count:
+                            example: 17
+                            type: integer
+                          rate:
+                            example: 2.59
+                            format: float
+                            type: number
+                        type: object
+                      totalBounces:
+                        description: Total bounce emails statistics
+                        properties:
+                          count:
+                            example: 42
+                            type: integer
+                          rate:
+                            example: 6.87
+                            format: float
+                            type: number
+                        type: object
+                      unsubscribes:
+                        description: Number of unsubscribes
+                        example: 0
+                        type: integer
+                    type: object
+                type: object
+          description: Successfully retrieved report
+      security:
+      - apiKeyAuth: []
+      summary: Get individual email campaign reports
+      tags:
+      - Reports
+      x-api-key-scope: reports:read
+    servers:
+    - description: Your account's API base URL. Copy the full URL shown on Settings > API Keys in your Benchmark Email account and paste it here.
+      url: '{apiBaseUrl}'
+      variables:
+        apiBaseUrl:
+          default: ''
+          description: Your account's API base URL. Copy it from Settings > API Keys in your Benchmark Email account.
+  /api/reports/email/{id}/engagement:
+    get:
+      operationId: get_api_reports_email_by_id_engagement
+      parameters:
+      - description: email campaign identifier
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      - description: The engage period criteria to generate the histogram.
+        in: query
+        name: period
+        required: false
+        schema:
+          default: 24hours
+          enum:
+          - 24hours
+          - week
+          - month
+          type: string
+      - description: The user timezone (IANA) code.
+        in: query
+        name: timezone
+        required: false
+        schema:
+          default: UTC
+          example: America/La_Paz
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                description: Campaign histogram details
+                properties:
+                  end:
+                    example: '2024-09-24T17:00:00.000Z'
+                    format: date-time
+                    type: string
+                  histogram:
+                    items:
+                      properties:
+                        date:
+                          example: '2024-09-23T17:00:00.000Z'
+                          format: date-time
+                          type: string
+                        detail:
+                          properties:
+                            uniqueClicks:
+                              example: 1
+                              type: integer
+                            uniqueOpens:
+                              example: 3
+                              type: integer
+                          type: object
+                        total:
+                          example: 4
+                          type: integer
+                      type: object
+                    type: array
+                  peak:
+                    properties:
+                      endDate:
+                        example: '2024-09-23T17:00:00.000Z'
+                        format: date-time
+                        type: string
+                      startDate:
+                        example: '2024-09-23T17:00:00.000Z'
+                        format: date-time
+                        type: string
+                      total:
+                        example: 4
+                        type: integer
+                    type: object
+                  start:
+                    example: '2024-09-23T17:00:00.000Z'
+                    format: date-time
+                    type: string
+                type: object
+          description: Successfully retrieved report
+      security:
+      - apiKeyAuth: []
+      summary: Get individual email campaign engagement reports
+      tags:
+      - Reports
+      x-api-key-scope: reports:read
+    servers:
+    - description: Your account's API base URL. Copy the full URL shown on Settings > API Keys in your Benchmark Email account and paste it here.
+      url: '{apiBaseUrl}'
+      variables:
+        apiBaseUrl:
+          default: ''
+          description: Your account's API base URL. Copy it from Settings > API Keys in your Benchmark Email account.
   /Emails/{ID}/{RType}/Report/Download:
     post:
       tags:
@@ -43,7 +916,28 @@ paths:
           description: Unauthorized
         '404':
           description: Not found
-      description: "<h4>Report Download</h4>\r\n<h4>URL Parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Required</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>{{ID}}</td><td>required</td><td>string</td><td>ID of the Email</td></tr>\r\n<tr><td>{{RType}}</td><td>required</td><td>string</td><td>Report Type</td></tr>\r\n</tbody>\r\n</table>\r\n\r\n<h4>Body Parameters (To be passed as a JSON string)</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Required</th><th>Type</th><th>Description</th></tr>\r\n<"
+      description: 'Report Download
+
+
+        URL Parameters
+
+
+        KeyRequiredTypeDescription
+
+
+        {{ID}}requiredstringID of the Email
+
+
+        {{RType}}requiredstringReport Type
+
+
+        Body Parameters (To be passed as a JSON string)
+
+
+        KeyRequiredTypeDescription
+
+
+        <'
     get:
       tags:
       - Reports
@@ -69,7 +963,36 @@ paths:
           description: Unauthorized
         '404':
           description: Not found
-      description: "<h4>Get a list of contacts</h4>\r\n<h4>URL Parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Required</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>{{ID}}</td><td>required</td><td>string</td><td>ID of the Email</td></tr>\r\n<tr><td>{{RType}}</td><td>required</td><td>string</td><td>Type of report:\r\n<code>1</code> or <code>8</code> Clicks\r\n<code>2</code> Forwards\r\n<code>3</code> Bounces\r\n<code>4</code> Complaints\r\n<code>5</code> Unsubscribes\r\n<code>6</code> Opens\r\n<code"
+      description: 'Get a list of contacts
+
+
+        URL Parameters
+
+
+        KeyRequiredTypeDescription
+
+
+        {{ID}}requiredstringID of the Email
+
+
+        {{RType}}requiredstringType of report:
+
+        1 or 8 Clicks
+
+        2 Forwards
+
+        3 Bounces
+
+        4 Complaints
+
+        5 Unsubscribes
+
+        6 Opens
+
+        <code'
+    servers:
+    - url: https://clientapi.benchmarkemail.com
+      description: Benchmark Email Client API
   /Emails/{ID}/Report/Unsubscribes:
     get:
       tags:
@@ -91,7 +1014,31 @@ paths:
           description: Unauthorized
         '404':
           description: Not found
-      description: "<h4>GET Unsubscribe report By Email ID</h4>\r\n<h4>URL Parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Required</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>{{ID}}</td><td>required</td><td>string</td><td>ID of the Email</td></tr>\r\n</tbody>\r\n</table>\r\n\r\n<h4>Response body parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>Status</td><td>string</td><td>1 if successful, -1 if error</td></tr>\r\n<tr><t"
+      description: 'GET Unsubscribe report By Email ID
+
+
+        URL Parameters
+
+
+        KeyRequiredTypeDescription
+
+
+        {{ID}}requiredstringID of the Email
+
+
+        Response body parameters
+
+
+        KeyTypeDescription
+
+
+        Statusstring1 if successful, -1 if error
+
+
+        <t'
+    servers:
+    - url: https://clientapi.benchmarkemail.com
+      description: Benchmark Email Client API
   /Emails/SaveAsList:
     patch:
       tags:
@@ -108,12 +1055,36 @@ paths:
           description: Unauthorized
         '404':
           description: Not found
-      description: "<h4>Save as List</h4>\r\n\r\n<h4>Body Parameters (To be passed as a JSON string)</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Required</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>EmailID</td><td>optional</td><td>string</td><td>Email ID</td></tr>\r\n<tr><td>EventID</td><td>optional</td><td>string</td><td>Event ID</td></tr>\r\n<tr><td>ABID</td><td>optional</td><td>string</td><td>AB ID</td></tr>\r\n<tr><td>RType</td><td>optional</td><td>string</td><td>Report Type</td></tr>\r\n<tr><t"
+      description: 'Save as List
+
+
+        Body Parameters (To be passed as a JSON string)
+
+
+        KeyRequiredTypeDescription
+
+
+        EmailIDoptionalstringEmail ID
+
+
+        EventIDoptionalstringEvent ID
+
+
+        ABIDoptionalstringAB ID
+
+
+        RTypeoptionalstringReport Type
+
+
+        <t'
+    servers:
+    - url: https://clientapi.benchmarkemail.com
+      description: Benchmark Email Client API
   /Emails/GetSaveAsList:
     get:
       tags:
       - Reports
-      summary: 'GET Save as List '
+      summary: GET Save as List
       operationId: get__emails_getsaveaslist
       parameters: []
       responses:
@@ -125,7 +1096,28 @@ paths:
           description: Unauthorized
         '404':
           description: Not found
-      description: "<h4>GET Save as List</h4>\r\n\r\n<h4>Query String parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Required</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>EmailID</td><td>optional</td><td>string</td><td>ID of the EMail</td></tr>\r\n<tr><td>EventID</td><td>optional</td><td>string</td><td>ID of the Event</td></tr>\r\n<tr><td>ABID</td><td>optional</td><td>string</td><td>ID of the AB Test</td></tr>\r\n<tr><td>RType</td><td>optional</td><td>string</td><td>Report Type</td></tr>\r\n"
+      description: 'GET Save as List
+
+
+        Query String parameters
+
+
+        KeyRequiredTypeDescription
+
+
+        EmailIDoptionalstringID of the EMail
+
+
+        EventIDoptionalstringID of the Event
+
+
+        ABIDoptionalstringID of the AB Test
+
+
+        RTypeoptionalstringReport Type'
+    servers:
+    - url: https://clientapi.benchmarkemail.com
+      description: Benchmark Email Client API
   /Emails/{ID}/Report:
     get:
       tags:
@@ -147,7 +1139,28 @@ paths:
           description: Unauthorized
         '404':
           description: Not found
-      description: "<h4>Get a list of contacts</h4>\r\n<h4>URL Parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Required</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>{{ID}}</td><td>required</td><td>string</td><td>ID of the email</td></tr>\r\n</tbody>\r\n</table>\r\n\r\n<h4>Response body parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>Data</td><td><a href=\"http://www.benchmarkemail.com/models.htm#EmailReportSummaryData\">R"
+      description: 'Get a list of contacts
+
+
+        URL Parameters
+
+
+        KeyRequiredTypeDescription
+
+
+        {{ID}}requiredstringID of the email
+
+
+        Response body parameters
+
+
+        KeyTypeDescription
+
+
+        DataR'
+    servers:
+    - url: https://clientapi.benchmarkemail.com
+      description: Benchmark Email Client API
   /Emails/{ID}/Report/Forwards:
     get:
       tags:
@@ -169,7 +1182,31 @@ paths:
           description: Unauthorized
         '404':
           description: Not found
-      description: "<h4>Get a list of contacts</h4>\r\n<h4>URL Parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Required</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>{{ID}}</td><td>required</td><td>string</td><td>ID of the Email</td></tr>\r\n</tbody>\r\n</table>\r\n\r\n<h4>Response body parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>Status</td><td>string</td><td>1 if successful, -1 if error</td></tr>\r\n<tr><td>Count</td>"
+      description: 'Get a list of contacts
+
+
+        URL Parameters
+
+
+        KeyRequiredTypeDescription
+
+
+        {{ID}}requiredstringID of the Email
+
+
+        Response body parameters
+
+
+        KeyTypeDescription
+
+
+        Statusstring1 if successful, -1 if error
+
+
+        Count'
+    servers:
+    - url: https://clientapi.benchmarkemail.com
+      description: Benchmark Email Client API
   /Emails/{ID}/Report/Unopens:
     get:
       tags:
@@ -191,7 +1228,31 @@ paths:
           description: Unauthorized
         '404':
           description: Not found
-      description: "<h4>Get a list of contacts</h4>\r\n<h4>URL Parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Required</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>{{ID}}</td><td>required</td><td>string</td><td>ID of the email</td></tr>\r\n</tbody>\r\n</table>\r\n\r\n<h4>Response body parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>Status</td><td>string</td><td>1 if successful, -1 if error</td></tr>\r\n<tr><td>Count</td>"
+      description: 'Get a list of contacts
+
+
+        URL Parameters
+
+
+        KeyRequiredTypeDescription
+
+
+        {{ID}}requiredstringID of the email
+
+
+        Response body parameters
+
+
+        KeyTypeDescription
+
+
+        Statusstring1 if successful, -1 if error
+
+
+        Count'
+    servers:
+    - url: https://clientapi.benchmarkemail.com
+      description: Benchmark Email Client API
   /Emails/{ID}/Report/Clicks:
     get:
       tags:
@@ -213,7 +1274,31 @@ paths:
           description: Unauthorized
         '404':
           description: Not found
-      description: "<h4>Get a list of contacts</h4>\r\n<h4>URL Parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Required</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>{{ID}}</td><td>required</td><td>string</td><td>ID of the email</td></tr>\r\n</tbody>\r\n</table>\r\n\r\n<h4>Response body parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>Status</td><td>string</td><td>1 if successful, -1 if error</td></tr>\r\n<tr><td>Count</td>"
+      description: 'Get a list of contacts
+
+
+        URL Parameters
+
+
+        KeyRequiredTypeDescription
+
+
+        {{ID}}requiredstringID of the email
+
+
+        Response body parameters
+
+
+        KeyTypeDescription
+
+
+        Statusstring1 if successful, -1 if error
+
+
+        Count'
+    servers:
+    - url: https://clientapi.benchmarkemail.com
+      description: Benchmark Email Client API
   /Emails/{ID}/Report/Bounces:
     get:
       tags:
@@ -235,7 +1320,31 @@ paths:
           description: Unauthorized
         '404':
           description: Not found
-      description: "<h4>GET Bounces report By Email ID</h4>\r\n<h4>URL Parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Required</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>{{ID}}</td><td>required</td><td>string</td><td>ID of the email</td></tr>\r\n</tbody>\r\n</table>\r\n\r\n<h4>Response body parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>Status</td><td>string</td><td>1 if successful, -1 if error</td></tr>\r\n<tr><td>Co"
+      description: 'GET Bounces report By Email ID
+
+
+        URL Parameters
+
+
+        KeyRequiredTypeDescription
+
+
+        {{ID}}requiredstringID of the email
+
+
+        Response body parameters
+
+
+        KeyTypeDescription
+
+
+        Statusstring1 if successful, -1 if error
+
+
+        Co'
+    servers:
+    - url: https://clientapi.benchmarkemail.com
+      description: Benchmark Email Client API
   /Emails/{ID}/Report/AbuseCampaign:
     get:
       tags:
@@ -257,7 +1366,31 @@ paths:
           description: Unauthorized
         '404':
           description: Not found
-      description: "<h4>Get a list of contacts</h4>\r\n<h4>URL Parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Required</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>{{ID}}</td><td>required</td><td>string</td><td>ID of the email</td></tr>\r\n</tbody>\r\n</table>\r\n\r\n<h4>Response body parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>Status</td><td>string</td><td>1 if successful, -1 error</td></tr>\r\n<tr><td>Count</td><td"
+      description: 'Get a list of contacts
+
+
+        URL Parameters
+
+
+        KeyRequiredTypeDescription
+
+
+        {{ID}}requiredstringID of the email
+
+
+        Response body parameters
+
+
+        KeyTypeDescription
+
+
+        Statusstring1 if successful, -1 error
+
+
+        Count<td'
+    servers:
+    - url: https://clientapi.benchmarkemail.com
+      description: Benchmark Email Client API
   /Emails/Report/Abuse:
     get:
       tags:
@@ -274,7 +1407,34 @@ paths:
           description: Unauthorized
         '404':
           description: Not found
-      description: "<h4>GET Abuse report</h4>\r\n\r\n<h4>Response body parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>Status</td><td>string</td><td>1 if successful, -1 error</td></tr>\r\n<tr><td>Count</td><td>int</td><td>Total number</td></tr>\r\n<tr><td>TotalCount</td><td>string</td><td>Abuse Total</td></tr>\r\n<tr><td>Total</td><td>string</td><td>Abuse total</td></tr>\r\n<tr><td>YourComplaintRate</td><td>string</td><td>Abuse Percentage</td></tr>\r\n<tr><t"
+      description: 'GET Abuse report
+
+
+        Response body parameters
+
+
+        KeyTypeDescription
+
+
+        Statusstring1 if successful, -1 error
+
+
+        CountintTotal number
+
+
+        TotalCountstringAbuse Total
+
+
+        TotalstringAbuse total
+
+
+        YourComplaintRatestringAbuse Percentage
+
+
+        <t'
+    servers:
+    - url: https://clientapi.benchmarkemail.com
+      description: Benchmark Email Client API
   /Emails/{ID}/Report/SocialPerformance:
     get:
       tags:
@@ -296,7 +1456,31 @@ paths:
           description: Unauthorized
         '404':
           description: Not found
-      description: "<h4>Get a list of contacts</h4>\r\n<h4>URL Parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Required</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>{{ID}}</td><td>required</td><td>string</td><td>ID of the EMail</td></tr>\r\n</tbody>\r\n</table>\r\n\r\n<h4>Response body parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>Status</td><td>string</td><td>1 if successful, -1 if error</td></tr>\r\n<tr><td>FacebookSh"
+      description: 'Get a list of contacts
+
+
+        URL Parameters
+
+
+        KeyRequiredTypeDescription
+
+
+        {{ID}}requiredstringID of the EMail
+
+
+        Response body parameters
+
+
+        KeyTypeDescription
+
+
+        Statusstring1 if successful, -1 if error
+
+
+        FacebookSh'
+    servers:
+    - url: https://clientapi.benchmarkemail.com
+      description: Benchmark Email Client API
   /Emails/{ID}/Report/Opens:
     get:
       tags:
@@ -318,7 +1502,31 @@ paths:
           description: Unauthorized
         '404':
           description: Not found
-      description: "<h4>Get a list of contacts</h4>\r\n<h4>URL Parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Required</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>{{ID}}</td><td>required</td><td>string</td><td>ID of the email</td></tr>\r\n</tbody>\r\n</table>\r\n\r\n<h4>Query String parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Required</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>Language</td><td>optional</td><td>string</td><td>Language</td></tr>\r\n<tr"
+      description: 'Get a list of contacts
+
+
+        URL Parameters
+
+
+        KeyRequiredTypeDescription
+
+
+        {{ID}}requiredstringID of the email
+
+
+        Query String parameters
+
+
+        KeyRequiredTypeDescription
+
+
+        LanguageoptionalstringLanguage
+
+
+        <tr'
+    servers:
+    - url: https://clientapi.benchmarkemail.com
+      description: Benchmark Email Client API
   /Emails/{ID}/Report/Opens/Location:
     get:
       tags:
@@ -340,7 +1548,31 @@ paths:
           description: Unauthorized
         '404':
           description: Not found
-      description: "<h4>Get a list of contacts</h4>\r\n<h4>URL Parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Required</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>{{ID}}</td><td>required</td><td>string</td><td>ID of the email</td></tr>\r\n</tbody>\r\n</table>\r\n\r\n<h4>Response body parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>Status</td><td>string</td><td>1 if successful, -1 if error</td></tr>\r\n<tr><td>Count</td>"
+      description: 'Get a list of contacts
+
+
+        URL Parameters
+
+
+        KeyRequiredTypeDescription
+
+
+        {{ID}}requiredstringID of the email
+
+
+        Response body parameters
+
+
+        KeyTypeDescription
+
+
+        Statusstring1 if successful, -1 if error
+
+
+        Count'
+    servers:
+    - url: https://clientapi.benchmarkemail.com
+      description: Benchmark Email Client API
   /Emails/{ID}/Report/Opens/Location/{CountryCode}:
     get:
       tags:
@@ -367,7 +1599,28 @@ paths:
           description: Unauthorized
         '404':
           description: Not found
-      description: "<h4>Get a list of contacts</h4>\r\n<h4>URL Parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Required</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>{{ID}}</td><td>required</td><td>string</td><td>ID of the Email</td></tr>\r\n<tr><td>{{CountryCode}}</td><td>required</td><td>string</td><td>Country Code</td></tr>\r\n</tbody>\r\n</table>\r\n\r\n<h4>Response body parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>"
+      description: 'Get a list of contacts
+
+
+        URL Parameters
+
+
+        KeyRequiredTypeDescription
+
+
+        {{ID}}requiredstringID of the Email
+
+
+        {{CountryCode}}requiredstringCountry Code
+
+
+        Response body parameters
+
+
+        KeyTypeDescription'
+    servers:
+    - url: https://clientapi.benchmarkemail.com
+      description: Benchmark Email Client API
   /Emails/{ID}/Report/Opens/Hourly:
     get:
       tags:
@@ -389,7 +1642,31 @@ paths:
           description: Unauthorized
         '404':
           description: Not found
-      description: "<h4>GET Opens Hourly Report By Email ID</h4>\r\n<h4>URL Parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Required</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>{{ID}}</td><td>required</td><td>string</td><td>ID of the Email</td></tr>\r\n</tbody>\r\n</table>\r\n\r\n<h4>Response body parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>Status</td><td>string</td><td>1 if successful, -1 if error</td></tr>\r\n<tr><"
+      description: 'GET Opens Hourly Report By Email ID
+
+
+        URL Parameters
+
+
+        KeyRequiredTypeDescription
+
+
+        {{ID}}requiredstringID of the Email
+
+
+        Response body parameters
+
+
+        KeyTypeDescription
+
+
+        Statusstring1 if successful, -1 if error
+
+
+        <'
+    servers:
+    - url: https://clientapi.benchmarkemail.com
+      description: Benchmark Email Client API
   /Emails/{ID}/Report/ClickPerformance:
     get:
       tags:
@@ -411,7 +1688,31 @@ paths:
           description: Unauthorized
         '404':
           description: Not found
-      description: "<h4>Get a list of contacts</h4>\r\n<h4>URL Parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Required</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>{{ID}}</td><td>required</td><td>string</td><td>ID of the Email</td></tr>\r\n</tbody>\r\n</table>\r\n\r\n<h4>Response body parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>Status</td><td>string</td><td>1 if successful, -1 if error</td></tr>\r\n<tr><td>Count</td>"
+      description: 'Get a list of contacts
+
+
+        URL Parameters
+
+
+        KeyRequiredTypeDescription
+
+
+        {{ID}}requiredstringID of the Email
+
+
+        Response body parameters
+
+
+        KeyTypeDescription
+
+
+        Statusstring1 if successful, -1 if error
+
+
+        Count'
+    servers:
+    - url: https://clientapi.benchmarkemail.com
+      description: Benchmark Email Client API
   /Emails/{ID}/Report/Click/HeatMap:
     get:
       tags:
@@ -433,7 +1734,31 @@ paths:
           description: Unauthorized
         '404':
           description: Not found
-      description: "<h4>Get a list of contacts</h4>\r\n<h4>URL Parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Required</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>{{ID}}</td><td>required</td><td>string</td><td>ID of the Email</td></tr>\r\n</tbody>\r\n</table>\r\n\r\n<h4>Response body parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>Status</td><td>string</td><td>1 if successful, -1 if error</td></tr>\r\n<tr><td>Count</td>"
+      description: 'Get a list of contacts
+
+
+        URL Parameters
+
+
+        KeyRequiredTypeDescription
+
+
+        {{ID}}requiredstringID of the Email
+
+
+        Response body parameters
+
+
+        KeyTypeDescription
+
+
+        Statusstring1 if successful, -1 if error
+
+
+        Count'
+    servers:
+    - url: https://clientapi.benchmarkemail.com
+      description: Benchmark Email Client API
   /Emails/{ID}/Report/ClickPerformance/Details:
     get:
       tags:
@@ -455,7 +1780,28 @@ paths:
           description: Unauthorized
         '404':
           description: Not found
-      description: "<h4>GET Click Performance Details By Email ID</h4>\r\n<h4>URL Parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Required</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>{{ID}}</td><td>required</td><td>string</td><td>ID of the Email</td></tr>\r\n</tbody>\r\n</table>\r\n\r\n<h4>Query String parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Required</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>PageNumber</td><td>optional</td><td>int</td><td>Page "
+      description: 'GET Click Performance Details By Email ID
+
+
+        URL Parameters
+
+
+        KeyRequiredTypeDescription
+
+
+        {{ID}}requiredstringID of the Email
+
+
+        Query String parameters
+
+
+        KeyRequiredTypeDescription
+
+
+        PageNumberoptionalintPage'
+    servers:
+    - url: https://clientapi.benchmarkemail.com
+      description: Benchmark Email Client API
   /Emails/{ID}/CampaignHistory:
     get:
       tags:
@@ -477,7 +1823,28 @@ paths:
           description: Unauthorized
         '404':
           description: Not found
-      description: "<h4>GET Campaign History By Email ID</h4>\r\n<h4>URL Parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Required</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>{{ID}}</td><td>required</td><td>string</td><td>ID of the Email</td></tr>\r\n</tbody>\r\n</table>\r\n\r\n<h4>Response body parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>Status</td><td>string</td><td>1 if successful, -1 if error</td></tr>\r\n<tr><td>"
+      description: 'GET Campaign History By Email ID
+
+
+        URL Parameters
+
+
+        KeyRequiredTypeDescription
+
+
+        {{ID}}requiredstringID of the Email
+
+
+        Response body parameters
+
+
+        KeyTypeDescription
+
+
+        Statusstring1 if successful, -1 if error'
+    servers:
+    - url: https://clientapi.benchmarkemail.com
+      description: Benchmark Email Client API
   /Emails/{ID}/LinkDetail:
     get:
       tags:
@@ -499,7 +1866,31 @@ paths:
           description: Unauthorized
         '404':
           description: Not found
-      description: "<h4>Get a list of contacts</h4>\r\n<h4>URL Parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Required</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>{{ID}}</td><td>required</td><td>string</td><td>ID of the Email</td></tr>\r\n</tbody>\r\n</table>\r\n\r\n<h4>Query String parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Required</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>filter</td><td>optional</td><td>int</td><td>ID of the link</td></tr>\r\n</"
+      description: 'Get a list of contacts
+
+
+        URL Parameters
+
+
+        KeyRequiredTypeDescription
+
+
+        {{ID}}requiredstringID of the Email
+
+
+        Query String parameters
+
+
+        KeyRequiredTypeDescription
+
+
+        filteroptionalintID of the link
+
+
+        </'
+    servers:
+    - url: https://clientapi.benchmarkemail.com
+      description: Benchmark Email Client API
   /Emails/{ID}/RSSHistory:
     get:
       tags:
@@ -521,7 +1912,31 @@ paths:
           description: Unauthorized
         '404':
           description: Not found
-      description: "<h4>GET RSS History By Email ID</h4>\r\n<h4>URL Parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Required</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>{{ID}}</td><td>required</td><td>string</td><td>ID of the Email</td></tr>\r\n</tbody>\r\n</table>\r\n\r\n<h4>Response body parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>Status</td><td>string</td><td>1 if successful, -1 if error</td></tr>\r\n<tr><td>Count"
+      description: 'GET RSS History By Email ID
+
+
+        URL Parameters
+
+
+        KeyRequiredTypeDescription
+
+
+        {{ID}}requiredstringID of the Email
+
+
+        Response body parameters
+
+
+        KeyTypeDescription
+
+
+        Statusstring1 if successful, -1 if error
+
+
+        Count'
+    servers:
+    - url: https://clientapi.benchmarkemail.com
+      description: Benchmark Email Client API
   /Emails/{ID}/URLList:
     get:
       tags:
@@ -543,7 +1958,28 @@ paths:
           description: Unauthorized
         '404':
           description: Not found
-      description: "<h4>GET URL List By Email ID</h4>\r\n<h4>URL Parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Required</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>{{ID}}</td><td>required</td><td>string</td><td>ID of the Email</td></tr>\r\n</tbody>\r\n</table>\r\n\r\n<h4>Response body parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>Data</td><td>required</td><td><a href=\"http://www.benchmarkemail.com/models.htm#Client"
+      description: 'GET URL List By Email ID
+
+
+        URL Parameters
+
+
+        KeyRequiredTypeDescription
+
+
+        {{ID}}requiredstringID of the Email
+
+
+        Response body parameters
+
+
+        KeyTypeDescription
+
+
+        Datarequired<a href="http://www.benchmarkemail.com/models.htm#Client'
+    servers:
+    - url: https://clientapi.benchmarkemail.com
+      description: Benchmark Email Client API
   /Emails/{ID}/Report/Opens/{Country}/{Region}:
     get:
       tags:
@@ -575,7 +2011,31 @@ paths:
           description: Unauthorized
         '404':
           description: Not found
-      description: "<h4>Get a list of contacts</h4>\r\n<h4>URL Parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Required</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>{{ID}}</td><td>required</td><td>string</td><td>ID of the Email</td></tr>\r\n<tr><td>{{Country}}</td><td>required</td><td>string</td><td>Country</td></tr>\r\n<tr><td>{{Region}}</td><td>required</td><td>string</td><td>Region</td></tr>\r\n</tbody>\r\n</table>\r\n\r\n<h4>Query String parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th>"
+      description: 'Get a list of contacts
+
+
+        URL Parameters
+
+
+        KeyRequiredTypeDescription
+
+
+        {{ID}}requiredstringID of the Email
+
+
+        {{Country}}requiredstringCountry
+
+
+        {{Region}}requiredstringRegion
+
+
+        Query String parameters
+
+
+        Key'
+    servers:
+    - url: https://clientapi.benchmarkemail.com
+      description: Benchmark Email Client API
   /Emails/Report:
     get:
       tags:
@@ -592,7 +2052,28 @@ paths:
           description: Unauthorized
         '404':
           description: Not found
-      description: "<h4>Get Report</h4>\r\n\r\n<h4>Query String parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Required</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>PageNumber</td><td>optional</td><td>int</td><td>Page number</td></tr>\r\n<tr><td>PageSize</td><td>optional</td><td>int</td><td>Number of records to show per page</td></tr>\r\n<tr><td>ABFilter</td><td>optional</td><td>string</td><td>AB Filter</td></tr>\r\n<tr><td>FilterType</td><td>optional</td><td>string</td><td>Filter Type</td"
+      description: 'Get Report
+
+
+        Query String parameters
+
+
+        KeyRequiredTypeDescription
+
+
+        PageNumberoptionalintPage number
+
+
+        PageSizeoptionalintNumber of records to show per page
+
+
+        ABFilteroptionalstringAB Filter
+
+
+        FilterTypeoptionalstringFilter Type</td'
+    servers:
+    - url: https://clientapi.benchmarkemail.com
+      description: Benchmark Email Client API
   /Automation/Report:
     get:
       tags:
@@ -611,63 +2092,46 @@ paths:
           description: Not found
       description: 'Get Reports for Autoresponders
 
-        <h4>Query String Parameter : </h4>
 
-        <table>
+        Query String Parameter :
 
-        <thead>
 
-        <tr>
+        Key
 
-        <th>Key</th>
+        Required
 
-        <th>Required</th>
+        Description
 
-        <th>Description</th>
 
-        </tr>
+        PageNumber
 
-        </thead>
+        optional
 
-        <tbody>
+        Page Number
 
-        <tr>
 
-        <td>PageNumber</td>
+        PageSize
 
-        <td>optional</td>
+        optional
 
-        <td>Page Number</td>
+        Number of records to show per page
 
-        </tr>
 
-        <tr>
+        Filter
 
-        <td>PageSize</td>
+        optional
 
-        <td>optional</td>
+        Filter for automation name
 
-        <td>Number of records to show per page</td>
 
-        </tr>
+        OrderBy
 
-        <tr>
+        optional
 
-        <td>Filter</td>
-
-        <td>optional</td>
-
-        <td>Filter for automation name</td>
-
-        </tr>
-
-        <tr>
-
-        <td>OrderBy</td>
-
-        <td>optional</td>
-
-        <td>Column by which to sort like name,schedule,email,sta'
+        Column by which to sort like name,schedule,email,sta'
+    servers:
+    - url: https://clientapi.benchmarkemail.com
+      description: Benchmark Email Client API
   /Automation/{AutomationID}/Report:
     get:
       tags:
@@ -689,12 +2153,44 @@ paths:
           description: Unauthorized
         '404':
           description: Not found
-      description: "Get summary report of an Automation\r\n<h4>URL Parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th>\r\n<th>Required</th>\r\n<th>Description</th>\r\n</tr>\r\n</thead>\r\n<tbody>\r\n<tr>\r\n<td>{{AutomationID}}</td>\r\n<td>Required</td>\r\n<td>Automation ID</a>\r\n</tr>\r\n</tbody>\r\n</table>\r\n<h4>Response body parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>Count</td><td>Int</td><td>Total count of emails for archive</td></tr>\r\n<tr><td>Status</td><td"
+      description: 'Get summary report of an Automation
+
+
+        URL Parameters
+
+
+        Key
+
+        Required
+
+        Description
+
+
+        {{AutomationID}}
+
+        Required
+
+        Automation ID
+
+
+        Response body parameters
+
+
+        KeyTypeDescription
+
+
+        CountIntTotal count of emails for archive
+
+
+        Status<td'
+    servers:
+    - url: https://clientapi.benchmarkemail.com
+      description: Benchmark Email Client API
   /ABSplit/{ID}/Results:
     get:
       tags:
       - Reports
-      summary: Get the Results for the  AB Test
+      summary: Get the Results for the AB Test
       operationId: get__absplit__id__results
       parameters:
       - name: ID
@@ -711,12 +2207,44 @@ paths:
           description: Unauthorized
         '404':
           description: Not found
-      description: "Update AB split\r\n<h4>URL parameters:</h4>\r\n<table>\r\n<tr>\r\n  <th>Parameter</th>\r\n  <th>Type</th>\r\n  <th>Description</th>\r\n</tr>\r\n<tr>\r\n  <td>ID</td>\r\n  <td>string</td>\r\n  <td>ABSplit ID</td>\r\n</tr>\r\n</table>\r\n<h4>Response body parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>Status</td><td>String</td><td>1 if success, -1 if error</td></tr>\r\n<tr><td>Results</td><td><a href=\"http://www.benchmarkemail.com/models.htm#ABResult\">ABR"
+      description: 'Update AB split
+
+
+        URL parameters:
+
+
+        Parameter
+
+        Type
+
+        Description
+
+
+        ID
+
+        string
+
+        ABSplit ID
+
+
+        Response body parameters
+
+
+        KeyTypeDescription
+
+
+        StatusString1 if success, -1 if error
+
+
+        ResultsABR'
+    servers:
+    - url: https://clientapi.benchmarkemail.com
+      description: Benchmark Email Client API
   /ABSplit/Report:
     get:
       tags:
       - Reports
-      summary: GET  AB Test Report
+      summary: GET AB Test Report
       operationId: get__absplit_report
       parameters: []
       responses:
@@ -728,12 +2256,49 @@ paths:
           description: Unauthorized
         '404':
           description: Not found
-      description: "GET ABSplit Report\r\n<h4>URL body parameter (optional)</h4>\r\n  <table>\r\n    <tr>\r\n      <th>Parameter</th>\r\n      <th>Type</th>\r\n      <th>Description</th>\r\n    </tr>\r\n    <tr>\r\n      <td>PageNumber</td>\r\n      <td>string</td>\r\n      <td>Page Number</td>\r\n    </tr>\r\n    <tr>\r\n      <td>PageSize</td>\r\n      <td>string</td>\r\n      <td>Number of rows on the page</td>\r\n    </tr>\r\n    <tr>\r\n      <td>OrderBy</td>\r\n      <td>string</td>\r\n      <td>Order By Column Email,count,date</td>\r\n    </tr>\r\n    <"
+      description: 'GET ABSplit Report
+
+
+        URL body parameter (optional)
+
+
+        Parameter
+
+        Type
+
+        Description
+
+
+        PageNumber
+
+        string
+
+        Page Number
+
+
+        PageSize
+
+        string
+
+        Number of rows on the page
+
+
+        OrderBy
+
+        string
+
+        Order By Column Email,count,date
+
+
+        <'
+    servers:
+    - url: https://clientapi.benchmarkemail.com
+      description: Benchmark Email Client API
   /ABSplit/{ID}/{ABID}/Report:
     get:
       tags:
       - Reports
-      summary: GET Report Details By  AB Test ID
+      summary: GET Report Details By AB Test ID
       operationId: get__absplit__id___abid__report
       parameters:
       - name: ID
@@ -755,12 +2320,48 @@ paths:
           description: Unauthorized
         '404':
           description: Not found
-      description: "GET Report Details By ABSplit ID\r\n<h4>URL parameters:</h4>\r\n<table>\r\n<tr>\r\n  <th>Parameter</th>\r\n  <th>Type</th>\r\n  <th>Description</th>\r\n</tr>\r\n<tr>\r\n  <td>ID</td>\r\n  <td>string</td>\r\n  <td>Final Unique ID</td>\r\n</tr>\r\n<tr>\r\n  <td>ABID</td>\r\n  <td>string</td>\r\n  <td>ABSplit ID</td>\r\n</tr>\r\n</table>\r\n<h4>Response body parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>Status</td><td>String</td><td>1 if success, -1 if error</td>"
+      description: 'GET Report Details By ABSplit ID
+
+
+        URL parameters:
+
+
+        Parameter
+
+        Type
+
+        Description
+
+
+        ID
+
+        string
+
+        Final Unique ID
+
+
+        ABID
+
+        string
+
+        ABSplit ID
+
+
+        Response body parameters
+
+
+        KeyTypeDescription
+
+
+        StatusString1 if success, -1 if error'
+    servers:
+    - url: https://clientapi.benchmarkemail.com
+      description: Benchmark Email Client API
   /ABSplit/{ID}/Compare:
     get:
       tags:
       - Reports
-      summary: GET Compare report By  AB Test ID
+      summary: GET Compare report By AB Test ID
       operationId: get__absplit__id__compare
       parameters:
       - name: ID
@@ -777,7 +2378,39 @@ paths:
           description: Unauthorized
         '404':
           description: Not found
-      description: "GET Report Details By ABSplit ID\r\n<h4>URL parameters:</h4>\r\n<table>\r\n<tr>\r\n  <th>Parameter</th>\r\n  <th>Type</th>\r\n  <th>Description</th>\r\n</tr>\r\n<tr>\r\n  <td>ID</td>\r\n  <td>string</td>\r\n  <td>ABSplit ID</td>\r\n</tr>\r\n</table>\r\n<h4>Response body parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>Status</td><td>String</td><td>1 if success, -1 if error</td></tr>\r\n<tr><td>Data</td><td><a href=\"http://www.benchmarkemail.com/models.htm"
+      description: 'GET Report Details By ABSplit ID
+
+
+        URL parameters:
+
+
+        Parameter
+
+        Type
+
+        Description
+
+
+        ID
+
+        string
+
+        ABSplit ID
+
+
+        Response body parameters
+
+
+        KeyTypeDescription
+
+
+        StatusString1 if success, -1 if error
+
+
+        Data<a href="http://www.benchmarkemail.com/models.htm'
+    servers:
+    - url: https://clientapi.benchmarkemail.com
+      description: Benchmark Email Client API
   /Survey/ReportList:
     get:
       tags:
@@ -819,7 +2452,43 @@ paths:
           description: Unauthorized
         '404':
           description: Not found
-      description: "<h4>Get Report List of Survey</h4>\n<b>Query string parameters : </b>\n<table>\n  <thead>\n    <tr>\n      <th>Parameter</th>\n      <th>Required</th>\n      <th>Type</th>\n      <th>Description</th>\n    </tr>\n    </thead>\n    <tbody>\n    <tr>\n      <td>PageNumber</td>\n      <td>Optional</td>\n      <td>int</td>\n      <td>Page Number</td>\n    </tr>\n    <tr>\n      <td>PageSize</td>\n      <td>Optional</td>\n      <td>int</td>\n      <td>Number of rows on the page</td>\n    </tr>\n    <tr>\n      <td>OrderBy</td"
+      description: 'Get Report List of Survey
+
+
+        Query string parameters :
+
+
+        Parameter
+
+        Required
+
+        Type
+
+        Description
+
+
+        PageNumber
+
+        Optional
+
+        int
+
+        Page Number
+
+
+        PageSize
+
+        Optional
+
+        int
+
+        Number of rows on the page
+
+
+        OrderBy</td'
+    servers:
+    - url: https://clientapi.benchmarkemail.com
+      description: Benchmark Email Client API
   /Survey/{SurveyID}/ReportDetail:
     get:
       tags:
@@ -841,7 +2510,42 @@ paths:
           description: Unauthorized
         '404':
           description: Not found
-      description: "<h4>Get Report detail of Survey</h4>\n<b>Query string parameters : </b> None <br>\n<b>Request Body Parameters : </b>\n<table >\n  <thead>\n    <tr>\n      <th>Parameter</th>\n      <th>Required</th>\n      <th>Type</th>\n      <th>Description</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td>SurveyID</td>\n      <td>Required</td>\n      <td>string</td>\n      <td>Survey ID</td>\n    </tr>\n  </tbody>\n</table>\n\n<b>Response Body Parameters : </b>\n<table >\n  <thead>\n    <tr>\n      <th>Parameter</th>\n      <"
+      description: 'Get Report detail of Survey
+
+
+        Query string parameters : None
+
+
+        Request Body Parameters :
+
+
+        Parameter
+
+        Required
+
+        Type
+
+        Description
+
+
+        SurveyID
+
+        Required
+
+        string
+
+        Survey ID
+
+
+        Response Body Parameters :
+
+
+        Parameter
+
+        <'
+    servers:
+    - url: https://clientapi.benchmarkemail.com
+      description: Benchmark Email Client API
   /Survey/{SurveyID}/ReportAnswer/Text:
     get:
       tags:
@@ -868,7 +2572,31 @@ paths:
           description: Unauthorized
         '404':
           description: Not found
-      description: "<h4>Get Report Answer Text in Survey</h4>\n<b>Query string parameters : </b>\n<table>\n  <thead>\n    <tr>\n      <th>Key</th><th>Required</th><th>Type</th><th>Description</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr><td>QuestionID</td><td>required</td><td>int</td><td>ID of the question</td></tr>\n  </tbody>\n</table>\n<b>Request Body Parameters : </b>\n<table >\n  <thead>\n    <tr>\n      <th>Parameter</th>\n      <th>Required</th>\n      <th>Type</th>\n      <th>Description</th>\n    </tr>\n  </thead>\n  <tbody>"
+      description: 'Get Report Answer Text in Survey
+
+
+        Query string parameters :
+
+
+        KeyRequiredTypeDescription
+
+
+        QuestionIDrequiredintID of the question
+
+
+        Request Body Parameters :
+
+
+        Parameter
+
+        Required
+
+        Type
+
+        Description'
+    servers:
+    - url: https://clientapi.benchmarkemail.com
+      description: Benchmark Email Client API
   /Survey/{SurveyID}/ReportAnswer/Comment:
     get:
       tags:
@@ -895,7 +2623,34 @@ paths:
           description: Unauthorized
         '404':
           description: Not found
-      description: "<h4>Get Report Answer Comment in Survey</h4>\n<b>Query string parameters : </b>\n<table>\n<thead>\n<tr>\n<th>Key</th><th>Required</th><th>Type</th><th>Description</th></tr>\n</thead>\n<tbody>\n<tr><td>QuestionID</td><td>required</td><td>int</td><td>ID of the question</td></tr>\n</tbody>\n</table>\n<b>Request Body parameters : </b>\n<table>\n  <thead>\n    <tr>\n      <th>Parameter</th>\n      <th>Required</th>\n      <th>Type</th>\n      <th>Description</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td>Surve"
+      description: 'Get Report Answer Comment in Survey
+
+
+        Query string parameters :
+
+
+        KeyRequiredTypeDescription
+
+
+        QuestionIDrequiredintID of the question
+
+
+        Request Body parameters :
+
+
+        Parameter
+
+        Required
+
+        Type
+
+        Description
+
+
+        Surve'
+    servers:
+    - url: https://clientapi.benchmarkemail.com
+      description: Benchmark Email Client API
   /Survey/{SurveyID}/ReportAnswer/Other:
     get:
       tags:
@@ -922,7 +2677,31 @@ paths:
           description: Unauthorized
         '404':
           description: Not found
-      description: "<h4>Get ReportAnswerOther in Survey</h4>\n<b>Query string parameters : </b>\n<table>\n  <thead>\n    <tr>\n      <th>Key</th><th>Required</th><th>Type</th><th>Description</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr><td>QuestionID</td><td>required</td><td>int</td><td>ID of the question</td></tr>\n  </tbody>\n</table>\n<b>Request Body parameters : </b>\n<table>\n  <thead>\n    <tr>\n      <th>Parameter</th>\n      <th>Required</th>\n      <th>Type</th>\n      <th>Description</th>\n    </tr>\n  </thead>\n  <tbody>\n "
+      description: 'Get ReportAnswerOther in Survey
+
+
+        Query string parameters :
+
+
+        KeyRequiredTypeDescription
+
+
+        QuestionIDrequiredintID of the question
+
+
+        Request Body parameters :
+
+
+        Parameter
+
+        Required
+
+        Type
+
+        Description'
+    servers:
+    - url: https://clientapi.benchmarkemail.com
+      description: Benchmark Email Client API
   /Survey/{SurveyID}/ReportIndividual:
     get:
       tags:
@@ -969,7 +2748,28 @@ paths:
           description: Unauthorized
         '404':
           description: Not found
-      description: "<h4>Get Report of Survey Individual Result</h4>\n<b>Query string parameters : </b>\n<table>\n  <thead>\n    <tr>\n      <th>Key</th><th>Required</th><th>Type</th><th>Description</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr><td>PageNumber</td><td>optional</td><td>int</td><td>Page number</td></tr>\n    <tr><td>PageSize</td><td>optional</td><td>int</td><td>Number of records to show per page</td></tr>\n    <tr><td>Filter</td><td>optional</td><td>string</td><td>Filter</td></tr>\n    <tr><td>OrderBy</td><td>op"
+      description: 'Get Report of Survey Individual Result
+
+
+        Query string parameters :
+
+
+        KeyRequiredTypeDescription
+
+
+        PageNumberoptionalintPage number
+
+
+        PageSizeoptionalintNumber of records to show per page
+
+
+        FilteroptionalstringFilter
+
+
+        OrderByop'
+    servers:
+    - url: https://clientapi.benchmarkemail.com
+      description: Benchmark Email Client API
   /Survey/{SurveyID}/ReportIndividual/{EmailID}:
     get:
       tags:
@@ -996,7 +2796,43 @@ paths:
           description: Unauthorized
         '404':
           description: Not found
-      description: "<h4>Get Individual Question Result Detail in Survey</h4>\n<b>Query string parameters : </b> None <br>\n<b>Request Body Parameters:</b>\n<table>\n  <thead>\n    <tr>\n      <th>Parameter</th>\n      <th>Required</th>\n      <th>Type</th>\n      <th>Description</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td>SurveyID</td>\n      <td>Required</td>\n      <td>string</td>\n      <td>Survey ID</td>\n    </tr>\n    <tr>\n      <td>EmailID</td>\n      <td>Required</td>\n      <td>string</td>\n      <td>Email Addre"
+      description: 'Get Individual Question Result Detail in Survey
+
+
+        Query string parameters : None
+
+
+        Request Body Parameters:
+
+
+        Parameter
+
+        Required
+
+        Type
+
+        Description
+
+
+        SurveyID
+
+        Required
+
+        string
+
+        Survey ID
+
+
+        EmailID
+
+        Required
+
+        string
+
+        Email Addre'
+    servers:
+    - url: https://clientapi.benchmarkemail.com
+      description: Benchmark Email Client API
   /Survey/{SurveyID}/ReportFull:
     get:
       tags:
@@ -1018,7 +2854,42 @@ paths:
           description: Unauthorized
         '404':
           description: Not found
-      description: "<h4>Get a Full report Of Survey</h4>\n<b>Query String Parameters:</b> None <br>\n<b>Request Body Parameters : </b>\n<table>\n  <thead>\n    <tr>\n      <th>Parameter</th>\n      <th>Required</th>\n      <th>Type</th>\n      <th>Description</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td>SurveyID</td>\n      <td>Required</td>\n      <td>string</td>\n      <td>Survey ID</td>\n    </tr>\n  </tbody>\n</table>\n<b>Response Body Parameters : </b>\n<table>\n  <thead>\n    <tr>\n      <th>Parameter</th>\n      <th>Ty"
+      description: 'Get a Full report Of Survey
+
+
+        Query String Parameters: None
+
+
+        Request Body Parameters :
+
+
+        Parameter
+
+        Required
+
+        Type
+
+        Description
+
+
+        SurveyID
+
+        Required
+
+        string
+
+        Survey ID
+
+
+        Response Body Parameters :
+
+
+        Parameter
+
+        Ty'
+    servers:
+    - url: https://clientapi.benchmarkemail.com
+      description: Benchmark Email Client API
   /Poll/{PollID}/Response:
     get:
       tags:
@@ -1040,11 +2911,49 @@ paths:
           description: Unauthorized
         '404':
           description: Not found
-      description: "<h4>Get Poll response report</h4>\n<b>Query string parameters :</b> None <br>\n<b>Request Body parameters:</b>\n<table>\n  <thead>\n    <tr>\n      <th>Parameter</th>\n      <th>Required</th>\n      <th>Type</th>\n      <th>Description</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td>PollID</td>\n      <td>Required</td>\n      <td>String</td>\n      <td>Poll ID</td>\n    </tr>\n  </tbody>\n</table>\n\n<b>Response body parameters :</b>\n<table>\n  <thead>\n    <tr>\n      <th>Parameter</th>\n      <th>Type</th>\n"
+      description: 'Get Poll response report
+
+
+        Query string parameters : None
+
+
+        Request Body parameters:
+
+
+        Parameter
+
+        Required
+
+        Type
+
+        Description
+
+
+        PollID
+
+        Required
+
+        String
+
+        Poll ID
+
+
+        Response body parameters :
+
+
+        Parameter
+
+        Type'
+    servers:
+    - url: https://clientapi.benchmarkemail.com
+      description: Benchmark Email Client API
 components:
   securitySchemes:
     apiKeyAuth:
-      type: apiKey
+      description: API key authentication
       in: header
-      name: AuthToken
-      description: API token obtained from https://ui.benchmarkemail.com/Integrate#API
+      name: X-API-Key
+      type: apiKey
+x-refined-from:
+- benchmark-email-api-openapi.json
+- benchmark-email-benchmark-email-api-openapi.yml

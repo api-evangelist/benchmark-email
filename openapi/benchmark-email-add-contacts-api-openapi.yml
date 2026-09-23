@@ -1,6 +1,6 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Benchmark Email RESTful API v3.0 ABTest Creation Add Contacts API
+  title: Benchmark Email RESTful API v3.0 Add Contacts API
   description: 'RESTful API for managing email marketing contacts, lists, campaigns, automations, reports, images, and webhooks within the Benchmark Email platform. To use the API, you need a Benchmark Email API token available at https://ui.benchmarkemail.com/Integrate#API. Rate limit: 500 calls per 2 minutes and 60,000 calls per day.'
   version: 3.0.0
   contact:
@@ -21,7 +21,7 @@ paths:
     post:
       tags:
       - Add Contacts
-      summary: /Contact/{{ListID}}/ContactDetails  || Add Contact
+      summary: /Contact/{{ListID}}/ContactDetails || Add Contact
       operationId: post__contact__listid__contactdetails
       parameters:
       - name: ListID
@@ -38,7 +38,25 @@ paths:
           description: Unauthorized
         '404':
           description: Not found
-      description: "<h4>Add Contact</h4>\r\n<h4>URL Parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Required</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>{{ListID}}</td><td>required</td><td>string</td><td>ID of the list</td></tr>\r\n</tbody>\r\n</table>\r\n\r\n<h4>Body Parameters (To be passed as a JSON string)</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Required</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>Data</td><td>required</td><td><a href=\"http://www.benchm"
+      description: 'Add Contact
+
+
+        URL Parameters
+
+
+        KeyRequiredTypeDescription
+
+
+        {{ListID}}requiredstringID of the list
+
+
+        Body Parameters (To be passed as a JSON string)
+
+
+        KeyRequiredTypeDescription
+
+
+        Datarequired<a href="http://www.benchm'
       requestBody:
         content:
           application/json:
@@ -70,7 +88,25 @@ paths:
           description: Unauthorized
         '404':
           description: Not found
-      description: "<h4>Update Contact</h4>\r\n<h4>URL Parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Required</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody\r\n<tr><td>{{ListID}}</td><td>required</td><td>string</td><td>ID of the list</td></tr>\r\n<tr><td>{{ContactID}}</td><td>required</td><td>string</td><td>ID of the contact</td></tr>\r\n</tbody>\r\n</table>\r\n\r\n<h4>Body Parameters (To be passed as a JSON string)</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Required</th><th>Type</th><th>Description</"
+      description: 'Update Contact
+
+
+        URL Parameters
+
+
+        KeyRequiredTypeDescription
+
+
+        {{ListID}}requiredstringID of the list
+
+
+        {{ContactID}}requiredstringID of the contact
+
+
+        Body Parameters (To be passed as a JSON string)
+
+
+        KeyRequiredTypeDescription</'
       requestBody:
         content:
           application/json:
@@ -80,7 +116,7 @@ paths:
     post:
       tags:
       - Add Contacts
-      summary: '{{ListID}}/ContactDetails/CSV/Upload |Save email address which are not verified and uploaded'
+      summary: '{{ListID}}/ContactDetails/CSV/Upload |Save email address which are not verified…'
       operationId: post__contact__listid__contactdetails_csv_upload
       parameters:
       - name: ListID
@@ -97,7 +133,25 @@ paths:
           description: Unauthorized
         '404':
           description: Not found
-      description: "<h4>Save email address which are not verified and uploaded</h4>\r\n\r\n<h4>URL parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Required</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>ListID</td><td>required</td><td>string</td><td>ID of the list</td></tr>\r\n</tbody>\r\n</table>\r\n\r\n<h4>Body Parameters (To be passed as a JSON string)</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Required</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>Data</td><td>re"
+      description: 'Save email address which are not verified and uploaded
+
+
+        URL parameters
+
+
+        KeyRequiredTypeDescription
+
+
+        ListIDrequiredstringID of the list
+
+
+        Body Parameters (To be passed as a JSON string)
+
+
+        KeyRequiredTypeDescription
+
+
+        Datare'
   /Contact/{ListID}/Mapping:
     patch:
       tags:
@@ -119,7 +173,25 @@ paths:
           description: Unauthorized
         '404':
           description: Not found
-      description: "<h4>Changes file mapping</h4>\r\n<h4>URL Parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Required</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>{{ListID}}</td><td>required</td><td>string</td><td>ID of the list</td></tr>\r\n</tbody>\r\n</table>\r\n\r\n<h4>Body Parameters (to be encoded as a JSON string)</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Required</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>FileName</td><td>required</td><td>string</td><"
+      description: 'Changes file mapping
+
+
+        URL Parameters
+
+
+        KeyRequiredTypeDescription
+
+
+        {{ListID}}requiredstringID of the list
+
+
+        Body Parameters (to be encoded as a JSON string)
+
+
+        KeyRequiredTypeDescription
+
+
+        FileNamerequiredstring<'
       requestBody:
         content:
           application/json:
@@ -146,7 +218,25 @@ paths:
           description: Unauthorized
         '404':
           description: Not found
-      description: "<h4>Changes file upload compilation</h4>\r\n<h4>URL Parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Required</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>{{ListID}}</td><td>required</td><td>string</td><td>ID of the list</td></tr>\r\n</tbody>\r\n</table>\r\n\r\n<h4>Body Parameters (to be encoded as a JSON string)</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Required</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>Description</td><td>required</td><t"
+      description: 'Changes file upload compilation
+
+
+        URL Parameters
+
+
+        KeyRequiredTypeDescription
+
+
+        {{ListID}}requiredstringID of the list
+
+
+        Body Parameters (to be encoded as a JSON string)
+
+
+        KeyRequiredTypeDescription
+
+
+        Descriptionrequired<t'
       requestBody:
         content:
           application/json:
@@ -178,7 +268,44 @@ paths:
           description: Unauthorized
         '404':
           description: Not found
-      description: "Gets the mapping of the uploaded list against its fields\r\n\r\n<h4>URL Parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th>\r\n<th>Required</th>\r\n<th>Description</th>\r\n</tr>\r\n</thead>\r\n<tbody>\r\n<tr>\r\n<td>{{ListID}}</td>\r\n<td>required</td>\r\n<td>ID of the list</td>\r\n</tr>\r\n<tr>\r\n<td>{{FileName}}</td>\r\n<td>required</td>\r\n<td>Name of the file</td>\r\n</tr>\r\n</tbody>\r\n</table>\r\n\r\n<h4>Response body parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th>\r\n<th>Type</th>\r\n<th>Description</th>\r\n</tr>\r\n</thead>\r\n<"
+      description: 'Gets the mapping of the uploaded list against its fields
+
+
+        URL Parameters
+
+
+        Key
+
+        Required
+
+        Description
+
+
+        {{ListID}}
+
+        required
+
+        ID of the list
+
+
+        {{FileName}}
+
+        required
+
+        Name of the file
+
+
+        Response body parameters
+
+
+        Key
+
+        Type
+
+        Description
+
+
+        <'
   /Contact/{ListID}/ContactDetails/CSV:
     post:
       tags:
@@ -200,7 +327,25 @@ paths:
           description: Unauthorized
         '404':
           description: Not found
-      description: "<h4>Save email address </h4>\r\n<h4>URL Parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Required</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>{{ListID}}</td><td>required</td><td>string</td><td>ID of the list</td></tr>\r\n</tbody>\r\n</table>\r\n\r\n<h4>Body Parameters (To be passed as a JSON string)</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Required</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>EmailIDs</td><td>required</td><td>string</td><td"
+      description: 'Save email address
+
+
+        URL Parameters
+
+
+        KeyRequiredTypeDescription
+
+
+        {{ListID}}requiredstringID of the list
+
+
+        Body Parameters (To be passed as a JSON string)
+
+
+        KeyRequiredTypeDescription
+
+
+        EmailIDsrequiredstring<td'
       requestBody:
         content:
           application/json:
@@ -227,7 +372,25 @@ paths:
           description: Unauthorized
         '404':
           description: Not found
-      description: "<h4>Save email address which verified</h4>\r\n<h4>URL Parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Required</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>{{ListID}}</td><td>required</td><td>string</td><td>ID of the list</td></tr>\r\n</tbody>\r\n</table>\r\n\r\n<h4>Body Parameters (To be passed as a JSON string)</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Required</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>EmailIDs</td><td>required</td><td>"
+      description: 'Save email address which verified
+
+
+        URL Parameters
+
+
+        KeyRequiredTypeDescription
+
+
+        {{ListID}}requiredstringID of the list
+
+
+        Body Parameters (To be passed as a JSON string)
+
+
+        KeyRequiredTypeDescription
+
+
+        EmailIDsrequired'
       requestBody:
         content:
           application/json:
@@ -254,7 +417,25 @@ paths:
           description: Unauthorized
         '404':
           description: Not found
-      description: "<h4>Save email address which is verified and uploaded</h4>\r\n\r\n<h4>URL parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Required</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>ListID</td><td>required</td><td>string</td><td>ID of the list</td></tr>\r\n</tbody>\r\n</table>\r\n\r\n<h4>Body Parameters (To be passed as a JSON string)</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Required</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>Data</td><td>require"
+      description: 'Save email address which is verified and uploaded
+
+
+        URL parameters
+
+
+        KeyRequiredTypeDescription
+
+
+        ListIDrequiredstringID of the list
+
+
+        Body Parameters (To be passed as a JSON string)
+
+
+        KeyRequiredTypeDescription
+
+
+        Datarequire'
       requestBody:
         content:
           multipart/form-data:

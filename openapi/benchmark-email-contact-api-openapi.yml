@@ -24,7 +24,7 @@ security:
 - apiKeyAuth: []
 tags:
 - description: Contact related endpoints
-  name: contact
+  name: Contact
 paths:
   /api/contact:
     get:
@@ -36,7 +36,7 @@ paths:
       - apiKeyAuth: []
       summary: Get all contacts
       tags:
-      - contact
+      - Contact
       x-api-key-scope: contacts:read
     post:
       operationId: post_api_contact
@@ -50,7 +50,7 @@ paths:
       - apiKeyAuth: []
       summary: Create a new contact
       tags:
-      - contact
+      - Contact
       x-api-key-scope: contacts:write
   /api/contact/events:
     get:
@@ -181,7 +181,7 @@ paths:
       - apiKeyAuth: []
       summary: Get account contact events
       tags:
-      - contact
+      - Contact
       x-api-key-scope: contacts:read
   /api/contact/export:
     post:
@@ -202,7 +202,7 @@ paths:
       - apiKeyAuth: []
       summary: Export contacts
       tags:
-      - contact
+      - Contact
       x-api-key-scope: contacts:read
   /api/contact/search:
     post:
@@ -268,7 +268,7 @@ paths:
       - apiKeyAuth: []
       summary: Search for contacts
       tags:
-      - contact
+      - Contact
       x-api-key-scope: contacts:read
   /api/contact/{contactId}:
     delete:
@@ -288,7 +288,7 @@ paths:
       - apiKeyAuth: []
       summary: Delete a contact by id
       tags:
-      - contact
+      - Contact
       x-api-key-scope: contacts:write
     get:
       operationId: get_api_contact_by_contactId
@@ -307,7 +307,7 @@ paths:
       - apiKeyAuth: []
       summary: Get a contact by id
       tags:
-      - contact
+      - Contact
       x-api-key-scope: contacts:read
     patch:
       operationId: patch_api_contact_by_contactId
@@ -329,7 +329,7 @@ paths:
       - apiKeyAuth: []
       summary: Partial update a contact by id
       tags:
-      - contact
+      - Contact
       x-api-key-scope: contacts:write
     put:
       operationId: put_api_contact_by_contactId
@@ -351,7 +351,7 @@ paths:
       - apiKeyAuth: []
       summary: Update a contact by id
       tags:
-      - contact
+      - Contact
       x-api-key-scope: contacts:write
   /api/contact/{contactId}/events:
     get:
@@ -478,7 +478,7 @@ paths:
       - apiKeyAuth: []
       summary: Get contact events
       tags:
-      - contact
+      - Contact
       x-api-key-scope: contacts:read
 components:
   securitySchemes:

@@ -1,6 +1,6 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Benchmark Email RESTful API v3.0 ABTest Creation Archive API
+  title: Benchmark Email RESTful API v3.0 Archive API
   description: 'RESTful API for managing email marketing contacts, lists, campaigns, automations, reports, images, and webhooks within the Benchmark Email platform. To use the API, you need a Benchmark Email API token available at https://ui.benchmarkemail.com/Integrate#API. Rate limit: 500 calls per 2 minutes and 60,000 calls per day.'
   version: 3.0.0
   contact:
@@ -60,69 +60,46 @@ paths:
           description: Not found
       description: 'Get a list of emails for archive
 
-        <h4>Query String Parameter : </h4>
 
-        <table>
+        Query String Parameter :
 
-        <thead>
 
-        <tr>
+        Key
 
-        <th>Key</th>
+        Required
 
-        <th>Required</th>
+        Description
 
-        <th>Description</th>
 
-        </tr>
+        PageNumber
 
-        </thead>
+        optional
 
-        <tbody>
+        Page Number
 
-        <tr>
 
-        <td>PageNumber</td>
+        PageSize
 
-        <td>optional</td>
+        optional
 
-        <td>Page Number</td>
+        Number of records to show per page
 
-        </tr>
 
-        <tr>
+        Filter
 
-        <td>PageSize</td>
+        optional
 
-        <td>optional</td>
+        Filter for archive name
 
-        <td>Number of records to show per page</td>
 
-        </tr>
+        OrderBy
 
-        <tr>
+        optional
 
-        <td>Filter</td>
+        The column to sort on
 
-        <td>optional</td>
 
-        <td>Filter for archive name</td>
-
-        </tr>
-
-        <tr>
-
-        <td>OrderBy</td>
-
-        <td>optional</td>
-
-        <td>The column to sort on</td>
-
-        </tr>
-
-        <tr>
-
-        <td>SortOrder</'
+        SortOrder</'
   /Archive/:
     post:
       tags:
@@ -139,7 +116,33 @@ paths:
           description: Unauthorized
         '404':
           description: Not found
-      description: "Add an email to archive page\r\n<h4>Body Parameters (to be encoded as a JSON string)</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th>\r\n<th>Required</th>\r\n<th>Description</th>\r\n</tr>\r\n</thead>\r\n<tbody>\r\n<tr>\r\n<td>EmailID</td>\r\n<td>Required</td>\r\n<td>ID of the Email which want to add as archive</td>\r\n</tr>\r\n</tbody>\r\n</table>\r\n<h4>Response body parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>Return value</td><td>String</td><td>1 if su"
+      description: 'Add an email to archive page
+
+
+        Body Parameters (to be encoded as a JSON string)
+
+
+        Key
+
+        Required
+
+        Description
+
+
+        EmailID
+
+        Required
+
+        ID of the Email which want to add as archive
+
+
+        Response body parameters
+
+
+        KeyTypeDescription
+
+
+        Return valueString1 if su'
       requestBody:
         content:
           application/json:
@@ -160,7 +163,30 @@ paths:
           description: Unauthorized
         '404':
           description: Not found
-      description: "Update archieve home page data like Page Title ,logo,header,footer etc\r\n<h4>Body Parameters (to be encoded as a JSON string)</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th>\r\n<th>Required</th>\r\n<th>Type</th>\r\n</tr>\r\n</thead>\r\n<tbody>\r\n<tr>\r\n<td>data</td>\r\n<td>Required</td>\r\n<td><a href=http://www.benchmarkemail.com/models.htm#ArchiveHomePageData>ArchiveHomePageData</a></td>\r\n</tr>\r\n</tbody>\r\n</table>\r\n<h4>Response body parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Type</th><th>Description</"
+      description: 'Update archieve home page data like Page Title ,logo,header,footer etc
+
+
+        Body Parameters (to be encoded as a JSON string)
+
+
+        Key
+
+        Required
+
+        Type
+
+
+        data
+
+        Required
+
+        ArchiveHomePageData
+
+
+        Response body parameters
+
+
+        KeyTypeDescription</'
       requestBody:
         content:
           application/json:
@@ -187,7 +213,33 @@ paths:
           description: Unauthorized
         '404':
           description: Not found
-      description: "Delete an email from archive\r\n<h4>URL Parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th>\r\n<th>Required</th>\r\n<th>Description</th>\r\n</tr>\r\n</thead>\r\n<tbody>\r\n<tr>\r\n<td>{{ID}}</td>\r\n<td>Required</td>\r\n<td>Archive ID</td>\r\n</tr>\r\n</tbody>\r\n</table>\r\n<h4>Response body parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>Return value</td><td>String</td><td>1 if success, -1 if error</td></tr>\r\n</tbody>\r\n</table>"
+      description: 'Delete an email from archive
+
+
+        URL Parameters
+
+
+        Key
+
+        Required
+
+        Description
+
+
+        {{ID}}
+
+        Required
+
+        Archive ID
+
+
+        Response body parameters
+
+
+        KeyTypeDescription
+
+
+        Return valueString1 if success, -1 if error'
   /Archive/Domain:
     get:
       tags:
@@ -206,36 +258,34 @@ paths:
           description: Not found
       description: 'Getting details about Archive Page
 
-        <h4>Response body parameters</h4>
 
-        <table>
+        Response body parameters
 
-        <thead>
 
-        <tr>
+        KeyTypeDescription
 
-        <th>Key</th><th>Type</th><th>Description</th></tr>
 
-        </thead>
+        ArchiveURLStringArchive URL
 
-        <tbody>
 
-        <tr><td>ArchiveURL</td><td>String</td><td>Archive URL</td></tr>
+        ShareStringShare
 
-        <tr><td>Share</td><td>String</td><td>Share</td></tr>
 
-        <tr><td>SharePanel</td><td>String</td><td>Share Panel</td></tr>
+        SharePanelStringShare Panel
 
-        <tr><td>Domain</td><td>String</td><td>Domain</td></tr>
 
-        <tr><td>ArchiveRootURL</td><td>String</td><td>Archive Root URL</td></tr>
+        DomainStringDomain
 
-        <tr><td>Image</td><td>String</td>'
+
+        ArchiveRootURLStringArchive Root URL
+
+
+        ImageString'
   /Archive/AddDomain:
     post:
       tags:
       - Archive
-      summary: Adding or Updating  archive domain
+      summary: Adding or Updating archive domain
       operationId: post__archive_adddomain
       parameters: []
       responses:
@@ -247,7 +297,24 @@ paths:
           description: Unauthorized
         '404':
           description: Not found
-      description: "Add / Update archive domain\r\n<h4>Body Parameters (to be encoded as a JSON string)</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th>\r\n<th>Required</th>\r\n<th>Description</th>\r\n</tr>\r\n</thead>\r\n<tbody>\r\n<tr>\r\n<td>Domain</td>\r\n<td>Required</td>\r\n<td>Name of the Archive Domain</td>\r\n</tr>\r\n</tbody>\r\n</table>"
+      description: 'Add / Update archive domain
+
+
+        Body Parameters (to be encoded as a JSON string)
+
+
+        Key
+
+        Required
+
+        Description
+
+
+        Domain
+
+        Required
+
+        Name of the Archive Domain'
       requestBody:
         content:
           application/json:
@@ -276,76 +343,44 @@ paths:
           description: Not found
       description: 'Get HTML for button
 
-        <h4>URL Parameters</h4>
 
-        <table>
-
-        <thead>
-
-        <tr>
-
-        <th>Key</th>
-
-        <th>Required</th>
-
-        <th>Description</th>
-
-        </tr>
-
-        </thead>
-
-        <tbody>
-
-        <tr>
-
-        <td>{{Mode}}</td>
-
-        <td>Required</td>
-
-        <td>ID of the button selected for archive(eg. 1,2,3,4,5,6,1000 etc)</td>
-
-        </tr>
-
-        </tbody>
-
-        </table>
+        URL Parameters
 
 
-        <h4>Response body parameters</h4>
+        Key
 
-        <table>
+        Required
 
-        <thead>
+        Description
 
-        <tr>
 
-        <th>Key</th>
+        {{Mode}}
 
-        <th>Type</th>
+        Required
 
-        <th>Description</th>
+        ID of the button selected for archive(eg. 1,2,3,4,5,6,1000 etc)
 
-        </tr>
 
-        </thead>
+        Response body parameters
 
-        <tbody>
 
-        <tr>
+        Key
 
-        <td>Code</td>
+        Type
 
-        <td>String</td>
+        Description
 
-        <td>HTML of button</td>
 
-        </tr>
+        Code
 
-        <tr>
+        String
 
-        <td>ArchiveURL</td>
+        HTML of button
 
-        <td>S'
+
+        ArchiveURL
+
+        S'
   /Archive/Image/{mode}:
     get:
       tags:
@@ -369,76 +404,44 @@ paths:
           description: Not found
       description: 'Get HTML for button
 
-        <h4>URL Parameters</h4>
 
-        <table>
-
-        <thead>
-
-        <tr>
-
-        <th>Key</th>
-
-        <th>Required</th>
-
-        <th>Description</th>
-
-        </tr>
-
-        </thead>
-
-        <tbody>
-
-        <tr>
-
-        <td>{{Mode}}</td>
-
-        <td>Required</td>
-
-        <td>ID of the button selected for archive(eg. 1,2,3,4,5,6,1000 etc)</td>
-
-        </tr>
-
-        </tbody>
-
-        </table>
+        URL Parameters
 
 
-        <h4>Response body parameters</h4>
+        Key
 
-        <table>
+        Required
 
-        <thead>
+        Description
 
-        <tr>
 
-        <th>Key</th>
+        {{Mode}}
 
-        <th>Type</th>
+        Required
 
-        <th>Description</th>
+        ID of the button selected for archive(eg. 1,2,3,4,5,6,1000 etc)
 
-        </tr>
 
-        </thead>
+        Response body parameters
 
-        <tbody>
 
-        <tr>
+        Key
 
-        <td>Image</td>
+        Type
 
-        <td>String</td>
+        Description
 
-        <td>URL of the image</td>
 
-        </tr>
+        Image
 
-        <tr>
+        String
 
-        <td>Status</td>
+        URL of the image
 
-        <td>In'
+
+        Status
+
+        In'
   /Archive/ArchivePages:
     get:
       tags:
@@ -455,71 +458,47 @@ paths:
           description: Unauthorized
         '404':
           description: Not found
-      description: '<h4>Response body parameters</h4>
+      description: 'Response body parameters
 
-        <table>
 
-        <thead>
+        Key
 
-        <tr>
+        Type
 
-        <th>Key</th>
+        Description
 
-        <th>Type</th>
 
-        <th>Description</th>
+        Count
 
-        </tr>
+        Int
 
-        </thead>
+        Count of the archive pages
 
-        <tbody>
 
-        <tr>
+        Status
 
-        <td>Count</td>
+        String
 
-        <td>Int</td>
+        1 if success, -1 if error
 
-        <td>Count of the archive pages</td>
 
-        </tr>
+        HideThumbnail
 
-        <tr>
+        String
 
-        <td>Status</td>
+        Whether the thumbnail should be hidden or not
 
-        <td>String</td>
 
-        <td>1 if success, -1 if error</td>
+        ArchiveIDs
 
-        </tr>
+        String
 
-        <tr>
+        Comma separated list of archive IDs
 
-        <td>HideThumbnail</td>
 
-        <td>String</td>
+        Data
 
-        <td>Whether the thumbnail should be hidden or not</td>
-
-        </tr>
-
-        <tr>
-
-        <td>ArchiveIDs</td>
-
-        <td>String</td>
-
-        <td>Comma separated list of archive IDs</td>
-
-        </tr>
-
-        <tr>
-
-        <td>Data</td>
-
-        <td><'
+        <'
   /Archive/AddArchiveHome:
     post:
       tags:
@@ -536,7 +515,41 @@ paths:
           description: Unauthorized
         '404':
           description: Not found
-      description: "Update the Archive Home Page\r\n<h4>Body Parameters (to be encoded as a JSON string)</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th>\r\n<th>Required</th>\r\n<th>Description</th>\r\n</tr>\r\n</thead>\r\n<tbody>\r\n<tr>\r\n<td>SelArchiveIDs</td>\r\n<td>Required</td>\r\n<td>ID of the Email which want to add as archive</td>\r\n</tr>\r\n<tr>\r\n<td>Vieworders</td>\r\n<td>Required</td>\r\n<td>view order for email</td>\r\n</tr>\r\n<tr>\r\n<td>chkHide</td>\r\n<td>Required</td>\r\n<td>include thumbnail or not either true or false</td>\r\n</tr>\r\n</tbo"
+      description: 'Update the Archive Home Page
+
+
+        Body Parameters (to be encoded as a JSON string)
+
+
+        Key
+
+        Required
+
+        Description
+
+
+        SelArchiveIDs
+
+        Required
+
+        ID of the Email which want to add as archive
+
+
+        Vieworders
+
+        Required
+
+        view order for email
+
+
+        chkHide
+
+        Required
+
+        include thumbnail or not either true or false
+
+
+        </tbo'
       requestBody:
         content:
           application/json:
@@ -558,7 +571,19 @@ paths:
           description: Unauthorized
         '404':
           description: Not found
-      description: "Get the archive home page\r\n<h4>Response body parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>Status</td><td>String</td><td>1 if success, -1 if error</td></tr>\r\n<tr><td>Data</td><td><a href=\"http://www.benchmarkemail.com/models.htm#ArchiveHomePageData\">ArchiveHomePageData</a></td><td>Array</td></tr>\r\n</tbody>\r\n</table>"
+      description: 'Get the archive home page
+
+
+        Response body parameters
+
+
+        KeyTypeDescription
+
+
+        StatusString1 if success, -1 if error
+
+
+        DataArchiveHomePageDataArray'
   /Archive/{ArchiveID}/Detail:
     get:
       tags:
@@ -582,76 +607,44 @@ paths:
           description: Not found
       description: 'Get the details of archive email which id is pass
 
-        <h4>URL Parameters</h4>
 
-        <table>
-
-        <thead>
-
-        <tr>
-
-        <th>Key</th>
-
-        <th>Required</th>
-
-        <th>Description</th>
-
-        </tr>
-
-        </thead>
-
-        <tbody>
-
-        <tr>
-
-        <td>{{ArchiveID}}</td>
-
-        <td>Required</td>
-
-        <td>Archive ID</td>
-
-        </tr>
-
-        </tbody>
-
-        </table>
+        URL Parameters
 
 
-        <h4>Response body parameters</h4>
+        Key
 
-        <table>
+        Required
 
-        <thead>
+        Description
 
-        <tr>
 
-        <th>Key</th>
+        {{ArchiveID}}
 
-        <th>Type</th>
+        Required
 
-        <th>Description</th>
+        Archive ID
 
-        </tr>
 
-        </thead>
+        Response body parameters
 
-        <tbody>
 
-        <tr>
+        Key
 
-        <td>ArchiveRootURL</td>
+        Type
 
-        <td>String</td>
+        Description
 
-        <td>Archive main URL</td>
 
-        </tr>
+        ArchiveRootURL
 
-        <tr>
+        String
 
-        <td>EmailID</td>
+        Archive main URL
 
-        <td>String</td'
+
+        EmailID
+
+        String</td'
   /Archive/{ArchiveID}/Update:
     patch:
       tags:
@@ -673,7 +666,34 @@ paths:
           description: Unauthorized
         '404':
           description: Not found
-      description: "Update the archive email details like description,URL etc\r\n<h4>Body Parameters (to be encoded as a JSON string)</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th>\r\n<th>Required</th>\r\n<th>Type</th>\r\n</tr>\r\n</thead>\r\n<tbody>\r\n<tr>\r\n<td>ArchiveID</td>\r\n<td>Required</td>\r\n<td>Archive ID</td>\r\n</tr>\r\n<tr>\r\n<td>data</td>\r\n<td>Required</td>\r\n<td><a href=http://www.benchmarkemail.com/models.htm#ArchiveData>ArchiveData</a></td>\r\n</tr>\r\n</tbody>\r\n</table>\r\n<h4>Response body parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>"
+      description: 'Update the archive email details like description,URL etc
+
+
+        Body Parameters (to be encoded as a JSON string)
+
+
+        Key
+
+        Required
+
+        Type
+
+
+        ArchiveID
+
+        Required
+
+        Archive ID
+
+
+        data
+
+        Required
+
+        ArchiveData
+
+
+        Response body parameters'
       requestBody:
         content:
           application/json:
@@ -705,7 +725,32 @@ paths:
           description: Unauthorized
         '404':
           description: Not found
-      description: "<h4>Get the details of archive email which id is pass</h4>\r\n\r\n<h4>URL Parameters</h4>\r\n<table>\r\n<thead>\r\n<tr><th>Key</th><th>Required</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>Domain</td><td>Required</td><td>Archive Domain</td></tr>\r\n<tr><td>Type</td><td>Required</td><td>Type\r\n<code>Home</code> - Home\r\n<code>Image</code> - Image</td></tr>\r\n</tbody>\r\n</table>\r\n\r\n<h4>Response body parameters</h4>\r\n<table>\r\n<thead>\r\n<tr><th>Key</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<"
+      description: 'Get the details of archive email which id is pass
+
+
+        URL Parameters
+
+
+        KeyRequiredDescription
+
+
+        DomainRequiredArchive Domain
+
+
+        TypeRequiredType
+
+        Home - Home
+
+        Image - Image
+
+
+        Response body parameters
+
+
+        KeyTypeDescription
+
+
+        <'
   /Archive/ArchiveEmail/{Domain}:
     post:
       tags:
@@ -727,7 +772,28 @@ paths:
           description: Unauthorized
         '404':
           description: Not found
-      description: "<h4>Get HTML for Archive Newsletter</h4>\r\n\r\n<h4>URL Parameters</h4>\r\n<table>\r\n<thead>\r\n<tr><th>Key</th><th>Required</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>Domain</td><td>Required</td><td>Archive Domain</td></tr>\r\n</tbody>\r\n</table>\r\n\r\n<h4>Body Parameters (to be encoded as a JSON string)</h4>\r\n<table>\r\n<thead>\r\n<tr><th>Key</th><th>Required</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>ArchiveURL</td><td>Required</td><td>Archive URL</td></tr>\r\n<tr><td>Archive ID</td>"
+      description: 'Get HTML for Archive Newsletter
+
+
+        URL Parameters
+
+
+        KeyRequiredDescription
+
+
+        DomainRequiredArchive Domain
+
+
+        Body Parameters (to be encoded as a JSON string)
+
+
+        KeyRequiredDescription
+
+
+        ArchiveURLRequiredArchive URL
+
+
+        Archive ID'
 components:
   securitySchemes:
     apiKeyAuth:

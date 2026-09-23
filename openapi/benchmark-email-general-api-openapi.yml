@@ -1,6 +1,6 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Benchmark Email RESTful API v3.0 ABTest Creation General API
+  title: Benchmark Email RESTful API v3.0 General API
   description: 'RESTful API for managing email marketing contacts, lists, campaigns, automations, reports, images, and webhooks within the Benchmark Email platform. To use the API, you need a Benchmark Email API token available at https://ui.benchmarkemail.com/Integrate#API. Rate limit: 500 calls per 2 minutes and 60,000 calls per day.'
   version: 3.0.0
   contact:
@@ -33,7 +33,31 @@ paths:
           description: Unauthorized
         '404':
           description: Not found
-      description: "<h4>Get Notification</h4>\n<b>Response body parameters :</b>\n<table>\n  <thead>\n    <tr>\n      <th>Parameter</th>\n      <th>Type</th>\n      <th>Description</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td>Data</td>\n      <td><a href=\"http://www.benchmarkemail.com/models.htm#ClientNotificationData\" >NotificationData</a></td>\n      <td>Array</td>\n    </tr>\n    <tr>\n      <td>Errors</td>\n      <td><a href=\"http://www.benchmarkemail.com/models.htm#ErrorData\" >ErrorData</a></td>\n      <td>Array</"
+      description: 'Get Notification
+
+
+        Response body parameters :
+
+
+        Parameter
+
+        Type
+
+        Description
+
+
+        Data
+
+        NotificationData
+
+        Array
+
+
+        Errors
+
+        ErrorData
+
+        Array</'
   /Client/Responsive:
     get:
       tags:
@@ -50,7 +74,36 @@ paths:
           description: Unauthorized
         '404':
           description: Not found
-      description: "<h4>Check if Responsive </h4>\n<b>Response body parameters :</b>\n<table>\n  <thead>\n    <tr>\n      <th>Parameter</th>\n      <th>Type</th>\n      <th>Description</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td>IsResponsive</td>\n      <td>String</td>\n      <td>0=Not,1 =Responsive </td>\n    </tr>\n    <tr>\n      <td>Errors</td>\n      <td><a href=\"http://www.benchmarkemail.com/models.htm#ErrorData\" >ErrorData</a></td>\n      <td>Array</td>\n    </tr>\n    <tr>\n      <td>Status</td>\n      <td>string<"
+      description: 'Check if Responsive
+
+
+        Response body parameters :
+
+
+        Parameter
+
+        Type
+
+        Description
+
+
+        IsResponsive
+
+        String
+
+        0=Not,1 =Responsive
+
+
+        Errors
+
+        ErrorData
+
+        Array
+
+
+        Status
+
+        string<'
     patch:
       tags:
       - General
@@ -66,7 +119,39 @@ paths:
           description: Unauthorized
         '404':
           description: Not found
-      description: "<h4>Set Responsive</h4>\n<b>Body Parameters (to be encoded as a JSON string)</b>\n<table>\n<thead>\n<tr>\n<th>Key</th>\n<th>Required</th>\n<th>Description</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td>IsResponsive</td>\n<td>Required</td>\n<td>Is Responsive=1,Not = 0 </td>\n</tr>\n</tbody>\n</table>\n<b>Response body parameters :</b>\n<table>\n  <thead>\n    <tr>\n      <th>Parameter</th>\n      <th>Type</th>\n      <th>Description</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td>IsResponsive</td>\n      <td>String</td"
+      description: 'Set Responsive
+
+
+        Body Parameters (to be encoded as a JSON string)
+
+
+        Key
+
+        Required
+
+        Description
+
+
+        IsResponsive
+
+        Required
+
+        Is Responsive=1,Not = 0
+
+
+        Response body parameters :
+
+
+        Parameter
+
+        Type
+
+        Description
+
+
+        IsResponsive
+
+        String</td'
       requestBody:
         content:
           application/json:
@@ -88,7 +173,28 @@ paths:
           description: Unauthorized
         '404':
           description: Not found
-      description: "<h4>Get Clients Rating Range</h4>\n<table>\n  <thead>\n    <tr>\n      <th>Parameter</th>\n      <th>Type</th>\n      <th>Description</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td>MinRating</td>\n      <td>String</td>\n      <td>Min Rating </td>\n    </tr>\n    <tr>\n      <td>MaxRating</td>\n      <td>string</td>\n      <td>Max Rating</td>\n    </tr>\n  </tbody>\n</table>"
+      description: 'Get Clients Rating Range
+
+
+        Parameter
+
+        Type
+
+        Description
+
+
+        MinRating
+
+        String
+
+        Min Rating
+
+
+        MaxRating
+
+        string
+
+        Max Rating'
   /Client/Archive/Domain:
     get:
       tags:
@@ -105,7 +211,30 @@ paths:
           description: Unauthorized
         '404':
           description: Not found
-      description: "<h4>Get Archive Domain Name</h4>\n<b>Query String Parameters :</b> None <br>\n\n<b>Request Body Parameters:</b> None <br>\n\n<b>Response Body Parameters :</b>\n<table>\n  <thead>\n    <tr>\n      <th>Parameter</th>\n      <th>Type</th>\n      <th>Description</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td>DomainName</td>\n      <td>string</td>\n      <td>Domain Name</td>\n    </tr>\n  </tbody>\n</table>"
+      description: 'Get Archive Domain Name
+
+
+        Query String Parameters : None
+
+
+        Request Body Parameters: None
+
+
+        Response Body Parameters :
+
+
+        Parameter
+
+        Type
+
+        Description
+
+
+        DomainName
+
+        string
+
+        Domain Name'
   /Client/Community/Domain:
     get:
       tags:
@@ -122,7 +251,30 @@ paths:
           description: Unauthorized
         '404':
           description: Not found
-      description: "<h4>Get Community Domain</h4>\n<b>Query String Parameters :</b> None <br>\n\n<b>Request Body Parameters:</b> None <br>\n\n<b>Response Body Parameters :</b>\n<table>\n  <thead>\n    <tr>\n      <th>Parameter</th>\n      <th>Type</th>\n      <th>Description</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td>DomainName</td>\n      <td>string</td>\n      <td>Domain Name</td>\n    </tr>\n  </tbody>\n</table>"
+      description: 'Get Community Domain
+
+
+        Query String Parameters : None
+
+
+        Request Body Parameters: None
+
+
+        Response Body Parameters :
+
+
+        Parameter
+
+        Type
+
+        Description
+
+
+        DomainName
+
+        string
+
+        Domain Name'
   /Client/DMarc:
     get:
       tags:
@@ -139,7 +291,30 @@ paths:
           description: Unauthorized
         '404':
           description: Not found
-      description: "<h4>Get DMarc List</h4>\n<b>Query String Parameters :</b> None <br>\n\n<b>Request Body Parameters:</b> None <br>\n\n<b>Response Body Parameters :</b>\n<table>\n  <thead>\n    <tr>\n      <th>Parameter</th>\n      <th>Type</th>\n      <th>Description</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td>Data</td>\n      <td><a href=\"http://www.benchmarkemail.com/models.htm#ClientGenericList\" >GenericList</a></td>\n      <td>Generic List</td>\n    </tr>\n  </tbody>\n</table>"
+      description: 'Get DMarc List
+
+
+        Query String Parameters : None
+
+
+        Request Body Parameters: None
+
+
+        Response Body Parameters :
+
+
+        Parameter
+
+        Type
+
+        Description
+
+
+        Data
+
+        GenericList
+
+        Generic List'
   /Client/ListUploadTerms:
     get:
       tags:
@@ -156,7 +331,36 @@ paths:
           description: Unauthorized
         '404':
           description: Not found
-      description: "<h4>Get List Upload Terms</h4>\n<b>Response Body Parameters :</b>\n<table>\n  <thead>\n    <tr>\n      <th>Parameter</th>\n      <th>Type</th>\n      <th>Description</th>\n    </tr>\n  </thead>\n  <tbody>\n  <tr>\n      <td>Status</td>\n      <td>String</td>\n      <td>1=successfull,-1 not success</td>\n    </tr>\n    <tr>\n      <td>Error</td>\n      <td><a href=\"http://www.benchmarkemail.com/models.htm#ErrorData\">ErrorData</a></td>\n      <td>Array of error</td>\n    </tr>\n    <tr>\n      <td>Data</td>\n      <td><"
+      description: 'Get List Upload Terms
+
+
+        Response Body Parameters :
+
+
+        Parameter
+
+        Type
+
+        Description
+
+
+        Status
+
+        String
+
+        1=successfull,-1 not success
+
+
+        Error
+
+        ErrorData
+
+        Array of error
+
+
+        Data
+
+        <'
   /Contact/{ListID}:
     patch:
       tags:
@@ -178,7 +382,33 @@ paths:
           description: Unauthorized
         '404':
           description: Not found
-      description: "Modifies an existing contact list\r\n<h4>URL Parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th>\r\n<th>Required</th>\r\n<th>Description</th>\r\n</tr>\r\n</thead>\r\n<tbody>\r\n<tr>\r\n<td>{{ListID}}</td>\r\n<td>required</td>\r\n<td>ID of the contact list</td>\r\n</tr>\r\n</tbody>\r\n</table><br />\r\n<h4>Body Parameters (To be passed as a JSON string)</h4>\r\n<table>\r\n  <thead>\r\n    <tr><th>Key</th><th>Required</th><th>Description</th></tr>\r\n  </thead>\r\n  <tbody>\r\n    <tr><td>Name</td><td>optional</td><td>List Name</td></"
+      description: 'Modifies an existing contact list
+
+
+        URL Parameters
+
+
+        Key
+
+        Required
+
+        Description
+
+
+        {{ListID}}
+
+        required
+
+        ID of the contact list
+
+
+        Body Parameters (To be passed as a JSON string)
+
+
+        KeyRequiredDescription
+
+
+        NameoptionalList Name</'
   /Contact/ContactDetails:
     delete:
       tags:
@@ -205,7 +435,25 @@ paths:
           description: Unauthorized
         '404':
           description: Not found
-      description: "<h4>Delete the selected contacts from current lists </h4>\r\n<h4>Request body  parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Required</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>Search</td><td>optional</td><td>string</td><td>Search value like email address</td></tr>\r\n<tr><td>Filter</td><td>optional</td><td>string</td><td>Filter value</td></tr>\r\n</tbody>\r\n</table>\r\n\r\n<h4>Body Parameters (To be passed as a JSON string)</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><"
+      description: 'Delete the selected contacts from current lists
+
+
+        Request body parameters
+
+
+        KeyRequiredTypeDescription
+
+
+        SearchoptionalstringSearch value like email address
+
+
+        FilteroptionalstringFilter value
+
+
+        Body Parameters (To be passed as a JSON string)
+
+
+        Key<'
   /Contact/{ID}/Download:
     post:
       tags:
@@ -227,7 +475,25 @@ paths:
           description: Unauthorized
         '404':
           description: Not found
-      description: "<h4>Download report</h4>\r\n<h4>URL Parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Required</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>{{ID}}</td><td>required</td><td>string</td><td>IDs of the list</td></tr>\r\n</tbody>\r\n</table>\r\n\r\n<h4>Body Parameters (To be passed as a JSON string)</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Required</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>PIN</td><td>required</td><td>string</td><td>4 digit Sec"
+      description: 'Download report
+
+
+        URL Parameters
+
+
+        KeyRequiredTypeDescription
+
+
+        {{ID}}requiredstringIDs of the list
+
+
+        Body Parameters (To be passed as a JSON string)
+
+
+        KeyRequiredTypeDescription
+
+
+        PINrequiredstring4 digit Sec'
   /Contact/{ListIDs}/Compare:
     get:
       tags:
@@ -251,62 +517,34 @@ paths:
           description: Not found
       description: 'Compares contacts
 
-        <h4>Response: 1 if successful, -1 if error</h4>
 
-        <h4>URL Parameters</h4>
-
-        <table>
-
-        <thead>
-
-        <tr>
-
-        <th>Key</th>
-
-        <th>Required</th>
-
-        <th>Description</th>
-
-        </tr>
-
-        </thead>
-
-        <tbody>
-
-        <tr>
-
-        <td>{{ListIDs}}</td>
-
-        <td>required</td>
-
-        <td>IDs of the lists</td>
-
-        </tr>
-
-        </tbody>
-
-        </table>
+        Response: 1 if successful, -1 if error
 
 
-        <h4>Response body parameters</h4>
+        URL Parameters
 
-        <table>
 
-        <thead>
+        Key
 
-        <tr>
+        Required
 
-        <th>Key</th><th>Type</th><th>Description</th></tr>
+        Description
 
-        </thead>
 
-        <tbody>
+        {{ListIDs}}
 
-        <tr><td>Status</td><td>string</td><td>1 if successful, -1 if error</td></tr>
+        required
 
-        </tbody>
+        IDs of the lists
 
-        </table>'
+
+        Response body parameters
+
+
+        KeyTypeDescription
+
+
+        Statusstring1 if successful, -1 if error'
   /Contact/{CleanListID}/Clean:
     post:
       tags:
@@ -330,68 +568,39 @@ paths:
           description: Not found
       description: 'Cleans the specified list
 
-        <h4>URL Parameters</h4>
 
-        <table>
-
-        <thead>
-
-        <tr>
-
-        <th>Key</th>
-
-        <th>Required</th>
-
-        <th>Description</th>
-
-        </tr>
-
-        </thead>
-
-        <tbody>
-
-        <tr>
-
-        <td>{{CleanListID}}</td>
-
-        <td>required</td>
-
-        <td>ID of the contact list to be cleaned</td>
-
-        </tr>
-
-        </tbody>
-
-        </table>
+        URL Parameters
 
 
-        <h4>Body Parameters (to be encoded as a JSON string)</h4>
+        Key
 
-        <table>
+        Required
 
-        <thead>
+        Description
 
-        <tr>
 
-        <th>Key</th>
+        {{CleanListID}}
 
-        <th>Required</th>
+        required
 
-        <th>Description</th>
+        ID of the contact list to be cleaned
 
-        </tr>
 
-        </thead>
+        Body Parameters (to be encoded as a JSON string)
 
-        <tbody>
 
-        <tr>
+        Key
 
-        <td>HardBounces</td>
+        Required
 
-        <td>required</td>
+        Description
 
-        <td>1 if hard bounces are to be clean'
+
+        HardBounces
+
+        required
+
+        1 if hard bounces are to be clean'
       requestBody:
         content:
           application/json:
@@ -418,7 +627,28 @@ paths:
           description: Unauthorized
         '404':
           description: Not found
-      description: "<h4>Delete Trash List</h4>\r\n<h4>URL Parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Required</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>{{ListID}}</td><td>required</td><td>string</td><td>ID of the list</td></tr>\r\n</tbody>\r\n</table>\r\n\r\n<h4>Response body parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>Status</td><td>string</td><td>1 if successful, -1 if error</td></tr>\r\n<tr><td>Error</td><t"
+      description: 'Delete Trash List
+
+
+        URL Parameters
+
+
+        KeyRequiredTypeDescription
+
+
+        {{ListID}}requiredstringID of the list
+
+
+        Response body parameters
+
+
+        KeyTypeDescription
+
+
+        Statusstring1 if successful, -1 if error
+
+
+        Error<t'
   /Contact/{listID}/ContactDetails/{ContactID}:
     delete:
       tags:
@@ -445,12 +675,30 @@ paths:
           description: Unauthorized
         '404':
           description: Not found
-      description: "<h4>Delete the selected contacts from current list from contact details page</h4>\r\n<h4>URL Parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Required</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody\r\n<tr><td>{{ListID}}</td><td>optional</td><td>string</td><td>ID of the list</td></tr>\r\n<tr><td>{{ContactID}}</td><td>optional</td><td>string</td><td>ID of the contact</td></tr>\r\n</tbody>\r\n</table>\r\n\r\n<h4>Request body  parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Required"
+      description: 'Delete the selected contacts from current list from contact details page
+
+
+        URL Parameters
+
+
+        KeyRequiredTypeDescription
+
+
+        {{ListID}}optionalstringID of the list
+
+
+        {{ContactID}}optionalstringID of the contact
+
+
+        Request body parameters
+
+
+        KeyRequired'
   /Contact/{ListID}/ContactDetails/All/{ContactID}:
     delete:
       tags:
       - General
-      summary: 'Delete the selected contacts from ALL lists from Contact Details page '
+      summary: Delete the selected contacts from ALL lists from Contact Details page
       operationId: delete__contact__listid__contactdetails_all__contactid
       parameters:
       - name: ListID
@@ -472,7 +720,25 @@ paths:
           description: Unauthorized
         '404':
           description: Not found
-      description: "<h4>Delete the selected contacts from ALL lists from Contact Details page </h4>\r\n<h4>URL Parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Required</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody\r\n<tr><td>{{ListID}}</td><td>required</td><td>string</td><td>ID of the list</td></tr>\r\n<tr><td>{{ContactID}}</td><td>required</td><td>string</td><td>ID of the contact</td></tr>\r\n</tbody>\r\n</table>\r\n\r\n<h4>Response body parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Type</th><"
+      description: 'Delete the selected contacts from ALL lists from Contact Details page
+
+
+        URL Parameters
+
+
+        KeyRequiredTypeDescription
+
+
+        {{ListID}}requiredstringID of the list
+
+
+        {{ContactID}}requiredstringID of the contact
+
+
+        Response body parameters
+
+
+        KeyType<'
   /Contact/ContactDetails/{ContactID}:
     delete:
       tags:
@@ -494,7 +760,25 @@ paths:
           description: Unauthorized
         '404':
           description: Not found
-      description: "<h4>Delete Contact only from search contact page</h4>\r\n<h4>URL Parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Required</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody\r\n<tr><td>{{ContactID}}</td><td>required</td><td>string</td><td>ID of the contact</td></tr>\r\n</tbody>\r\n</table>\r\n\r\n<h4>Request body  parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Required</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>Search</td><td>optional</td><td>string</t"
+      description: 'Delete Contact only from search contact page
+
+
+        URL Parameters
+
+
+        KeyRequiredTypeDescription
+
+
+        {{ContactID}}requiredstringID of the contact
+
+
+        Request body parameters
+
+
+        KeyRequiredTypeDescription
+
+
+        Searchoptionalstring</t'
   /Contact/{ListID}/MoveToDNC/{ContactID}:
     delete:
       tags:
@@ -521,7 +805,25 @@ paths:
           description: Unauthorized
         '404':
           description: Not found
-      description: "<h4>Move Contacts to Do Not Contact (i.e Master Unsubscribe list)</h4>\r\n<h4>URL Parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Required</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>{{ListID}}</td><td>required</td><td>string</td><td>ID of the list</td></tr>\r\n<tr><td>{{ContactIDs}}</td><td>required</td><td>string</td><td>ID of the Contact</td></tr>\r\n</tbody>\r\n</table>\r\n\r\n<h4>Response body parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Type</th><th>Desc"
+      description: 'Move Contacts to Do Not Contact (i.e Master Unsubscribe list)
+
+
+        URL Parameters
+
+
+        KeyRequiredTypeDescription
+
+
+        {{ListID}}requiredstringID of the list
+
+
+        {{ContactIDs}}requiredstringID of the Contact
+
+
+        Response body parameters
+
+
+        KeyTypeDesc'
   /Contact/{ListID}/MoveContacts/{TargetListID}/{ContactIDs}:
     post:
       tags:
@@ -553,7 +855,25 @@ paths:
           description: Unauthorized
         '404':
           description: Not found
-      description: "<h4>Move Contacts</h4>\r\n<h4>URL Parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Required</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>{{ListID}}</td><td>required</td><td>string</td><td>ID of the list</td></tr>\r\n<tr><td>{{TargetListIDs}}</td><td>required</td><td>string</td><td>ID of the target list where the contact is to be moved</td></tr>\r\n<tr><td>{{ContactIDs}}</td><td>required</td><td>string</td><td>ID of the Contact</td></tr>\r\n</tbody>\r\n</table>\r\n\r\n<h4>Resp"
+      description: 'Move Contacts
+
+
+        URL Parameters
+
+
+        KeyRequiredTypeDescription
+
+
+        {{ListID}}requiredstringID of the list
+
+
+        {{TargetListIDs}}requiredstringID of the target list where the contact is to be moved
+
+
+        {{ContactIDs}}requiredstringID of the Contact
+
+
+        Resp'
   /Contact/{ListID}/MoveContacts:
     post:
       tags:
@@ -575,7 +895,25 @@ paths:
           description: Unauthorized
         '404':
           description: Not found
-      description: "<h4>Move Bulk Contacts</h4>\r\n<h4>URL Parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Required</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>{{ListID}}</td><td>required</td><td>string</td><td>ID of the list</td></tr>\r\n</tbody>\r\n</table>\r\n\r\n<h4>Body Parameters (To be passed as a JSON string)</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Required</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>TargetListIDs</td><td>required</td><td>string</td"
+      description: 'Move Bulk Contacts
+
+
+        URL Parameters
+
+
+        KeyRequiredTypeDescription
+
+
+        {{ListID}}requiredstringID of the list
+
+
+        Body Parameters (To be passed as a JSON string)
+
+
+        KeyRequiredTypeDescription
+
+
+        TargetListIDsrequiredstring</td'
       requestBody:
         content:
           application/json:
@@ -607,7 +945,28 @@ paths:
           description: Unauthorized
         '404':
           description: Not found
-      description: "<h4>Copy Contacts</h4>\r\n<h4>URL Parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Required</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>{{ListID}}</td><td>required</td><td>string</td><td>ID of the list</td></tr>\r\n<tr><td>{{ContactID}}</td><td>required</td><td>string</td><td>ID of the contact</td></tr>\r\n</tbody>\r\n</table>\r\n\r\n<h4>Response body parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>Sta"
+      description: 'Copy Contacts
+
+
+        URL Parameters
+
+
+        KeyRequiredTypeDescription
+
+
+        {{ListID}}requiredstringID of the list
+
+
+        {{ContactID}}requiredstringID of the contact
+
+
+        Response body parameters
+
+
+        KeyTypeDescription
+
+
+        Sta'
   /Contact/CopyContacts:
     post:
       tags:
@@ -624,7 +983,25 @@ paths:
           description: Unauthorized
         '404':
           description: Not found
-      description: "<h4>Copy Bulk Contacts</h4>\r\n\r\n<h4>Body Parameters (To be passed as a JSON string)</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Required</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>TargetListIDs</td><td>required</td><td>string</td><td>Target List ID</td></tr>\r\n<tr><td>ContactIDs</td><td>required</td><td>string</td><td>Comma separated list of Contact IDs</td></tr>\r\n</tbody>\r\n</table>\r\n\r\n<h4>Response body parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Type</th"
+      description: 'Copy Bulk Contacts
+
+
+        Body Parameters (To be passed as a JSON string)
+
+
+        KeyRequiredTypeDescription
+
+
+        TargetListIDsrequiredstringTarget List ID
+
+
+        ContactIDsrequiredstringComma separated list of Contact IDs
+
+
+        Response body parameters
+
+
+        KeyType</th'
   /Contact/{ListID}/ShareLists/{ClientIDs}:
     post:
       tags:
@@ -651,7 +1028,25 @@ paths:
           description: Unauthorized
         '404':
           description: Not found
-      description: "<h4>Share Lists with SubAccounts</h4>\r\n<h4>URL Parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Required</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>{{ListID}}</td><td>required</td><td>string</td><td>ID of the list</td></tr>\r\n<tr><td>{{ClientIDs}}</td><td>required</td><td>string</td><td>Client ID of the sub-accounts with whom to share</td></tr>\r\n</tbody>\r\n</table>\r\n\r\n<h4>Response body parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Type</th><th>Descrip"
+      description: 'Share Lists with SubAccounts
+
+
+        URL Parameters
+
+
+        KeyRequiredTypeDescription
+
+
+        {{ListID}}requiredstringID of the list
+
+
+        {{ClientIDs}}requiredstringClient ID of the sub-accounts with whom to share
+
+
+        Response body parameters
+
+
+        KeyTypeDescrip'
   /Contact/{ListID}/ResendEmails:
     post:
       tags:
@@ -673,7 +1068,28 @@ paths:
           description: Unauthorized
         '404':
           description: Not found
-      description: "<h4>Resend Email</h4>\r\n<h4>URL Parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Required</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>{{ListID}}</td><td>required</td><td>string</td><td>ID of the list</td></tr>\r\n</tbody>\r\n</table>\r\n\r\n<h4>Post Parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Required</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>{{ContactID}}</td><td>required</td><td>string</td><td>IDs of the contact</td></tr>\r\n</t"
+      description: 'Resend Email
+
+
+        URL Parameters
+
+
+        KeyRequiredTypeDescription
+
+
+        {{ListID}}requiredstringID of the list
+
+
+        Post Parameters
+
+
+        KeyRequiredTypeDescription
+
+
+        {{ContactID}}requiredstringIDs of the contact
+
+
+        </t'
   /Contact/{ListIDs}/MergeLists:
     get:
       tags:
@@ -695,7 +1111,28 @@ paths:
           description: Unauthorized
         '404':
           description: Not found
-      description: "<h4>Get contact Merge List</h4>\r\n<h4>URL Parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Required</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>{{ListIDs}}</td><td>required</td><td>string</td><td>IDs of the lists</td></tr>\r\n</tbody>\r\n</table>\r\n\r\n<h4>Response body parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>Status</td><td>string</td><td>1 if successful, -1 if error</td></tr>\r\n<tr><td>Data"
+      description: 'Get contact Merge List
+
+
+        URL Parameters
+
+
+        KeyRequiredTypeDescription
+
+
+        {{ListIDs}}requiredstringIDs of the lists
+
+
+        Response body parameters
+
+
+        KeyTypeDescription
+
+
+        Statusstring1 if successful, -1 if error
+
+
+        Data'
   /Contact/{ListIDs}/MergeIntoExistingList:
     post:
       tags:
@@ -717,7 +1154,25 @@ paths:
           description: Unauthorized
         '404':
           description: Not found
-      description: "<h4>Merge contacts into Existing List</h4>\r\n<h4>URL Parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Required</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>{{ListIDs}}</td><td>required</td><td>string</td><td>IDs of the lists</td></tr>\r\n</tbody>\r\n</table>\r\n\r\n<h4>Body Parameters (To be passed as a JSON string)</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Required</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>TargetListID</td><td>optional</"
+      description: 'Merge contacts into Existing List
+
+
+        URL Parameters
+
+
+        KeyRequiredTypeDescription
+
+
+        {{ListIDs}}requiredstringIDs of the lists
+
+
+        Body Parameters (To be passed as a JSON string)
+
+
+        KeyRequiredTypeDescription
+
+
+        TargetListIDoptional</'
       requestBody:
         content:
           application/json:
@@ -744,7 +1199,25 @@ paths:
           description: Unauthorized
         '404':
           description: Not found
-      description: "<h4>Merge contacts into new list</h4>\r\n<h4>URL Parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Required</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>{{ListIDs}}</td><td>required</td><td>string</td><td>IDs of the lists</td></tr>\r\n</tbody>\r\n</table>\r\n\r\n<h4>Body Parameters (To be passed as a JSON string)</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Required</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>NewList</td><td>required</td><td>str"
+      description: 'Merge contacts into new list
+
+
+        URL Parameters
+
+
+        KeyRequiredTypeDescription
+
+
+        {{ListIDs}}requiredstringIDs of the lists
+
+
+        Body Parameters (To be passed as a JSON string)
+
+
+        KeyRequiredTypeDescription
+
+
+        NewListrequiredstr'
   /Contact/{ListID}/SplitIntoListNewList:
     post:
       tags:
@@ -766,7 +1239,25 @@ paths:
           description: Unauthorized
         '404':
           description: Not found
-      description: "<h4>Split contacts into new list</h4>\r\n<h4>URL Parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Required</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>{{ListIDs}}</td><td>required</td><td>string</td><td>IDs of the lists</td></tr>\r\n</tbody>\r\n</table>\r\n\r\n<h4>Body Parameters (To be passed as a JSON string)</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Required</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>NewList</td><td>required</td><td>str"
+      description: 'Split contacts into new list
+
+
+        URL Parameters
+
+
+        KeyRequiredTypeDescription
+
+
+        {{ListIDs}}requiredstringIDs of the lists
+
+
+        Body Parameters (To be passed as a JSON string)
+
+
+        KeyRequiredTypeDescription
+
+
+        NewListrequiredstr'
   /Contact/DeleteList/{ListIDss}:
     delete:
       tags:
@@ -788,7 +1279,28 @@ paths:
           description: Unauthorized
         '404':
           description: Not found
-      description: "<h4>Delete List</h4>\r\n<h4>URL Parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Required</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>{{ListIDs}}</td><td>required</td><td>string</td><td>IDs of the lists</td></tr>\r\n</tbody>\r\n</table>\r\n\r\n<h4>Response body parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>Status</td><td>string</td><td>1 if successful, -1 if error</td></tr>\r\n<tr><td>Error</td><td><"
+      description: 'Delete List
+
+
+        URL Parameters
+
+
+        KeyRequiredTypeDescription
+
+
+        {{ListIDs}}requiredstringIDs of the lists
+
+
+        Response body parameters
+
+
+        KeyTypeDescription
+
+
+        Statusstring1 if successful, -1 if error
+
+
+        Error<'
   /Contact/DeleteTrashList/{ListIDs}:
     delete:
       tags:
@@ -810,7 +1322,28 @@ paths:
           description: Unauthorized
         '404':
           description: Not found
-      description: "<h4>Get a list of contacts</h4>\r\n<h4>URL Parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Required</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>{{ListIDs}}</td><td>required</td><td>string</td><td>IDs of the lists</td></tr>\r\n</tbody>\r\n</table>\r\n\r\n<h4>Response body parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>Status</td><td>string</td><td>1 if successful, -1 if error</td></tr>\r\n<tr><td>Erro"
+      description: 'Get a list of contacts
+
+
+        URL Parameters
+
+
+        KeyRequiredTypeDescription
+
+
+        {{ListIDs}}requiredstringIDs of the lists
+
+
+        Response body parameters
+
+
+        KeyTypeDescription
+
+
+        Statusstring1 if successful, -1 if error
+
+
+        Erro'
   /Contact/RestoreTrashList/{ListIDs}:
     patch:
       tags:
@@ -832,7 +1365,28 @@ paths:
           description: Unauthorized
         '404':
           description: Not found
-      description: "<h4>Restore Trash List</h4>\r\n<h4>URL Parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Required</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>{{ListIDs}}</td><td>required</td><td>string</td><td>IDs of the lists</td></tr>\r\n</tbody>\r\n</table>\r\n\r\n<h4>Response body parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>Status</td><td>string</td><td>1 if successful, -1 if error</td></tr>\r\n<tr><td>Error</t"
+      description: 'Restore Trash List
+
+
+        URL Parameters
+
+
+        KeyRequiredTypeDescription
+
+
+        {{ListIDs}}requiredstringIDs of the lists
+
+
+        Response body parameters
+
+
+        KeyTypeDescription
+
+
+        Statusstring1 if successful, -1 if error
+
+
+        Error</t'
   /Emails/{ID}:
     delete:
       tags:
@@ -854,7 +1408,28 @@ paths:
           description: Unauthorized
         '404':
           description: Not found
-      description: "<h4>Delete the email</h4>\r\n<h4>URL Parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Required</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>{{ID}}</td><td>required</td><td>string</td><td>IDs of the email</td></tr>\r\n</tbody>\r\n</table>\r\n\r\n<h4>Response body parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>Status</td><td>string</td><td>1 if successful, -1 if error</td></tr>\r\n<tr><td>Data</td><td><a"
+      description: 'Delete the email
+
+
+        URL Parameters
+
+
+        KeyRequiredTypeDescription
+
+
+        {{ID}}requiredstringIDs of the email
+
+
+        Response body parameters
+
+
+        KeyTypeDescription
+
+
+        Statusstring1 if successful, -1 if error
+
+
+        Data<a'
     post:
       tags:
       - General
@@ -875,7 +1450,25 @@ paths:
           description: Unauthorized
         '404':
           description: Not found
-      description: "<h4>Copy an existing email</h4>\r\n<h4>URL Parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Required</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>{{ID}}</td><td>required</td><td>string</td><td>ID of the email</td></tr>\r\n</tbody>\r\n</table>\r\n\r\n<h4>Body Parameters (To be passed as a JSON string)</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Required</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>Name</td><td>required</td><td>string</td><td>Nam"
+      description: 'Copy an existing email
+
+
+        URL Parameters
+
+
+        KeyRequiredTypeDescription
+
+
+        {{ID}}requiredstringID of the email
+
+
+        Body Parameters (To be passed as a JSON string)
+
+
+        KeyRequiredTypeDescription
+
+
+        NamerequiredstringNam'
   /Emails/{ID}/Trash:
     delete:
       tags:
@@ -897,7 +1490,28 @@ paths:
           description: Unauthorized
         '404':
           description: Not found
-      description: "<h4>Permenantly delete an email from Trash</h4>\r\n<h4>URL Parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Required</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>{{ID}}</td><td>required</td><td>string</td><td>IDs of the email</td></tr>\r\n</tbody>\r\n</table>\r\n\r\n<h4>Response body parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>Status</td><td>string</td><td>1 if successful, -1 if error</td></tr>\r\n<"
+      description: 'Permenantly delete an email from Trash
+
+
+        URL Parameters
+
+
+        KeyRequiredTypeDescription
+
+
+        {{ID}}requiredstringIDs of the email
+
+
+        Response body parameters
+
+
+        KeyTypeDescription
+
+
+        Statusstring1 if successful, -1 if error
+
+
+        <'
     post:
       tags:
       - General
@@ -918,7 +1532,28 @@ paths:
           description: Unauthorized
         '404':
           description: Not found
-      description: "<h4>Get a list of contacts</h4>\r\n<h4>URL Parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Required</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>{{ID}}</td><td>required</td><td>string</td><td>IDs of the email</td></tr>\r\n</tbody>\r\n</table>\r\n\r\n<h4>Response body parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>Status</td><td>string</td><td>1 if successful, -1 if error</td></tr>\r\n<tr><td>Data</td>"
+      description: 'Get a list of contacts
+
+
+        URL Parameters
+
+
+        KeyRequiredTypeDescription
+
+
+        {{ID}}requiredstringIDs of the email
+
+
+        Response body parameters
+
+
+        KeyTypeDescription
+
+
+        Statusstring1 if successful, -1 if error
+
+
+        Data'
   /Emails/{ID}/Preview:
     get:
       tags:
@@ -940,7 +1575,25 @@ paths:
           description: Unauthorized
         '404':
           description: Not found
-      description: "<h4>Get a list of contacts</h4>\r\n\r\n<h4>Query String parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Required</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>EmailAddress</td><td>optional</td><td>string</td><td>Email Address</td></tr>\r\n<tr><td>HTMLContent</td><td>optional</td><td>string</td><td>HTML Content</td></tr>\r\n<tr><td>TextContent</td><td>optional</td><td>string</td><td>Text Content</td></tr>\r\n</tbody>\r\n</table>\r\n\r\n<h4>Response body parameters</h4>\r\n<table>\r"
+      description: 'Get a list of contacts
+
+
+        Query String parameters
+
+
+        KeyRequiredTypeDescription
+
+
+        EmailAddressoptionalstringEmail Address
+
+
+        HTMLContentoptionalstringHTML Content
+
+
+        TextContentoptionalstringText Content
+
+
+        Response body parameters'
   /Emails/Community/{ID}:
     patch:
       tags:
@@ -962,7 +1615,25 @@ paths:
           description: Unauthorized
         '404':
           description: Not found
-      description: "<h4>Get a list of contacts</h4>\r\n<h4>URL Parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Required</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>{{ID}}</td><td>required</td><td>string</td><td>ID of the email</td></tr>\r\n</tbody>\r\n</table>\r\n\r\n<h4>Body Parameters (To be passed as a JSON string)</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Required</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>Community</td><td>required</td><td>string</td><t"
+      description: 'Get a list of contacts
+
+
+        URL Parameters
+
+
+        KeyRequiredTypeDescription
+
+
+        {{ID}}requiredstringID of the email
+
+
+        Body Parameters (To be passed as a JSON string)
+
+
+        KeyRequiredTypeDescription
+
+
+        Communityrequiredstring<t'
   /Emails/CommunityGetEmail/{ID}:
     get:
       tags:
@@ -984,7 +1655,28 @@ paths:
           description: Unauthorized
         '404':
           description: Not found
-      description: "<h4>Get a list of contacts</h4>\r\n<h4>URL Parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Required</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>{{ID}}</td><td>required</td><td>string</td><td>ID of the Email</td></tr>\r\n</tbody>\r\n</table>\r\n\r\n<h4>Response body parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>ID</td><td>string</td><td>ID</td></tr>\r\n<tr><td>CommunityName</td><td>string</td><td>Com"
+      description: 'Get a list of contacts
+
+
+        URL Parameters
+
+
+        KeyRequiredTypeDescription
+
+
+        {{ID}}requiredstringID of the Email
+
+
+        Response body parameters
+
+
+        KeyTypeDescription
+
+
+        IDstringID
+
+
+        CommunityNamestringCom'
   /Emails/{ID}/ShareTemplate:
     post:
       tags:
@@ -1006,7 +1698,25 @@ paths:
           description: Unauthorized
         '404':
           description: Not found
-      description: "<h4>Share Template to sub accounts</h4>\r\n<h4>URL Parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Required</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>{{ID}}</td><td>required</td><td>string</td><td>ID of the Email</td></tr>\r\n</tbody>\r\n</table>\r\n\r\n<h4>Body Parameters (To be passed as a JSON string)</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Required</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>SubAccount</td><td>required</td><td>stri"
+      description: 'Share Template to sub accounts
+
+
+        URL Parameters
+
+
+        KeyRequiredTypeDescription
+
+
+        {{ID}}requiredstringID of the Email
+
+
+        Body Parameters (To be passed as a JSON string)
+
+
+        KeyRequiredTypeDescription
+
+
+        SubAccountrequiredstri'
   /Emails/{ID}/ABSplit:
     delete:
       tags:
@@ -1028,12 +1738,33 @@ paths:
           description: Unauthorized
         '404':
           description: Not found
-      description: "<h4>Delete ABSplit Campaign</h4>\r\n\r\n<h4>URL parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Required</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>ID</td><td>optional</td><td>string</td><td>ID of the email</td></tr>\r\n</tbody>\r\n</table>\r\n\r\n<h4>Response body parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>Status</td><td>string</td><td>1 if successful, -1 if error</td></tr>\r\n<tr><td>Error</td><"
+      description: 'Delete ABSplit Campaign
+
+
+        URL parameters
+
+
+        KeyRequiredTypeDescription
+
+
+        IDoptionalstringID of the email
+
+
+        Response body parameters
+
+
+        KeyTypeDescription
+
+
+        Statusstring1 if successful, -1 if error
+
+
+        Error<'
   /Automation:
     get:
       tags:
       - General
-      summary: 'Get list of automation '
+      summary: Get list of automation
       operationId: get__automation
       parameters:
       - name: PageNumber
@@ -1072,63 +1803,43 @@ paths:
           description: Not found
       description: 'Get a list of automation
 
-        <h4>Query String Parameter : </h4>
 
-        <table>
+        Query String Parameter :
 
-        <thead>
 
-        <tr>
+        Key
 
-        <th>Key</th>
+        Required
 
-        <th>Required</th>
+        Description
 
-        <th>Description</th>
 
-        </tr>
+        PageNumber
 
-        </thead>
+        optional
 
-        <tbody>
+        Page Number
 
-        <tr>
 
-        <td>PageNumber</td>
+        PageSize
 
-        <td>optional</td>
+        optional
 
-        <td>Page Number</td>
+        Number of records to show per page
 
-        </tr>
 
-        <tr>
+        Filter
 
-        <td>PageSize</td>
+        optional
 
-        <td>optional</td>
+        Filter for automation name
 
-        <td>Number of records to show per page</td>
 
-        </tr>
+        OrderBy
 
-        <tr>
+        optional
 
-        <td>Filter</td>
-
-        <td>optional</td>
-
-        <td>Filter for automation name</td>
-
-        </tr>
-
-        <tr>
-
-        <td>OrderBy</td>
-
-        <td>optional</td>
-
-        <td>Column by which to sort like name,schedule,email,status,da'
+        Column by which to sort like name,schedule,email,status,da'
   /Automation/{AutomationID}:
     delete:
       tags:
@@ -1150,7 +1861,36 @@ paths:
           description: Unauthorized
         '404':
           description: Not found
-      description: "Delete an automation\r\n<h4>URL Parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th>\r\n<th>Required</th>\r\n<th>Description</th>\r\n</tr>\r\n</thead>\r\n<tbody>\r\n<tr>\r\n<td>{{AutomationID}}</td>\r\n<td>Required</td>\r\n<td>Automation ID</td>\r\n</tr>\r\n</tbody>\r\n</table>\r\n<h4>Response body parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>Status</td><td>String</td><td>1 if success, -1 if error</td></tr>\r\n<tr><td>Error</td><td><a href=\"http://ww"
+      description: 'Delete an automation
+
+
+        URL Parameters
+
+
+        Key
+
+        Required
+
+        Description
+
+
+        {{AutomationID}}
+
+        Required
+
+        Automation ID
+
+
+        Response body parameters
+
+
+        KeyTypeDescription
+
+
+        StatusString1 if success, -1 if error
+
+
+        Error<a href="http://ww'
   /Automation/{AutomationID}/Emails/{AutomationDetailID}:
     post:
       tags:
@@ -1177,7 +1917,37 @@ paths:
           description: Unauthorized
         '404':
           description: Not found
-      description: "Create copy of an Automation email\r\n<h4>URL Parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th>\r\n<th>Required</th>\r\n<th>Description</th>\r\n</tr>\r\n</thead>\r\n<tbody>\r\n<tr>\r\n<td>{{AutomationID}}</td>\r\n<td>Required</td>\r\n<td>Automation ID</a>\r\n</tr>\r\n<tr>\r\n<td>{{AutomationDetailID}}</td>\r\n<td>Required</td>\r\n<td>Automation email ID</a>\r\n</tr>\r\n</tbody>\r\n</table>\r\n<h4>Response body parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>"
+      description: 'Create copy of an Automation email
+
+
+        URL Parameters
+
+
+        Key
+
+        Required
+
+        Description
+
+
+        {{AutomationID}}
+
+        Required
+
+        Automation ID
+
+
+        {{AutomationDetailID}}
+
+        Required
+
+        Automation email ID
+
+
+        Response body parameters
+
+
+        KeyTypeDescription'
     delete:
       tags:
       - General
@@ -1203,7 +1973,40 @@ paths:
           description: Unauthorized
         '404':
           description: Not found
-      description: "Delete an Automation Email \r\n<h4>URL Parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th>\r\n<th>Required</th>\r\n<th>Description</th>\r\n</tr>\r\n</thead>\r\n<tbody>\r\n<tr>\r\n<td>{{AutomationID}}</td>\r\n<td>Required</td>\r\n<td>Automation ID</a>\r\n</tr>\r\n<tr>\r\n<td>{{AutomationDetailID}}</td>\r\n<td>Required</td>\r\n<td>Automation Email ID</a>\r\n</tr>\r\n</tbody>\r\n</table>\r\n<h4>Response body parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th><th>Type</th><th>Description</th></tr>\r\n</thead>\r\n<tbody>\r\n<tr><td>Status<"
+      description: 'Delete an Automation Email
+
+
+        URL Parameters
+
+
+        Key
+
+        Required
+
+        Description
+
+
+        {{AutomationID}}
+
+        Required
+
+        Automation ID
+
+
+        {{AutomationDetailID}}
+
+        Required
+
+        Automation Email ID
+
+
+        Response body parameters
+
+
+        KeyTypeDescription
+
+
+        Status<'
   /Automation/{AutomationID}/Copy:
     post:
       tags:
@@ -1225,7 +2028,41 @@ paths:
           description: Unauthorized
         '404':
           description: Not found
-      description: "Create copy of an Automation\r\n<h4>URL Parameters</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th>\r\n<th>Required</th>\r\n<th>Description</th>\r\n</tr>\r\n</thead>\r\n<tbody>\r\n<tr>\r\n<td>{{AutomationID}}</td>\r\n<td>Required</td>\r\n<td>Automation ID</a>\r\n</tr>\r\n</tbody>\r\n</table>\r\n<h4>Body Parameters (to be encoded as a JSON string)</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th>\r\n<th>Required</th>\r\n<th>Description</th>\r\n</tr>\r\n</thead>\r\n<tbody>\r\n<tr>\r\n<td>{{Name}}</td>\r\n<td>Required</td>\r\n<td>Name of the new automation"
+      description: 'Create copy of an Automation
+
+
+        URL Parameters
+
+
+        Key
+
+        Required
+
+        Description
+
+
+        {{AutomationID}}
+
+        Required
+
+        Automation ID
+
+
+        Body Parameters (to be encoded as a JSON string)
+
+
+        Key
+
+        Required
+
+        Description
+
+
+        {{Name}}
+
+        Required
+
+        Name of the new automation'
       requestBody:
         content:
           application/json:
@@ -1277,7 +2114,41 @@ paths:
           description: Unauthorized
         '404':
           description: Not found
-      description: "Get a Inbox List\r\n<h4>URL body parameter</h4>\r\n  <table>\r\n    <tr>\r\n      <th>Parameter</th>\r\n      <th>Type</th>\r\n      <th>Description</th>\r\n    </tr>\r\n    <tr>\r\n      <td>PageNumber</td>\r\n      <td>string</td>\r\n      <td>Page Number</td>\r\n    </tr>\r\n    <tr>\r\n      <td>PageSize</td>\r\n      <td>string</td>\r\n      <td>Number of rows on the page</td>\r\n    </tr>\r\n    <tr>\r\n      <td>OrderBy</td>\r\n      <td>string</td>\r\n      <td>Order By Column</td>\r\n    </tr>\r\n    <tr>\r\n      <td>Filter</td>\r\n  "
+      description: 'Get a Inbox List
+
+
+        URL body parameter
+
+
+        Parameter
+
+        Type
+
+        Description
+
+
+        PageNumber
+
+        string
+
+        Page Number
+
+
+        PageSize
+
+        string
+
+        Number of rows on the page
+
+
+        OrderBy
+
+        string
+
+        Order By Column
+
+
+        Filter'
   /ABSplit/{ID}:
     delete:
       tags:
@@ -1299,7 +2170,41 @@ paths:
           description: Unauthorized
         '404':
           description: Not found
-      description: "Move the email to trash\r\n <h4>URL parameters:</h4>\r\n  <table>\r\n    <tr>\r\n      <th>Parameter</th>\r\n      <th>Type</th>\r\n      <th>Description</th>\r\n    </tr>\r\n    <tr>\r\n      <td>ID</td>\r\n      <td>string</td>\r\n      <td>ABSplit ID</td>\r\n    </tr>\r\n  </table>\r\n  <h4>Response body parameters:</h4>\r\n  <table>\r\n    <tr>\r\n      <th>Parameter</th>\r\n      <th>Type</th>\r\n      <th>Description</th>\r\n    </tr>\r\n    <tr>\r\n      <td>Status</td>\r\n      <td>string</td>\r\n      <td>1 if successful, -1 if error"
+      description: 'Move the email to trash
+
+
+        URL parameters:
+
+
+        Parameter
+
+        Type
+
+        Description
+
+
+        ID
+
+        string
+
+        ABSplit ID
+
+
+        Response body parameters:
+
+
+        Parameter
+
+        Type
+
+        Description
+
+
+        Status
+
+        string
+
+        1 if successful, -1 if error'
   /ABSplit/{ID}/Status:
     patch:
       tags:
@@ -1321,7 +2226,41 @@ paths:
           description: Unauthorized
         '404':
           description: Not found
-      description: "Update the ABSplit Status\r\n<h4>URL parameters:</h4>\r\n<table>\r\n<tr>\r\n  <th>Parameter</th>\r\n  <th>Type</th>\r\n  <th>Description</th>\r\n</tr>\r\n<tr>\r\n  <td>ID</td>\r\n  <td>string</td>\r\n  <td>ABSplit ID</td>\r\n</tr>\r\n</table>\r\n<h4>Body Parameters (to be encoded as a JSON string)</h4>\r\n<table>\r\n<thead>\r\n<tr>\r\n<th>Key</th>\r\n<th>Required</th>\r\n<th>Description</th>\r\n</tr>\r\n</thead>\r\n<tbody>\r\n<tr>\r\n<td>Status</td>\r\n<td>Required</td>\r\n<td>Status of AB test like draft/START/SCHEDULE/AUTOMATIC/SUSPEND/RESCHEDULE"
+      description: 'Update the ABSplit Status
+
+
+        URL parameters:
+
+
+        Parameter
+
+        Type
+
+        Description
+
+
+        ID
+
+        string
+
+        ABSplit ID
+
+
+        Body Parameters (to be encoded as a JSON string)
+
+
+        Key
+
+        Required
+
+        Description
+
+
+        Status
+
+        Required
+
+        Status of AB test like draft/START/SCHEDULE/AUTOMATIC/SUSPEND/RESCHEDULE'
       requestBody:
         content:
           application/json:
@@ -1368,7 +2307,44 @@ paths:
           description: Unauthorized
         '404':
           description: Not found
-      description: "<h4>Get a list of survey</h4>\n<b>Query string parameters:</b>\n<table>\n  <thead>\n    <th>Parameter</th>\n    <th>Required</th>\n    <th>Type</th>\n    <th>Description</th>\n  </thead>\n  <tbody>\n    <tr>\n      <td>PageNumber</td>\n      <td>Optional</td>\n      <td>int</td>\n      <td>Page Number</td>\n    </tr>\n    <tr>\n      <td>PageSize</td>\n      <td>Optional</td>\n      <td>int</td>\n      <td>Number of rows on the page</td>\n    </tr>\n    <tr>\n      <td>OrderBy</td>\n      <td>Optional</td>\n      <td>st"
+      description: 'Get a list of survey
+
+
+        Query string parameters:
+
+
+        Parameter
+
+        Required
+
+        Type
+
+        Description
+
+
+        PageNumber
+
+        Optional
+
+        int
+
+        Page Number
+
+
+        PageSize
+
+        Optional
+
+        int
+
+        Number of rows on the page
+
+
+        OrderBy
+
+        Optional
+
+        st'
   /Survey/{ID}/Copy:
     post:
       tags:
@@ -1390,7 +2366,43 @@ paths:
           description: Unauthorized
         '404':
           description: Not found
-      description: "<h4>Copy a Survey</h4>\n<b>Query String Parameters : </b> None <br>\n<b>Request Body Parameters : </b>\n<table>\n  <thead>\n    <tr>\n      <th>Parameter</th>\n      <th>Required</th>\n      <th>Type</th>\n      <th>Description</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td>ID</td>\n      <td>Required</td>\n      <td>string</td>\n      <td>Survey ID</td>\n    </tr>\n    <tr>\n      <td>Name</td>\n      <td>Required</td>\n      <td>string</td>\n      <td>Survey Name</td>\n    </tr>\n  </tbody>\n</table>\n<b>Re"
+      description: 'Copy a Survey
+
+
+        Query String Parameters : None
+
+
+        Request Body Parameters :
+
+
+        Parameter
+
+        Required
+
+        Type
+
+        Description
+
+
+        ID
+
+        Required
+
+        string
+
+        Survey ID
+
+
+        Name
+
+        Required
+
+        string
+
+        Survey Name
+
+
+        Re'
       requestBody:
         content:
           application/json:
@@ -1417,7 +2429,41 @@ paths:
           description: Unauthorized
         '404':
           description: Not found
-      description: "<h4>Delete a Survey</h4>\n<b>Query string Parameters : </b> None <br>\n<b>Request Body Parameters : </b>\n<table>\n  <thead>\n    <tr>\n      <th>Parameter</th>\n      <th>Required</th>\n      <th>Type</th>\n      <th>Description</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td>ID</td>\n      <td>Required</td>\n      <td>string</td>\n      <td>Survey ID</td>\n    </tr>\n  </tbody>\n</table>\n\n<b>Response Body Parameters : </b>\n<table>\n  <thead>\n    <tr>\n      <th>Parameter</th>\n      <th>Type</th>\n      <"
+      description: 'Delete a Survey
+
+
+        Query string Parameters : None
+
+
+        Request Body Parameters :
+
+
+        Parameter
+
+        Required
+
+        Type
+
+        Description
+
+
+        ID
+
+        Required
+
+        string
+
+        Survey ID
+
+
+        Response Body Parameters :
+
+
+        Parameter
+
+        Type
+
+        <'
   /Survey/{ID}/StatusUpdate/{Status}:
     patch:
       tags:
@@ -1444,12 +2490,45 @@ paths:
           description: Unauthorized
         '404':
           description: Not found
-      description: "<h4>Update status of the survey</h4>\n<b>Query string parameters : </b> None <br>\n<b>Request Body Parameters:</b>\n<table>\n  <thead>\n    <tr>\n      <th>Parameter</th>\n      <th>Required</th>\n      <th>Type</th>\n      <th>Description</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td>ID</td>\n      <td>Required</td>\n      <td>string</td>\n      <td>Survey ID</td>\n    </tr>\n    <tr>\n      <td>Status</td>\n      <td>Required</td>\n      <td>string</td>\n      <td>1 Active, 0 Inactive, 3 Reactivate</td"
+      description: 'Update status of the survey
+
+
+        Query string parameters : None
+
+
+        Request Body Parameters:
+
+
+        Parameter
+
+        Required
+
+        Type
+
+        Description
+
+
+        ID
+
+        Required
+
+        string
+
+        Survey ID
+
+
+        Status
+
+        Required
+
+        string
+
+        1 Active, 0 Inactive, 3 Reactivate</td'
   /Poll/:
     get:
       tags:
       - General
-      summary: Get list of Polls.
+      summary: Get list of Polls
       operationId: get__poll
       parameters:
       - name: Filter
@@ -1491,7 +2570,46 @@ paths:
           description: Unauthorized
         '404':
           description: Not found
-      description: "<h4>Get list of Polls.</h4>\n<b>Query string parameters : </b>\n  <table>\n    <tr>\n      <th>Parameter</th>\n      <th>Required</th>\n      <th>Type</th>\n      <th>Description</th>\n    </tr>\n    <tr>\n      <td>Filter</td>\n      <td>Optional</td>\n      <td>int</td>\n      <td>Filterr</td>\n    </tr>\n    <tr>\n      <td>PageNumber</td>\n      <td>Required</td>\n      <td>int</td>\n      <td>Page Number</td>\n    </tr>\n    <tr>\n      <td>PageSize</td>\n      <td>Required</td>\n      <td>int</td>\n      <td>Numbe"
+      description: 'Get list of Polls.
+
+
+        Query string parameters :
+
+
+        Parameter
+
+        Required
+
+        Type
+
+        Description
+
+
+        Filter
+
+        Optional
+
+        int
+
+        Filterr
+
+
+        PageNumber
+
+        Required
+
+        int
+
+        Page Number
+
+
+        PageSize
+
+        Required
+
+        int
+
+        Numbe'
   /Poll/{PollID}/Copy:
     post:
       tags:
@@ -1513,7 +2631,49 @@ paths:
           description: Unauthorized
         '404':
           description: Not found
-      description: "<h4>Copy a poll</h4>\n<b>Query string parameters : </b>\n<table>\n  <tr>\n    <th>Parameter</th>\n    <th>Required</th>\n    <th>Type</th>\n    <th>Description</th>\n  </tr>\n  <tr>\n    <td>PollID</td>\n    <td>Required</td>\n    <td>string</td>\n    <td>Poll ID</td>\n  </tr>\n</table>\n<b>Request Body Parameters : </b>\n<table>\n  <tr>\n    <th>Parameter</th>\n    <th>Required</th>\n    <th>Type</th>\n    <th>Description</th>\n  </tr>\n  <tr>\n    <td>Name</td>\n    <td>Required</td>\n    <td>string</td>\n    <td>Name of"
+      description: 'Copy a poll
+
+
+        Query string parameters :
+
+
+        Parameter
+
+        Required
+
+        Type
+
+        Description
+
+
+        PollID
+
+        Required
+
+        string
+
+        Poll ID
+
+
+        Request Body Parameters :
+
+
+        Parameter
+
+        Required
+
+        Type
+
+        Description
+
+
+        Name
+
+        Required
+
+        string
+
+        Name of'
       requestBody:
         content:
           application/json:
@@ -1540,7 +2700,48 @@ paths:
           description: Unauthorized
         '404':
           description: Not found
-      description: "<h4>Delete a poll</h4>\n<b>Query string parameters : </b> None <br>\n<b>Request Body Parameters : </b>\n<table>\n  <tr>\n    <th>Parameter</th>\n    <th>Required</th>\n    <th>Type</th>\n    <th>Description</th>\n  </tr>\n  <tr>\n    <td>PollID</td>\n    <td>Required</td>\n    <td>string</td>\n    <td>Poll ID</td>\n  </tr>\n</table>\n<b>Response Body Parameters : </b>\n<table>\n  <tr>\n    <th>Parameter</th>\n    <th>Type</th>\n    <th>Description</th>\n  </tr>\n  <tr>\n    <td>Response</td>\n    <td>int</td>\n    <td>ID "
+      description: 'Delete a poll
+
+
+        Query string parameters : None
+
+
+        Request Body Parameters :
+
+
+        Parameter
+
+        Required
+
+        Type
+
+        Description
+
+
+        PollID
+
+        Required
+
+        string
+
+        Poll ID
+
+
+        Response Body Parameters :
+
+
+        Parameter
+
+        Type
+
+        Description
+
+
+        Response
+
+        int
+
+        ID'
   /Poll/{PollID}/Render:
     get:
       tags:
@@ -1562,7 +2763,39 @@ paths:
           description: Unauthorized
         '404':
           description: Not found
-      description: "<h4>Get preview of a poll</h4>\n<b>Query string parameters :</b> None <br>\n<b>Request Body parameters:</b>\n<table>\n  <thead>\n    <tr>\n      <th>Parameter</th>\n      <th>Required</th>\n      <th>Type</th>\n      <th>Description</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td>PollID</td>\n      <td>Required</td>\n      <td>String</td>\n      <td>Poll ID</td>\n    </tr>\n  </tbody>\n</table>\n\n<b>Response body parameters :</b>\n<table>\n  <thead>\n    <tr>\n      <th>Parameter</th>\n      <th>Type</th>\n   "
+      description: 'Get preview of a poll
+
+
+        Query string parameters : None
+
+
+        Request Body parameters:
+
+
+        Parameter
+
+        Required
+
+        Type
+
+        Description
+
+
+        PollID
+
+        Required
+
+        String
+
+        Poll ID
+
+
+        Response body parameters :
+
+
+        Parameter
+
+        Type'
 components:
   securitySchemes:
     apiKeyAuth:

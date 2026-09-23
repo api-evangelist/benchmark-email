@@ -1,6 +1,6 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Benchmark Email RESTful API v3.0 ABTest Creation Third Party Signup Forms API
+  title: Benchmark Email RESTful API v3.0 Third Party Signup Forms…
   description: 'RESTful API for managing email marketing contacts, lists, campaigns, automations, reports, images, and webhooks within the Benchmark Email platform. To use the API, you need a Benchmark Email API token available at https://ui.benchmarkemail.com/Integrate#API. Rate limit: 500 calls per 2 minutes and 60,000 calls per day.'
   version: 3.0.0
   contact:
@@ -21,7 +21,7 @@ paths:
     get:
       tags:
       - Third Party Signup Forms
-      summary: Get SignupForm  for Magento
+      summary: Get SignupForm for Magento
       operationId: get__client_integrations_signupform_magento
       parameters:
       - name: ID
@@ -38,7 +38,43 @@ paths:
           description: Unauthorized
         '404':
           description: Not found
-      description: "<h4>Get SignupForm  for Magento</h4>\n<b>Query String Parameters : </b>\n<table>\n<thead>\n<tr>\n<th>Parameter</th>\n<th>Required</th>\n<th>Type</th>\n<th>Description</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td>ID</td>\n<td>Required</td>\n<td>int</td>\n<td>Listbuilder ID</td>\n</tr>\n</tbody>\n</table>\n<b>Response Body Parameters :</b>\n<table>\n  <thead>\n    <tr>\n      <th>Parameter</th>\n      <th>Type</th>\n      <th>Description</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td>Data</td>\n      <td>string</td>\n  "
+      description: 'Get SignupForm for Magento
+
+
+        Query String Parameters :
+
+
+        Parameter
+
+        Required
+
+        Type
+
+        Description
+
+
+        ID
+
+        Required
+
+        int
+
+        Listbuilder ID
+
+
+        Response Body Parameters :
+
+
+        Parameter
+
+        Type
+
+        Description
+
+
+        Data
+
+        string'
   /Client/Integrations/SignupForm/Tumbler:
     get:
       tags:
@@ -80,76 +116,55 @@ paths:
           description: Unauthorized
         '404':
           description: Not found
-      description: '<h4>Get Third Party SignupForm Tumbler</h4>
+      description: 'Get Third Party SignupForm Tumbler
 
 
-        <b>Query String Parameters :  </b>
+        Query String Parameters :
 
-        <table>
 
-        <thead>
+        Parameter
 
-        <tr>
+        Required
 
-        <th>Parameter</th>
+        Type
 
-        <th>Required</th>
+        Description
 
-        <th>Type</th>
 
-        <th>Description</th>
+        ID
 
-        </tr>
+        Required
 
-        </thead>
+        int
 
-        <tbody>
+        Listbuilder ID
 
-        <tr>
 
-        <td>ID</td>
+        Title
 
-        <td>Required</td>
+        optional
 
-        <td>int</td>
+        String
 
-        <td>Listbuilder ID</td>
+        Title Text
 
-        </tr>
 
-        <tr>
+        Language
 
-        <td>Title</td>
+        optional
 
-        <td>optional</td>
+        string
 
-        <td>String</td>
+        Language
 
-        <td>Title Text</td>
 
-        </tr>
+        Subscribe
 
-        <tr>
+        optional
 
-        <td>Language</td>
+        string
 
-        <td>optional</td>
-
-        <td>string</td>
-
-        <td>Language</td>
-
-        </tr>
-
-        <tr>
-
-        <td>Subscribe</td>
-
-        <td>optional</td>
-
-        <td>string</td>
-
-        <td>Sub'
+        Sub'
   /Client/Integrations/SignupForm/Unbounce:
     get:
       tags:
@@ -171,7 +186,43 @@ paths:
           description: Unauthorized
         '404':
           description: Not found
-      description: "<h4>Get SignupForm For Unbounce</h4>\n<b>Query String Parameters : </b>\n<table>\n<thead>\n<tr>\n<th>Parameter</th>\n<th>Required</th>\n<th>Type</th>\n<th>Description</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td>ID</td>\n<td>Required</td>\n<td>int</td>\n<td>ContactMaster ID</td>\n</tr>\n</tbody>\n</table>\n<b>Response Body Parameters :</b>\n<table>\n  <thead>\n    <tr>\n      <th>Parameter</th>\n      <th>Type</th>\n      <th>Description</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td>Data</td>\n      <td>string</td>\n"
+      description: 'Get SignupForm For Unbounce
+
+
+        Query String Parameters :
+
+
+        Parameter
+
+        Required
+
+        Type
+
+        Description
+
+
+        ID
+
+        Required
+
+        int
+
+        ContactMaster ID
+
+
+        Response Body Parameters :
+
+
+        Parameter
+
+        Type
+
+        Description
+
+
+        Data
+
+        string'
 components:
   securitySchemes:
     apiKeyAuth:

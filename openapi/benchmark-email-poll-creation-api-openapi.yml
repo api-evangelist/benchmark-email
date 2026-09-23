@@ -1,6 +1,6 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Benchmark Email RESTful API v3.0 ABTest Creation Poll Creation API
+  title: Benchmark Email RESTful API v3.0 Poll Creation API
   description: 'RESTful API for managing email marketing contacts, lists, campaigns, automations, reports, images, and webhooks within the Benchmark Email platform. To use the API, you need a Benchmark Email API token available at https://ui.benchmarkemail.com/Integrate#API. Rate limit: 500 calls per 2 minutes and 60,000 calls per day.'
   version: 3.0.0
   contact:
@@ -33,7 +33,43 @@ paths:
           description: Unauthorized
         '404':
           description: Not found
-      description: "<h4>Create Poll</h4>\n<b>Query String Parameters : </b> None <br>\n<b>Request Body Parameters : </b>\n<table>\n  <thead>\n    <tr>\n      <th>Parameter</th>\n      <th>Required</th>\n      <th>Type</th>\n      <th>Description</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td>PollID</td>\n      <td>Required</td>\n      <td>string</td>\n      <td>Poll ID</td>\n    </tr>\n    <tr>\n      <td>Name</td>\n      <td>Required</td>\n      <td>string</td>\n      <td>Poll Name</td>\n    </tr>\n    <tr>\n      <td>Question"
+      description: 'Create Poll
+
+
+        Query String Parameters : None
+
+
+        Request Body Parameters :
+
+
+        Parameter
+
+        Required
+
+        Type
+
+        Description
+
+
+        PollID
+
+        Required
+
+        string
+
+        Poll ID
+
+
+        Name
+
+        Required
+
+        string
+
+        Poll Name
+
+
+        Question'
       requestBody:
         content:
           application/json:
@@ -60,7 +96,39 @@ paths:
           description: Unauthorized
         '404':
           description: Not found
-      description: "<h4>Get details of poll</h4>\n<b>Query string parameters :</b> None <br>\n<b>Request Body parameters:</b>\n<table>\n  <thead>\n    <tr>\n      <th>Parameter</th>\n      <th>Required</th>\n      <th>Type</th>\n      <th>Description</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td>PollID</td>\n      <td>Required</td>\n      <td>String</td>\n      <td>Poll ID</td>\n    </tr>\n  </tbody>\n</table>\n\n<b>Response body parameters :</b>\n<table>\n  <thead>\n    <tr>\n      <th>Parameter</th>\n      <th>Type</th>\n     "
+      description: 'Get details of poll
+
+
+        Query string parameters : None
+
+
+        Request Body parameters:
+
+
+        Parameter
+
+        Required
+
+        Type
+
+        Description
+
+
+        PollID
+
+        Required
+
+        String
+
+        Poll ID
+
+
+        Response body parameters :
+
+
+        Parameter
+
+        Type'
     patch:
       tags:
       - Poll Creation
@@ -81,7 +149,43 @@ paths:
           description: Unauthorized
         '404':
           description: Not found
-      description: "<h4>Update Poll</h4>\n<b>Query String Parameters : </b> None <br>\n<b>Request Body Parameters : </b>\n<table>\n  <thead>\n    <tr>\n      <th>Parameter</th>\n      <th>Required</th>\n      <th>Type</th>\n      <th>Description</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td>PollID</td>\n      <td>Required</td>\n      <td>string</td>\n      <td>Poll ID</td>\n    </tr>\n    <tr>\n      <td>Name</td>\n      <td>Required</td>\n      <td>string</td>\n      <td>Poll Name</td>\n    </tr>\n    <tr>\n      <td>Question"
+      description: 'Update Poll
+
+
+        Query String Parameters : None
+
+
+        Request Body Parameters :
+
+
+        Parameter
+
+        Required
+
+        Type
+
+        Description
+
+
+        PollID
+
+        Required
+
+        string
+
+        Poll ID
+
+
+        Name
+
+        Required
+
+        string
+
+        Poll Name
+
+
+        Question'
       requestBody:
         content:
           application/json:
