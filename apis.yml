@@ -9,17 +9,20 @@ description: Benchmark Email is an email marketing platform for small businesses
   Benchmark publishes an OpenAPI, two llms.txt files, an A2A Agent Card, an Agent Skill and a live documentation
   MCP endpoint, but ships no maintained SDK, no sandbox, no changelog and no deprecation policy.
 deliveryModel:
-  model: unknown
+  model: saas
+  license_evidence:
+    not_product:
+    - benchmarkemail/restful-api-v3
   open_source: unknown
   commercial: true
   callable_host: true
-  label: Delivery model not determined — needs a product licence on record
+  label: Hosted service · you call their endpoint
   confidence: low
   source:
   - openapi
   - pricing
-  - repository-unlicensed
-  generated: '2026-08-28'
+  - repository-not-product
+  generated: '2026-09-25'
   method: derived
 accessModel:
   pricing: freemium
@@ -61,6 +64,7 @@ tags:
 - Email Templates
 - Webhook
 - Agent Ready
+- A2A
 tags_raw:
 - Email Marketing
 - Campaigns
@@ -76,6 +80,7 @@ tags_raw:
 - Email Templates
 - Webhooks
 - Agent Ready
+- A2A
 apis:
 - aid: benchmark-email:benchmark-email-abtest-creation-api
   name: Benchmark Email ABTest Creation API
@@ -842,3 +847,10 @@ x-enrichment:
   status: enriched
   artifacts_added: 26
   pass: local-v1
+x-a2a:
+  verified: true
+  probed: '2026-09-26'
+  url: "https://developers.benchmarkemail.io/.well-known/agent-card.json"
+  grade: "conformant"
+  protocol_version: "0.3"
+  control: 404
